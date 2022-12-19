@@ -1,0 +1,11 @@
+Creer un app a part qui permet uniquement de clean ces ban de chaine
+a savoir garder uniquement les ban originaux et retirer les ban faite par arias_bot
+
+
+
+
+-Gerer des exceptions/erreur potentiels
+
+-Log systeme
+
+-Filtrer les bans timé
