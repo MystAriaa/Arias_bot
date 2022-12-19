@@ -8,9 +8,8 @@ a savoir garder uniquement les ban originaux et retirer les ban faite par arias_
 
 -Log systeme
 
--Filtrer les bans timé
+
+routine de clean de la bdd master au cas ou il y ai des gens stucks dedant
 
 
-
-
--------- recupere uniquemet les bans originaux et pas ceux de arias_bot par twitch
+rajout de delai partout dans les query vers la bdd

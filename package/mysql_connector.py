@@ -125,6 +125,16 @@ def remove_an_user(connection, user_id):
     except:
         print("Nous n'avons pas réussi à supprimé un utilisateur")
 
+def delete_all_master_banlist(connection):
+    try:
+        command = """DELETE FROM master_banlist;"""
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            connection.commit()
+        print("Succes du netoyage de la master banlist")
+    except:
+        print("Echec du netoyage de la master banlist")
 def remove_banned_user_from_master_banlist(connection, user_id):
     command = """SELECT * FROM {}_banlist;""".format(user_id) #Pas obligé de tout select
     connection.reconnect()
@@ -184,6 +194,15 @@ def set_new_user_info(connection, user_id, new_access_token, new_refresh_token):
 
 
 def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
+    command = """DELETE FROM {}_banlist;""".format(user_id)
+    try:
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            connection.commit()
+    except:
+        print("Delete all from failled")
+
     for banned_user in list_of_banned_users:
         command = """
         INSERT INTO {0}_banlist
@@ -199,6 +218,17 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
             print("Un utilisateur bannis à été ajouté à la table {}_banlist".format(user_id))
         except:
             print("Un utilisateur bannis à été filtré car déja présent dans la table {}_banlist".format(user_id))
+
+    """#Remove banned user in database #DELETE all from table INSTEAD SIMPLER MAYBE NOT FASTER
+    command = """"""
+    try:
+        connection.reconnect()
+        cursor.execute(command)
+        list_of_banned_id = cursor.fetchall()
+        for banner_user_id in list_of_banned_id:
+            if (banner_user_id in list_of_banned_users):
+
+    except:"""
 
 
 if __name__ == '__main__':

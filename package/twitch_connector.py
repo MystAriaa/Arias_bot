@@ -116,12 +116,12 @@ def get_user_info(user_id, app_access_token, client_id):
     
 
 #Get banlist from user from twitch
-#Filter out ban made by Arias_bot
+#Filter out ban made by Arias_bot &&& Temporary bans
 #So gather only bans made by user&mods
 def filter_banlist(array):
     filtered_array = []
     for ele in array:
-        if (not ("User automaticaly ban by Arias_bot." in ele["reason"])):
+        if (not ("User automaticaly ban by Arias_bot." in ele["reason"]) and not 'expire_in' in ele):
             filtered_array.append(ele)
     return filtered_array
 def get_banlist(user_id, access_token, client_id):

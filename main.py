@@ -151,6 +151,8 @@ def routine_update_user_banned_table():
         print("2/3")
         array_of_users_info = mysql.get_all_users(connection_bd)
         time.sleep(1)
+        mysql.delete_all_master_banlist(connection_bd)
+        time.sleep(1)
         for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_login / 3:user_name / 4:access_token / 5:refresh_token
                     
             user_id = user[1]
