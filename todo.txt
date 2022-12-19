@@ -9,3 +9,8 @@ a savoir garder uniquement les ban originaux et retirer les ban faite par arias_
 -Log systeme
 
 -Filtrer les bans timé
+
+
+
+
+-------- recupere uniquemet les bans originaux et pas ceux de arias_bot par twitch

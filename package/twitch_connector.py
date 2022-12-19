@@ -115,7 +115,15 @@ def get_user_info(user_id, app_access_token, client_id):
         return ("0","0","0")
     
 
-#Get banlist from user
+#Get banlist from user from twitch
+#Filter out ban made by Arias_bot
+#So gather only bans made by user&mods
+def filter_banlist(array):
+    filtered_array = []
+    for ele in array:
+        if (not ("User automaticaly ban by Arias_bot." in ele["reason"])):
+            filtered_array.append(ele)
+    return filtered_array
 def get_banlist(user_id, access_token, client_id):
     url = "https://api.twitch.tv/helix/moderation/banned?broadcaster_id={}".format(user_id)
     auth_header = {"Authorization": 'Bearer {}'.format(access_token), "Client-ID": client_id}
@@ -126,7 +134,7 @@ def get_banlist(user_id, access_token, client_id):
     response = requests.request(**request_data)
     response_json = response.json()
     if (response.status_code == 200):
-        return(response_json["data"])
+        return(filter_banlist(response_json["data"]))
     else:
         return([])
 
@@ -136,7 +144,7 @@ def ban_from_master_banlist(connection, user_id, user_access_token, list_of_bann
     for banned_user in list_of_banned_user:
         url = "https://api.twitch.tv/helix/moderation/bans?broadcaster_id={}&moderator_id={}".format(user_id,user_id)
         auth_header = {"Authorization": 'Bearer {}'.format(user_access_token), "Client-ID": client_id, "Content-Type": "application/json"}
-        description = "User automaticaly ban by Arias_bot.\rUser originaly ban from the channel: {1}.\rOriginal reason: {0}.".format(banned_user[1],mysql.get_user_name_by_id(connection, banned_user[2]))
+        description = "User automaticaly ban by Arias_bot. \rUser originaly ban from the channel: {1}. \rOriginal reason: {0}".format(banned_user[1],mysql.get_user_name_by_id(connection, banned_user[2]))
         banned_user_data = {"data":{"user_id":banned_user[0], "reason":description}}
         request_data = {
                 "method": "POST",
@@ -144,7 +152,10 @@ def ban_from_master_banlist(connection, user_id, user_access_token, list_of_bann
                 "headers": auth_header,
                 "json": banned_user_data}
         response = requests.request(**request_data)
-        print(response.json())
+        if (response.status_code == 200):
+            print("Ban de {}".format(banned_user[0]))
+        """else:
+            print()"""
 
     
 

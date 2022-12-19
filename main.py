@@ -107,17 +107,19 @@ def stop():
     flag_routine_update_user_banned_table = False
     return render_template('pages/home.html', user_autorisation_url=user_autorisation_url)
 
-@app.route('/start')
+"""@app.route('/start')
 def start():
     global flag_routine_update_user_banned_table
-    flag_routine_update_user_banned_table = True
-    thread_update_user_banned_table.start()
-    return render_template('pages/home.html', user_autorisation_url=user_autorisation_url)
+    
+    thread_update_user_banned_table.start()"""
+    
     
 
 #---------------------------------------------------------------------------------------------------------------------#
-
+@app.route('/start')
 def routine_update_user_banned_table():
+    global flag_routine_update_user_banned_table
+    flag_routine_update_user_banned_table = True
     print("Rentre dans le thread")
     #S'execute tout les jours à 6 heures du matin
     #time.sleep(60*60*6 + 60*60*24 - (datetime.datetime.now().second + datetime.datetime.now().minute*60 + datetime.datetime.now().hour*60*60))
@@ -200,9 +202,10 @@ def routine_update_user_banned_table():
         print("| Voici la fin de l'itération du thread |")
         #time.sleep(60*60*24)
         flag_routine_update_user_banned_table = False
-        time.sleep(60)
+        #time.sleep(60)
 
     print("Sort du thread")
+    return render_template('pages/home.html', user_autorisation_url=user_autorisation_url)
 
 #---------------------------------------------------------------------------------------------------------------------#
 
@@ -223,3 +226,4 @@ if __name__ == '__main__':
 
 
 #C:\Users\adrie\Documents\Twitch_project>virtual_env\scripts\activate.bat
+#                                      .\virtual_env\Scripts\activate.ps1

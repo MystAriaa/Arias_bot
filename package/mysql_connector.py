@@ -126,7 +126,7 @@ def remove_an_user(connection, user_id):
         print("Nous n'avons pas réussi à supprimé un utilisateur")
 
 def remove_banned_user_from_master_banlist(connection, user_id):
-    command = """SELECT * FROM {}_banlist WHERE reason LIKE '%User automaticaly ban by Arias_bot.%';""".format(user_id) #Pas obligé de tout select
+    command = """SELECT * FROM {}_banlist;""".format(user_id) #Pas obligé de tout select
     connection.reconnect()
     with connection.cursor() as cursor:
         cursor.execute(command)
