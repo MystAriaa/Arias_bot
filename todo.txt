@@ -6,15 +6,12 @@ a savoir garder uniquement les ban originaux et retirer les ban faite par arias_
 
 -Gerer des exceptions/erreur potentiels
 
--Log systeme
-
-
 
 systeme de compte = login/password
 +dashboard avec anylitcs
 
 
-
+better state anti CSRF
 
 
 

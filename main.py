@@ -6,6 +6,8 @@ from package import log
 import threading
 import time
 import datetime
+import string
+import random
 
 log.init_file_name()
 log.start_log()
@@ -16,21 +18,13 @@ app = Flask(__name__)
 site_base_url = "http://localhost:5000/autorisation_code"
 client_id = twitch.get_client_id()
 client_secret = twitch.get_client_secret()
-scopes = ["moderation:read","moderator:manage:banned_users"] #"user:edit",
-state = "example_state" #anti-CSRF attacks
+scopes = ["moderation:read","moderator:manage:banned_users"]
 
-user_autorisation_url = "https://id.twitch.tv/oauth2/authorize?response_type={0}&client_id={1}&redirect_uri={2}&scope={3}&state={4}".format("code",client_id,site_base_url,twitch.scope_format(scopes),state)
+user_autorisation_url = "https://id.twitch.tv/oauth2/authorize?response_type={0}&client_id={1}&redirect_uri={2}&scope={3}&state=".format("code",client_id,site_base_url,twitch.scope_format(scopes))
 
 connection_bd = mysql.connect_to_database()
 
 app_access_token = ""
-
-user_code = ""
-user_id = ""
-user_login = ""
-user_name = ""
-user_access_token = ""
-user_refresh_token = ""
 
 flag_routine_update_user_banned_table = True
 
@@ -38,7 +32,9 @@ flag_routine_update_user_banned_table = True
 
 @app.route('/')
 def home():
-	return render_template('pages/home.html', user_autorisation_url=user_autorisation_url)
+	global random_state
+	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+	return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state)
 
 @app.route('/contact')
 def contact():
@@ -50,30 +46,21 @@ def page_not_found(error):
 
 @app.route('/autorisation_code')
 def query():
+	global random_state
 	global app_access_token
-	global user_code
-	global user_id
-	global user_login
-	global user_name
-	global user_access_token
-	global user_refresh_token
 	acces_granted = False
-	received_state = request.args.get('state')
-	if (received_state == state):  #no cross attacks, we good
+	if (request.args.get('state') == random_state):  #no cross attacks, we good
 
 		error_state = request.args.get('error')               #error case
 		if (error_state == "access_denied"):
 			acces_granted = False
 			error_description = request.args.get('error_description')
-			error_state = request.args.get('state')
 			log.log("Nous avons un refus de l'utilisateur : {}.".format(error_description))
 		else:                                                 #no error case
 			acces_granted = True
-			code = request.args.get('code')
-			user_code = code
+			user_code = request.args.get('code')
 			scope = request.args.get('scope')
 			log.log("Nous avons reçu l'autorisation de l'utilisateur.")
-			#log.log("Code: {}, Scope: {}, State: {}".format(code,scope,state))
 
 	else:                          #cross attacks, not good
 		raise Warning("We might be under a CSRF attack")
@@ -161,7 +148,6 @@ def routine_update_user_banned_table():
 	#S'execute tout les jours à 6 heures du matin
 	#time.sleep(60*60*6 + 60*60*24 - (datetime.datetime.now().second + datetime.datetime.now().minute*60 + datetime.datetime.now().hour*60*60))
 	while flag_routine_update_user_banned_table:
-		os.system('cls')
 		log.log("| Voici une itération du thread |")
 		log.log("1/3")
 
@@ -250,19 +236,14 @@ def timeout_file_unban_all(user_access_token):
 		log.log("Failed remove of file unban_all_{}.html".format(user_access_token))
 		pass
 
+
 #---------------------------------------------------------------------------------------------------------------------#
 
 
 if __name__ == '__main__':
-	os.system('cls')
-
 	app_access_token = twitch.token_generation(client_id,client_secret)
-
 	thread_update_user_banned_table = threading.Thread(target = routine_update_user_banned_table)
-	
-
 	app.run(debug=True, port=5000)
-
 	log.end_log()
 
 

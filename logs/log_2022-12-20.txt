@@ -39,4 +39,21 @@
 [2022-12-20 03:30:37]: Sort du thread
 ||| 2022-12-20 03:30:46 |||
           ********** END OF LOG FILE **********          ||| 2022-12-20 03:30:46 |||
+          ********** END OF LOG FILE **********                    ********** START OF LOG FILE **********          
+||| 2022-12-20 03:55:41 |||
+[2022-12-20 03:55:42]: Un token d'acces viens d'être générer pour l'app: a5aukjbqfhmf1vy0p0byc9tew02br0
+          ********** START OF LOG FILE **********          
+||| 2022-12-20 03:55:43 |||
+[2022-12-20 03:55:44]: Un token d'acces viens d'être générer pour l'app: qv9mwmusbabeljhlhjo8hrz2ltwmt4
+[2022-12-20 03:56:05]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-20 03:56:06]: Un token d'acces viens d'être générer pour l'user: 7jz4z92brsn9gn4bx1xiiab9qelm7e
+[2022-12-20 03:56:07]: Notre token user a été validée
+[2022-12-20 03:56:08]: Notre token app a été validée
+[2022-12-20 03:56:08]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-20 03:56:08]: Update avec succes d'un utilisateur
+[2022-12-20 03:56:08]: Echec de la création de la table banlist pour l'utilisateur: 161641887. Peut-etre celle-ci existe dèja ?
+[2022-12-20 03:56:09]: Mise à neuf de la table 161641887_banlist
+[2022-12-20 03:56:09]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+||| 2022-12-20 03:56:49 |||
+          ********** END OF LOG FILE **********          ||| 2022-12-20 03:56:49 |||
           ********** END OF LOG FILE **********          

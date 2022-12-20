@@ -9,7 +9,7 @@ def get_file_name():
     return log_file_name
 def start_log():
     f = open(log_folder_path + get_file_name(), 'a')
-    f.write("          ********** START OF LOG FILE **********          ")
+    f.write("\n          ********** START OF LOG FILE **********          ")
     f.write("\n||| " + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + " |||\n")
     f.close()
 def log(message):
@@ -20,5 +20,5 @@ def log(message):
 def end_log():
     f = open(log_folder_path + get_file_name(), 'a')
     f.write("||| " + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + " |||\n")
-    f.write("          ********** END OF LOG FILE **********          ")
+    f.write("          ********** END OF LOG FILE **********          \n")
     f.close()
