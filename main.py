@@ -224,6 +224,12 @@ def routine_update_user_banned_table():
 			list_of_banned_user = mysql.get_all_master_banlist(connection_bd)
 			twitch.ban_from_master_banlist(connection_bd, user_id, user_access_token, list_of_banned_user, client_id)
 
+		#---------------------------------------------------------------------
+		
+		for f in os.listdir("templates/pages/temp_pages"):
+			if not f.endswith(".html"):
+				continue
+			os.remove(os.path.join("templates/pages/temp_pages", f))
 
 		log.log("| Voici la fin de l'itération du thread |")
 		#time.sleep(60*60*24)

@@ -1,9 +1,28 @@
--Gerer des exceptions/erreur potentiels
+UI website
+
+
+
+
+
+
+
+
+
 
 
 systeme de compte = login/password
 +dashboard avec anylitcs
 
-+timer sur les call de force update
 
+
+
+
+
+
+
+
+
+
++timer sur les call de force update
+-Gerer des exceptions/erreur potentiels
 rajout de delai partout dans les query vers la bdd SI BESOIN

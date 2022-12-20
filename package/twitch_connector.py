@@ -195,12 +195,6 @@ def unban_all(user_id, user_access_token, list_of_unbanned_user, client_id):
 
 
 
-        
-
-    
-
-
-
 
 if __name__ == '__main__':
     log.log("Ce fichier n'est pas fait pour etre executer directement mais comme un package à importer")
