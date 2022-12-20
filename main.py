@@ -100,7 +100,7 @@ def query():
 		thread_timeout_file_force_update_ban.start()
 		return render_template('pages/autorisation_code.html',acces_granted="Acces autorisé", unban_all_url = "http://localhost:5000/unban_all_{}.html".format(user_access_token), force_update_ban_url = "http://localhost:5000/force_update_ban_{}.html".format(user_access_token))
 	else:
-		return render_template('pages/autorisation_code.html',acces_granted="Acces refusé", unban_all_url = "http://localhost:5000/", force_update_irl = "http://localhost:5000/")
+		return render_template('pages/autorisation_code.html',acces_granted="Acces refusé", unban_all_url = "", force_update_irl = "")
 
 
 @app.route('/unban_all_<string:user_access_token>.html') #return_to_original_state
@@ -131,19 +131,13 @@ def unban_all(user_access_token):
 
 @app.route('/force_update_ban_<string:user_access_token>.html')
 def force_update_ban(user_access_token):
-	os.system('cls')
 	global random_state
 	
 	user_info = mysql.get_user_info_by_access_token(connection_bd, user_access_token)
 	#0: primary_key / 1:user_id / 2:user_login / 3:user_name / 4:access_token / 5:refresh_token
 	user_id = user_info[1]
 	user_access_token = user_info[4]
-
-	command = """SELECT user_id,reason,origin_channel_id FROM master_banlist;"""
-	connection_bd.reconnect()
-	with connection_bd.cursor() as cursor:
-		cursor.execute(command)
-		list_of_banned_user = cursor.fetchall()
+	list_of_banned_user = mysql.get_all_master_banlist(connection_bd)
 	twitch.ban_from_master_banlist(connection_bd, user_id, user_access_token, list_of_banned_user, client_id)
 
 	try:
@@ -211,26 +205,10 @@ def routine_update_user_banned_table():
 			user_access_token = user[4]
 			user_refresh_token = user[5]
 
-			command = """SELECT * FROM {}_banlist""".format(user_id)
-			connection_bd.reconnect()
-			with connection_bd.cursor() as cursor:
-				cursor.execute(command)
-				list_of_banned_user = cursor.fetchall()
+			list_of_banned_user = mysql.get_all_user_table(connection_bd, user_id)
 			
 			log.log("Mise à jour de la master_banlist depuis l'utilisateur: {}({})".format(user_name,user_id))
-			for banned_user in list_of_banned_user:
-				command = """INSERT INTO master_banlist 
-				(user_id, user_login, user_name, reason, moderator_id, moderator_login, moderator_name, origin_channel_id) 
-				VALUES ({}, "{}", "{}", "{}", "{}", "{}", "{}", {});
-				""".format(banned_user[1],banned_user[2],banned_user[3],banned_user[4],banned_user[5],banned_user[6],banned_user[7],user_id)
-				try:
-					connection_bd.reconnect()
-					with connection_bd.cursor() as cursor:
-						cursor.execute(command)
-						connection_bd.commit()
-					log.log("Ajout d'un nouvel utilisateur bannis dans la master banlist.")
-				except:
-					log.log("Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.")
+			mysql.insert_list_banned_into_master(connection_bd, list_of_banned_user, user_id)
 			
 		#---------------------------------------------------------------------
 
@@ -243,11 +221,7 @@ def routine_update_user_banned_table():
 			user_access_token = user[4]
 			user_refresh_token = user[5]
 
-			command = """SELECT user_id,reason,origin_channel_id FROM master_banlist;"""
-			connection_bd.reconnect()
-			with connection_bd.cursor() as cursor:
-				cursor.execute(command)
-				list_of_banned_user = cursor.fetchall()
+			list_of_banned_user = mysql.get_all_master_banlist(connection_bd)
 			twitch.ban_from_master_banlist(connection_bd, user_id, user_access_token, list_of_banned_user, client_id)
 
 

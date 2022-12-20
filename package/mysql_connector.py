@@ -133,6 +133,14 @@ def remove_an_user(connection, user_id):
     except:
         log.log("Nous n'avons pas réussi à supprimé un utilisateur")
 
+
+def get_all_master_banlist(connection):
+    command = """SELECT user_id,reason,origin_channel_id FROM master_banlist;"""
+    connection.reconnect()
+    with connection.cursor() as cursor:
+        cursor.execute(command)
+        list_of_banned_user = cursor.fetchall()
+    return (list_of_banned_user)
 def delete_all_master_banlist(connection):
     try:
         command = """DELETE FROM master_banlist;"""
@@ -143,6 +151,20 @@ def delete_all_master_banlist(connection):
         log.log("Succes du netoyage de la master banlist")
     except:
         log.log("Echec du netoyage de la master banlist")
+def insert_list_banned_into_master(connection, list_of_banned_user, user_id):
+    for banned_user in list_of_banned_user:
+        command = """INSERT INTO master_banlist 
+        (user_id, user_login, user_name, reason, moderator_id, moderator_login, moderator_name, origin_channel_id) 
+        VALUES ({}, "{}", "{}", "{}", "{}", "{}", "{}", {});
+        """.format(banned_user[1],banned_user[2],banned_user[3],banned_user[4],banned_user[5],banned_user[6],banned_user[7],user_id)
+        try:
+            connection.reconnect()
+            with connection.cursor() as cursor:
+                cursor.execute(command)
+                connection.commit()
+            log.log("Ajout d'un nouvel utilisateur bannis dans la master banlist.")
+        except:
+            log.log("Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.")
 def remove_banned_user_from_master_banlist(connection, user_id):
     command = """SELECT * FROM {}_banlist;""".format(user_id)
     connection.reconnect()
@@ -207,6 +229,13 @@ def set_new_user_info(connection, user_id, new_access_token, new_refresh_token):
             cursor.execute(command)
             connection.commit()
 
+def get_all_user_table(connection, user_id):
+    command = """SELECT * FROM {}_banlist""".format(user_id)
+    connection.reconnect()
+    with connection.cursor() as cursor:
+        cursor.execute(command)
+        list_of_banned_user = cursor.fetchall()
+    return(list_of_banned_user)
 
 def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
     command = """DELETE FROM {}_banlist;""".format(user_id)
