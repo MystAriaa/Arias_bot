@@ -2,8 +2,6 @@ Creer un app a part qui permet uniquement de clean ces ban de chaine
 a savoir garder uniquement les ban originaux et retirer les ban faite par arias_bot
 
 
-
-
 -Gerer des exceptions/erreur potentiels
 
 
@@ -11,8 +9,5 @@ systeme de compte = login/password
 +dashboard avec anylitcs
 
 
-better state anti CSRF
-
-
-
++mise fct des appel mysql dans main
                                                rajout de delai partout dans les query vers la bdd SI BESOIN

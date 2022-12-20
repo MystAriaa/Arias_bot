@@ -9,8 +9,8 @@
 <body>
     {% include 'shared/up_base.html' %}
     <h1>Autorisation_code_page</h1>
-    <p>{{ Acces_granted }}</p>
-    <a href="url">Update Arias_bot</a>
+    <p>{{ acces_granted }}</p>
+    <a href={{ force_update_ban_url }}>Update Arias_bot</a>
     <a href={{ unban_all_url }}>Deban all user banned by Arias_bot</a>
     {% include 'shared/down_base.html' %}
 </body>
