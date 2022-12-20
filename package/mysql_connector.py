@@ -1,4 +1,5 @@
 from mysql.connector import connect, Error
+from package import log
 import os
 
 delay_s = 1
@@ -55,7 +56,7 @@ def create_table_banned_by_user(connection, user_id):
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        print("Table banlist crée avec succès pour l'utilisateur: {}".format(user_id))
+        log.log("Table banlist crée avec succès pour l'utilisateur: {}".format(user_id))
         
         try:
             command = """ALTER TABLE {}_banlist ADD UNIQUE INDEX(user_id, user_login, user_name);""".format(user_id)
@@ -63,12 +64,12 @@ def create_table_banned_by_user(connection, user_id):
             with connection.cursor() as cursor:
                 cursor.execute(command)
                 connection.commit()
-            print("Altération de la table réussi")
+            log.log("Altération de la table réussi")
         except:
-            print("Echec de l'altération de la table")
+            log.log("Echec de l'altération de la table")
 
     except:
-        print("Echec de la création de la table banlist pour l'utilisateur: {}. Peut-etre celle-ci existe dèja ?".format(user_id))
+        log.log("Echec de la création de la table banlist pour l'utilisateur: {}. Peut-etre celle-ci existe dèja ?".format(user_id))
 
 
 def create_table_banlist_commune(connection):
@@ -101,9 +102,9 @@ def input_a_new_user(connection, user_id, user_login, user_name, access_token, r
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        print("Ajout avec succes d'un nouvelle utilisateur")
+        log.log("Ajout avec succes d'un nouvelle utilisateur")
     except: #delete le doublon et on le re-enregistre
-        print("Echec de l'ajout d'un utilisateur due à un doublon surement")
+        log.log("Echec de l'ajout d'un utilisateur due à un doublon surement")
         command = """
             DELETE FROM registered_user WHERE user_id={};
             """.format(user_id)
@@ -119,7 +120,7 @@ def input_a_new_user(connection, user_id, user_login, user_name, access_token, r
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        print("Update avec succes d'un utilisateur")
+        log.log("Update avec succes d'un utilisateur")
 
 def remove_an_user(connection, user_id):
     command = """DELETE FROM registered_user WHERE user_id = "{}";""".format(user_id)
@@ -128,9 +129,9 @@ def remove_an_user(connection, user_id):
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        print("Nous avons supprimé un utilisateur")
+        log.log("Nous avons supprimé un utilisateur")
     except:
-        print("Nous n'avons pas réussi à supprimé un utilisateur")
+        log.log("Nous n'avons pas réussi à supprimé un utilisateur")
 
 def delete_all_master_banlist(connection):
     try:
@@ -139,9 +140,9 @@ def delete_all_master_banlist(connection):
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        print("Succes du netoyage de la master banlist")
+        log.log("Succes du netoyage de la master banlist")
     except:
-        print("Echec du netoyage de la master banlist")
+        log.log("Echec du netoyage de la master banlist")
 def remove_banned_user_from_master_banlist(connection, user_id):
     command = """SELECT * FROM {}_banlist;""".format(user_id)
     connection.reconnect()
@@ -156,9 +157,9 @@ def remove_banned_user_from_master_banlist(connection, user_id):
             with connection.cursor() as cursor:
                 cursor.execute(command)
                 connection.commit()
-            print("Retrait de l'utilisateur {} de la banlist".format(banned_user[3]))
+            log.log("Retrait de l'utilisateur {} de la banlist".format(banned_user[3]))
         except:
-            print("Echec du retrait de l'utilisateur {} de la banlist".format(banned_user[3]))
+            log.log("Echec du retrait de l'utilisateur {} de la banlist".format(banned_user[3]))
 
 
 def get_all_users(connection):
@@ -214,9 +215,9 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        print("Mise à neuf de la table {}_banlist".format(user_id))
+        log.log("Mise à neuf de la table {}_banlist".format(user_id))
     except:
-        print("Delete all from failled")
+        log.log("Delete all from failled")
 
     for banned_user in list_of_banned_users:
         command = """
@@ -230,9 +231,9 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
             with connection.cursor() as cursor:
                 cursor.execute(command)
                 connection.commit()
-            print("Un utilisateur bannis à été ajouté à la table {}_banlist".format(user_id))
+            log.log("Un utilisateur bannis à été ajouté à la table {}_banlist".format(user_id))
         except:
-            print("Un utilisateur bannis à été filtré car déja présent dans la table {}_banlist".format(user_id))
+            log.log("Un utilisateur bannis à été filtré car déja présent dans la table {}_banlist".format(user_id))
 
     """#Remove banned user in database #DELETE all from table INSTEAD SIMPLER MAYBE NOT FASTER
     command = """"""

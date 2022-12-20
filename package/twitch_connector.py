@@ -3,6 +3,7 @@ import requests
 from requests.api import request
 import json
 from package import mysql_connector as mysql
+from package import log
 
 #----------------------------------------------------------------------------------------------------------------------#
 
@@ -30,17 +31,17 @@ def token_generation(client_id, client_secret, grant_type = "client_credentials"
     if (grant_type == "client_credentials"):
         auth_body = {"client_id": client_id, "client_secret": client_secret, "grant_type": grant_type}
         auth_response_json = requests.post("https://id.twitch.tv/oauth2/token", auth_body).json() #call api to get token
-        print("Un token d'acces viens d'être générer pour l'app: {}".format(auth_response_json["access_token"]))
+        log.log("Un token d'acces viens d'être générer pour l'app: {}".format(auth_response_json["access_token"]))
         return(auth_response_json["access_token"])
     elif (grant_type == "authorization_code"):
         auth_body = {"client_id": client_id, "client_secret": client_secret, "code": code, "grant_type": grant_type, "redirect_uri": redirect_url}
         auth_response = requests.post("https://id.twitch.tv/oauth2/token", auth_body) #call api to get token
         auth_response_json = auth_response.json()
         if (auth_response.status_code == 200):
-            print("Un token d'acces viens d'être générer pour l'user: {}".format(auth_response_json["access_token"]))
+            log.log("Un token d'acces viens d'être générer pour l'user: {}".format(auth_response_json["access_token"]))
             return(auth_response_json["access_token"],auth_response_json["refresh_token"])
         else:
-            print("Echec de la création du doublet de token")
+            log.log("Echec de la création du doublet de token")
             return("","")
 
 
@@ -57,16 +58,16 @@ def token_validation(token):
         response_json = response.json()
         try:
             r = response_json["user_id"]
-            print("Notre token user a été validée")
+            log.log("Notre token user a été validée")
             return(r)   
         except:
-            print("Notre token app a été validée")
+            log.log("Notre token app a été validée")
             return(1)
     elif response.status_code == 401:
-        print("Notre token n'a pas été validée, il a besoin d'être refresh")
+        log.log("Notre token n'a pas été validée, il a besoin d'être refresh")
         return(0)
     else:
-        print("Notre token n'a rien de bon")
+        log.log("Notre token n'a rien de bon")
         return(-1)
 
 #Refesh of our access_token
@@ -84,16 +85,16 @@ def token_refresh(connection, client_id, client_secret, user_id = "", refresh_to
                 new_access_token = auth_response_json["access_token"]
                 new_refresh_token = auth_response_json["refresh_token"]
                 mysql.set_new_user_info(connection, user_id, new_access_token, new_refresh_token)
-                print("Un token d'acces et un de rafraichisement viens d'être générer par rafraichisement")
+                log.log("Un token d'acces et un de rafraichisement viens d'être générer par rafraichisement")
                 #Generate a new file to allow
                 return (new_access_token,new_refresh_token)
             elif (auth_response.status_code == 400):
-                print("Erreur 400 Invalid token | Cet utilisateur c'est dé-enregistré")
+                log.log("Erreur 400 Invalid token | Cet utilisateur c'est dé-enregistré")
                 mysql.remove_banned_user_from_master_banlist(connection, user_id)
                 mysql.remove_an_user(connection, user_id)
                 return ("0","0")
             elif (auth_response.status_code == 401):
-                print("Erreur 401 Unauthorized | Cet utilisateur c'est dé-enregistré")
+                log.log("Erreur 401 Unauthorized | Cet utilisateur c'est dé-enregistré")
                 mysql.remove_banned_user_from_master_banlist(connection, user_id)
                 mysql.remove_an_user(connection, user_id)
                 return ("0","0")
@@ -113,10 +114,10 @@ def revoke_token(token, client_id):
                 "data": data_body}
         response = requests.request(**request_data)
         if (response.status_code == 200):
-            print("Token successfully revoken")
+            log.log("Token successfully revoken")
         else:
-            print("Token not revoken")
-            print(response.json())
+            log.log("Token not revoken")
+            log.log(response.json())
     
 
 #Get user info via app_access_token
@@ -163,7 +164,7 @@ def get_banlist(user_id, access_token, client_id, filter=True):
 
 
 def ban_from_master_banlist(connection, user_id, user_access_token, list_of_banned_user, client_id):
-    print("Bannisement pour l'utilisateur: {}".format(user_id))
+    log.log("Bannisement pour l'utilisateur: {}".format(user_id))
     for banned_user in list_of_banned_user:
         url = "https://api.twitch.tv/helix/moderation/bans?broadcaster_id={}&moderator_id={}".format(user_id,user_id)
         auth_header = {"Authorization": 'Bearer {}'.format(user_access_token), "Client-ID": client_id, "Content-Type": "application/json"}
@@ -176,9 +177,9 @@ def ban_from_master_banlist(connection, user_id, user_access_token, list_of_bann
                 "json": banned_user_data}
         response = requests.request(**request_data)
         if (response.status_code == 200):
-            print("Ban de {}".format(banned_user[0]))
+            log.log("Ban de {}".format(banned_user[0]))
         """else:
-            print()"""
+            log.log()"""
 
 def unban_all(user_id, user_access_token, list_of_unbanned_user, client_id):
     for unbanned_user in list_of_unbanned_user:
@@ -190,7 +191,7 @@ def unban_all(user_id, user_access_token, list_of_unbanned_user, client_id):
                 "headers": auth_header}
         response = requests.request(**request_data)
         if (response.status_code == 204):
-            print("User ({}) unban from channel ({})".format(unbanned_user["user_id"],user_id))
+            log.log("User ({}) unban from channel ({})".format(unbanned_user["user_id"],user_id))
 
 
 
@@ -202,4 +203,4 @@ def unban_all(user_id, user_access_token, list_of_unbanned_user, client_id):
 
 
 if __name__ == '__main__':
-    print("Ce fichier n'est pas fait pour etre executer directement mais comme un package à importer")
+    log.log("Ce fichier n'est pas fait pour etre executer directement mais comme un package à importer")

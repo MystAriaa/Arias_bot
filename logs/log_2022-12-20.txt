@@ -1,0 +1,42 @@
+          ********** START OF LOG FILE **********          
+||| 2022-12-20 03:30:01 |||
+[2022-12-20 03:30:03]: Un token d'acces viens d'être générer pour l'app: 1ajhxcnufhg3wudlcgbbgcv9r9ftm4
+          ********** START OF LOG FILE **********          
+||| 2022-12-20 03:30:04 |||
+[2022-12-20 03:30:05]: Un token d'acces viens d'être générer pour l'app: kk2k7280u4qse36dhtq35yy567vntd
+[2022-12-20 03:30:16]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-20 03:30:17]: Un token d'acces viens d'être générer pour l'user: fqqhgmnj5yutmgl2bwnle5qbichf6e
+[2022-12-20 03:30:18]: Notre token user a été validée
+[2022-12-20 03:30:19]: Notre token app a été validée
+[2022-12-20 03:30:20]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-20 03:30:20]: Update avec succes d'un utilisateur
+[2022-12-20 03:30:20]: Echec de la création de la table banlist pour l'utilisateur: 161641887. Peut-etre celle-ci existe dèja ?
+[2022-12-20 03:30:20]: Mise à neuf de la table 161641887_banlist
+[2022-12-20 03:30:20]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-20 03:30:32]: Rentre dans le thread
+[2022-12-20 03:30:32]: | Voici une itération du thread |
+[2022-12-20 03:30:32]: 1/3
+[2022-12-20 03:30:32]: Mise à jour des bannis pour Arias_bot
+[2022-12-20 03:30:33]: Notre token user a été validée
+[2022-12-20 03:30:33]: Mise à neuf de la table 699600940_banlist
+[2022-12-20 03:30:33]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-20 03:30:33]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-20 03:30:33]: Mise à jour des bannis pour MystAria_
+[2022-12-20 03:30:34]: Notre token user a été validée
+[2022-12-20 03:30:35]: Mise à neuf de la table 161641887_banlist
+[2022-12-20 03:30:35]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-20 03:30:35]: 2/3
+[2022-12-20 03:30:35]: Succes du netoyage de la master banlist
+[2022-12-20 03:30:35]: Mise à jour de la master_banlist depuis l'utilisateur: Arias_bot(699600940)
+[2022-12-20 03:30:35]: Ajout d'un nouvel utilisateur bannis dans la master banlist.
+[2022-12-20 03:30:35]: Ajout d'un nouvel utilisateur bannis dans la master banlist.
+[2022-12-20 03:30:35]: Mise à jour de la master_banlist depuis l'utilisateur: MystAria_(161641887)
+[2022-12-20 03:30:35]: Ajout d'un nouvel utilisateur bannis dans la master banlist.
+[2022-12-20 03:30:35]: 3/3
+[2022-12-20 03:30:35]: Bannisement pour l'utilisateur: 699600940
+[2022-12-20 03:30:36]: Bannisement pour l'utilisateur: 161641887
+[2022-12-20 03:30:37]: | Voici la fin de l'itération du thread |
+[2022-12-20 03:30:37]: Sort du thread
+||| 2022-12-20 03:30:46 |||
+          ********** END OF LOG FILE **********          ||| 2022-12-20 03:30:46 |||
+          ********** END OF LOG FILE **********          
