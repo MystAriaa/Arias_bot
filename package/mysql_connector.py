@@ -1,6 +1,13 @@
 from mysql.connector import connect, Error
+import os
 
-def connect_to_database(host="localhost", user="Arias_bot", password="1212", database="Arias_bot_database"):
+delay_s = 1
+bdd_name = "Arias_bot_database"
+bdd_ip = "localhost"
+bdd_login = "Arias_bot"
+bdd_password = "1212"
+
+def connect_to_database(host=bdd_ip, user=bdd_login, password=bdd_password, database=bdd_name):
     try:
         with connect(host=host, user=user, password=password, database=database) as connection:
             return(connection)
@@ -136,7 +143,7 @@ def delete_all_master_banlist(connection):
     except:
         print("Echec du netoyage de la master banlist")
 def remove_banned_user_from_master_banlist(connection, user_id):
-    command = """SELECT * FROM {}_banlist;""".format(user_id) #Pas obligé de tout select
+    command = """SELECT * FROM {}_banlist;""".format(user_id)
     connection.reconnect()
     with connection.cursor() as cursor:
         cursor.execute(command)
@@ -182,6 +189,13 @@ def get_user_info_by_id(connection, user_id):
         cursor.execute(command)
         result = cursor.fetchall()
         return (result[0])
+def get_user_info_by_access_token(connection, access_token):
+    command = """SELECT * FROM registered_user WHERE access_token = "{}";""".format(access_token)
+    connection.reconnect()
+    with connection.cursor() as cursor:
+        cursor.execute(command)
+        result = cursor.fetchall()
+        return (result[0])
 def set_new_user_info(connection, user_id, new_access_token, new_refresh_token):
     command = """
         UPDATE registered_user 
@@ -200,6 +214,7 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
+        print("Mise à neuf de la table {}_banlist".format(user_id))
     except:
         print("Delete all from failled")
 

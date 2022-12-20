@@ -1,7 +1,6 @@
 import os
 import requests
 from requests.api import request
-from urllib.parse import urlencode
 import json
 from package import mysql_connector as mysql
 
@@ -35,9 +34,14 @@ def token_generation(client_id, client_secret, grant_type = "client_credentials"
         return(auth_response_json["access_token"])
     elif (grant_type == "authorization_code"):
         auth_body = {"client_id": client_id, "client_secret": client_secret, "code": code, "grant_type": grant_type, "redirect_uri": redirect_url}
-        auth_response_json = requests.post("https://id.twitch.tv/oauth2/token", auth_body).json() #call api to get token
-        print("Un token d'acces viens d'être générer pour l'user: {}".format(auth_response_json["access_token"]))
-        return(auth_response_json["access_token"],auth_response_json["refresh_token"])
+        auth_response = requests.post("https://id.twitch.tv/oauth2/token", auth_body) #call api to get token
+        auth_response_json = auth_response.json()
+        if (auth_response.status_code == 200):
+            print("Un token d'acces viens d'être générer pour l'user: {}".format(auth_response_json["access_token"]))
+            return(auth_response_json["access_token"],auth_response_json["refresh_token"])
+        else:
+            print("Echec de la création du doublet de token")
+            return("","")
 
 
 def token_validation(token):
@@ -81,6 +85,7 @@ def token_refresh(connection, client_id, client_secret, user_id = "", refresh_to
                 new_refresh_token = auth_response_json["refresh_token"]
                 mysql.set_new_user_info(connection, user_id, new_access_token, new_refresh_token)
                 print("Un token d'acces et un de rafraichisement viens d'être générer par rafraichisement")
+                #Generate a new file to allow
                 return (new_access_token,new_refresh_token)
             elif (auth_response.status_code == 400):
                 print("Erreur 400 Invalid token | Cet utilisateur c'est dé-enregistré")
@@ -96,6 +101,22 @@ def token_refresh(connection, client_id, client_secret, user_id = "", refresh_to
             return ("0","0")
     if (mode == "app"):
         return (token_generation(client_id, client_secret),"0")
+
+def revoke_token(token, client_id):
+        url = "https://id.twitch.tv/oauth2/revoke"
+        auth_header = {"Content-Type": "application/x-www-form-urlencoded"}
+        data_body = "client_id={}&token={}".format(client_id,token)
+        request_data = {
+                "method": "POST",
+                "url": url,
+                "headers": auth_header,
+                "data": data_body}
+        response = requests.request(**request_data)
+        if (response.status_code == 200):
+            print("Token successfully revoken")
+        else:
+            print("Token not revoken")
+            print(response.json())
     
 
 #Get user info via app_access_token
@@ -108,7 +129,6 @@ def get_user_info(user_id, app_access_token, client_id):
             "headers": auth_header}
     response = requests.request(**request_data)
     response_json = response.json()
-    print(response_json)
     if (response.status_code == 200):
         return (response_json["data"][0]["broadcaster_id"],response_json["data"][0]["broadcaster_login"],response_json["data"][0]["broadcaster_name"])
     else:
@@ -124,7 +144,7 @@ def filter_banlist(array):
         if (not ("User automaticaly ban by Arias_bot." in ele["reason"]) and not 'expire_in' in ele):
             filtered_array.append(ele)
     return filtered_array
-def get_banlist(user_id, access_token, client_id):
+def get_banlist(user_id, access_token, client_id, filter=True):
     url = "https://api.twitch.tv/helix/moderation/banned?broadcaster_id={}".format(user_id)
     auth_header = {"Authorization": 'Bearer {}'.format(access_token), "Client-ID": client_id}
     request_data = {
@@ -134,7 +154,10 @@ def get_banlist(user_id, access_token, client_id):
     response = requests.request(**request_data)
     response_json = response.json()
     if (response.status_code == 200):
-        return(filter_banlist(response_json["data"]))
+        if(filter):
+            return(filter_banlist(response_json["data"]))
+        else:
+            return(response_json["data"])
     else:
         return([])
 
@@ -156,6 +179,22 @@ def ban_from_master_banlist(connection, user_id, user_access_token, list_of_bann
             print("Ban de {}".format(banned_user[0]))
         """else:
             print()"""
+
+def unban_all(user_id, user_access_token, list_of_unbanned_user, client_id):
+    for unbanned_user in list_of_unbanned_user:
+        url = "https://api.twitch.tv/helix/moderation/bans?broadcaster_id={}&moderator_id={}&user_id={}".format(user_id,user_id,unbanned_user["user_id"])
+        auth_header = {"Authorization": 'Bearer {}'.format(user_access_token), "Client-ID": client_id}
+        request_data = {
+                "method": "DELETE",
+                "url": url,
+                "headers": auth_header}
+        response = requests.request(**request_data)
+        if (response.status_code == 204):
+            print("User ({}) unban from channel ({})".format(unbanned_user["user_id"],user_id))
+
+
+
+        
 
     
 

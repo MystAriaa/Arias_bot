@@ -54,18 +54,18 @@ def query():
     global user_name
     global user_access_token
     global user_refresh_token
-    Acces_granted = False
+    acces_granted = False
     received_state = request.args.get('state')
     if (received_state == state):  #no cross attacks, we good
 
         error_state = request.args.get('error')               #error case
         if (error_state == "access_denied"):
-            Acces_granted = False
+            acces_granted = False
             error_description = request.args.get('error_description')
             error_state = request.args.get('state')
             print("Nous avons un refus de l'utilisateur : {}.".format(error_description))
         else:                                                 #no error case
-            Acces_granted = True
+            acces_granted = True
             code = request.args.get('code')
             user_code = code
             scope = request.args.get('scope')
@@ -77,7 +77,7 @@ def query():
 
 
     #Si nous avons reçu le code
-    if (Acces_granted):
+    if (acces_granted):
         #Obtention des tokens utilisateur      
         user_access_token, user_refresh_token = twitch.token_generation(client_id, client_secret, grant_type = "authorization_code", code = user_code, redirect_url = site_base_url)
         #Obtention de l'id de notre utilisateur
@@ -96,16 +96,50 @@ def query():
         mysql.fill_banned_user_table_by_user(connection_bd, list_of_banned_users_by_user, user_id)
 
     #Petite mise en page en fonction de l'acces reçu
-    if (Acces_granted):
-        return render_template('pages/autorisation_code.html',Acces_granted="Acces autorisé")
+    if (acces_granted):
+        f = open('templates/pages/unban_all_{}.html'.format(user_access_token), 'w')
+        html_template = """<html><head><title>Redirect</title></head><body></body></html>"""
+        f.write(html_template)
+        f.close()
+        thread_timeout_file_unban_all = threading.Thread(target = timeout_file_unban_all, args = (user_access_token,))
+        thread_timeout_file_unban_all.start()
+        return render_template('pages/autorisation_code.html',acces_granted="Acces autorisé", unban_all_url = "http://localhost:5000/unban_all_{}.html".format(user_access_token))
     else:
-        return render_template('pages/autorisation_code.html',Acces_granted="Acces refusé")
+        return render_template('pages/autorisation_code.html',acces_granted="Acces refusé", unban_all_url = "http://localhost:5000/")
 
-@app.route('/stop')
+
+@app.route('/unban_all_<string:user_access_token>.html') #return_to_original_state
+def unban_all(user_access_token):
+    user_info = mysql.get_user_info_by_access_token(connection_bd, user_access_token)
+    user_refresh_token = user_info[-1]
+    id = twitch.token_validation(user_access_token)
+    if ( id == 0 or id == 1):
+        user_access_token, user_refresh_token = twitch.token_refresh(connection_bd, client_id, client_secret, user_id=user_id, refresh_token=user_refresh_token, mode = "user")
+    user_id = user_info[1]
+    list_of_banned_user = twitch.get_banlist(user_id, user_access_token, client_id, filter = False)
+    #filter ban list to keep on user ban by arias
+    list_of_unbanned_user = []
+    for banned_user in list_of_banned_user:
+        if("User automaticaly ban by Arias_bot." in banned_user["reason"]):
+            list_of_unbanned_user.append(banned_user)
+    twitch.unban_all(user_id, user_access_token, list_of_unbanned_user, client_id)
+    twitch.revoke_token(user_access_token, client_id)
+    twitch.revoke_token(user_refresh_token, client_id)
+    mysql.remove_an_user(connection_bd, user_id)
+    try:
+        os.remove("templates/pages/unban_all_{}.html".format(user_access_token))
+    except:
+        pass
+    return render_template('pages/home.html', user_autorisation_url=user_autorisation_url)
+
+
+
+
+"""@app.route('/stop')
 def stop():
     global flag_routine_update_user_banned_table
     flag_routine_update_user_banned_table = False
-    return render_template('pages/home.html', user_autorisation_url=user_autorisation_url)
+    return render_template('pages/home.html', user_autorisation_url=user_autorisation_url)"""
 
 """@app.route('/start')
 def start():
@@ -129,7 +163,6 @@ def routine_update_user_banned_table():
         print("1/3")
 
         array_of_users_info = mysql.get_all_users(connection_bd)
-        time.sleep(1)
         for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_login / 3:user_name / 4:access_token / 5:refresh_token
                     
             user_id = user[1]
@@ -145,14 +178,12 @@ def routine_update_user_banned_table():
             list_of_banned_users_by_user = twitch.get_banlist(user_id, user_access_token, client_id)
             #imput les bannies dans la datatababbaaasee
             mysql.fill_banned_user_table_by_user(connection_bd, list_of_banned_users_by_user, user_id)
-            time.sleep(1)
+
         #--------------------------------------------------------------------
 
         print("2/3")
         array_of_users_info = mysql.get_all_users(connection_bd)
-        time.sleep(1)
         mysql.delete_all_master_banlist(connection_bd)
-        time.sleep(1)
         for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_login / 3:user_name / 4:access_token / 5:refresh_token
                     
             user_id = user[1]
@@ -185,7 +216,6 @@ def routine_update_user_banned_table():
 
         print("3/3")
         array_of_users_info = mysql.get_all_users(connection_bd)
-        time.sleep(1)
         for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_login / 3:user_name / 4:access_token / 5:refresh_token
                     
             user_id = user[1]
@@ -204,10 +234,18 @@ def routine_update_user_banned_table():
         print("| Voici la fin de l'itération du thread |")
         #time.sleep(60*60*24)
         flag_routine_update_user_banned_table = False
-        #time.sleep(60)
 
     print("Sort du thread")
     return render_template('pages/home.html', user_autorisation_url=user_autorisation_url)
+
+
+def timeout_file_unban_all(user_access_token):
+    time.sleep(20)
+    try:
+        os.remove("templates/pages/unban_all_{}.html".format(user_access_token))
+    except:
+        print("Failed remove of file unban_all_{}.html".format(user_access_token))
+        pass
 
 #---------------------------------------------------------------------------------------------------------------------#
 
@@ -218,6 +256,7 @@ if __name__ == '__main__':
     app_access_token = twitch.token_generation(client_id,client_secret)
 
     thread_update_user_banned_table = threading.Thread(target = routine_update_user_banned_table)
+    
 
     app.run(debug=True, port=5000)
 
