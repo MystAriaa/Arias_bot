@@ -213,6 +213,9 @@ body {
     display: flex;
     justify-content: center;
     align-items:center;
+
+    color: white;
+    font-size: 90px;
 }
 .icon_main {
     height: 350px;
@@ -231,6 +234,10 @@ body {
     display: flex;
     justify-content: center;
     align-items:center;
+
+    color: white;
+    font-size: 40px;
+    text-align: center;
 }
 
 .twitch_div {
@@ -252,13 +259,17 @@ body {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    border: solid;
     border-radius: 12px;
+    border-width: 1px;
+    border-color: white;
+    box-shadow: 10px 10px black;
 }
 .twitch_link {
     width: 100%;
     height: 100%;
     position: relative;
-    padding: 35px;
+    padding: 32px;
     color: white;
     text-align: justify;
     vertical-align: middle;
@@ -292,6 +303,27 @@ body {
     border-style: dashed;
     border-radius: 20px;
     border-color: rgb(100, 65, 165);
+
+    box-shadow: 10px 10px black;
+
+    color: white;
+    
+}
+.whatisit_title {
+    position: absolute;
+    top:10px;
+    width: 100%;
+    font-size: 60px;
+    color: white;
+    text-align: center;
+}
+.whatisit_content {
+    position: absolute;
+    bottom:10px;
+    width: 100%;
+    font-size: 30px;
+    color: white;
+    text-align: center; 
 }
 .graph {
     position: absolute;
@@ -314,6 +346,10 @@ body {
     border-style: dashed;
     border-radius: 20px;
     border-color: rgb(100, 65, 165);
+
+    box-shadow: 10px 10px black;
+
+    color: white;
 }
 
 .page_end {
@@ -336,6 +372,10 @@ body {
     border-style: dashed;
     border-radius: 20px;
     border-color: rgb(100, 65, 165);
+
+    box-shadow: 10px 10px black;
+
+    color: white;
 }
 .disclaimer {
     position: absolute;
@@ -352,6 +392,8 @@ body {
     text-align: center;
     word-wrap: break-word;
     overflow: hidden;
+
+    color: white;
 }
 
 
@@ -388,4 +430,17 @@ body {
 
     background-color: #000;
     color: white;
+}
+
+.discord_link {
+    z-index: 2;
+}
+.github_link {
+    z-index: 2;
+}
+.faq_link {
+    z-index: 2;
+}
+.contact_link {
+    z-index: 2;
 }
