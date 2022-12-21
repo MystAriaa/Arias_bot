@@ -55,13 +55,16 @@
                 <img class="icon" src="static/img/icon4.png" alt="Icon_base" width="501" height="306">
             </div>
             <div class="intro_main">
-                <p>A python web app with MySQL aiming toward twitch API to manage bans (pas dingue)</p>
+                <p>Share your bans with others ! Together we are stronger !</p>
             </div>
             <div class="twitch_div">
                 <button class="twitch_button">
                     <a class="twitch_link" href={{ user_autorisation_url }}>Connect with Twitch</a>
                 </button>
             </div>
+        </div>
+        <div>
+            <img class="twitch_logo" src="static/img/twitch_logo.png" alt="Icon_base" width="150" height="84">
         </div>
         <div class="go_down">
             <img class="icon_go_down" src="static/img/icon_go_down.png" alt="Icon_base" width="50" height="27">
@@ -71,13 +74,22 @@
     <div class="page_down">
         <div class="whatisit">
             <p class="whatisit_title">What is it ?</p>
-            <p class="whatisit_content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste at explicabo tempore amet, rem, alias dicta doloremque qui sequi aut et minus est illo. Minima alias excepturi eos delectus natus.</p>
+            <img class="peepo_note" src="static/img/peepo_note.png" alt="Icon_base" width="75" height="75">
+            <p class="whatisit_content">Arias_bot is twitch bot sharing your banlist to all the other member of the network.<br><br>
+                By giving Arias_bot your authorization to read your ban list and the ability to ban and unban, Arias_bot will share your banned accounts to all the channels connected to the bot. <br><br>
+                Arias_bot gather all the banned accounts across all connected members putting them in common creating a huge banlist. <br><br>
+                Arias_bot then proceide to ban on your channel all banned accounts from the other members. <br><br>
+                For now only permanent bans are shared. Bans made Arias_bot update every day at 5 hour UTC+0, meaning any miss-ban aren't immediatly shared.<br><br>
+                Please visit our F.A.Q as more details will be there for you.</p>
         </div>
         <div class="graph">
             <img class="icon_go_down" src="static/img/vohiyo.png" alt="Icon_base" width="200" height="200">
         </div>
         <div class="tag">
-            <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid commodi quisquam reiciendis, fuga quas repellat enim excepturi ad dolores, velit dolorum. Consectetur est consequatur doloribus quo eveniet asperiores excepturi odio.</a>
+            <p class="tag_content">Arias_bot is fully open-source project. It's a python web application using Flask, requesting from Twitch API, and storing its data in MySQL database. <br>
+            Free, secure through Twitch itentification method, it's doesn't require any personal data nor store your data aside gathered banned accounts. <br>
+            Its actions are fully reversible as bans made by Arias_bot are marked by an unique comment.<br>
+            It is recommended to use the only verified account chat option on your channel.</p>
         </div>
     </div>
 

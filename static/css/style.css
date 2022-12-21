@@ -238,6 +238,7 @@ body {
     color: white;
     font-size: 40px;
     text-align: center;
+    font-weight: 700;
 }
 
 .twitch_div {
@@ -250,7 +251,7 @@ body {
 }
 .twitch_button {
     border: none;
-    background-color: rgb(100, 65, 165);
+    background-color: #6441a5;
     color: white;
     height: 75px;
     width: 225px;
@@ -282,6 +283,12 @@ body {
     align-items:center;
     bottom: 5px;
 }
+.twitch_logo {
+    position: absolute;
+    display: flex;
+    bottom: 20px;
+    left: 5px;
+}
 
 .page_down {
     position: relative;
@@ -308,6 +315,8 @@ body {
 
     color: white;
     
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 .whatisit_title {
     position: absolute;
@@ -317,13 +326,18 @@ body {
     color: white;
     text-align: center;
 }
+.peepo_note {
+    position: absolute;
+    top:100px;
+    left: calc(50% - 37px);
+}
 .whatisit_content {
     position: absolute;
-    bottom:10px;
-    width: 100%;
-    font-size: 30px;
+    top: 175px;
+    width: 90%;
+    font-size: min(1.5em, 3vw);
     color: white;
-    text-align: center; 
+    padding: 5%;
 }
 .graph {
     position: absolute;
@@ -350,6 +364,12 @@ body {
     box-shadow: 10px 10px black;
 
     color: white;
+
+    font: 300;
+    font-size: min(1.5em, 3vw);
+}
+.tag_content {
+    padding: 3%;
 }
 
 .page_end {
@@ -392,6 +412,7 @@ body {
     text-align: center;
     word-wrap: break-word;
     overflow: hidden;
+    font-size: 10px;
 
     color: white;
 }
