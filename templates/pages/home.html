@@ -1,18 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-image: url('static/img/background.jpg');">
+<!-- Our main page -->
 
 <head>
-    <meta charset="UTF-8">
     <title>Arias_bot</title>
+    <meta charset="UTF-8">
+    <link href="/static/css/style.css" rel="stylesheet">
 </head>
 
-<body>
-    {% include 'shared/up_base.html' %}
-    <h1>Home page</h1>
-    <p>Nihil!</p>
-    <p>{{ state }}</p>
-    <p><a href={{ user_autorisation_url }}>Connect with Twitch</a></p>
-    {% include 'shared/down_base.html' %}
+<body class="body">
+    <div class="header">
+        <div class="header_icon">
+            <img class="icon" src="static/img/icon.jpg" alt="Icon_base" width="50" height="50">
+        </div>
+        <div class="center_header">
+            <!-- <a>WHOLOLO</a> -->
+        </div>
+        <div class="nav">
+            <div class="text_header">
+                <a href="">Discord</a>
+            </div>
+            <div class="text_header">
+                <a href="">GitHub</a>
+            </div>
+            <div class="text_header">
+                <a href="">F.A.Q</a>
+            </div>
+            <div class="text_header">
+                <a href="">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="title_main">
+            <p>Arias_bot</p>
+        </div>
+        <div class="icon_main">
+            <img class="icon" src="static/img/icon.jpg" alt="Icon_base" width="300" height="300">
+        </div>
+        <div class="intro_main">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, veniam earum facilis at velit consequatur sit harum voluptatibus aliquid eius dolor similique culpa ratione, distinctio, quos iusto. Quibusdam, provident accusantium.</p>
+        </div>
+    </div>
+
+    <div class="twitch_div">
+        <button class="twitch_button">
+            <a class="twitch_link" href="www.youtube.com">Connect with Twitch</a>
+        </button>
+    </div>
+    
+
+
+
+
+
+
+
+
+    <!--
+    <div class="down_arrow">
+        <img class="icon" src="static/img/icon.jpg" alt="Icon_base" width="150" height="150">
+    </div>
+    -->
+
+    <div class="credit">
+        <a href="www.youtube.com">by MystAria</a>
+    </div>
 </body>
 
 </html>
@@ -24,8 +78,10 @@
     
     
     
-    
-    
-    
-    
+    {% include 'shared/up_base.html' %}
+    <h1>Home page</h1>
+    <p>Nihil!</p>
+    <p>{{ state }}</p>
+    <p><a href={{ user_autorisation_url }}>Connect with Twitch</a></p>
+    {% include 'shared/down_base.html' %}
 #}

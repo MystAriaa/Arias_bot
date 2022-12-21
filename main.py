@@ -261,7 +261,7 @@ def timeout_file_force_update_ban(user_access_token):
 
 
 if __name__ == '__main__':
-	app_access_token = twitch.token_generation(client_id,client_secret)
+	#app_access_token = twitch.token_generation(client_id,client_secret)
 	thread_update_user_banned_table = threading.Thread(target = routine_update_user_banned_table)
 	app.run(debug=True, port=5000)
 	log.end_log()
