@@ -1,18 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-image: url('static/img/background.jpg'); background-attachment: fixed; background-repeat: no-repeat;">
 
 <head>
-    <meta charset="UTF-8">
     <title>Arias_bot</title>
+    <meta charset="UTF-8">
+    <link href="/static/css/autorisation_code_style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    {% include 'shared/up_base.html' %}
-    <h1>Autorisation_code_page</h1>
-    <p>{{ acces_granted }}</p>
-    <a href={{ force_update_ban_url }}>Update Arias_bot</a>
-    <a href={{ unban_all_url }}>Deban all user banned by Arias_bot</a>
-    {% include 'shared/down_base.html' %}
+<body class="body">
+    <div class="header">
+        <div class="header_icon">
+            <a href="/">
+                <img class="icon" src="static/img/icon4.png" alt="icon" width="80" height="45">
+            </a>
+            
+        </div>
+        <div class="center_header">
+            <a href="/stop">(DEBUG) STOP</a>
+            <a href="/start">(DEBUG) START</a>
+        </div>
+        <div class="nav">
+            <div class="text_header">
+                <a href="" class="discord_link">
+                    <img src="static/img/discord_icon.png" alt="discord_icon" style="width:50px;height:50px;">
+                </a>
+            </div>
+            <div class="text_header">
+                <a href="https://github.com/MystAriaa/Arias_bot" class="github_link">
+                    <img src="static/img/github_icon.png" alt="github_icon" style="width:50px;height:50px;">
+                </a>
+            </div>
+            <div class="text_header">
+                <a href="/faq" class="faq_link">
+                    <img src="static/img/faq_icon.png" alt="faq_icon" style="width:50px;height:40px;">
+                </a>
+            </div>
+            <div class="text_header">
+                <a href="/contact" class="contact_link">
+                    <img src="static/img/contact_icon.png" alt="contact_icon" style="width:50px;height:50px;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="autorisation_code_body">
+        <div class="welcome_div">
+            <p style="overflow: hidden; text-overflow: ellipsis;">Welcome {{ channel_name }}</p>
+        </div>
+        <div class="ezclap_div">
+            <img src="static/img/peepo_ezclap.png" alt="peepo_ezclap" width="123" height="77">
+        </div>
+        <div class="text1_div">
+            <p style="overflow: hidden; text-overflow: ellipsis;">You've been succesfully connected to our network.<br>
+            From now on, you will share your banned accounts with other ! You can just wait for daily refresh or call Arias_bot immediately. Every updates happens daily at 5h UTC+0.</p>
+        </div>
+        <div class="button1_div">
+            <button class="twitch_button">
+                <a class="twitch_link" href={{ force_update_ban_url }}>Call Arias_bot !</a>
+            </button>
+        </div>
+        <div class="image_separator">
+            <img class="icon" src="static/img/seperator.png" alt="icon" width="200" height="10">
+        </div>
+        <div class="text2_div">
+            <p style="overflow: hidden; text-overflow: ellipsis;">All the actions made by Arias_bot are reversible, so you can return to the initial state before entering the network. To do this, simply disconnect with the button below.</p>
+        </div>
+        <div class="button2_div">
+            <button class="twitch_button">
+                <a class="twitch_link" href={{ unban_all_url }}>Disconnect</a>
+            </button>
+        </div>
+    </div>
+
+
+    <div class="page_end">
+        <div class="disclaimer">
+            <p>Arias_bot isn't endorsed by Twitch and doesn't reflect the views or opinions of Twitch or anyone officially involved in producing or managing Twitch properties. Twitch, and all associated properties are trademarks or registered trademarks of Twitch, Inc.</p>
+        </div>
+    </div>
+
+    <div class="credit">
+        <a href="/version">V1.00 by MystAria</a>
+    </div>
 </body>
 
 </html>
+
+
+
+{#             
+    <p>{{ acces_granted }}</p>
+    <p>{{ state }}</p>
+#}

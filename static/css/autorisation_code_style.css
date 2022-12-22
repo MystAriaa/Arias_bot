@@ -182,72 +182,20 @@ body {
     justify-content:center;
 }
 
-.first_page {
+
+.autorisation_code_body {
+    background-color: #18181A;
+    height: 600px;
+    width: 60%;
     position: relative;
-    height: max(100vh,845px); 
-    width: 100%;
-    top: 0px;
-}
-.main {
-    width: 50%;
-    height: 550px;
-    /*background-color: rgb(50, 84, 20);*/
-
-    position: relative;
-    align-items:center;
-    justify-content:center;
-
-    margin-left: 25%;
-    margin-right: 25%;
-    top:125px;
-
-    display: grid;
-
-
-}
-.title_main {
-    height: 100px;
-    width: 100%;
-    /*background-color: rgb(111, 167, 63);*/
-
-    display: flex;
-    justify-content: center;
-    align-items:center;
-
+    top: 150px;
+    left: 20%;
     color: white;
-    font-size: 90px;
-}
-.icon_main {
-    height: 350px;
-    width: 100%;
-    /*background-color: rgb(144, 202, 94);*/
-
-    display: flex;
-    justify-content: center;
-    align-items:center;
-}
-.intro_main {
-    height: 100px;
-    width: 100%;
-    /*background-color: rgb(39, 69, 14);*/
-
-    display: flex;
-    justify-content: center;
-    align-items:center;
-
-    color: white;
-    font-size: 40px;
-    text-align: center;
-    font-weight: 700;
-}
-
-.twitch_div {
-    position: relative;
-    top: 50px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items:center;
+    border-width: 10px;
+    border-style: dashed;
+    border-radius: 20px;
+    border-color: rgb(100, 65, 165);
+    box-shadow: 10px 10px black;
 }
 .twitch_button {
     border: none;
@@ -275,112 +223,83 @@ body {
     text-align: justify;
     vertical-align: middle;
 }
-.message_acces_refuse {
-    color: white;
-    font-size: 25px;
-    position: relative;
-    display:flex;
-    text-align: justify;
-    vertical-align: middle;
-    justify-content: center;
-    align-items:center;
-}
-.go_down {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    bottom: 5px;
-}
-.twitch_logo {
-    position: absolute;
-    display: flex;
-    bottom: 20px;
-    left: 5px;
-}
 
-.page_down {
-    position: relative;
-    height: max(100vh,842px);
-    width: 100%;
-    
-    /*background-color: rgb(26, 100, 100);*/
-
-    margin-bottom: 75px;
-}
-.whatisit {
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    background-color: #18181A;
-    height: 90%;
-    width: 40%;
-    border-width: 10px;
-    border-style: dashed;
-    border-radius: 20px;
-    border-color: rgb(100, 65, 165);
-
-    box-shadow: 10px 10px black;
-
-    color: white;
-    
-    overflow: hidden;
-    text-overflow: ellipsis; 
-}
-.whatisit_title {
+.ezclap_div {
     position: absolute;
     top:10px;
+    right:10px;
+}
+.welcome_div {
+    position: relative;
     width: 100%;
-    font-size: 60px;
-    color: white;
-    text-align: center;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    
 }
-.peepo_note {
-    position: absolute;
-    top:100px;
-    left: calc(50% - 37px);
-}
-.whatisit_content {
-    position: absolute;
-    top: 175px;
+.text1_div {
+    position: relative;
     width: 90%;
-    font-size: min(1.5em, 3vw);
-    color: white;
-    padding: 5%;
-}
-.graph {
-    position: absolute;
-    top: 5%;
-    right: 5%;
-    height: 45%;
-    width: 40%;
+    left: 5%;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items:center;
 }
-.tag {
+.button1_div {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.image_separator {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.text2_div {
     position: absolute;
-    bottom: 5%;
-    right: 5%;
-    background-color: #18181A;
-    height: 45%;
-    width: 40%;
-    border-width: 10px;
-    border-style: dashed;
-    border-radius: 20px;
-    border-color: rgb(100, 65, 165);
-
-    box-shadow: 10px 10px black;
-
-    color: white;
-
-    font: 300;
-    font-size: min(1.5em, 3vw);
+    bottom: 100px;
+    width: 90%;
+    left: 5%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
 }
-.tag_content {
-    padding: 3%;
+.button2_div {
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .page_end {
     position: relative;
@@ -388,24 +307,6 @@ body {
     width: 100%;
     
     /*background-color: rgb(119, 30, 129);*/
-}
-.more_info {
-    position: absolute;
-    top: 0;
-    left: 15%;
-    width: 70%;
-    height: 200px;
-
-    background-color: #18181A;
-
-    border-width: 10px;
-    border-style: dashed;
-    border-radius: 20px;
-    border-color: rgb(100, 65, 165);
-
-    box-shadow: 10px 10px black;
-
-    color: white;
 }
 .disclaimer {
     position: absolute;
@@ -426,10 +327,6 @@ body {
 
     color: white;
 }
-
-
-
-
 .credit {
     z-index: 1;
     position: fixed;
@@ -448,17 +345,4 @@ body {
 
     background-color: #000;
     color: white;
-}
-
-.discord_link {
-    z-index: 2;
-}
-.github_link {
-    z-index: 2;
-}
-.faq_link {
-    z-index: 2;
-}
-.contact_link {
-    z-index: 2;
 }

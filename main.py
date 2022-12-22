@@ -56,21 +56,35 @@ def query():
 	global random_state
 	global app_access_token
 	acces_granted = False
-	if (request.args.get('state') == random_state):  #no cross attacks, we good
+	try:
+		if (request.args.get('state') == random_state):  #no cross attacks, we good
 
-		error_state = request.args.get('error')               #error case
-		if (error_state == "access_denied"):
-			acces_granted = False
-			error_description = request.args.get('error_description')
-			log.log("Nous avons un refus de l'utilisateur : {}.".format(error_description))
-		else:                                                 #no error case
-			acces_granted = True
-			user_code = request.args.get('code')
-			scope = request.args.get('scope')
-			log.log("Nous avons reçu l'autorisation de l'utilisateur.")
+			error_state = request.args.get('error')               #error case
+			if (error_state == "access_denied"):
+				acces_granted = False
+				error_description = request.args.get('error_description')
+				log.log("Nous avons un refus de l'utilisateur : {}.".format(error_description))
+			else:                                                 #no error case
+				acces_granted = True
+				user_code = request.args.get('code')
+				scope = request.args.get('scope')
+				log.log("Nous avons reçu l'autorisation de l'utilisateur.")
 
-	else:                          #cross attacks, not good
-		print("We might be under a CSRF attack")
+		else:                          #cross attacks, not good
+			print("We might be under a CSRF attack")
+			try:
+				os.remove("templates/pages/temp_pages/unban_all_{}.html".format(user_access_token))
+			except:
+				pass
+			random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+			return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state, state = random_state)
+	except:
+		try:
+			os.remove("templates/pages/temp_pages/unban_all_{}.html".format(user_access_token))
+		except:
+			pass
+		random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+		return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state, state = random_state)
 
 
 	#Si nous avons reçu le code
@@ -106,9 +120,14 @@ def query():
 		thread_timeout_file_unban_all.start()
 		thread_timeout_file_force_update_ban = threading.Thread(target = timeout_file_force_update_ban, args = (user_access_token,))
 		thread_timeout_file_force_update_ban.start()
-		return render_template('pages/autorisation_code.html',acces_granted="Acces autorisé", unban_all_url = "http://localhost:5000/unban_all_{}.html".format(user_access_token), force_update_ban_url = "http://localhost:5000/force_update_ban_{}.html".format(user_access_token))
+		return render_template('pages/autorisation_code.html',acces_granted="Successful connection", channel_name=user_name, unban_all_url = "http://localhost:5000/unban_all_{}.html".format(user_access_token), force_update_ban_url = "http://localhost:5000/force_update_ban_{}.html".format(user_access_token))
 	else:
-		return render_template('pages/autorisation_code.html',acces_granted="Acces refusé", unban_all_url = "", force_update_irl = "")
+		try:
+			os.remove("templates/pages/temp_pages/unban_all_{}.html".format(user_access_token))
+		except:
+			pass
+		random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+		return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state, state = random_state)
 
 
 @app.route('/unban_all_<string:user_access_token>.html') #return_to_original_state

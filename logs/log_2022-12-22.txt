@@ -10,3 +10,290 @@
           ********** END OF LOG FILE **********          
 ||| 2022-12-22 02:13:30 |||
           ********** END OF LOG FILE **********          
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 02:14:02 |||
+[2022-12-22 02:14:03]: Un token d'acces viens d'être générer pour l'app: fmf6ia44ecn5n365ucwzpy0y64ppq6
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 02:14:04 |||
+[2022-12-22 02:14:05]: Un token d'acces viens d'être générer pour l'app: 2orwwd0lx4a6zzf5sb0xh5foaxbsx2
+[2022-12-22 02:16:25]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 02:16:27]: Un token d'acces viens d'être générer pour l'user: atovxoe2rx66d090q97art1g5bs9rk
+[2022-12-22 02:16:27]: Notre token user a été validée
+[2022-12-22 02:16:28]: Notre token app a été validée
+[2022-12-22 02:16:29]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 02:16:29]: Update avec succes d'un utilisateur
+[2022-12-22 02:16:29]: Echec de la création de la table banlist pour l'utilisateur: 161641887. Peut-etre celle-ci existe dèja ?
+[2022-12-22 02:16:30]: Mise à neuf de la table 161641887_banlist
+[2022-12-22 02:16:30]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-22 02:17:37]: Rentre dans le thread
+[2022-12-22 02:17:37]: | Voici une itération du thread |
+[2022-12-22 02:17:37]: 1/3
+[2022-12-22 02:17:37]: Mise à jour des bannis pour Arias_bot
+[2022-12-22 02:17:38]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 02:17:39]: Un token d'acces et un de rafraichisement viens d'être générer par rafraichisement
+[2022-12-22 02:17:40]: Mise à neuf de la table 699600940_banlist
+[2022-12-22 02:17:40]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-22 02:17:40]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-22 02:17:40]: Mise à jour des bannis pour MystAria_
+[2022-12-22 02:17:41]: Notre token user a été validée
+[2022-12-22 02:17:41]: Mise à neuf de la table 161641887_banlist
+[2022-12-22 02:17:41]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-22 02:17:41]: 2/3
+[2022-12-22 02:17:41]: Succes du netoyage de la master banlist
+[2022-12-22 02:17:41]: Mise à jour de la master_banlist depuis l'utilisateur: Arias_bot(699600940)
+[2022-12-22 02:17:41]: Ajout d'un nouvel utilisateur bannis dans la master banlist.
+[2022-12-22 02:17:41]: Ajout d'un nouvel utilisateur bannis dans la master banlist.
+[2022-12-22 02:17:41]: Mise à jour de la master_banlist depuis l'utilisateur: MystAria_(161641887)
+[2022-12-22 02:17:41]: Ajout d'un nouvel utilisateur bannis dans la master banlist.
+[2022-12-22 02:17:41]: 3/3
+[2022-12-22 02:17:41]: Bannisement pour l'utilisateur: 699600940
+[2022-12-22 02:17:42]: Bannisement pour l'utilisateur: 161641887
+[2022-12-22 02:17:44]: | Voici la fin de l'itération du thread |
+[2022-12-22 02:17:44]: Sort du thread
+[2022-12-22 02:18:50]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 02:18:51]: Un token d'acces viens d'être générer pour l'user: x4a90k4iip39jvgev0dah2zjhmcmty
+[2022-12-22 02:18:52]: Notre token user a été validée
+[2022-12-22 02:18:53]: Notre token app a été validée
+[2022-12-22 02:18:53]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 02:18:53]: Update avec succes d'un utilisateur
+[2022-12-22 02:18:53]: Echec de la création de la table banlist pour l'utilisateur: 161641887. Peut-etre celle-ci existe dèja ?
+[2022-12-22 02:18:53]: Mise à neuf de la table 161641887_banlist
+[2022-12-22 02:18:53]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-22 02:19:36]: Bannisement pour l'utilisateur: 161641887
+[2022-12-22 02:19:53]: Failed remove of file unban_all_x4a90k4iip39jvgev0dah2zjhmcmty.html
+[2022-12-22 02:21:41]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 02:21:42]: Un token d'acces viens d'être générer pour l'user: gv6n2vbhg9cnbmm9hgt4j2e77ji7c9
+[2022-12-22 02:21:43]: Notre token user a été validée
+[2022-12-22 02:21:44]: Notre token app a été validée
+[2022-12-22 02:21:45]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 02:21:45]: Update avec succes d'un utilisateur
+[2022-12-22 02:21:45]: Echec de la création de la table banlist pour l'utilisateur: 161641887. Peut-etre celle-ci existe dèja ?
+[2022-12-22 02:21:45]: Mise à neuf de la table 161641887_banlist
+[2022-12-22 02:21:45]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-22 02:21:53]: Notre token user a été validée
+[2022-12-22 02:21:53]: User (155230646) unban from channel (161641887)
+[2022-12-22 02:21:54]: User (264625375) unban from channel (161641887)
+[2022-12-22 02:21:55]: Token successfully revoken
+[2022-12-22 02:21:56]: Token successfully revoken
+[2022-12-22 02:21:56]: Nous avons supprimé un utilisateur
+[2022-12-22 02:22:45]: Failed remove of file unban_all_gv6n2vbhg9cnbmm9hgt4j2e77ji7c9.html
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 02:30:44 |||
+[2022-12-22 02:30:45]: Un token d'acces viens d'être générer pour l'app: nbc95aihsdpyjxvcthtjkb9qnlpc8q
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 02:32:51 |||
+[2022-12-22 02:32:53]: Un token d'acces viens d'être générer pour l'app: 8c64077dgphhetdsb2j9jj7z0q7kex
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 02:37:02 |||
+[2022-12-22 02:37:04]: Un token d'acces viens d'être générer pour l'app: 8czp7wm9p5pm594pksctm6qiitgjzx
+[2022-12-22 02:37:40]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 02:37:41]: Un token d'acces viens d'être générer pour l'user: apzfwt5igtguxg0hwpw1124a3dlia7
+[2022-12-22 02:37:42]: Notre token user a été validée
+[2022-12-22 02:37:42]: Notre token app a été validée
+[2022-12-22 02:37:43]: Ajout avec succes d'un nouvelle utilisateur
+[2022-12-22 02:37:43]: Echec de la création de la table banlist pour l'utilisateur: 161641887. Peut-etre celle-ci existe dèja ?
+[2022-12-22 02:37:43]: Mise à neuf de la table 161641887_banlist
+[2022-12-22 02:37:43]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-22 02:38:07]: Notre token user a été validée
+[2022-12-22 02:38:09]: Token successfully revoken
+[2022-12-22 02:38:09]: Token successfully revoken
+[2022-12-22 02:38:09]: Nous avons supprimé un utilisateur
+[2022-12-22 02:38:43]: Failed remove of file unban_all_apzfwt5igtguxg0hwpw1124a3dlia7.html
+[2022-12-22 02:39:22]: Nous avons un refus de l'utilisateur : The user denied you access.
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 02:43:00 |||
+[2022-12-22 02:43:01]: Un token d'acces viens d'être générer pour l'app: dsectqbd1xad43v3k2zgmy0cb6ttpj
+[2022-12-22 02:43:40]: Nous avons un refus de l'utilisateur : The user denied you access.
+[2022-12-22 02:51:04]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 02:51:05]: Un token d'acces viens d'être générer pour l'user: g873mnrrzh3s9voypvds4mvh7bmgn3
+[2022-12-22 02:51:06]: Notre token user a été validée
+[2022-12-22 02:51:07]: Notre token app a été validée
+[2022-12-22 02:51:07]: Ajout avec succes d'un nouvelle utilisateur
+[2022-12-22 02:51:07]: Echec de la création de la table banlist pour l'utilisateur: 161641887. Peut-etre celle-ci existe dèja ?
+[2022-12-22 02:51:07]: Mise à neuf de la table 161641887_banlist
+[2022-12-22 02:51:07]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 03:01:30 |||
+[2022-12-22 03:01:31]: Un token d'acces viens d'être générer pour l'app: y3qjd9hwsl0w2a0a1xnvi3x7kqkt5p
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 03:29:45 |||
+[2022-12-22 03:29:46]: Un token d'acces viens d'être générer pour l'app: k3pe4k3mou87akeopwnqk0naujp59n
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 03:30:29 |||
+[2022-12-22 03:30:30]: Un token d'acces viens d'être générer pour l'app: n5ik2ocsikx4w7iktk8pm1yul4yea1
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 03:32:20 |||
+[2022-12-22 03:32:21]: Un token d'acces viens d'être générer pour l'app: e0fhrpiqdm8523kgt3n8s3y6mhcn8p
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 03:32:25 |||
+[2022-12-22 03:32:26]: Un token d'acces viens d'être générer pour l'app: qoundog5xj3kqpky01woq6btsgsowe
+[2022-12-22 03:32:46]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 03:32:47]: Un token d'acces viens d'être générer pour l'user: ezwxrz8aqqun87l5hu6mftmm7mnagz
+[2022-12-22 03:32:48]: Notre token user a été validée
+[2022-12-22 03:32:49]: Notre token app a été validée
+[2022-12-22 03:32:49]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 03:32:49]: Update avec succes d'un utilisateur
+[2022-12-22 03:32:49]: Echec de la création de la table banlist pour l'utilisateur: 161641887. Peut-etre celle-ci existe dèja ?
+[2022-12-22 03:32:50]: Mise à neuf de la table 161641887_banlist
+[2022-12-22 03:32:50]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-22 03:35:23]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 03:35:25]: Echec de la création du doublet de token
+[2022-12-22 03:35:26]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 03:35:27]: Notre token app a été validée
+[2022-12-22 03:35:27]: Ajout avec succes d'un nouvelle utilisateur
+[2022-12-22 03:35:28]: Table banlist crée avec succès pour l'utilisateur: 0
+[2022-12-22 03:35:28]: Altération de la table réussi
+[2022-12-22 03:35:28]: Mise à neuf de la table 0_banlist
+[2022-12-22 03:36:42]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 03:36:43]: Echec de la création du doublet de token
+[2022-12-22 03:36:44]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 03:36:45]: Notre token app a été validée
+[2022-12-22 03:36:45]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 03:36:45]: Update avec succes d'un utilisateur
+[2022-12-22 03:36:45]: Echec de la création de la table banlist pour l'utilisateur: 0. Peut-etre celle-ci existe dèja ?
+[2022-12-22 03:36:45]: Mise à neuf de la table 0_banlist
+[2022-12-22 03:37:43]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 03:37:45]: Un token d'acces viens d'être générer pour l'user: 63sgyprfm6nju1utd75f3dp6tcaoz1
+[2022-12-22 03:37:46]: Notre token user a été validée
+[2022-12-22 03:37:47]: Notre token app a été validée
+[2022-12-22 03:37:48]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 03:37:48]: Update avec succes d'un utilisateur
+[2022-12-22 03:37:48]: Echec de la création de la table banlist pour l'utilisateur: 161641887. Peut-etre celle-ci existe dèja ?
+[2022-12-22 03:37:48]: Mise à neuf de la table 161641887_banlist
+[2022-12-22 03:37:48]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-22 03:38:42]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 03:38:44]: Echec de la création du doublet de token
+[2022-12-22 03:38:45]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 03:38:46]: Notre token app a été validée
+[2022-12-22 03:38:46]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 03:38:46]: Update avec succes d'un utilisateur
+[2022-12-22 03:38:46]: Echec de la création de la table banlist pour l'utilisateur: 0. Peut-etre celle-ci existe dèja ?
+[2022-12-22 03:38:47]: Mise à neuf de la table 0_banlist
+[2022-12-22 03:39:21]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 03:39:22]: Echec de la création du doublet de token
+[2022-12-22 03:39:23]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 03:39:24]: Notre token app a été validée
+[2022-12-22 03:39:25]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 03:39:25]: Update avec succes d'un utilisateur
+[2022-12-22 03:39:25]: Echec de la création de la table banlist pour l'utilisateur: 0. Peut-etre celle-ci existe dèja ?
+[2022-12-22 03:39:25]: Mise à neuf de la table 0_banlist
+[2022-12-22 03:40:16]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 03:40:18]: Echec de la création du doublet de token
+[2022-12-22 03:40:19]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 03:40:20]: Notre token app a été validée
+[2022-12-22 03:40:20]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 03:40:20]: Update avec succes d'un utilisateur
+[2022-12-22 03:40:20]: Echec de la création de la table banlist pour l'utilisateur: 0. Peut-etre celle-ci existe dèja ?
+[2022-12-22 03:40:21]: Mise à neuf de la table 0_banlist
+[2022-12-22 03:41:21]: Failed remove of file unban_all_.html
+[2022-12-22 03:41:21]: Failed remove of file unban_all_.html
+[2022-12-22 03:44:25]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 03:44:26]: Un token d'acces viens d'être générer pour l'user: z7bbwn7zkid1lt98rre88oncn494vt
+[2022-12-22 03:44:27]: Notre token user a été validée
+[2022-12-22 03:44:27]: Notre token app a été validée
+[2022-12-22 03:44:28]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 03:44:28]: Update avec succes d'un utilisateur
+[2022-12-22 03:44:28]: Echec de la création de la table banlist pour l'utilisateur: 161641887. Peut-etre celle-ci existe dèja ?
+[2022-12-22 03:44:28]: Mise à neuf de la table 161641887_banlist
+[2022-12-22 03:44:28]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-22 04:07:16]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 04:07:17]: Echec de la création du doublet de token
+[2022-12-22 04:07:18]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 04:07:19]: Notre token app a été validée
+[2022-12-22 04:07:19]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 04:07:19]: Update avec succes d'un utilisateur
+[2022-12-22 04:07:19]: Echec de la création de la table banlist pour l'utilisateur: 0. Peut-etre celle-ci existe dèja ?
+[2022-12-22 04:07:19]: Mise à neuf de la table 0_banlist
+[2022-12-22 04:09:09]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 04:09:10]: Echec de la création du doublet de token
+[2022-12-22 04:09:11]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 04:09:12]: Notre token app a été validée
+[2022-12-22 04:09:12]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 04:09:12]: Update avec succes d'un utilisateur
+[2022-12-22 04:09:12]: Echec de la création de la table banlist pour l'utilisateur: 0. Peut-etre celle-ci existe dèja ?
+[2022-12-22 04:09:13]: Mise à neuf de la table 0_banlist
+[2022-12-22 04:10:12]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 04:10:13]: Echec de la création du doublet de token
+[2022-12-22 04:10:14]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 04:10:15]: Notre token app a été validée
+[2022-12-22 04:10:16]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 04:10:16]: Update avec succes d'un utilisateur
+[2022-12-22 04:10:16]: Echec de la création de la table banlist pour l'utilisateur: 0. Peut-etre celle-ci existe dèja ?
+[2022-12-22 04:10:16]: Mise à neuf de la table 0_banlist
+[2022-12-22 04:10:31]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 04:10:32]: Echec de la création du doublet de token
+[2022-12-22 04:10:33]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 04:10:34]: Notre token app a été validée
+[2022-12-22 04:10:34]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 04:10:34]: Update avec succes d'un utilisateur
+[2022-12-22 04:10:34]: Echec de la création de la table banlist pour l'utilisateur: 0. Peut-etre celle-ci existe dèja ?
+[2022-12-22 04:10:35]: Mise à neuf de la table 0_banlist
+[2022-12-22 04:10:53]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 04:10:55]: Echec de la création du doublet de token
+[2022-12-22 04:10:55]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 04:10:56]: Notre token app a été validée
+[2022-12-22 04:10:57]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 04:10:57]: Update avec succes d'un utilisateur
+[2022-12-22 04:10:57]: Echec de la création de la table banlist pour l'utilisateur: 0. Peut-etre celle-ci existe dèja ?
+[2022-12-22 04:10:57]: Mise à neuf de la table 0_banlist
+[2022-12-22 04:11:35]: Failed remove of file unban_all_.html
+[2022-12-22 04:11:35]: Failed remove of file unban_all_.html
+[2022-12-22 04:11:57]: Failed remove of file unban_all_.html
+[2022-12-22 04:11:57]: Failed remove of file unban_all_.html
+[2022-12-22 04:12:32]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 04:12:33]: Echec de la création du doublet de token
+[2022-12-22 04:12:34]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 04:12:35]: Notre token app a été validée
+[2022-12-22 04:12:36]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 04:12:36]: Update avec succes d'un utilisateur
+[2022-12-22 04:12:36]: Echec de la création de la table banlist pour l'utilisateur: 0. Peut-etre celle-ci existe dèja ?
+[2022-12-22 04:12:36]: Mise à neuf de la table 0_banlist
+[2022-12-22 04:16:34]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 04:16:35]: Echec de la création du doublet de token
+[2022-12-22 04:16:36]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 04:16:37]: Notre token app a été validée
+[2022-12-22 04:16:37]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 04:16:37]: Update avec succes d'un utilisateur
+[2022-12-22 04:16:37]: Echec de la création de la table banlist pour l'utilisateur: 0. Peut-etre celle-ci existe dèja ?
+[2022-12-22 04:16:38]: Mise à neuf de la table 0_banlist
+[2022-12-22 04:17:46]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 04:17:47]: Echec de la création du doublet de token
+[2022-12-22 04:17:48]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 04:17:49]: Notre token app a été validée
+[2022-12-22 04:17:49]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 04:17:49]: Update avec succes d'un utilisateur
+[2022-12-22 04:17:49]: Echec de la création de la table banlist pour l'utilisateur: 0. Peut-etre celle-ci existe dèja ?
+[2022-12-22 04:17:49]: Mise à neuf de la table 0_banlist
+[2022-12-22 04:18:33]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 04:18:34]: Echec de la création du doublet de token
+[2022-12-22 04:18:35]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 04:18:36]: Notre token app a été validée
+[2022-12-22 04:18:36]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 04:18:36]: Update avec succes d'un utilisateur
+[2022-12-22 04:18:36]: Echec de la création de la table banlist pour l'utilisateur: 0. Peut-etre celle-ci existe dèja ?
+[2022-12-22 04:18:37]: Mise à neuf de la table 0_banlist
+[2022-12-22 04:19:13]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-22 04:19:14]: Echec de la création du doublet de token
+[2022-12-22 04:19:15]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-22 04:19:16]: Notre token app a été validée
+[2022-12-22 04:19:16]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-22 04:19:16]: Update avec succes d'un utilisateur
+[2022-12-22 04:19:16]: Echec de la création de la table banlist pour l'utilisateur: 0. Peut-etre celle-ci existe dèja ?
+[2022-12-22 04:19:17]: Mise à neuf de la table 0_banlist
+[2022-12-22 04:20:17]: Failed remove of file unban_all_.html
+[2022-12-22 04:20:17]: Failed remove of file unban_all_.html
+||| 2022-12-22 04:21:03 |||
+          ********** END OF LOG FILE **********          
+||| 2022-12-22 04:21:03 |||
+          ********** END OF LOG FILE **********          
