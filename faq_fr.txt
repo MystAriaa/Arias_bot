@@ -1,0 +1,19 @@
+Pourquoi Arias_bot ? Due à l'harcellement grandissant sur la plateforme Twitch, et l'impunité de comportement toxic en ligne, mettre en commun les efforts des communautés de modérations créerons un espace un peu plus sain. L'idée original m'est venu de RebeuDeter. Ce projet a ainsi commencé comme un moyen pour m'entrainer à coder, gerer une BDD et faire des requetes vers des API. Ne finissant jamais mes projets, je promet de finir celui-ci.
+
+Comment me connecter et faire partie du network ? Il suffit d'apuyer sur le bouton "Connect with Twitch" sur la home page, aucun login ni mot de passe de neccesaire. La connection se fait via Twitch.
+Comment se retirer du network ? Il suffit d'apuyer sur le bouton "Connect with Twitch" sur la home page, et d'ensuite cliquer sur le bouton disconnect. Les actions de Arias_bot seront alors retiré, vos données éffacées.
+
+Que peut faire Arias_bot sur ma chaine ? Arias_bot ne peut uniquement obtenir vos utilisateurs bannis, bannir des utilisateurs et débannir des utilisateurs. Arias_bot peut de plus obtenir vos données publiques de Twitch. Rien de plus.
+Arias_bot filtre-t-il mon chat ? Non Arias_bot ne lit pas votre chat ni ne pas ban directment depuis votre chat. La moderation releve uniquement de votre équipe de moderation. En somme Arias_bot met en commun toutes les equipes de moderations des membres du network.
+Quelles sont les données stockées par Arias_bot ? Arias_bot possède une base de données avec les utilisateurs bannis de chaque chaine ainsi que vos informations publique/privée provenant de twitch après authentification à savoir votre nom de chaine, id de chaine, vos tokens d'acces et de rafraichissement.
+
+Quand le bot applique les bannisements sur ma chaine ? Le bot met à jour les comptes utilisateurs bannis sur les chaines des membres tout les jours à 5h UTC+0.
+Est-ce que tout les bannisements sont partagé même les timeout/temporaires ? Non pour le moment seul les bannisements permament donc sérieux sont partagé. Dans le futur vous pourez filtrer les bans choisi.
+Les bannisement temporaires sont-it partagé ? Non, seul les bannissements permanents sont partagés. Dans le futur Arias_bot les incorporera et seront filtrable.
+Que ce passe-t-il si je missclick un bannisements, troll ban, banni un utilisateur innocent ? Les bannisements sont partagé tout les jours à 5h UTC+0. Vous avez donc une grande fenetre de temps en cas d'erreur de votre par.
+Que ce passe-t-il si je débannis un utilisateur ? Celui-ci sera unban du network et ainsi unban des autre chaines membres du network. Cependant, si ce même utilisateur a été bannis par un autre membre du network il restera bannis.
+Ai-je besoin de specifier la raison de mes bannisements ? Non, les bannisements sont tracés et indiqué comme provenant de votre chaine. Dans le future, les bannisements ne possèdant pas de raisons/commentaires de bannissement pourons être filter à vos soin.
+Peut-on filtrer les bannissements par raison ? Non, dans le futur oui, ceci est une fonctionnalité en developpement. Pour le moment seul les bannisements permanents donc sérieux sont partagés.
+
+
+Comment faire confiance à cette application tierce ? Vous nous pouvez pas entierment, Arias_bot est un projet le plus transparent possible. Avec un code open source, une F.A.Q complète ainsi qu'un serveur Discord nous espererons vous donnez confiance. N'etant pas un expert en cybersécurité, j'espere cependant avoir pris toutes les mesures de sécurités de base.

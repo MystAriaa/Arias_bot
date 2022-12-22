@@ -297,3 +297,15 @@
           ********** END OF LOG FILE **********          
 ||| 2022-12-22 04:21:03 |||
           ********** END OF LOG FILE **********          
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 04:22:01 |||
+[2022-12-22 04:22:02]: Un token d'acces viens d'être générer pour l'app: dqz0kwz8pwoobrukhlvc4b7bvl2rop
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 04:22:04 |||
+[2022-12-22 04:22:05]: Un token d'acces viens d'être générer pour l'app: 9i4p3tgvkhwn6iiz65bqwzibv5zv8t
+||| 2022-12-22 06:05:52 |||
+          ********** END OF LOG FILE **********          
+||| 2022-12-22 06:05:52 |||
+          ********** END OF LOG FILE **********          
