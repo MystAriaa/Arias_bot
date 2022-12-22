@@ -1,0 +1,12 @@
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 01:10:41 |||
+[2022-12-22 01:10:43]: Un token d'acces viens d'être générer pour l'app: cdvzq3w36h6kanzow0v0k5d17bt8xa
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-22 01:10:44 |||
+[2022-12-22 01:10:45]: Un token d'acces viens d'être générer pour l'app: to4lvnj2ei46xero5hs5jrnoag22cs
+||| 2022-12-22 02:13:29 |||
+          ********** END OF LOG FILE **********          
+||| 2022-12-22 02:13:30 |||
+          ********** END OF LOG FILE **********          

@@ -35,9 +35,17 @@ def home():
 	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 	return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state, state = random_state)
 
+@app.route('/faq')
+def faq():
+	return render_template('pages/faq.html')
+
 @app.route('/contact')
 def contact():
 	return render_template('pages/contact.html')
+
+@app.route('/version')
+def version():
+	return render_template('pages/version.html')
 
 @app.errorhandler(404)
 def page_not_found(error):
@@ -146,24 +154,10 @@ def force_update_ban(user_access_token):
 		pass
 	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 	return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state, state = random_state)
-
-
-
-"""@app.route('/stop')
-def stop():
-	global flag_routine_update_user_banned_table
-	flag_routine_update_user_banned_table = False
-	return render_template('pages/home.html', user_autorisation_url=user_autorisation_url)"""
-
-"""@app.route('/start')
-def start():
-	global flag_routine_update_user_banned_table
-	
-	thread_update_user_banned_table.start()"""
-	
 	
 
 #---------------------------------------------------------------------------------------------------------------------#
+
 @app.route('/start')
 def routine_update_user_banned_table():
 	global random_state
@@ -261,7 +255,7 @@ def timeout_file_force_update_ban(user_access_token):
 
 
 if __name__ == '__main__':
-	#app_access_token = twitch.token_generation(client_id,client_secret)
+	app_access_token = twitch.token_generation(client_id,client_secret)
 	thread_update_user_banned_table = threading.Thread(target = routine_update_user_banned_table)
 	app.run(debug=True, port=5000)
 	log.end_log()
