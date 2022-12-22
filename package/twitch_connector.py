@@ -156,6 +156,7 @@ def get_banlist(user_id, access_token, client_id, filter=True):
     response_json = response.json()
     if (response.status_code == 200):
         if(filter):
+            
             return(filter_banlist(response_json["data"]))
         else:
             return(response_json["data"])
@@ -168,8 +169,8 @@ def ban_from_master_banlist(connection, user_id, user_access_token, list_of_bann
     for banned_user in list_of_banned_user:
         url = "https://api.twitch.tv/helix/moderation/bans?broadcaster_id={}&moderator_id={}".format(user_id,user_id)
         auth_header = {"Authorization": 'Bearer {}'.format(user_access_token), "Client-ID": client_id, "Content-Type": "application/json"}
-        description = "User automaticaly ban by Arias_bot. \rUser originaly ban from the channel: {1}. \rOriginal reason: {0}".format(banned_user[1],mysql.get_user_name_by_id(connection, banned_user[2]))
-        banned_user_data = {"data":{"user_id":banned_user[0], "reason":description}}
+        description = "User automaticaly ban by Arias_bot. \rUser originaly ban from the channel: {1}. \rOriginal reason: {0}".format(banned_user[4],mysql.get_user_name_by_id(connection, banned_user[-1]))
+        banned_user_data = {"data":{"user_id":banned_user[1], "reason":description}}
         request_data = {
                 "method": "POST",
                 "url": url,
@@ -183,7 +184,11 @@ def ban_from_master_banlist(connection, user_id, user_access_token, list_of_bann
 
 def unban_all(user_id, user_access_token, list_of_unbanned_user, client_id):
     for unbanned_user in list_of_unbanned_user:
-        url = "https://api.twitch.tv/helix/moderation/bans?broadcaster_id={}&moderator_id={}&user_id={}".format(user_id,user_id,unbanned_user["user_id"])
+        try:
+            unbanned_user_id = unbanned_user["user_id"]
+        except:
+            unbanned_user_id = unbanned_user[1]
+        url = "https://api.twitch.tv/helix/moderation/bans?broadcaster_id={}&moderator_id={}&user_id={}".format(user_id,user_id,unbanned_user_id)
         auth_header = {"Authorization": 'Bearer {}'.format(user_access_token), "Client-ID": client_id}
         request_data = {
                 "method": "DELETE",
@@ -191,7 +196,7 @@ def unban_all(user_id, user_access_token, list_of_unbanned_user, client_id):
                 "headers": auth_header}
         response = requests.request(**request_data)
         if (response.status_code == 204):
-            log.log("User ({}) unban from channel ({})".format(unbanned_user["user_id"],user_id))
+            log.log("User ({}) unban from channel ({})".format(unbanned_user_id,user_id))
 
 
 

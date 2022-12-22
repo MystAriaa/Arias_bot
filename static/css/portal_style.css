@@ -183,7 +183,7 @@ body {
 }
 
 
-.autorisation_code_body {
+.portal_body {
     background-color: #18181A;
     height: 600px;
     width: 60%;
@@ -302,8 +302,9 @@ body {
 
 
 .page_end {
-    position: relative;
-    height: 30%;
+    position: absolute;
+    bottom:0;
+    height: 10%;
     width: 100%;
     
     /*background-color: rgb(119, 30, 129);*/

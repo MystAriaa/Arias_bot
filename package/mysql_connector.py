@@ -135,7 +135,8 @@ def remove_an_user(connection, user_id):
 
 
 def get_all_master_banlist(connection):
-    command = """SELECT user_id,reason,origin_channel_id FROM master_banlist;"""
+    #command = """SELECT user_id,reason,origin_channel_id FROM master_banlist;"""
+    command = """SELECT * FROM master_banlist;"""
     connection.reconnect()
     with connection.cursor() as cursor:
         cursor.execute(command)

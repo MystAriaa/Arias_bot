@@ -15,7 +15,7 @@ log.start_log()
 
 app = Flask(__name__)
 
-site_base_url = "http://localhost:5000/autorisation_code"
+site_base_url = "http://localhost:5000/portal"
 client_id = twitch.get_client_id()
 client_secret = twitch.get_client_secret()
 scopes = ["moderation:read","moderator:manage:banned_users"]
@@ -51,7 +51,7 @@ def version():
 def page_not_found(error):
 	return render_template('pages/page_not_found.html'), 404
 
-@app.route('/autorisation_code')
+@app.route('/portal')
 def query():
 	global random_state
 	global app_access_token
@@ -98,13 +98,22 @@ def query():
 		if (twitch.token_validation(app_access_token) != 1):
 			app_access_token = twitch.token_refresh(connection_bd, client_id, client_secret, mode = "app")
 		user_id, user_login, user_name = twitch.get_user_info(user_id, app_access_token, client_id)
-		#Mise en base de donnée de l'utilisateur
-		mysql.input_a_new_user(connection_bd, user_id, user_login, user_name, user_access_token, user_refresh_token)
-		#Creation de sa table de bannis
-		mysql.create_table_banned_by_user(connection_bd, user_id)
-		#Fill la nouvelle table avec les bannis de l'utilisateur
-		list_of_banned_users_by_user = twitch.get_banlist(user_id, user_access_token, client_id)
-		mysql.fill_banned_user_table_by_user(connection_bd, list_of_banned_users_by_user, user_id)
+		if (user_id == "0" and user_login == "0" and user_name == "0"):
+			log.log("get_user_info returns 0, we go out. app_access_token={}, acces_granted={}".format(app_access_token,acces_granted))
+			try:
+				os.remove("templates/pages/temp_pages/unban_all_{}.html".format(user_access_token))
+			except:
+				pass
+			random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+			return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state, state = random_state)
+		else:
+			#Mise en base de donnée de l'utilisateur
+			mysql.input_a_new_user(connection_bd, user_id, user_login, user_name, user_access_token, user_refresh_token)
+			#Creation de sa table de bannis
+			mysql.create_table_banned_by_user(connection_bd, user_id)
+			#Fill la nouvelle table avec les bannis de l'utilisateur
+			list_of_banned_users_by_user = twitch.get_banlist(user_id, user_access_token, client_id)
+			mysql.fill_banned_user_table_by_user(connection_bd, list_of_banned_users_by_user, user_id)
 
 	#Petite mise en page en fonction de l'acces reçu
 	if (acces_granted):
@@ -120,7 +129,7 @@ def query():
 		thread_timeout_file_unban_all.start()
 		thread_timeout_file_force_update_ban = threading.Thread(target = timeout_file_force_update_ban, args = (user_access_token,))
 		thread_timeout_file_force_update_ban.start()
-		return render_template('pages/autorisation_code.html',acces_granted="Successful connection", channel_name=user_name, unban_all_url = "http://localhost:5000/unban_all_{}.html".format(user_access_token), force_update_ban_url = "http://localhost:5000/force_update_ban_{}.html".format(user_access_token))
+		return render_template('pages/portal.html',acces_granted="Successful connection", channel_name=user_name, unban_all_url = "http://localhost:5000/unban_all_{}.html".format(user_access_token), force_update_ban_url = "http://localhost:5000/force_update_ban_{}.html".format(user_access_token))
 	else:
 		try:
 			os.remove("templates/pages/temp_pages/unban_all_{}.html".format(user_access_token))
@@ -208,25 +217,42 @@ def routine_update_user_banned_table():
 
 		#--------------------------------------------------------------------
 
+		#Ici on recupt la list a ban et on la compare a la table master pour voir qui de la table master on unban
 		log.log("2/3")
 		array_of_users_info = mysql.get_all_users(connection_bd)
-		mysql.delete_all_master_banlist(connection_bd)
-		for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_login / 3:user_name / 4:access_token / 5:refresh_token
-					
-			user_id = user[1]
-			user_name = user[3]
-			user_access_token = user[4]
-			user_refresh_token = user[5]
+		list_of_banned_user_from_master = mysql.get_all_master_banlist(connection_bd)
 
-			list_of_banned_user = mysql.get_all_user_table(connection_bd, user_id)
+		list_of_banned_user = []
+		for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_login / 3:user_name / 4:access_token / 5:refresh_token
+			"""print(mysql.get_all_user_table(connection_bd, user[1]))"""
+			list_of_banned_user.extend(mysql.get_all_user_table(connection_bd, user[1]))
+
+		#Il faut mettre à 0 les PRIMARY_KEY de tout les elements des deux listes pour pouvoir les comparer+ retirer les origin channels
+		temp_1 = []
+		temp_2 = []
+		for e in list_of_banned_user_from_master:
+			temp_1.append(("0",e[1],e[2],e[3],e[4],e[5],e[6],e[7]))
+		for e in list_of_banned_user:
+			temp_2.append(("0",e[1],e[2],e[3],e[4],e[5],e[6],e[7]))
+		list_of_banned_user_from_master = temp_1
+		list_of_banned_user = temp_2
+
+		user_to_unban = list(set(list_of_banned_user_from_master) - set(list_of_banned_user))
+
+		for user in array_of_users_info:
+			user_id = user[1]
+			user_access_token = user[4]
+			twitch.unban_all(user_id,user_access_token,user_to_unban,client_id)
+
+		mysql.delete_all_master_banlist(connection_bd)
+		mysql.insert_list_banned_into_master(connection_bd, list_of_banned_user, user_id)
+		log.log("Mise à jour de la master_banlist")
 			
-			log.log("Mise à jour de la master_banlist depuis l'utilisateur: {}({})".format(user_name,user_id))
-			mysql.insert_list_banned_into_master(connection_bd, list_of_banned_user, user_id)
 			
 		#---------------------------------------------------------------------
 
 		log.log("3/3")
-		array_of_users_info = mysql.get_all_users(connection_bd)
+		#array_of_users_info = mysql.get_all_users(connection_bd)
 		for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_login / 3:user_name / 4:access_token / 5:refresh_token
 					
 			user_id = user[1]

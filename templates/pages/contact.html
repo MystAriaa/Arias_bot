@@ -1,15 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-image: url('static/img/background.jpg'); background-attachment: fixed; background-repeat: no-repeat;">
 
 <head>
-    <meta charset="UTF-8">
     <title>Arias_bot</title>
+    <meta charset="UTF-8">
+    <link href="/static/css/contact_style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    {% include 'shared/up_base.html' %}
-    <p>My contact : email blabla</p>
-    {% include 'shared/down_base.html' %}
+<body class="body">
+    <div class="header">
+        <div class="header_icon">
+            <a href="/">
+                <img class="icon" src="static/img/icon4.png" alt="Icon_base" width="80" height="45">
+            </a>
+            
+        </div>
+        <div class="center_header">
+            <a href="/stop">(DEBUG) STOP</a>
+            <a href="/start">(DEBUG) START</a>
+        </div>
+        <div class="nav">
+            <div class="text_header">
+                <a href="" class="discord_link">
+                    <img src="static/img/discord_icon.png" alt="logo" style="width:50px;height:50px;">
+                </a>
+            </div>
+            <div class="text_header">
+                <a href="https://github.com/MystAriaa/Arias_bot" class="github_link">
+                    <img src="static/img/github_icon.png" alt="logo" style="width:50px;height:50px;">
+                </a>
+            </div>
+            <div class="text_header">
+                <a href="/faq" class="faq_link">
+                    <img src="static/img/faq_icon.png" alt="logo" style="width:50px;height:40px;">
+                </a>
+            </div>
+            <div class="text_header">
+                <a href="/contact" class="contact_link">
+                    <img src="static/img/contact_icon.png" alt="logo" style="width:50px;height:50px;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact_body">
+        <ul>
+            <li>
+                My discord: MystAria#3008 | I highly recommend to contact me by discord.<br>
+            </li>
+            <li>
+                My email: a.t@gmail.com<br>
+            </li>
+            <li>
+                My Twitch: MystAria_<br>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+
+    <div class="page_end">
+        <div class="disclaimer">
+            <p>Arias_bot isn't endorsed by Twitch and doesn't reflect the views or opinions of Twitch or anyone officially involved in producing or managing Twitch properties. Twitch, and all associated properties are trademarks or registered trademarks of Twitch, Inc.</p>
+        </div>
+    </div>
+
+    <div class="credit">
+        <a href="/version">V1.00 by MystAria</a>
+    </div>
 </body>
 
 </html>

@@ -1,14 +1,3 @@
-UI website
-FAQ
-
-change autorisation_code name
-
-
-
-CHECK LE CAS ou un membre deban un mec -> Quand ce mec deban est-il unban des autres chaines ?
-
-
-
 Donner aux membres un moyen de filtrer les ban qui'l veulle -> temp/perma + raison:sex/homo/rasism/+more
 
 
@@ -24,3 +13,4 @@ systeme de compte = login/password
 rajout de delai partout dans les query vers la bdd SI BESOIN
 
 
+remane project ????
