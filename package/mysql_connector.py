@@ -1,5 +1,6 @@
 from mysql.connector import connect, Error
 from package import log
+from package import tag_filter
 import os
 
 delay_s = 1
@@ -48,7 +49,8 @@ def create_table_banned_by_user(connection, user_id):
             reason VARCHAR(500),
             moderator_id INT(15),
             moderator_login VARCHAR(50),
-            moderator_name VARCHAR(50)
+            moderator_name VARCHAR(50),
+            time VARCHAR(30)
             );""".format(user_id)
     
     try:
@@ -72,7 +74,7 @@ def create_table_banned_by_user(connection, user_id):
         log.log("Echec de la création de la table banlist pour l'utilisateur: {}. Peut-etre celle-ci existe dèja ?".format(user_id))
 
 
-def create_table_banlist_commune(connection):
+def create_table_banlist_master(connection):
     command = """
         CREATE TABLE master_banlist(
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -91,6 +93,55 @@ def create_table_banlist_commune(connection):
     with connection.cursor() as cursor:
         cursor.execute(command)
         connection.commit()
+
+def create_table_user_filter(connection):
+    command = """
+        CREATE TABLE filter_user(
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT(15),
+            permanent TINYINT(1),
+            timeout TINYINT(1),
+            commented TINYINT(1),
+            notcommented TINYINT(1),
+            sexism TINYINT(1),
+            homophobia TINYINT(1),
+            rascism TINYINT(1),
+            backseat TINYINT(1),
+            spam TINYINT(1),
+            username TINYINT(1),
+            other TINYINT(1)
+            );
+        ALTER TABLE filter_user ADD UNIQUE INDEX(user_id);
+        """
+    connection.reconnect()
+    with connection.cursor() as cursor:
+        cursor.execute(command)
+        connection.commit()
+
+def create_table_banned_tag(connection):
+    command = """
+        CREATE TABLE banned_tag(
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT(15),
+            permanent TINYINT(1),
+            timeout TINYINT(1),
+            commented TINYINT(1),
+            notcommented TINYINT(1),
+            sexism TINYINT(1),
+            homophobia TINYINT(1),
+            rascism TINYINT(1),
+            backseat TINYINT(1),
+            spam TINYINT(1),
+            username TINYINT(1),
+            other TINYINT(1)
+            );
+        ALTER TABLE banned_tag ADD UNIQUE INDEX(user_id);
+        """
+    connection.reconnect()
+    with connection.cursor() as cursor:
+        cursor.execute(command)
+        connection.commit()
+
 
 
 def input_a_new_user(connection, user_id, user_login, user_name, access_token, refresh_token):
@@ -250,12 +301,16 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
         log.log("Delete all from failled")
 
     for banned_user in list_of_banned_users:
+        try:
+            time = banned_user["expires_at"]
+        except:
+            time = ""
         command = """
         INSERT INTO {0}_banlist
-        (user_id, user_login, user_name, reason, moderator_id, moderator_login, moderator_name) 
-        VALUES ({1}, "{2}", "{3}", "{4}", "{5}", "{6}", "{7}");
+        (user_id, user_login, user_name, reason, moderator_id, moderator_login, moderator_name, time) 
+        VALUES ({1}, "{2}", "{3}", "{4}", "{5}", "{6}", "{7}", "{8}");
         """.format(user_id,banned_user["user_id"],banned_user["user_login"],banned_user["user_name"],
-        banned_user["reason"],banned_user["moderator_id"],banned_user["moderator_login"],banned_user["moderator_name"])
+        banned_user["reason"],banned_user["moderator_id"],banned_user["moderator_login"],banned_user["moderator_name"],time)
         try:
             connection.reconnect()
             with connection.cursor() as cursor:
@@ -265,16 +320,23 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
         except:
             log.log("Un utilisateur bannis à été filtré car déja présent dans la table {}_banlist".format(user_id))
 
-    """#Remove banned user in database #DELETE all from table INSTEAD SIMPLER MAYBE NOT FASTER
-    command = """"""
-    try:
-        connection.reconnect()
-        cursor.execute(command)
-        list_of_banned_id = cursor.fetchall()
-        for banner_user_id in list_of_banned_id:
-            if (banner_user_id in list_of_banned_users):
 
-    except:"""
+    for banned_user in list_of_banned_users:
+        t = tag_filter.extract_tag(banned_user["reason"],time)
+
+        command = """
+        INSERT INTO banned_tag
+        (user_id, permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other)
+        VALUE ({},{},{},{},{},{},{},{},{},{},{},{});
+        """.format(banned_user["user_id"],t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],t[8],t[9],t[10])
+        try:
+            connection.reconnect()
+            with connection.cursor() as cursor:
+                cursor.execute(command)
+                connection.commit()
+            log.log("Un utilisateur bannis à été affublé de tags")
+        except:
+            log.log("Un utilisateur bannis n'à pas été affublé de tags car deja present surement")
 
 
 if __name__ == '__main__':

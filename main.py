@@ -212,6 +212,7 @@ def routine_update_user_banned_table():
 				user_access_token, user_refresh_token = twitch.token_refresh(connection_bd, client_id, client_secret, user_id=user_id, refresh_token=user_refresh_token, mode = "user")
 			#appeler twitch allo les bannis stp
 			list_of_banned_users_by_user = twitch.get_banlist(user_id, user_access_token, client_id)
+			print(list_of_banned_users_by_user)
 			#imput les bannies dans la datatababbaaasee
 			mysql.fill_banned_user_table_by_user(connection_bd, list_of_banned_users_by_user, user_id)
 

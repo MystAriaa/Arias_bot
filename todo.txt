@@ -1,5 +1,26 @@
 Donner aux membres un moyen de filtrer les ban qui'l veulle -> temp/perma + raison:sex/homo/rasism/+more
 
+1) ajouter les tag en lisant les raisons lors de l'ajout a banlist_{}
+
+2) Remove user_flagged when unban
+
+GERER LE CAS DES TEMPS BAN auto unban car liste different de master
+
+
+BETTER FILTER
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 systeme de compte = login/password
