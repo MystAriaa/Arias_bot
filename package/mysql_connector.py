@@ -28,11 +28,11 @@ def create_table_registered_user(connection):
         CREATE TABLE registered_user(
             id INT AUTO_INCREMENT PRIMARY KEY,
             user_id INT(15),
-            user_login VARCHAR(30),
             user_name VARCHAR(30),
             access_token VARCHAR(50),
-            refresh_token VARCHAR(50));
-        )"""
+            refresh_token VARCHAR(50)
+            );
+        ALTER TABLE registered_user ADD UNIQUE INDEX(user_id, user_name);"""
     connection.reconnect()
     with connection.cursor() as cursor:
         cursor.execute(command)
@@ -41,17 +41,17 @@ def create_table_registered_user(connection):
 
 def create_table_banned_by_user(connection, user_id):
     command = """
-        CREATE TABLE {}_banlist(
+        CREATE TABLE {0}_banlist(
             id INT AUTO_INCREMENT PRIMARY KEY,
             user_id INT(15),
-            user_login VARCHAR(30),
             user_name VARCHAR(30),
             reason VARCHAR(500),
+            start_date VARCHAR(30),
+            expire VARCHAR(30),
             moderator_id INT(15),
-            moderator_login VARCHAR(50),
-            moderator_name VARCHAR(50),
-            time VARCHAR(30)
-            );""".format(user_id)
+            moderator_name VARCHAR(50)
+            );
+        ALTER TABLE {0}_banlist ADD UNIQUE INDEX(user_id, user_name);""".format(user_id)
     
     try:
         connection.reconnect()
@@ -59,16 +59,7 @@ def create_table_banned_by_user(connection, user_id):
             cursor.execute(command)
             connection.commit()
         log.log("Table banlist crée avec succès pour l'utilisateur: {}".format(user_id))
-        
-        try:
-            command = """ALTER TABLE {}_banlist ADD UNIQUE INDEX(user_id, user_login, user_name);""".format(user_id)
-            connection.reconnect()
-            with connection.cursor() as cursor:
-                cursor.execute(command)
-                connection.commit()
-            log.log("Altération de la table réussi")
-        except:
-            log.log("Echec de l'altération de la table")
+        log.log("Altération de la table réussi")
 
     except:
         log.log("Echec de la création de la table banlist pour l'utilisateur: {}. Peut-etre celle-ci existe dèja ?".format(user_id))
@@ -79,15 +70,15 @@ def create_table_banlist_master(connection):
         CREATE TABLE master_banlist(
             id INT AUTO_INCREMENT PRIMARY KEY,
             user_id INT(15),
-            user_login VARCHAR(30),
             user_name VARCHAR(30),
             reason VARCHAR(500),
+            start_date VARCHAR(30),
+            expire VARCHAR(30),
             moderator_id INT(15),
-            moderator_login VARCHAR(50),
             moderator_name VARCHAR(50),
             origin_channel_id INT(15)
             );
-        ALTER TABLE master_banlist ADD UNIQUE INDEX(user_id, user_login, user_name);
+        ALTER TABLE master_banlist ADD UNIQUE INDEX(user_id, user_name);
         """
     connection.reconnect()
     with connection.cursor() as cursor:
@@ -144,11 +135,11 @@ def create_table_banned_tag(connection):
 
 
 
-def input_a_new_user(connection, user_id, user_login, user_name, access_token, refresh_token):
+def input_a_new_user(connection, user_id, user_name, access_token, refresh_token):
     try: #Ajout
         command = """
-            INSERT INTO registered_user (user_id, user_login, user_name, access_token, refresh_token) VALUES ({}, "{}", "{}", "{}", "{}");
-            """.format(user_id, user_login, user_name, access_token, refresh_token)
+            INSERT INTO registered_user (user_id, user_name, access_token, refresh_token) VALUES ({}, "{}", "{}", "{}");
+            """.format(user_id, user_name, access_token, refresh_token)
         connection.reconnect()
         with connection.cursor() as cursor:
             cursor.execute(command)
@@ -165,8 +156,8 @@ def input_a_new_user(connection, user_id, user_login, user_name, access_token, r
             connection.commit()
 
         command = """
-            INSERT INTO registered_user (user_id, user_login, user_name, access_token, refresh_token) VALUES ({}, "{}", "{}", "{}", "{}");
-            """.format(user_id, user_login, user_name, access_token, refresh_token)
+            INSERT INTO registered_user (user_id, user_name, access_token, refresh_token) VALUES ({}, "{}", "{}", "{}");
+            """.format(user_id, user_name, access_token, refresh_token)
         connection.reconnect()
         with connection.cursor() as cursor:
             cursor.execute(command)
@@ -206,7 +197,7 @@ def delete_all_master_banlist(connection):
 def insert_list_banned_into_master(connection, list_of_banned_user, user_id):
     for banned_user in list_of_banned_user:
         command = """INSERT INTO master_banlist 
-        (user_id, user_login, user_name, reason, moderator_id, moderator_login, moderator_name, origin_channel_id) 
+        (user_id, user_name, reason, start_date, expire, moderator_id, moderator_name, origin_channel_id) 
         VALUES ({}, "{}", "{}", "{}", "{}", "{}", "{}", {});
         """.format(banned_user[1],banned_user[2],banned_user[3],banned_user[4],banned_user[5],banned_user[6],banned_user[7],user_id)
         try:
@@ -302,15 +293,15 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
 
     for banned_user in list_of_banned_users:
         try:
-            time = banned_user["expires_at"]
+            expire = banned_user["expires_at"]
         except:
-            time = ""
+            expire = ""
         command = """
         INSERT INTO {0}_banlist
-        (user_id, user_login, user_name, reason, moderator_id, moderator_login, moderator_name, time) 
-        VALUES ({1}, "{2}", "{3}", "{4}", "{5}", "{6}", "{7}", "{8}");
-        """.format(user_id,banned_user["user_id"],banned_user["user_login"],banned_user["user_name"],
-        banned_user["reason"],banned_user["moderator_id"],banned_user["moderator_login"],banned_user["moderator_name"],time)
+        (user_id, user_name, reason, start_date, expire, moderator_id, moderator_name) 
+        VALUES ({1}, "{2}", "{3}", "{4}", "{5}", "{6}", "{7}");
+        """.format(user_id,banned_user["user_id"],banned_user["user_name"],
+        banned_user["reason"],banned_user["created_at"],expire,banned_user["moderator_id"],banned_user["moderator_name"])
         try:
             connection.reconnect()
             with connection.cursor() as cursor:
@@ -322,7 +313,7 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
 
 
     for banned_user in list_of_banned_users:
-        t = tag_filter.extract_tag(banned_user["reason"],time)
+        t = tag_filter.extract_tag(banned_user["reason"],expire)
 
         command = """
         INSERT INTO banned_tag
@@ -337,6 +328,19 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
             log.log("Un utilisateur bannis à été affublé de tags")
         except:
             log.log("Un utilisateur bannis n'à pas été affublé de tags car deja present surement")
+
+
+def update_timer(connection, list):
+    command = """
+    
+    
+    
+    
+    
+    """
+
+
+
 
 
 if __name__ == '__main__':

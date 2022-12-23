@@ -1,4 +1,7 @@
+from datetime import datetime, timezone
+
 def extract_tag(reason,time):
+
     permanent=0 
     timeout=0 
     commented=0 
@@ -35,3 +38,23 @@ def extract_tag(reason,time):
         other = 1
 
     return ([permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other])
+
+
+
+def convert_expire_time(start_date,expire_date):
+    if expire_date=="":
+        return 0
+    else:
+        now = str(datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"))
+        expire = expire_date.replace("T"," ").replace("Z","")
+
+        format = '%Y-%m-%d %H:%M:%S'  # The format Take care it might add 1min
+        now_datetime = datetime.strptime(now, format)
+        expire_datetime = datetime.strptime(expire, format)
+        """print(now_datetime)
+        print(expire_datetime)
+        print(now_datetime-expire_datetime)"""
+        return (expire_datetime-now_datetime).seconds 
+
+if __name__ == '__main__':
+    convert_expire_time("2022-12-23T09:23:05Z")
