@@ -63,13 +63,108 @@
                 <a class="twitch_link" href={{ force_update_ban_url }}>Call Arias_bot !</a>
             </button>
         </div>
-        <div class="image_separator">
+        <div class="image_separator1">
             <img class="icon" src="static/img/seperator.png" alt="icon" width="200" height="10">
         </div>
         <div class="text2_div">
+            <p style="overflow: hidden; text-overflow: ellipsis;">Here you can filter banned user. By default, only permanent bans are share with or without comments. As an example, if you only wants to get from the network users permanently banned for backseating, you can check those associated boxes and update. Please note that you must atleast have permanent or timeout or both box checked, the same is true for commented and not commented bans. If none of them is checked, Arias_bot will not apply any ban on your channel.</p>
+        </div>
+        <div class="filter_div">
+            <div class="filter_text_box">
+                <p>Permanent</p>
+            </div>
+            <div class="filter_text_box">
+                <p>Timeout</p>
+            </div>
+            <div class="filter_text_box">
+                <p>Only commented</p>
+            </div>
+            <div class="filter_text_box">
+                <p>No comment</p>
+            </div>
+            <div class="filter_text_box">
+                <p>Sexism</p>
+            </div>
+            <div class="filter_text_box">
+                <p>Homophobia</p>
+            </div>
+            <div class="filter_text_box">
+                <p>Rascism</p>
+            </div>
+            <div class="filter_text_box">
+                <p>Backseat</p>
+            </div>
+            <div class="filter_text_box">
+                <p>Spam</p>
+            </div>
+            <div class="filter_text_box">
+                <p>Username</p>
+            </div>
+            <div class="filter_text_box">
+                <p>Other</p>
+            </div>
+        </div>
+        <form method="POST">
+            <div class="filter_div">
+                <div class="filter_box">
+                    <input type="checkbox" name="permanent" value='1' checked>
+                </div>
+                <div class="filter_box">
+                    <input type="checkbox" name="timeout" value='1'>
+                </div>
+                <div class="filter_box">
+                    <input type="checkbox" name="commented" value='1' checked>
+                </div>
+                <div class="filter_box">
+                    <input type="checkbox" name="notcommented" value='1' checked>
+                </div>
+                <div class="filter_box">
+                    <input type="checkbox" name="sexism" value='1'>
+                </div>
+                <div class="filter_box">
+                    <input type="checkbox" name="homophobia" value='1'>
+                </div>
+                <div class="filter_box">
+                    <input type="checkbox" name="rascism" value='1'>
+                </div>
+                <div class="filter_box">
+                    <input type="checkbox" name="backseat" value='1'>
+                </div>
+                <div class="filter_box">
+                    <input type="checkbox" name="spam" value='1'>
+                </div>
+                <div class="filter_box">
+                    <input type="checkbox" name="username" value='1'>
+                </div>
+                <div class="filter_box">
+                    <input type="checkbox" name="other" value='1'>
+                </div>
+            </div>
+            <div class="button2_div">
+                <input class="twitch_button" type="submit" value = "Update your filter">
+                    
+                </input>
+            </div>
+            <input type='hidden' name="access_token" value="{{token}}">
+            <input type='hidden' name="permanent" value='0'>
+            <input type='hidden' name="timeout" value='0'>
+            <input type='hidden' name="commented" value='0'>
+            <input type='hidden' name="notcommented" value='0'>
+            <input type='hidden' name="sexism" value='0'>
+            <input type='hidden' name="homophobia" value='0'>
+            <input type='hidden' name="rascism" value='0'>
+            <input type='hidden' name="backseat" value='0'>
+            <input type='hidden' name="spam" value='0'>
+            <input type='hidden' name="username" value='0'>
+            <input type='hidden' name="other" value='0'>
+        </form>
+        <div class="image_separator2">
+            <img class="icon" src="static/img/seperator.png" alt="icon" width="200" height="10">
+        </div>
+        <div class="text3_div">
             <p style="overflow: hidden; text-overflow: ellipsis;">All the actions made by Arias_bot are reversible, so you can return to the initial state before entering the network. To do this, simply disconnect with the button below.</p>
         </div>
-        <div class="button2_div">
+        <div class="button3_div">
             <button class="twitch_button">
                 <a class="twitch_link" href={{ unban_all_url }}>Disconnect</a>
             </button>

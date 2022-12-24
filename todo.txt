@@ -1,19 +1,13 @@
 Donner aux membres un moyen de filtrer les ban qui'l veulle -> temp/perma + raison:sex/homo/rasism/+more
 
 
-   +Mettre a jour les tags
-
-
-
-GERER LE CAS DES TEMPS BAN auto unban car liste different de master
-Le bot ban les gens perma sur les chaine ou il sont ban timeout/ donc le message de ban s'update avec le flag de arias_bot et donc le ban se retire
-Faut donc ban les timeout avec du temps calculé
-
+   +Mettre a jour les tags (non ?)
 
 
 BETTER FILTER
 
-
+REPEAT DES TEMPS BAN BIZZARD
+A CHAQUE HOME ? ctrl+s
 
 
 on peut simplifier les fcts de mysql comme par exemple toutes le fct qui delete de rows on peut les fuse en une
@@ -23,7 +17,7 @@ ou encore celle que get des infos
 au lieu de tout effacer la master list/ retirer les les me unbans
 
 
-
+message ou page de validation pour deco et update filter reussi ou non ?
 
 
 

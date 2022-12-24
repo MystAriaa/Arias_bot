@@ -334,15 +334,6 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
             log.log("Un utilisateur bannis n'à pas été affublé de tags car deja present surement")
 
 
-def update_timer(connection, list):
-    command = """
-    
-    
-    
-    
-    
-    """
-
 def remove_list_user_from_tag_table(connection, list_user):
     for user in list_user:
         command = """DELETE FROM banned_tag WHERE user_id = {};""".format(user[1])
@@ -353,7 +344,39 @@ def remove_list_user_from_tag_table(connection, list_user):
             connection.commit()
         log.log("Les datas(tags) d'un utilisateur unban on été éffacé")
     except:
-        log.log("Les datas(tags) d'un utilisateur unban n'on pas pu etre éffac")
+        log.log("Les datas(tags) d'un utilisateur unban n'on pas pu etre éffacé")
+
+def update_user_filter(connection, user_id, f):
+    t = []
+    for e in f:
+        t.append(int(e))
+    command = """
+    INSERT INTO filter_user
+    (user_id, permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other)
+    VALUE ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11});""".format(user_id,t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],t[8],t[9],t[10])
+    log.log("Ajout de nouvelles données de filtre pour l'user {}".format(user_id))
+    try:
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            connection.commit()
+        log.log("Nouvelles préference de filtre pour l'user {}".format(user_id))
+    except:
+        log.log("Echec de l'ajout de data surment deja existante")
+
+    command = """ 
+    UPDATE filter_user 
+    SET permanent='{}',timeout='{}', commented='{}', notcommented='{}', sexism='{}', homophobia='{}', rascism='{}', backseat='{}', spam='{}', username='{}', other='{}'
+    WHERE user_id = {};
+    """.format(t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],t[8],t[9],t[10],user_id)
+    try:
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            connection.commit()
+        log.log("Mise à jour des filtres pour l'user {}".format(user_id))
+    except:
+        log.log("Echec de la mise à jour des filtres pour l'user {}".format(user_id))
 
 
 if __name__ == '__main__':
