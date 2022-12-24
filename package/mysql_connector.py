@@ -313,6 +313,10 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
 
 
     for banned_user in list_of_banned_users:
+        try:
+            expire = banned_user["expires_at"]
+        except:
+            expire = ""
         t = tag_filter.extract_tag(banned_user["reason"],expire)
 
         command = """
@@ -339,8 +343,17 @@ def update_timer(connection, list):
     
     """
 
-
-
+def remove_list_user_from_tag_table(connection, list_user):
+    for user in list_user:
+        command = """DELETE FROM banned_tag WHERE user_id = {};""".format(user[1])
+    try:
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            connection.commit()
+        log.log("Les datas(tags) d'un utilisateur unban on été éffacé")
+    except:
+        log.log("Les datas(tags) d'un utilisateur unban n'on pas pu etre éffac")
 
 
 if __name__ == '__main__':

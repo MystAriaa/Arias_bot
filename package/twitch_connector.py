@@ -169,8 +169,6 @@ def ban_from_master_banlist(connection, user_id, user_access_token, list_of_bann
     
     log.log("Bannisement pour l'utilisateur: {}".format(user_id))
     for banned_user in list_of_banned_user:
-        print(banned_user[-1])
-        print(user_id)
         if (banned_user[-1] == user_id): #skip if banned_user comming from this channel
             log.log("Skip du ban car originaire de cette utilisateur")
         else:

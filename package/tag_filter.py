@@ -14,6 +14,7 @@ def extract_tag(reason,time):
     username=0
     other=0 
 
+    print(time)
     if (time == ""):
         permanent = 1
     else:
@@ -51,9 +52,6 @@ def convert_expire_time(start_date,expire_date):
         format = '%Y-%m-%d %H:%M:%S'  # The format Take care it might add 1min
         now_datetime = datetime.strptime(now, format)
         expire_datetime = datetime.strptime(expire, format)
-        """print(now_datetime)
-        print(expire_datetime)
-        print(now_datetime-expire_datetime)"""
         return (expire_datetime-now_datetime).seconds 
 
 if __name__ == '__main__':

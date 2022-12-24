@@ -224,7 +224,6 @@ def routine_update_user_banned_table():
 
 		list_of_banned_user = []
 		for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_name / 3:access_token / 4:refresh_token
-			"""print(mysql.get_all_user_table(connection_bd, user[1]))"""
 			list_of_banned_user.extend(mysql.get_all_user_table(connection_bd, user[1]))
 
 		#Il faut mettre à 0 les PRIMARY_KEY de tout les elements des deux listes pour pouvoir les comparer+ retirer les origin channels + time 
@@ -234,9 +233,6 @@ def routine_update_user_banned_table():
 			temp_1.append(("0",e[1],e[2],e[3],e[4],"",e[6],e[7]))
 		for e in list_of_banned_user:
 			temp_2.append(("0",e[1],e[2],e[3],e[4],"",e[6],e[7]))
-		print(temp_1)
-		print("-----------------")
-		print(temp_2)
 		list_of_banned_user_from_master = temp_1
 		list_of_banned_user_m = temp_2
 
@@ -246,6 +242,12 @@ def routine_update_user_banned_table():
 			user_id = user[1]
 			user_access_token = user[3]
 			twitch.unban_all(user_id,user_access_token,user_to_unban,client_id)
+		#need to remove unbanned_user from flag table
+
+		mysql.remove_list_user_from_tag_table(connection_bd, user_to_unban)
+
+
+
 
 		mysql.delete_all_master_banlist(connection_bd)
 		for user in array_of_users_info:
