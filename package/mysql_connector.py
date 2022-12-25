@@ -346,6 +346,24 @@ def remove_list_user_from_tag_table(connection, list_user):
     except:
         log.log("Les datas(tags) d'un utilisateur unban n'on pas pu etre éffacé")
 
+def get_user_filter(connection, user_id):
+    command = """SELECT * FROM filter_user WHERE user_id = {}""".format(user_id)
+    try:
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            result = cursor.fetchall()
+            tuple = result[0]
+            #final = [tuple[2],tuple[3],tuple[4],tuple[5],tuple[6],tuple[7],tuple[8],tuple[9],tuple[10],tuple[11],tuple[12]]
+            final = []
+            for e in tuple:
+                final.append(e)
+            final.pop(0)
+            final.pop(0)
+            return (final)
+    except:
+        return [1,0,1,1,1,1,1,0,0,0,1] #default filter
+
 def update_user_filter(connection, user_id, f):
     t = []
     for e in f:
@@ -377,6 +395,72 @@ def update_user_filter(connection, user_id, f):
         log.log("Mise à jour des filtres pour l'user {}".format(user_id))
     except:
         log.log("Echec de la mise à jour des filtres pour l'user {}".format(user_id))
+
+
+
+def get_bannable_id_by_filter(connection, user_filter_pref):
+    #Fonction that get a list of banned_user_id select in fonction of the user preferene via filter
+    #A litte bit complicated but we do Unions and Intersections like so
+    # ((perma)U(timeout)) I ((commented)U(notcommented)) I ((sexism)U(homophobia)U(rascism)U(backseat)U(spam)U(username)U(other))
+    #user_filter_pref = [1,0,1,0,1,0,0,0,0,0,1]
+    
+    dict_1 = {"permanent": user_filter_pref[0], "timeout": user_filter_pref[1]}
+    dict_2 = {"commented": user_filter_pref[2], "notcommented": user_filter_pref[3]}
+    dict_3 = {"sexism": user_filter_pref[4], "homophobia": user_filter_pref[5], "rascism": user_filter_pref[6], "backseat": user_filter_pref[7],"spam": user_filter_pref[8],"username": user_filter_pref[9],"other": user_filter_pref[10]}
+    list_of_id_1 = []
+    for key,value in dict_1.items():
+        if (value == 1):
+            command = """SELECT user_id FROM banned_tag WHERE {}={};""".format(key,value)
+            try:
+                connection.reconnect()
+                with connection.cursor() as cursor:
+                    cursor.execute(command)
+                    r = cursor.fetchall() #output like this [(1241590,), (155230646,), (264625375,), (442565528,), (454713337,)]
+                    for e in r:
+                        list_of_id_1.append(e[0])
+            except:
+                    pass
+    list_of_id_1 = [list_of_id_1[i] for i in range(len(list_of_id_1)) if i == list_of_id_1.index(list_of_id_1[i])] #Remove duplicates
+
+    #select comment or not and intersection 
+    list_of_id_2 = []
+    for key,value in dict_2.items():
+        if (value == 1):
+            command = """SELECT user_id FROM banned_tag WHERE {}={};""".format(key,value)
+            try:
+                connection.reconnect()
+                with connection.cursor() as cursor:
+                    cursor.execute(command)
+                    r = cursor.fetchall()
+                    for e in r:
+                        list_of_id_2.append(e[0])
+            except:
+                    pass
+    list_of_id_2 = [list_of_id_2[i] for i in range(len(list_of_id_2)) if i == list_of_id_2.index(list_of_id_2[i])] #Remove duplicates
+
+    temp_list = [value for value in list_of_id_1 if value in list_of_id_2] #intersection
+
+    #need to exclude not wanted tag
+    list_of_id_3 = []
+    for key,value in dict_3.items():
+        if (value == 1):
+            command = """SELECT user_id FROM banned_tag WHERE {}={};""".format(key,value)
+            try:
+                connection.reconnect()
+                with connection.cursor() as cursor:
+                    cursor.execute(command)
+                    r = cursor.fetchall()
+                    for e in r:
+                        list_of_id_3.append(e[0])
+            except:
+                    pass
+    list_of_id_3 = [list_of_id_3[i] for i in range(len(list_of_id_3)) if i == list_of_id_3.index(list_of_id_3[i])] #Remove duplicates
+    
+    final = [value for value in temp_list if value in list_of_id_3]
+    return (final)
+
+
+
 
 
 if __name__ == '__main__':

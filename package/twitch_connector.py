@@ -168,28 +168,37 @@ def get_banlist(user_id, access_token, client_id, filter=True):
 def ban_from_master_banlist(connection, user_id, user_access_token, list_of_banned_user, client_id):
     
     log.log("Bannisement pour l'utilisateur: {}".format(user_id))
+    user_filter_pref = mysql.get_user_filter(connection, user_id)
+    list_of_eligible_id_for_ban = mysql.get_bannable_id_by_filter(connection, user_filter_pref)
     for banned_user in list_of_banned_user:
         if (banned_user[-1] == user_id): #skip if banned_user comming from this channel
             log.log("Skip du ban car originaire de cette utilisateur")
         else:
-            url = "https://api.twitch.tv/helix/moderation/bans?broadcaster_id={}&moderator_id={}".format(user_id,user_id)
-            auth_header = {"Authorization": 'Bearer {}'.format(user_access_token), "Client-ID": client_id, "Content-Type": "application/json"}
-            description = "User automaticaly ban by Arias_bot. \rUser originaly ban from the channel: {}. \rOriginal reason: {}".format(mysql.get_user_name_by_id(connection, banned_user[-1]),banned_user[3])
-            if (banned_user[5] == ""):
-                banned_user_data = {"data":{"user_id":banned_user[1], "reason":description}}
-            else:
-                dur = min(tag_filter.convert_expire_time(banned_user[4],banned_user[5]),1209600)
-                banned_user_data = {"data":{"user_id":banned_user[1], "duration":dur, "reason":description}}
-            request_data = {
-                    "method": "POST",
-                    "url": url,
-                    "headers": auth_header,
-                    "json": banned_user_data}
-            response = requests.request(**request_data)
-            if (response.status_code == 200):
-                log.log("Ban de {}".format(banned_user[0]))
-            """else:
-                log.log()"""
+            if (banned_user[1] in list_of_eligible_id_for_ban):
+                url = "https://api.twitch.tv/helix/moderation/bans?broadcaster_id={}&moderator_id={}".format(user_id,user_id)
+                auth_header = {"Authorization": 'Bearer {}'.format(user_access_token), "Client-ID": client_id, "Content-Type": "application/json"}
+                description = "User automaticaly ban by Arias_bot. \rUser originaly ban from the channel: {}. \rOriginal reason: {}".format(mysql.get_user_name_by_id(connection, banned_user[-1]),banned_user[3])
+                if (banned_user[5] == ""):
+                    banned_user_data = {"data":{"user_id":banned_user[1], "reason":description}}
+                else:
+                    dur = min(tag_filter.convert_expire_time(banned_user[4],banned_user[5]),1209600)
+                    banned_user_data = {"data":{"user_id":banned_user[1], "duration":dur, "reason":description}}
+                request_data = {
+                        "method": "POST",
+                        "url": url,
+                        "headers": auth_header,
+                        "json": banned_user_data}
+                response = requests.request(**request_data)
+                if (response.status_code == 200):
+                    log.log("Ban de {}".format(banned_user[0]))
+        
+
+
+
+
+
+
+
 
 def unban_all(user_id, user_access_token, list_of_unbanned_user, client_id):
     for unbanned_user in list_of_unbanned_user:

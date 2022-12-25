@@ -19,6 +19,8 @@ effacer les fichier temp quand on update les filter
 voir meme par remplacer les fichier temps par des request post comme pour les tag filter
 
 
+les cases de filter doivent etre checked en fction des filtre user enregister et pas par default
+
 
 systeme de compte = login/password
 +dashboard avec anylitcs

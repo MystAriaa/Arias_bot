@@ -14,7 +14,6 @@ def extract_tag(reason,time):
     username=0
     other=0 
 
-    print(time)
     if (time == ""):
         permanent = 1
     else:
