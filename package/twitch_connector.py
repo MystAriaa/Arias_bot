@@ -91,12 +91,12 @@ def token_refresh(connection, client_id, client_secret, user_id = "", refresh_to
                 return (new_access_token,new_refresh_token)
             elif (auth_response.status_code == 400):
                 log.log("Erreur 400 Invalid token | Cet utilisateur c'est dé-enregistré")
-                mysql.remove_banned_user_from_master_banlist(connection, user_id)
+                mysql.remove_ban_from_user_in_master(connection, user_id)
                 mysql.remove_an_user(connection, user_id)
                 return ("0","0")
             elif (auth_response.status_code == 401):
                 log.log("Erreur 401 Unauthorized | Cet utilisateur c'est dé-enregistré")
-                mysql.remove_banned_user_from_master_banlist(connection, user_id)
+                mysql.remove_ban_from_user_in_master(connection, user_id)
                 mysql.remove_an_user(connection, user_id)
                 return ("0","0")
         except:

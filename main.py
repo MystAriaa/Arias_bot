@@ -262,11 +262,12 @@ def routine_update_user_banned_table():
 			user_id = user[1]
 			user_access_token = user[3]
 			twitch.unban_all(user_id,user_access_token,user_to_unban,client_id)
+		
 		#need to remove unbanned_user from flag table
-
 		mysql.remove_list_user_from_tag_table(connection_bd, user_to_unban)
-
-		mysql.delete_all_master_banlist(connection_bd)
+		#need to remove unbanned_user from master_table
+		mysql.remove_list_user_in_master(connection_bd, user_to_unban)
+		#need to update master_table with new banned
 		for user in array_of_users_info:
 			user_id = user[1]
 			mysql.insert_list_banned_into_master(connection_bd, mysql.get_all_user_table(connection_bd, user_id), user_id)

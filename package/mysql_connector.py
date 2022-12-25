@@ -176,6 +176,8 @@ def remove_an_user(connection, user_id):
         log.log("Nous n'avons pas réussi à supprimé un utilisateur")
 
 
+#---------MASTER BAN LIST AREA--------------------------------------------------------------------------#
+
 def get_all_master_banlist(connection):
     #command = """SELECT user_id,reason,origin_channel_id FROM master_banlist;"""
     command = """SELECT * FROM master_banlist;"""
@@ -208,7 +210,7 @@ def insert_list_banned_into_master(connection, list_of_banned_user, user_id):
             log.log("Ajout d'un nouvel utilisateur bannis dans la master banlist.")
         except:
             log.log("Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.")
-def remove_banned_user_from_master_banlist(connection, user_id):
+def remove_ban_from_user_in_master(connection, user_id):
     command = """SELECT * FROM {}_banlist;""".format(user_id)
     connection.reconnect()
     with connection.cursor() as cursor:
@@ -225,6 +227,21 @@ def remove_banned_user_from_master_banlist(connection, user_id):
             log.log("Retrait de l'utilisateur {} de la banlist".format(banned_user[3]))
         except:
             log.log("Echec du retrait de l'utilisateur {} de la banlist".format(banned_user[3]))
+
+def remove_list_user_in_master(connection, list):
+    for banned_user in list:
+        try:
+            command = """DELETE FROM master_banlist WHERE user_id = {};""".format(banned_user[1])
+            connection.reconnect()
+            with connection.cursor() as cursor:
+                cursor.execute(command)
+                connection.commit()
+            log.log("Retrait de l'utilisateur {} de la banlist".format(banned_user[3]))
+        except:
+            log.log("Echec du retrait de l'utilisateur {} de la banlist".format(banned_user[3]))
+
+
+#---------USER AREA--------------------------------------------------------------------------#
 
 
 def get_all_users(connection):
@@ -332,6 +349,11 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
             log.log("Un utilisateur bannis à été affublé de tags")
         except:
             log.log("Un utilisateur bannis n'à pas été affublé de tags car deja present surement")
+
+
+
+
+#---------FILTER AREA--------------------------------------------------------------------------#
 
 
 def remove_list_user_from_tag_table(connection, list_user):

@@ -2,9 +2,6 @@ on peut simplifier les fcts de mysql comme par exemple toutes le fct qui delete 
 ou encore celle que get des infos
 
 
-au lieu de tout effacer la master list/ retirer les les me unbans
-
-
 effacer les fichier temp quand on update les filter
 voir meme par remplacer les fichier temps par des request post comme pour les tag filter
 
@@ -24,7 +21,7 @@ voir meme par remplacer les fichier temps par des request post comme pour les ta
 
 
 
-
+check de temps en temps si la masterban list est correcte
 
 
 -Gerer des exceptions/erreur potentiels
