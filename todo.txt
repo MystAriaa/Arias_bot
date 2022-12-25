@@ -1,19 +1,20 @@
-on peut simplifier les fcts de mysql comme par exemple toutes le fct qui delete de rows on peut les fuse en une
-ou encore celle que get des infos
+
 
 
 effacer les fichier temp quand on update les filter
 voir meme par remplacer les fichier temps par des request post comme pour les tag filter
 
 
+message validate pour force call bot comme update filter et disconnect
 
 
 
 
 
 
-
-
+envoye message au gens ban avec d'ou origine + raison
+systme de give only ban
++ anonyma dans les message envoyer aux gens
 
 
 
@@ -23,6 +24,8 @@ voir meme par remplacer les fichier temps par des request post comme pour les ta
 
 check de temps en temps si la masterban list est correcte
 
+on peut simplifier les fcts de mysql comme par exemple toutes le fct qui delete de rows on peut les fuse en une
+ou encore celle que get des infos
 
 -Gerer des exceptions/erreur potentiels
 

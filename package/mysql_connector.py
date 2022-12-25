@@ -3,6 +3,11 @@ from package import log
 from package import tag_filter
 import os
 
+
+#This is messy i know, i made them as i need them, so they are repetive an can completly be fused.
+#I'll do it, one day, for now, it's working, not optimal, but it's working.
+
+
 delay_s = 1
 bdd_name = "Arias_bot_database"
 bdd_ip = "localhost"
@@ -145,24 +150,11 @@ def input_a_new_user(connection, user_id, user_name, access_token, refresh_token
             cursor.execute(command)
             connection.commit()
         log.log("Ajout avec succes d'un nouvelle utilisateur")
-    except: #delete le doublon et on le re-enregistre
+    except: #if already in, update token
         log.log("Echec de l'ajout d'un utilisateur due à un doublon surement")
-        command = """
-            DELETE FROM registered_user WHERE user_id={};
-            """.format(user_id)
-        connection.reconnect()
-        with connection.cursor() as cursor:
-            cursor.execute(command)
-            connection.commit()
-
-        command = """
-            INSERT INTO registered_user (user_id, user_name, access_token, refresh_token) VALUES ({}, "{}", "{}", "{}");
-            """.format(user_id, user_name, access_token, refresh_token)
-        connection.reconnect()
-        with connection.cursor() as cursor:
-            cursor.execute(command)
-            connection.commit()
+        set_new_user_info(connection, user_id, access_token, refresh_token)
         log.log("Update avec succes d'un utilisateur")
+
 
 def remove_an_user(connection, user_id):
     command = """DELETE FROM registered_user WHERE user_id = "{}";""".format(user_id)

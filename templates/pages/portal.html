@@ -58,11 +58,12 @@
             <p style="overflow: hidden; text-overflow: ellipsis;">You've been succesfully connected to our network.<br>
             From now on, you will share your banned accounts with other ! You can just wait for daily refresh or call Arias_bot immediately. Every updates happens daily at 5h UTC+0.</p>
         </div>
-        <div class="button1_div">
-            <button class="twitch_button">
-                <a class="twitch_link" href={{ force_update_ban_url }}>Call Arias_bot !</a>
-            </button>
-        </div>
+        <form method="POST" action="/force_update_ban.html">
+            <input type='hidden' name="access_token" value="{{token}}">
+            <div class="button1_div">
+                <input class="twitch_button" type="submit" value = "Call Arias_bot !"></input>
+            </div>
+        </form>
         <div class="image_separator1">
             <img class="icon" src="static/img/seperator.png" alt="icon" width="200" height="10">
         </div>
@@ -141,9 +142,7 @@
                 </div>
             </div>
             <div class="button2_div">
-                <input class="twitch_button" type="submit" value = "Update your filter">
-                    
-                </input>
+                <input class="twitch_button" type="submit" value = "Update your filter"></input>
             </div>
             <input type='hidden' name="access_token" value="{{token}}">
             <input type='hidden' name="permanent" value='0'>
@@ -164,11 +163,12 @@
         <div class="text3_div">
             <p style="overflow: hidden; text-overflow: ellipsis;">All the actions made by Arias_bot are reversible, so you can return to the initial state before entering the network. To do this, simply disconnect with the button below.</p>
         </div>
-        <div class="button3_div">
-            <button class="twitch_button">
-                <a class="twitch_link" href={{ unban_all_url }}>Disconnect</a>
-            </button>
-        </div>
+        <form method="POST" action="/disconnect.html">
+            <input type='hidden' name="access_token" value="{{token}}">
+            <div class="button3_div">
+                <input class="twitch_button" type="submit" value = "Disconnect"></input>
+            </div>
+        </form>
     </div>
 
 

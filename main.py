@@ -80,17 +80,9 @@ def query():
 
 			else:                          #cross attacks, not good
 				log.log("We might be under a CSRF attack")
-				try:
-					os.remove("templates/pages/temp_pages/unban_all_{}.html".format(user_access_token))
-				except:
-					pass
 				random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 				return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state, state = random_state)
 		except:
-			try:
-				os.remove("templates/pages/temp_pages/unban_all_{}.html".format(user_access_token))
-			except:
-				pass
 			random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 			return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state, state = random_state)
 
@@ -108,10 +100,6 @@ def query():
 			user_id, user_name = twitch.get_user_info(user_id, app_access_token, client_id)
 			if (user_id == "0" and user_name == "0"):
 				log.log("get_user_info returns 0, we go out. app_access_token={}, acces_granted={}".format(app_access_token,acces_granted))
-				try:
-					os.remove("templates/pages/temp_pages/unban_all_{}.html".format(user_access_token))
-				except:
-					pass
 				random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 				return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state, state = random_state)
 			else:
@@ -128,18 +116,6 @@ def query():
 
 		#Petite mise en page en fonction de l'acces reçu
 		if (acces_granted):
-			f = open('templates/pages/temp_pages/unban_all_{}.html'.format(user_access_token), 'w')
-			html_template = """<html><head><title>Redirect</title></head><body></body></html>"""
-			f.write(html_template)
-			f.close()
-			f = open('templates/pages/temp_pages/force_update_ban_{}.html'.format(user_access_token), 'w')
-			html_template = """<html><head><title>Redirect</title></head><body></body></html>"""
-			f.write(html_template)
-			f.close()
-			thread_timeout_file_unban_all = threading.Thread(target = timeout_file_unban_all, args = (user_access_token,))
-			thread_timeout_file_unban_all.start()
-			thread_timeout_file_force_update_ban = threading.Thread(target = timeout_file_force_update_ban, args = (user_access_token,))
-			thread_timeout_file_force_update_ban.start()
 			#Boxes auto checked with registered user filter pref
 			user_filter_pref = mysql.get_user_filter(connection_bd, user_id)
 			checked_box_list = []
@@ -149,19 +125,16 @@ def query():
 				else:
 					checked_box_list.append("")
 
-			return render_template('pages/portal.html',acces_granted="Successful connection", channel_name=user_name, unban_all_url = "http://localhost:5000/unban_all_{}.html".format(user_access_token), force_update_ban_url = "http://localhost:5000/force_update_ban_{}.html".format(user_access_token), token=user_access_token, check=checked_box_list)
+			return render_template('pages/portal.html',acces_granted="Successful connection", channel_name=user_name, token=user_access_token, check=checked_box_list)
 		else:
-			try:
-				os.remove("templates/pages/temp_pages/unban_all_{}.html".format(user_access_token))
-			except:
-				pass
 			random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 			return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state, state = random_state)
 
 
-@app.route('/unban_all_<string:user_access_token>.html') #return_to_original_state
-def unban_all(user_access_token):
+@app.route('/disconnect.html', methods=['POST']) #return_to_original_state
+def disconnect():
 	global random_state
+	user_access_token = request.form['access_token']
 	user_info = mysql.get_user_info_by_access_token(connection_bd, user_access_token)
 	user_refresh_token = user_info[-1]
 	id = twitch.token_validation(user_access_token)
@@ -178,31 +151,25 @@ def unban_all(user_access_token):
 	twitch.revoke_token(user_access_token, client_id)
 	twitch.revoke_token(user_refresh_token, client_id)
 	mysql.remove_an_user(connection_bd, user_id)
-	try:
-		os.remove("templates/pages/temp_pages/unban_all_{}.html".format(user_access_token))
-	except:
-		pass
 	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 	return render_template('pages/validation.html',text="Your have been successfully removed from the network.")
 
-@app.route('/force_update_ban_<string:user_access_token>.html')
-def force_update_ban(user_access_token):
+@app.route('/force_update_ban.html', methods=['POST'])
+def force_update_ban():
 	global random_state
-	
+	user_access_token = request.form['access_token']
 	user_info = mysql.get_user_info_by_access_token(connection_bd, user_access_token)
 	#0: primary_key / 1:user_id / 2:user_name / 3:access_token / 4:refresh_token
 	user_id = user_info[1]
 	user_access_token = user_info[3]
 	list_of_banned_user = mysql.get_all_master_banlist(connection_bd)
 	twitch.ban_from_master_banlist(connection_bd, user_id, user_access_token, list_of_banned_user, client_id)
-
-	try:
-		os.remove("templates/pages/temp_pages/force_update_ban_{}.html".format(user_access_token))
-	except:
-		pass
 	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-	return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state, state = random_state)
-	
+	return render_template('pages/validation.html',text="Your have been successfully removed from the network.")
+
+
+
+
 
 #---------------------------------------------------------------------------------------------------------------------#
 
@@ -285,11 +252,6 @@ def routine_update_user_banned_table():
 			twitch.ban_from_master_banlist(connection_bd, user_id, user_access_token, list_of_banned_user, client_id)
 
 		#---------------------------------------------------------------------
-		
-		for f in os.listdir("templates/pages/temp_pages"):
-			if not f.endswith(".html"):
-				continue
-			os.remove(os.path.join("templates/pages/temp_pages", f))
 
 		log.log("| Voici la fin de l'itération du thread |")
 		#time.sleep(60*60*24)
@@ -298,23 +260,6 @@ def routine_update_user_banned_table():
 	log.log("Sort du thread")
 	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 	return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state, state = random_state)
-
-
-def timeout_file_unban_all(user_access_token):
-	time.sleep(60)
-	try:
-		os.remove("templates/pages/temp_pages/unban_all_{}.html".format(user_access_token))
-	except:
-		log.log("Failed remove of file unban_all_{}.html".format(user_access_token))
-		pass
-
-def timeout_file_force_update_ban(user_access_token):
-	time.sleep(60)
-	try:
-		os.remove("templates/pages/temp_pages/force_update_ban_{}.html".format(user_access_token))
-	except:
-		log.log("Failed remove of file unban_all_{}.html".format(user_access_token))
-		pass
 
 
 #---------------------------------------------------------------------------------------------------------------------#
