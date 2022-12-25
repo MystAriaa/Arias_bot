@@ -364,6 +364,24 @@ def get_user_filter(connection, user_id):
     except:
         return [1,0,1,1,1,1,1,0,0,0,1] #default filter
 
+def set_user_filter(connection, user_id, f):
+    t = []
+    for e in f:
+        t.append(int(e))
+    command = """
+    INSERT INTO filter_user
+    (user_id, permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other)
+    VALUE ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11});""".format(user_id,t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],t[8],t[9],t[10])
+    log.log("Ajout de nouvelles données de filtre pour l'user {}".format(user_id))
+    try:
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            connection.commit()
+        log.log("Nouvelles préference de filtre pour l'user {}".format(user_id))
+    except:
+        log.log("Echec de l'ajout de data surment deja existante")
+
 def update_user_filter(connection, user_id, f):
     t = []
     for e in f:

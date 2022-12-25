@@ -118,8 +118,8 @@ def query():
 				#Mise en base de donnée de l'utilisateur
 				mysql.input_a_new_user(connection_bd, user_id, user_name, user_access_token, user_refresh_token)
 				#Creation du filtrage par defaut pour cette utilisateur
-				list_filter = ['1','0','1','1','1','1','1','0','0','0','1']
-				mysql.update_user_filter(connection_bd, user_id, list_filter)
+				default_list_filter = ['1','0','1','1','1','1','1','0','0','0','1']
+				mysql.set_user_filter(connection_bd, user_id, default_list_filter)
 				#Creation de sa table de bannis
 				mysql.create_table_banned_by_user(connection_bd, user_id)
 				#Fill la nouvelle table avec les bannis de l'utilisateur
@@ -140,7 +140,16 @@ def query():
 			thread_timeout_file_unban_all.start()
 			thread_timeout_file_force_update_ban = threading.Thread(target = timeout_file_force_update_ban, args = (user_access_token,))
 			thread_timeout_file_force_update_ban.start()
-			return render_template('pages/portal.html',acces_granted="Successful connection", channel_name=user_name, unban_all_url = "http://localhost:5000/unban_all_{}.html".format(user_access_token), force_update_ban_url = "http://localhost:5000/force_update_ban_{}.html".format(user_access_token), token=user_access_token)
+			#Boxes auto checked with registered user filter pref
+			user_filter_pref = mysql.get_user_filter(connection_bd, user_id)
+			checked_box_list = []
+			for e in user_filter_pref:
+				if e == 1:
+					checked_box_list.append("checked")
+				else:
+					checked_box_list.append("")
+
+			return render_template('pages/portal.html',acces_granted="Successful connection", channel_name=user_name, unban_all_url = "http://localhost:5000/unban_all_{}.html".format(user_access_token), force_update_ban_url = "http://localhost:5000/force_update_ban_{}.html".format(user_access_token), token=user_access_token, check=checked_box_list)
 		else:
 			try:
 				os.remove("templates/pages/temp_pages/unban_all_{}.html".format(user_access_token))

@@ -1,13 +1,3 @@
-Donner aux membres un moyen de filtrer les ban qui'l veulle -> temp/perma + raison:sex/homo/rasism/+more
-
-
-
-BETTER FILTER
-
-REPEAT DES TEMPS BAN BIZZARD
-A CHAQUE HOME ? ctrl+s
-
-
 on peut simplifier les fcts de mysql comme par exemple toutes le fct qui delete de rows on peut les fuse en une
 ou encore celle que get des infos
 
@@ -19,18 +9,27 @@ effacer les fichier temp quand on update les filter
 voir meme par remplacer les fichier temps par des request post comme pour les tag filter
 
 
-les cases de filter doivent etre checked en fction des filtre user enregister et pas par default
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-Gerer des exceptions/erreur potentiels
+
+remane project ????
 
 systeme de compte = login/password
 +dashboard avec anylitcs
-
-
-
-
-+timer sur les call de force update
--Gerer des exceptions/erreur potentiels
-rajout de delai partout dans les query vers la bdd SI BESOIN
-
-
-remane project ????
