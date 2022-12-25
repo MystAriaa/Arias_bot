@@ -61,7 +61,7 @@ def query():
 		mysql.update_user_filter(connection_bd, user_id, list_filter)
 
 		random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-		return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state, state = random_state)
+		return render_template('pages/validation.html', text="Your filter have been successfully updated.")
 	except: #if not classic route aka connection with twitch
 		acces_granted = False
 		try:
@@ -117,6 +117,9 @@ def query():
 			else:
 				#Mise en base de donnée de l'utilisateur
 				mysql.input_a_new_user(connection_bd, user_id, user_name, user_access_token, user_refresh_token)
+				#Creation du filtrage par defaut pour cette utilisateur
+				list_filter = ['1','0','1','1','1','1','1','0','0','0','1']
+				mysql.update_user_filter(connection_bd, user_id, list_filter)
 				#Creation de sa table de bannis
 				mysql.create_table_banned_by_user(connection_bd, user_id)
 				#Fill la nouvelle table avec les bannis de l'utilisateur
@@ -171,7 +174,7 @@ def unban_all(user_access_token):
 	except:
 		pass
 	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-	return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state, state = random_state)
+	return render_template('pages/validation.html',text="Your have been successfully removed from the network.")
 
 @app.route('/force_update_ban_<string:user_access_token>.html')
 def force_update_ban(user_access_token):

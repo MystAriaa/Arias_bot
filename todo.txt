@@ -1,8 +1,6 @@
 Donner aux membres un moyen de filtrer les ban qui'l veulle -> temp/perma + raison:sex/homo/rasism/+more
 
 
-   +Mettre a jour les tags (non ?)
-
 
 BETTER FILTER
 
@@ -17,8 +15,8 @@ ou encore celle que get des infos
 au lieu de tout effacer la master list/ retirer les les me unbans
 
 
-message ou page de validation pour deco et update filter reussi ou non ?
-
+effacer les fichier temp quand on update les filter
+voir meme par remplacer les fichier temps par des request post comme pour les tag filter
 
 
 

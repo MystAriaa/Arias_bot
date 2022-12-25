@@ -1,0 +1,48 @@
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-25 08:31:25 |||
+[2022-12-25 08:31:26]: Un token d'acces viens d'être générer pour l'app: 90w5rie3gfo135i9kmllk5thmtqmdq
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-25 08:31:27 |||
+[2022-12-25 08:31:28]: Un token d'acces viens d'être générer pour l'app: d65suiumomndfnhax25uyfl0xprkuw
+[2022-12-25 08:31:38]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-25 08:31:39]: Un token d'acces viens d'être générer pour l'user: bru4flj19u172mr1h9yu2cnz5u69k5
+[2022-12-25 08:31:40]: Notre token user a été validée
+[2022-12-25 08:31:40]: Notre token app a été validée
+[2022-12-25 08:31:40]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-25 08:31:40]: Update avec succes d'un utilisateur
+[2022-12-25 08:31:40]: Ajout de nouvelles données de filtre pour l'user 161641887
+[2022-12-25 08:31:40]: Echec de l'ajout de data surment deja existante
+[2022-12-25 08:31:41]: Mise à jour des filtres pour l'user 161641887
+[2022-12-25 08:31:41]: Echec de la création de la table banlist pour l'utilisateur: 161641887. Peut-etre celle-ci existe dèja ?
+[2022-12-25 08:31:41]: Mise à neuf de la table 161641887_banlist
+[2022-12-25 08:31:41]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-25 08:31:41]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-25 08:31:45]: Notre token user a été validée
+[2022-12-25 08:31:46]: User (264625375) unban from channel (161641887)
+[2022-12-25 08:31:46]: User (155230646) unban from channel (161641887)
+[2022-12-25 08:31:47]: Token successfully revoken
+[2022-12-25 08:31:48]: Token successfully revoken
+[2022-12-25 08:31:48]: Nous avons supprimé un utilisateur
+[2022-12-25 08:32:34]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-25 08:32:35]: Un token d'acces viens d'être générer pour l'user: nj8voc6ymbdboebzkxy28hfoxj9enm
+[2022-12-25 08:32:35]: Notre token user a été validée
+[2022-12-25 08:32:36]: Notre token app a été validée
+[2022-12-25 08:32:36]: Ajout avec succes d'un nouvelle utilisateur
+[2022-12-25 08:32:36]: Ajout de nouvelles données de filtre pour l'user 161641887
+[2022-12-25 08:32:36]: Echec de l'ajout de data surment deja existante
+[2022-12-25 08:32:36]: Mise à jour des filtres pour l'user 161641887
+[2022-12-25 08:32:36]: Echec de la création de la table banlist pour l'utilisateur: 161641887. Peut-etre celle-ci existe dèja ?
+[2022-12-25 08:32:37]: Mise à neuf de la table 161641887_banlist
+[2022-12-25 08:32:37]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-25 08:32:37]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-25 08:32:41]: Failed remove of file unban_all_bru4flj19u172mr1h9yu2cnz5u69k5.html
+[2022-12-25 08:32:54]: Notre token user a été validée
+[2022-12-25 08:32:54]: Ajout de nouvelles données de filtre pour l'user 161641887
+[2022-12-25 08:32:54]: Echec de l'ajout de data surment deja existante
+[2022-12-25 08:32:54]: Mise à jour des filtres pour l'user 161641887
+||| 2022-12-25 08:35:35 |||
+          ********** END OF LOG FILE **********          
+||| 2022-12-25 08:35:35 |||
+          ********** END OF LOG FILE **********          
