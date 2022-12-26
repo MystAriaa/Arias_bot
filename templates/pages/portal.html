@@ -58,7 +58,7 @@
             <p style="overflow: hidden; text-overflow: ellipsis;">You've been succesfully connected to our network.<br>
             From now on, you will share your banned accounts with other ! You can just wait for daily refresh or call Arias_bot immediately. Every updates happens daily at 5h UTC+0.</p>
         </div>
-        <form method="POST" action="/force_update_ban.html">
+        <form method="POST" action="/force_update_ban">
             <input type='hidden' name="access_token" value="{{token}}">
             <div class="button1_div">
                 <input class="twitch_button" type="submit" value = "Call Arias_bot !"></input>
@@ -105,7 +105,7 @@
                 <p>Other</p>
             </div>
         </div>
-        <form method="POST">
+        <form method="POST"  action="/update_filter">
             <div class="filter_div">
                 <div class="filter_box">
                     <input type="checkbox" name="permanent" value='1' {{ check[0] }}>
@@ -163,7 +163,7 @@
         <div class="text3_div">
             <p style="overflow: hidden; text-overflow: ellipsis;">All the actions made by Arias_bot are reversible, so you can return to the initial state before entering the network. To do this, simply disconnect with the button below.</p>
         </div>
-        <form method="POST" action="/disconnect.html">
+        <form method="POST" action="/disconnect">
             <input type='hidden' name="access_token" value="{{token}}">
             <div class="button3_div">
                 <input class="twitch_button" type="submit" value = "Disconnect"></input>
