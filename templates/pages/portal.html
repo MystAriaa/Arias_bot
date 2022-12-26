@@ -110,7 +110,7 @@
                 <p>Other</p>
             </div>
         </div>
-        <form method="POST"  action="/update_filter">
+        <form method="POST" action="/update_filter">
             <div class="filter_div">
                 <div class="filter_box">
                     <input type="checkbox" name="permanent" value='1' {{ check[0] }}>
@@ -165,6 +165,19 @@
         <div class="image_separator2">
             <img class="icon" src="static/img/seperator.png" alt="icon" width="200" height="10">
         </div>
+        <div class="text4_div">
+            <p style="overflow: hidden; text-overflow: ellipsis;">The Give-Only option while ON allows you to share your banlist to the network without receiving any bans. Arias_bot will therefore not work on your channel.<br>{{giveonlytext}}</p>
+        </div>
+        <form method="POST" action="/give_only">
+            <input type='hidden' name="access_token" value="{{token}}">
+            <input type='hidden' name="giveonly" value='0'>
+            <div class="button4_div">
+                <input class="twitch_button" type="submit" value = "Toggle Give-Only"></input>
+            </div>
+        </form>
+        <div class="image_separator3">
+            <img class="icon" src="static/img/seperator.png" alt="icon" width="200" height="10">
+        </div>
         <div class="text3_div">
             <p style="overflow: hidden; text-overflow: ellipsis;">All the actions made by Arias_bot are reversible, so you can return to the initial state before entering the network. To do this, simply disconnect with the button below.</p>
         </div>
@@ -174,6 +187,7 @@
                 <input class="twitch_button" type="submit" value = "Disconnect"></input>
             </div>
         </form>
+        
     </div>
 
 

@@ -1,12 +1,16 @@
 systme de give only ban
 
-fuse html header
 
 
 
 
 
 
+
+
+security:
+    limit request per user
+    gestion bad request by user
 
 
 check de temps en temps si la masterban list est correcte
@@ -19,4 +23,3 @@ ou encore celle que get des infos
 remane project ????
 
 systeme de compte = login/password
-+

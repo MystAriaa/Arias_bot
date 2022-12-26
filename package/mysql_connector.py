@@ -139,6 +139,23 @@ def create_table_banned_tag(connection):
         connection.commit()
 
 
+def create_table_option_user(connection):
+    command = """
+        CREATE TABLE option_user(
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT(15),
+            giveonly TINYINT(1)
+            );
+        ALTER TABLE option_user ADD UNIQUE INDEX(user_id);
+        """
+    connection.reconnect()
+    with connection.cursor() as cursor:
+        cursor.execute(command)
+        connection.commit()
+
+
+#-----------------------------------------------------------------------------------------------------------------
+
 
 def input_a_new_user(connection, user_id, user_name, access_token, refresh_token):
     try: #Ajout
@@ -501,6 +518,83 @@ def get_bannable_id_by_filter(connection, user_filter_pref):
     
     final = [value for value in temp_list if value in list_of_id_3]
     return (final)
+
+
+#----------------USER OPTION-----------------------------------------------------------------------------------------
+
+def set_user_option(connection, user_id, option_list):
+    command = """
+    INSERT INTO option_user
+    (user_id, giveonly)
+    VALUE ({},{})
+    """.format(user_id,option_list[0])
+    try:
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            connection.commit()
+        log.log("Ajout de nouvelle options pour l'user {}".format(user_id))
+    except:
+        log.log("Echec de l'ajout de nouvelle options pour l'user {}".format(user_id))
+
+def update_user_option(connection, user_id, option_list):
+    command = """
+    UPDATE option_user 
+    SET giveonly='{1}'
+    WHERE user_id = {0};
+    """.format(user_id, option_list[0])
+    try:
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            connection.commit()
+        log.log("Update d'options pour l'user {}".format(user_id))
+    except:
+        log.log("Echec de l'update d'options pour l'user {}".format(user_id))
+
+def get_user_option(connection, user_id):
+    command = """
+    SELECT giveonly FROM option_user
+    WHERE user_id = '{}';""".format(user_id)
+    try:
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            r = cursor.fetchall()[0]
+            dict = {"giveonly": r[0]}
+            return(dict) #Only sent out giveonly as tuple look like [(0,)]
+    except:
+        pass
+
+def delete_user_option(connection, user_id):
+    command = """
+    DELETE FROM option_user WHERE user_id = {}
+    """.format(user_id)
+    try:
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            connection.commit()
+        log.log("Effacement d'options pour l'user {}".format(user_id))
+    except:
+        log.log("Echec de l'effacement d'options pour l'user {}".format(user_id))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
