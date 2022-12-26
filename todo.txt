@@ -1,24 +1,6 @@
-
-
-
-effacer les fichier temp quand on update les filter
-voir meme par remplacer les fichier temps par des request post comme pour les tag filter
-
-
-message validate pour force call bot comme update filter et disconnect
-
-
-
-
-
-
 envoye message au gens ban avec d'ou origine + raison
 systme de give only ban
 + anonyma dans les message envoyer aux gens
-
-
-
-
 
 
 

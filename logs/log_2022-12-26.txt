@@ -1,0 +1,64 @@
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-26 07:21:22 |||
+[2022-12-26 07:21:23]: Un token d'acces viens d'être générer pour l'app: wtvix90ypl284eaqvrmpm3f45o5w8w
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-26 07:21:25 |||
+[2022-12-26 07:21:26]: Un token d'acces viens d'être générer pour l'app: pg534i9seg7szc23d1kxw0urwddsb0
+[2022-12-26 07:22:12]: Rentre dans le thread
+[2022-12-26 07:22:12]: | Voici une itération du thread |
+[2022-12-26 07:22:12]: 1/3
+[2022-12-26 07:22:12]: Mise à jour des bannis pour Arias_bot
+[2022-12-26 07:22:13]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-26 07:22:14]: Un token d'acces et un de rafraichisement viens d'être générer par rafraichisement
+[2022-12-26 07:22:14]: Mise à neuf de la table 699600940_banlist
+[2022-12-26 07:22:14]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-26 07:22:14]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-26 07:22:14]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-26 07:22:15]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-26 07:22:15]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-26 07:22:15]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-26 07:22:15]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-26 07:22:15]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-26 07:22:15]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-26 07:22:15]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-26 07:22:15]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-26 07:22:15]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-26 07:22:15]: Mise à jour des bannis pour MystAria_
+[2022-12-26 07:22:16]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-26 07:22:17]: Un token d'acces et un de rafraichisement viens d'être générer par rafraichisement
+[2022-12-26 07:22:17]: Mise à neuf de la table 161641887_banlist
+[2022-12-26 07:22:17]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-26 07:22:17]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-26 07:22:17]: 2/3
+[2022-12-26 07:22:17]: Les datas(tags) d'un utilisateur unban n'on pas pu etre éffacé
+[2022-12-26 07:22:17]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-26 07:22:17]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-26 07:22:17]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-26 07:22:17]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-26 07:22:17]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-26 07:22:17]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-26 07:22:17]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-26 07:22:17]: Mise à jour de la master_banlist
+[2022-12-26 07:22:17]: 3/3
+[2022-12-26 07:22:17]: Bannisement pour l'utilisateur: 699600940
+[2022-12-26 07:22:18]: Skip du ban car originaire de cette utilisateur
+[2022-12-26 07:22:18]: Skip du ban car originaire de cette utilisateur
+[2022-12-26 07:22:18]: Skip du ban car originaire de cette utilisateur
+[2022-12-26 07:22:18]: Skip du ban car originaire de cette utilisateur
+[2022-12-26 07:22:18]: Skip du ban car originaire de cette utilisateur
+[2022-12-26 07:22:18]: Skip du ban car originaire de cette utilisateur
+[2022-12-26 07:22:18]: Bannisement pour l'utilisateur: 161641887
+[2022-12-26 07:22:19]: Ban de 342
+[2022-12-26 07:22:20]: Skip du ban car originaire de cette utilisateur
+[2022-12-26 07:22:20]: | Voici la fin de l'itération du thread |
+[2022-12-26 07:22:20]: Sort du thread
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-26 07:25:39 |||
+[2022-12-26 07:25:40]: Un token d'acces viens d'être générer pour l'app: 6knkx266ixggp6801a3nwp5v5ya8yf
+||| 2022-12-26 07:25:57 |||
+          ********** END OF LOG FILE **********          
+||| 2022-12-26 07:25:57 |||
+          ********** END OF LOG FILE **********          

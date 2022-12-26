@@ -25,15 +25,19 @@ user_autorisation_url = "https://id.twitch.tv/oauth2/authorize?response_type={0}
 connection_bd = mysql.connect_to_database()
 
 app_access_token = ""
+random_state_list = []
 
 flag_routine_update_user_banned_table = True
 
 #---------------------------------------------------------------------------------------------------------------------#
 @app.route('/')
 def home():
-	global random_state
+	global random_state_list
 	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-	return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state, state = random_state)
+	random_state_list.append(random_state)
+	while len(random_state_list) > 50:
+		random_state_list.pop(0)
+	return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state)
 
 @app.route('/faq')
 def faq():
@@ -51,89 +55,84 @@ def version():
 def page_not_found(error):
 	return render_template('pages/page_not_found.html'), 404
 
-@app.route('/portal', methods=['GET', 'POST'])
+@app.route('/portal')
 def query():
-	global random_state
+	global random_state_list
 	global app_access_token
-	try: #if we update the filter
-		list_filter = [request.form['permanent'],request.form['timeout'],request.form['commented'],request.form['notcommented'],request.form['sexism'],request.form['homophobia'],request.form['rascism'],request.form['backseat'],request.form['spam'],request.form['username'],request.form['other']]
-		user_id = twitch.token_validation(request.form['access_token'])
-		mysql.update_user_filter(connection_bd, user_id, list_filter)
+	acces_granted = False
+	try:
+		if (request.args.get('state') in random_state_list):  #no cross attacks, we good
+			random_state_list.remove(request.args.get('state'))
+			error_state = request.args.get('error')               #error case
+			if (error_state == "access_denied"):
+				acces_granted = False
+				error_description = request.args.get('error_description')
+				log.log("Nous avons un refus de l'utilisateur : {}.".format(error_description))
+			else:                                                 #no error case
+				acces_granted = True
+				user_code = request.args.get('code')
+				scope = request.args.get('scope')
+				log.log("Nous avons reçu l'autorisation de l'utilisateur.")
 
+		else:                          #cross attacks, not good
+			log.log("We might be under a CSRF attack")
+			random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+			random_state_list.append(random_state)
+			return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state)
+	except:
 		random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-		return render_template('pages/validation.html', text="Your filter have been successfully updated.")
-	except: #if not classic route aka connection with twitch
-		acces_granted = False
-		try:
-			if (request.args.get('state') == random_state):  #no cross attacks, we good
+		random_state_list.append(random_state)
+		return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state)
 
-				error_state = request.args.get('error')               #error case
-				if (error_state == "access_denied"):
-					acces_granted = False
-					error_description = request.args.get('error_description')
-					log.log("Nous avons un refus de l'utilisateur : {}.".format(error_description))
-				else:                                                 #no error case
-					acces_granted = True
-					user_code = request.args.get('code')
-					scope = request.args.get('scope')
-					log.log("Nous avons reçu l'autorisation de l'utilisateur.")
 
-			else:                          #cross attacks, not good
-				log.log("We might be under a CSRF attack")
-				random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-				return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state, state = random_state)
-		except:
+	#Si nous avons reçu le code
+	if (acces_granted):
+		#Obtention des tokens utilisateur      
+		user_access_token, user_refresh_token = twitch.token_generation(client_id, client_secret, grant_type = "authorization_code", code = user_code, redirect_url = site_base_url)
+		#Obtention de l'id de notre utilisateur
+		user_id = twitch.token_validation(user_access_token)
+		#Obtention des informations de notre utilisateur
+		#+check si notre app_access_token a besoin d'etre refresh      
+		if (twitch.token_validation(app_access_token) != 1):
+			app_access_token = twitch.token_refresh(connection_bd, client_id, client_secret, mode = "app")
+		user_id, user_name = twitch.get_user_info(user_id, app_access_token, client_id)
+		if (user_id == "0" and user_name == "0"):
+			log.log("get_user_info returns 0, we go out. app_access_token={}, acces_granted={}".format(app_access_token,acces_granted))
 			random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-			return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state, state = random_state)
-
-
-		#Si nous avons reçu le code
-		if (acces_granted):
-			#Obtention des tokens utilisateur      
-			user_access_token, user_refresh_token = twitch.token_generation(client_id, client_secret, grant_type = "authorization_code", code = user_code, redirect_url = site_base_url)
-			#Obtention de l'id de notre utilisateur
-			user_id = twitch.token_validation(user_access_token)
-			#Obtention des informations de notre utilisateur
-			#+check si notre app_access_token a besoin d'etre refresh      
-			if (twitch.token_validation(app_access_token) != 1):
-				app_access_token = twitch.token_refresh(connection_bd, client_id, client_secret, mode = "app")
-			user_id, user_name = twitch.get_user_info(user_id, app_access_token, client_id)
-			if (user_id == "0" and user_name == "0"):
-				log.log("get_user_info returns 0, we go out. app_access_token={}, acces_granted={}".format(app_access_token,acces_granted))
-				random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-				return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state, state = random_state)
-			else:
-				#Mise en base de donnée de l'utilisateur
-				mysql.input_a_new_user(connection_bd, user_id, user_name, user_access_token, user_refresh_token)
-				#Creation du filtrage par defaut pour cette utilisateur
-				default_list_filter = ['1','0','1','1','1','1','1','0','0','0','1']
-				mysql.set_user_filter(connection_bd, user_id, default_list_filter)
-				#Creation de sa table de bannis
-				mysql.create_table_banned_by_user(connection_bd, user_id)
-				#Fill la nouvelle table avec les bannis de l'utilisateur
-				list_of_banned_users_by_user = twitch.get_banlist(user_id, user_access_token, client_id)
-				mysql.fill_banned_user_table_by_user(connection_bd, list_of_banned_users_by_user, user_id)
-
-		#Petite mise en page en fonction de l'acces reçu
-		if (acces_granted):
-			#Boxes auto checked with registered user filter pref
-			user_filter_pref = mysql.get_user_filter(connection_bd, user_id)
-			checked_box_list = []
-			for e in user_filter_pref:
-				if e == 1:
-					checked_box_list.append("checked")
-				else:
-					checked_box_list.append("")
-
-			return render_template('pages/portal.html',acces_granted="Successful connection", channel_name=user_name, token=user_access_token, check=checked_box_list)
+			random_state_list.append(random_state)
+			return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state)
 		else:
-			random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-			return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state, state = random_state)
+			#Mise en base de donnée de l'utilisateur
+			mysql.input_a_new_user(connection_bd, user_id, user_name, user_access_token, user_refresh_token)
+			#Creation du filtrage par defaut pour cette utilisateur
+			default_list_filter = ['1','0','1','1','1','1','1','0','0','0','1']
+			mysql.set_user_filter(connection_bd, user_id, default_list_filter)
+			#Creation de sa table de bannis
+			mysql.create_table_banned_by_user(connection_bd, user_id)
+			#Fill la nouvelle table avec les bannis de l'utilisateur
+			list_of_banned_users_by_user = twitch.get_banlist(user_id, user_access_token, client_id)
+			mysql.fill_banned_user_table_by_user(connection_bd, list_of_banned_users_by_user, user_id)
+
+	#Petite mise en page en fonction de l'acces reçu
+	if (acces_granted):
+		#Boxes auto checked with registered user filter pref
+		user_filter_pref = mysql.get_user_filter(connection_bd, user_id)
+		checked_box_list = []
+		for e in user_filter_pref:
+			if e == 1:
+				checked_box_list.append("checked")
+			else:
+				checked_box_list.append("")
+
+		return render_template('pages/portal.html',acces_granted="Successful connection", channel_name=user_name, token=user_access_token, check=checked_box_list)
+	else:
+		random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+		random_state_list.append(random_state)
+		return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state)
 
 
-@app.route('/disconnect.html', methods=['POST']) #return_to_original_state
+@app.route('/disconnect', methods=['POST']) #return_to_original_state
 def disconnect():
-	global random_state
 	user_access_token = request.form['access_token']
 	user_info = mysql.get_user_info_by_access_token(connection_bd, user_access_token)
 	user_refresh_token = user_info[-1]
@@ -151,12 +150,10 @@ def disconnect():
 	twitch.revoke_token(user_access_token, client_id)
 	twitch.revoke_token(user_refresh_token, client_id)
 	mysql.remove_an_user(connection_bd, user_id)
-	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 	return render_template('pages/validation.html',text="Your have been successfully removed from the network.")
 
-@app.route('/force_update_ban.html', methods=['POST'])
+@app.route('/force_update_ban', methods=['POST'])
 def force_update_ban():
-	global random_state
 	user_access_token = request.form['access_token']
 	user_info = mysql.get_user_info_by_access_token(connection_bd, user_access_token)
 	#0: primary_key / 1:user_id / 2:user_name / 3:access_token / 4:refresh_token
@@ -164,11 +161,14 @@ def force_update_ban():
 	user_access_token = user_info[3]
 	list_of_banned_user = mysql.get_all_master_banlist(connection_bd)
 	twitch.ban_from_master_banlist(connection_bd, user_id, user_access_token, list_of_banned_user, client_id)
-	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-	return render_template('pages/validation.html',text="Your have been successfully removed from the network.")
+	return render_template('pages/validation.html',text="Arias_bot paid a visit on your channel !")
 
-
-
+@app.route('/update_filter', methods=['POST'])
+def update_filter():
+	list_filter = [request.form['permanent'],request.form['timeout'],request.form['commented'],request.form['notcommented'],request.form['sexism'],request.form['homophobia'],request.form['rascism'],request.form['backseat'],request.form['spam'],request.form['username'],request.form['other']]
+	user_id = twitch.token_validation(request.form['access_token'])
+	mysql.update_user_filter(connection_bd, user_id, list_filter)
+	return render_template('pages/validation.html', text="Your filter have been successfully updated.")
 
 
 #---------------------------------------------------------------------------------------------------------------------#
@@ -259,7 +259,8 @@ def routine_update_user_banned_table():
 
 	log.log("Sort du thread")
 	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-	return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state, state = random_state)
+	random_state_list.append(random_state)
+	return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state)
 
 
 #---------------------------------------------------------------------------------------------------------------------#
