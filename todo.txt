@@ -1,6 +1,11 @@
-envoye message au gens ban avec d'ou origine + raison
 systme de give only ban
-+ anonyma dans les message envoyer aux gens
+
+
+
+
+
+
+
 
 
 
@@ -14,4 +19,4 @@ ou encore celle que get des infos
 remane project ????
 
 systeme de compte = login/password
-+dashboard avec anylitcs
++

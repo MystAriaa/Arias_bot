@@ -26,7 +26,7 @@ def extract_tag(reason,time):
         sexism = 1
     if ("homophobia" in reason):
         homophobia = 1
-    if ("rascism" in reason):
+    if ("racism" in reason):
         rascism = 1
     if ("backseat" in reason):
         backseat = 1

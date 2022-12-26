@@ -343,6 +343,17 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
             log.log("Un utilisateur bannis n'à pas été affublé de tags car deja present surement")
 
 
+def get_tag_by_id(connection, user_id):
+    command = """
+    SELECT permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other FROM banned_tag WHERE user_id = {}
+    """.format(user_id)
+    connection.reconnect()
+    with connection.cursor() as cursor:
+        cursor.execute(command)
+        list_of_tag = cursor.fetchall()
+        tuple_of_tag = list_of_tag[0]
+    dict = {"permanent": tuple_of_tag[0], "timeout": tuple_of_tag[1], "commented": tuple_of_tag[2], "notcommented": tuple_of_tag[3], "sexism": tuple_of_tag[4], "homophobia": tuple_of_tag[5], "rascism": tuple_of_tag[6], "backseat": tuple_of_tag[7],"spam": tuple_of_tag[8],"username": tuple_of_tag[9],"other": tuple_of_tag[10]}
+    return(dict)
 
 
 #---------FILTER AREA--------------------------------------------------------------------------#

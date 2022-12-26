@@ -131,6 +131,36 @@ def query():
 		return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state)
 
 
+
+
+@app.route('/visualisation')
+def visualisation():
+
+	command = """
+	SELECT user_id, user_name, reason, moderator_name, origin_channel_id
+	FROM master_banlist"""
+	connection_bd.reconnect()
+	with connection_bd.cursor() as cursor:
+		cursor.execute(command)
+		list_of_banned_user_info = cursor.fetchall()
+	
+	list_data = []
+	#0 user_id, 1 usr_name, 2 reason, 3 moderator_name, 4 origin_id
+	for e in list_of_banned_user_info:
+		#Get user_name by id
+		user_name = mysql.get_user_name_by_id(connection_bd, e[-1])
+		#Mise en format
+		origin_text = "Banned from {}'s channel by {}".format(user_name, e[3])
+		#Get Tags
+		list_tag = mysql.get_tag_by_id(connection_bd, e[0])
+		#Mise en list
+		list_data.append((e[1], list_tag, e[2], origin_text))
+	print(list_data)
+	return render_template('pages/visualisation.html', data = list_data)
+
+
+
+
 @app.route('/disconnect', methods=['POST']) #return_to_original_state
 def disconnect():
 	user_access_token = request.form['access_token']
