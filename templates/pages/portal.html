@@ -86,7 +86,7 @@
                 <p>Only commented</p>
             </div>
             <div class="filter_text_box">
-                <p>No comment</p>
+                <p>Without comment</p>
             </div>
             <div class="filter_text_box">
                 <p>Sexism</p>
@@ -108,9 +108,6 @@
             </div>
             <div class="filter_text_box">
                 <p>Other</p>
-            </div>
-            <div class="filter_text_box">
-                <p>Trusted</p>
             </div>
         </div>
         <form method="POST" action="/update_filter">
@@ -148,8 +145,13 @@
                 <div class="filter_box">
                     <input type="checkbox" name="other" value='1' {{ check[10] }}>
                 </div>
-                <div class="filter_box">
-                    <input type="checkbox" name="trusted" value='1' {{ check[11] }}>
+            </div>
+            <div class="filter_div" style="margin-top: 10px;">
+                <div class="filter_text_box" style="width: 50%; justify-content: right;">
+                    <p>Only bans comming from Twitch affiliates and parteners</p>
+                </div>
+                <div class="filter_box" style="width: 50%; justify-content: left;">
+                    <input type="checkbox" name="trusted" value='1' style="width: 20px; height: 20px;" {{ check[11] }}>
                 </div>
             </div>
             <div class="button2_div">

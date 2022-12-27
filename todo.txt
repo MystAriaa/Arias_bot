@@ -2,12 +2,22 @@ discord bot pour identification + stat + debug + log
 
 
 
+
+
+
+
+
+
+
+
 security:
     limit request per user
     gestion bad request by user
 
 
-check de temps en temps si la masterban list est correcte
+
+
+
 
 on peut simplifier les fcts de mysql comme par exemple toutes le fct qui delete de rows on peut les fuse en une
 ou encore celle que get des infos
