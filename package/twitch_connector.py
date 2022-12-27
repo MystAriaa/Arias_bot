@@ -123,7 +123,7 @@ def revoke_token(token, client_id):
 
 #Get user info via app_access_token
 def get_user_info(user_id, app_access_token, client_id):
-    url = "https://api.twitch.tv/helix/channels?broadcaster_id={}".format(user_id)
+    url = "https://api.twitch.tv/helix/users?id={}".format(user_id)
     auth_header = {"Authorization": 'Bearer {}'.format(app_access_token), "Client-ID": client_id}
     request_data = {
             "method": "GET",
@@ -132,9 +132,9 @@ def get_user_info(user_id, app_access_token, client_id):
     response = requests.request(**request_data)
     response_json = response.json()
     if (response.status_code == 200):
-        return (response_json["data"][0]["broadcaster_id"],response_json["data"][0]["broadcaster_name"])
+        return (response_json["data"][0]["id"],response_json["data"][0]["display_name"],response_json["data"][0]["broadcaster_type"])
     else:
-        return ("0","0")
+        return ("0","0","0")
     
 
 #Get banlist from user from twitch

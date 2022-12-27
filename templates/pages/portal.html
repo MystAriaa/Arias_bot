@@ -109,6 +109,9 @@
             <div class="filter_text_box">
                 <p>Other</p>
             </div>
+            <div class="filter_text_box">
+                <p>Trusted</p>
+            </div>
         </div>
         <form method="POST" action="/update_filter">
             <div class="filter_div">
@@ -145,6 +148,9 @@
                 <div class="filter_box">
                     <input type="checkbox" name="other" value='1' {{ check[10] }}>
                 </div>
+                <div class="filter_box">
+                    <input type="checkbox" name="trusted" value='1' {{ check[11] }}>
+                </div>
             </div>
             <div class="button2_div">
                 <input class="twitch_button" type="submit" value = "Update your filter"></input>
@@ -161,6 +167,7 @@
             <input type='hidden' name="spam" value='0'>
             <input type='hidden' name="username" value='0'>
             <input type='hidden' name="other" value='0'>
+            <input type='hidden' name="trusted" value='0'>
         </form>
         <div class="image_separator2">
             <img class="icon" src="static/img/seperator.png" alt="icon" width="200" height="10">

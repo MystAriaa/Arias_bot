@@ -34,6 +34,7 @@ def create_table_registered_user(connection):
             id INT AUTO_INCREMENT PRIMARY KEY,
             user_id INT(15),
             user_name VARCHAR(30),
+            user_type VARCHAR(10),
             access_token VARCHAR(50),
             refresh_token VARCHAR(50)
             );
@@ -105,7 +106,8 @@ def create_table_user_filter(connection):
             backseat TINYINT(1),
             spam TINYINT(1),
             username TINYINT(1),
-            other TINYINT(1)
+            other TINYINT(1),
+            trusted TINYINT(1)
             );
         ALTER TABLE filter_user ADD UNIQUE INDEX(user_id);
         """
@@ -129,7 +131,8 @@ def create_table_banned_tag(connection):
             backseat TINYINT(1),
             spam TINYINT(1),
             username TINYINT(1),
-            other TINYINT(1)
+            other TINYINT(1),
+            trusted TINYINT(1)
             );
         ALTER TABLE banned_tag ADD UNIQUE INDEX(user_id);
         """
@@ -158,11 +161,11 @@ def create_table_option_user(connection):
 #-----------------------------------------------------------------------------------------------------------------
 
 
-def input_a_new_user(connection, user_id, user_name, access_token, refresh_token):
+def input_a_new_user(connection, user_id, user_name, user_type, access_token, refresh_token):
     try: #Ajout
         command = """
-            INSERT INTO registered_user (user_id, user_name, access_token, refresh_token) VALUES ({}, "{}", "{}", "{}");
-            """.format(user_id, user_name, access_token, refresh_token)
+            INSERT INTO registered_user (user_id, user_name, user_type, access_token, refresh_token) VALUES ({}, "{}", "{}", "{}", "{}");
+            """.format(user_id, user_name, user_type, access_token, refresh_token)
         connection.reconnect()
         with connection.cursor() as cursor:
             cursor.execute(command)
@@ -308,6 +311,12 @@ def get_all_user_table(connection, user_id):
     return(list_of_banned_user)
 
 def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
+    user_type = get_user_info_by_id(connection, user_id)[3]
+    if user_type == "":
+        user_type = 0
+    else:
+        user_type = 1
+
     command = """DELETE FROM {}_banlist;""".format(user_id)
     try:
         connection.reconnect()
@@ -348,9 +357,24 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
 
         command = """
         INSERT INTO banned_tag
-        (user_id, permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other)
-        VALUE ({},{},{},{},{},{},{},{},{},{},{},{});
-        """.format(banned_user["user_id"],t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],t[8],t[9],t[10])
+        (user_id, permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other, trusted)
+        VALUE ({},{},{},{},{},{},{},{},{},{},{},{},{});
+        """.format(banned_user["user_id"],t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],t[8],t[9],t[10],user_type)
+        try:
+            connection.reconnect()
+            with connection.cursor() as cursor:
+                cursor.execute(command)
+                connection.commit()
+            log.log("Un utilisateur bannis à été affublé de tags")
+        except:
+            log.log("Un utilisateur bannis n'à pas été affublé de tags car deja present surement")
+
+        print(user_type)
+        command = """
+        UPDATE banned_tag
+        SET permanent={}, timeout={}, commented={}, notcommented={}, sexism={}, homophobia={}, rascism={}, backseat={}, spam={}, username={}, other={}, trusted={}
+        WHERE user_id = {};
+        """.format(t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],t[8],t[9],t[10],user_type,banned_user["user_id"])
         try:
             connection.reconnect()
             with connection.cursor() as cursor:
@@ -361,16 +385,18 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
             log.log("Un utilisateur bannis n'à pas été affublé de tags car deja present surement")
 
 
+
+
 def get_tag_by_id(connection, user_id):
     command = """
-    SELECT permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other FROM banned_tag WHERE user_id = {}
+    SELECT permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other, trusted FROM banned_tag WHERE user_id = {}
     """.format(user_id)
     connection.reconnect()
     with connection.cursor() as cursor:
         cursor.execute(command)
         list_of_tag = cursor.fetchall()
         tuple_of_tag = list_of_tag[0]
-    dict = {"permanent": tuple_of_tag[0], "timeout": tuple_of_tag[1], "commented": tuple_of_tag[2], "notcommented": tuple_of_tag[3], "sexism": tuple_of_tag[4], "homophobia": tuple_of_tag[5], "rascism": tuple_of_tag[6], "backseat": tuple_of_tag[7],"spam": tuple_of_tag[8],"username": tuple_of_tag[9],"other": tuple_of_tag[10]}
+    dict = {"permanent": tuple_of_tag[0], "timeout": tuple_of_tag[1], "commented": tuple_of_tag[2], "notcommented": tuple_of_tag[3], "sexism": tuple_of_tag[4], "homophobia": tuple_of_tag[5], "rascism": tuple_of_tag[6], "backseat": tuple_of_tag[7],"spam": tuple_of_tag[8],"username": tuple_of_tag[9],"other": tuple_of_tag[10],"trusted": tuple_of_tag[11]}
     return(dict)
 
 
@@ -397,7 +423,6 @@ def get_user_filter(connection, user_id):
             cursor.execute(command)
             result = cursor.fetchall()
             tuple = result[0]
-            #final = [tuple[2],tuple[3],tuple[4],tuple[5],tuple[6],tuple[7],tuple[8],tuple[9],tuple[10],tuple[11],tuple[12]]
             final = []
             for e in tuple:
                 final.append(e)
@@ -405,7 +430,7 @@ def get_user_filter(connection, user_id):
             final.pop(0)
             return (final)
     except:
-        return [1,0,1,1,1,1,1,0,0,0,1] #default filter
+        return [1,0,1,1,1,1,1,0,0,0,1,0] #default filter
 
 def set_user_filter(connection, user_id, f):
     t = []
@@ -413,8 +438,8 @@ def set_user_filter(connection, user_id, f):
         t.append(int(e))
     command = """
     INSERT INTO filter_user
-    (user_id, permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other)
-    VALUE ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11});""".format(user_id,t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],t[8],t[9],t[10])
+    (user_id, permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other, trusted)
+    VALUE ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12});""".format(user_id,t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],t[8],t[9],t[10],t[11])
     log.log("Ajout de nouvelles données de filtre pour l'user {}".format(user_id))
     try:
         connection.reconnect()
@@ -431,8 +456,8 @@ def update_user_filter(connection, user_id, f):
         t.append(int(e))
     command = """
     INSERT INTO filter_user
-    (user_id, permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other)
-    VALUE ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11});""".format(user_id,t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],t[8],t[9],t[10])
+    (user_id, permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other, trusted)
+    VALUE ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12});""".format(user_id,t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],t[8],t[9],t[10],t[11])
     log.log("Ajout de nouvelles données de filtre pour l'user {}".format(user_id))
     try:
         connection.reconnect()
@@ -445,9 +470,9 @@ def update_user_filter(connection, user_id, f):
 
     command = """ 
     UPDATE filter_user 
-    SET permanent='{}',timeout='{}', commented='{}', notcommented='{}', sexism='{}', homophobia='{}', rascism='{}', backseat='{}', spam='{}', username='{}', other='{}'
+    SET permanent='{}',timeout='{}', commented='{}', notcommented='{}', sexism='{}', homophobia='{}', rascism='{}', backseat='{}', spam='{}', username='{}', other='{}', trusted='{}'
     WHERE user_id = {};
-    """.format(t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],t[8],t[9],t[10],user_id)
+    """.format(t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],t[8],t[9],t[10],t[11],user_id)
     try:
         connection.reconnect()
         with connection.cursor() as cursor:
@@ -462,12 +487,14 @@ def update_user_filter(connection, user_id, f):
 def get_bannable_id_by_filter(connection, user_filter_pref):
     #Fonction that get a list of banned_user_id select in fonction of the user preferene via filter
     #A litte bit complicated but we do Unions and Intersections like so
-    # ((perma)U(timeout)) I ((commented)U(notcommented)) I ((sexism)U(homophobia)U(rascism)U(backseat)U(spam)U(username)U(other))
+    # ((perma)U(timeout)) I ((commented)U(notcommented)) I ((sexism)U(homophobia)U(rascism)U(backseat)U(spam)U(username)U(other) I (trusted)U(nottrusted))
     #user_filter_pref = [1,0,1,0,1,0,0,0,0,0,1]
     
     dict_1 = {"permanent": user_filter_pref[0], "timeout": user_filter_pref[1]}
     dict_2 = {"commented": user_filter_pref[2], "notcommented": user_filter_pref[3]}
     dict_3 = {"sexism": user_filter_pref[4], "homophobia": user_filter_pref[5], "rascism": user_filter_pref[6], "backseat": user_filter_pref[7],"spam": user_filter_pref[8],"username": user_filter_pref[9],"other": user_filter_pref[10]}
+    trusted_value_filter = user_filter_pref[11]
+
     list_of_id_1 = []
     for key,value in dict_1.items():
         if (value == 1):
@@ -499,25 +526,44 @@ def get_bannable_id_by_filter(connection, user_filter_pref):
                     pass
     list_of_id_2 = [list_of_id_2[i] for i in range(len(list_of_id_2)) if i == list_of_id_2.index(list_of_id_2[i])] #Remove duplicates
 
-    temp_list = [value for value in list_of_id_1 if value in list_of_id_2] #intersection
+    temp_list1 = [value for value in list_of_id_1 if value in list_of_id_2] #intersection
 
-    #need to exclude not wanted tag
-    list_of_id_3 = []
-    for key,value in dict_3.items():
-        if (value == 1):
-            command = """SELECT user_id FROM banned_tag WHERE {}={};""".format(key,value)
-            try:
-                connection.reconnect()
-                with connection.cursor() as cursor:
-                    cursor.execute(command)
-                    r = cursor.fetchall()
-                    for e in r:
-                        list_of_id_3.append(e[0])
-            except:
-                    pass
-    list_of_id_3 = [list_of_id_3[i] for i in range(len(list_of_id_3)) if i == list_of_id_3.index(list_of_id_3[i])] #Remove duplicates
-    
-    final = [value for value in temp_list if value in list_of_id_3]
+    if (dict_2["notcommented"] == 1):
+        temp_list2 = temp_list1
+    else:
+        #need to exclude not wanted tag
+        list_of_id_3 = []
+        for key,value in dict_3.items():
+            if (value == 1):
+                command = """SELECT user_id FROM banned_tag WHERE {}={};""".format(key,value)
+                try:
+                    connection.reconnect()
+                    with connection.cursor() as cursor:
+                        cursor.execute(command)
+                        r = cursor.fetchall()
+                        for e in r:
+                            list_of_id_3.append(e[0])
+                except:
+                        pass
+        list_of_id_3 = [list_of_id_3[i] for i in range(len(list_of_id_3)) if i == list_of_id_3.index(list_of_id_3[i])] #Remove duplicates
+        
+        temp_list2 = [value for value in temp_list1 if value in list_of_id_3]
+
+    list_of_id_4 = []
+    if trusted_value_filter == 1:
+        command = """SELECT user_id FROM banned_tag WHERE trusted = 1;"""
+        try:
+            connection.reconnect()
+            with connection.cursor() as cursor:
+                cursor.execute(command)
+                r = cursor.fetchall()
+                for e in r:
+                    list_of_id_4.append(e[0])
+        except:
+            pass
+        final = [value for value in temp_list2 if value in list_of_id_4]
+    else:
+        final = temp_list2
     return (final)
 
 

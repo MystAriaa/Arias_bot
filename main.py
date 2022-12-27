@@ -95,17 +95,17 @@ def query():
 		#+check si notre app_access_token a besoin d'etre refresh      
 		if (twitch.token_validation(app_access_token) != 1):
 			app_access_token = twitch.token_refresh(connection_bd, client_id, client_secret, mode = "app")
-		user_id, user_name = twitch.get_user_info(user_id, app_access_token, client_id)
-		if (user_id == "0" and user_name == "0"):
+		user_id, user_name, user_type = twitch.get_user_info(user_id, app_access_token, client_id)
+		if (user_id == "0" and user_name == "0" and user_type == "0"):
 			log.log("get_user_info returns 0, we go out. app_access_token={}, acces_granted={}".format(app_access_token,acces_granted))
 			random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 			random_state_list.append(random_state)
 			return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state)
 		else:
 			#Mise en base de donnée de l'utilisateur
-			mysql.input_a_new_user(connection_bd, user_id, user_name, user_access_token, user_refresh_token)
+			mysql.input_a_new_user(connection_bd, user_id, user_name, user_type, user_access_token, user_refresh_token)
 			#Creation du filtrage par defaut pour cette utilisateur
-			default_list_filter = ['1','0','1','1','1','1','1','0','0','0','1']
+			default_list_filter = ['1','0','1','1','1','1','1','0','0','0','1','0']
 			mysql.set_user_filter(connection_bd, user_id, default_list_filter)
 			#Creation de ces options
 			mysql.set_user_option(connection_bd, user_id, [0,0])
@@ -196,16 +196,16 @@ def disconnect():
 def force_update_ban():
 	user_access_token = request.form['access_token']
 	user_info = mysql.get_user_info_by_access_token(connection_bd, user_access_token)
-	#0: primary_key / 1:user_id / 2:user_name / 3:access_token / 4:refresh_token
+	#0: primary_key / 1:user_id / 2:user_name / 3:user_type / 4:access_token / 5:refresh_token
 	user_id = user_info[1]
-	user_access_token = user_info[3]
+	user_access_token = user_info[4]
 	list_of_banned_user = mysql.get_all_master_banlist(connection_bd)
 	twitch.ban_from_master_banlist(connection_bd, user_id, user_access_token, list_of_banned_user, client_id)
 	return render_template('pages/validation.html',text="Arias_bot paid a visit on your channel !")
 
 @app.route('/update_filter', methods=['POST'])
 def update_filter():
-	list_filter = [request.form['permanent'],request.form['timeout'],request.form['commented'],request.form['notcommented'],request.form['sexism'],request.form['homophobia'],request.form['rascism'],request.form['backseat'],request.form['spam'],request.form['username'],request.form['other']]
+	list_filter = [request.form['permanent'],request.form['timeout'],request.form['commented'],request.form['notcommented'],request.form['sexism'],request.form['homophobia'],request.form['rascism'],request.form['backseat'],request.form['spam'],request.form['username'],request.form['other'],request.form['trusted']]
 	user_id = twitch.token_validation(request.form['access_token'])
 	mysql.update_user_filter(connection_bd, user_id, list_filter)
 	return render_template('pages/validation.html', text="Your filter have been successfully updated.")
@@ -253,12 +253,12 @@ def routine_update_user_banned_table():
 		log.log("1/3")
 
 		array_of_users_info = mysql.get_all_users(connection_bd)
-		for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_name / 3:access_token / 4:refresh_token
+		for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_name / 3:user_type / 4:access_token / 5:refresh_token
 					
 			user_id = user[1]
 			user_name = user[2]
-			user_access_token = user[3]
-			user_refresh_token = user[4]
+			user_access_token = user[4]
+			user_refresh_token = user[5]
 			log.log("Mise à jour des bannis pour {}".format(user_name))
 			#check les access_token
 			id = twitch.token_validation(user_access_token)
@@ -293,7 +293,7 @@ def routine_update_user_banned_table():
 		list_of_banned_user_from_master = mysql.get_all_master_banlist(connection_bd)
 
 		list_of_banned_user = []
-		for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_name / 3:access_token / 4:refresh_token
+		for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_name / 3:user_type / 4:access_token / 5:refresh_token
 			list_of_banned_user.extend(mysql.get_all_user_table(connection_bd, user[1]))
 
 		#Il faut mettre à 0 les PRIMARY_KEY de tout les elements des deux listes pour pouvoir les comparer+ retirer les origin channels + time 
@@ -328,9 +328,9 @@ def routine_update_user_banned_table():
 
 		log.log("3/3")
 		#array_of_users_info = mysql.get_all_users(connection_bd)
-		for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_name / 3:access_token / 4:refresh_token			
+		for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_name / 3:user_type / 4:access_token / 5:refresh_token		
 			user_id = user[1]
-			user_access_token = user[3]
+			user_access_token = user[4]
 			#If Give-Only option is off or None we can ban on this channel
 			if (mysql.get_user_option(connection_bd, user_id)["giveonly"] == "Error"):
 				pass
