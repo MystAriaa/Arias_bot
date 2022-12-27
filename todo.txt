@@ -1,6 +1,3 @@
-List user
-
-
 discord bot pour identification + stat + debug + log
 
 

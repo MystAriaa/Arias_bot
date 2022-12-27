@@ -37,7 +37,6 @@ def home():
 	random_state_list.append(random_state)
 	while len(random_state_list) > 50:
 		random_state_list.pop(0)
-	print(random_state_list)
 	return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state)
 
 @app.route('/faq')
@@ -168,7 +167,6 @@ def visualisation():
 		list_tag = mysql.get_tag_by_id(connection_bd, e[0])
 		#Mise en list
 		list_data.append((e[1], list_tag, e[2], origin_text))
-	print(list_data)
 	return render_template('pages/visualisation.html', data = list_data)
 
 
@@ -278,7 +276,14 @@ def routine_update_user_banned_table():
 					#imput les bannies dans la datatababbaaasee
 					mysql.fill_banned_user_table_by_user(connection_bd, list_of_banned_users_by_user, user_id)
 				else:
-					pass
+					#If ON we must remove all banned user by Arias_bot from the channel
+					list_of_banned_user = twitch.get_banlist(user_id, user_access_token, client_id, filter = False)
+					list_of_unbanned_user = []
+					for banned_user in list_of_banned_user:
+						if("User automaticaly ban by Arias_bot." in banned_user["reason"]):
+							list_of_unbanned_user.append(banned_user)
+					twitch.unban_all(user_id, user_access_token, list_of_unbanned_user, client_id)
+
 			
 		#--------------------------------------------------------------------
 
