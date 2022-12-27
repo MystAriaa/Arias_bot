@@ -1,0 +1,273 @@
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-27 12:40:54 |||
+[2022-12-27 12:40:55]: Un token d'acces viens d'être générer pour l'app: cz5r5zt6r69uavltgp3idp40ailb55
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-27 12:40:56 |||
+[2022-12-27 12:40:57]: Un token d'acces viens d'être générer pour l'app: sir35v0vt3x4hn8rhesp2rftevcb8b
+[2022-12-27 12:43:06]: Rentre dans le thread
+[2022-12-27 12:43:06]: | Voici une itération du thread |
+[2022-12-27 12:43:06]: 1/3
+[2022-12-27 12:43:06]: Mise à jour des bannis pour Arias_bot
+[2022-12-27 12:43:07]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-27 12:43:08]: Un token d'acces et un de rafraichisement viens d'être générer par rafraichisement
+[2022-12-27 12:43:08]: Mise à neuf de la table 699600940_banlist
+[2022-12-27 12:43:08]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 12:43:08]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 12:43:08]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 12:43:08]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 12:43:08]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 12:43:08]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 12:43:08]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 12:43:08]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 12:43:08]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 12:43:08]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 12:43:08]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 12:43:08]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 12:43:08]: Mise à jour des bannis pour MystAria_
+[2022-12-27 12:43:09]: Notre token n'a pas été validée, il a besoin d'être refresh
+[2022-12-27 12:43:10]: Un token d'acces et un de rafraichisement viens d'être générer par rafraichisement
+[2022-12-27 12:43:10]: Mise à neuf de la table 161641887_banlist
+[2022-12-27 12:43:10]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-27 12:43:10]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 12:43:10]: 2/3
+[2022-12-27 12:43:10]: Les datas(tags) d'un utilisateur unban n'on pas pu etre éffacé
+[2022-12-27 12:43:10]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-27 12:43:10]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-27 12:43:10]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-27 12:43:10]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-27 12:43:10]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-27 12:43:10]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-27 12:43:10]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-27 12:43:10]: Mise à jour de la master_banlist
+[2022-12-27 12:43:10]: 3/3
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-27 12:47:58 |||
+[2022-12-27 12:47:59]: Un token d'acces viens d'être générer pour l'app: 9tawvzvb7swwu1ori021ctasb1o3dl
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-27 12:48:53 |||
+[2022-12-27 12:48:54]: Un token d'acces viens d'être générer pour l'app: 04elryows0e5fm7g0y44wt6wfxiezc
+[2022-12-27 12:58:54]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-27 12:58:55]: Un token d'acces viens d'être générer pour l'user: 53umxre3d5ee1ufn70hidv8eqnpdnk
+[2022-12-27 12:58:55]: Notre token user a été validée
+[2022-12-27 12:58:56]: Notre token app a été validée
+[2022-12-27 12:58:56]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-27 12:58:56]: Update avec succes d'un utilisateur
+[2022-12-27 12:58:56]: Ajout de nouvelles données de filtre pour l'user 699600940
+[2022-12-27 12:58:56]: Echec de l'ajout de data surment deja existante
+[2022-12-27 12:58:56]: Ajout de nouvelle options pour l'user 699600940
+[2022-12-27 12:58:56]: Echec de la création de la table banlist pour l'utilisateur: 699600940. Peut-etre celle-ci existe dèja ?
+[2022-12-27 12:58:57]: Mise à neuf de la table 699600940_banlist
+[2022-12-27 12:58:57]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 12:58:57]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 12:58:57]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 12:58:57]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 12:58:57]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 12:58:57]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 12:58:57]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 12:58:57]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 12:58:57]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 12:58:57]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 12:58:57]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 12:58:57]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 13:00:14]: Rentre dans le thread
+[2022-12-27 13:00:14]: | Voici une itération du thread |
+[2022-12-27 13:00:14]: 1/3
+[2022-12-27 13:00:14]: Mise à jour des bannis pour Arias_bot
+[2022-12-27 13:00:15]: Notre token user a été validée
+[2022-12-27 13:00:15]: Mise à neuf de la table 699600940_banlist
+[2022-12-27 13:00:15]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 13:00:15]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 13:00:15]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 13:00:15]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 13:00:15]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 13:00:15]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 13:00:15]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 13:00:15]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 13:00:15]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 13:00:15]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 13:00:15]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 13:00:15]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 13:00:15]: Mise à jour des bannis pour MystAria_
+[2022-12-27 13:00:16]: Notre token user a été validée
+[2022-12-27 13:00:16]: Mise à neuf de la table 161641887_banlist
+[2022-12-27 13:00:16]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-27 13:00:16]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 13:00:16]: 2/3
+[2022-12-27 13:00:16]: Les datas(tags) d'un utilisateur unban n'on pas pu etre éffacé
+[2022-12-27 13:00:16]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-27 13:00:16]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-27 13:00:16]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-27 13:00:16]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-27 13:00:16]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-27 13:00:16]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-27 13:00:16]: Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.
+[2022-12-27 13:00:16]: Mise à jour de la master_banlist
+[2022-12-27 13:00:16]: 3/3
+[2022-12-27 13:00:16]: Bannisement pour l'utilisateur: 699600940
+[2022-12-27 13:00:16]: Skip du ban car originaire de cette utilisateur
+[2022-12-27 13:00:16]: Skip du ban car originaire de cette utilisateur
+[2022-12-27 13:00:16]: Skip du ban car originaire de cette utilisateur
+[2022-12-27 13:00:16]: Skip du ban car originaire de cette utilisateur
+[2022-12-27 13:00:16]: Skip du ban car originaire de cette utilisateur
+[2022-12-27 13:00:16]: Skip du ban car originaire de cette utilisateur
+[2022-12-27 13:00:16]: Bannisement pour l'utilisateur: 161641887
+[2022-12-27 13:00:17]: Ban de 342
+[2022-12-27 13:00:18]: Skip du ban car originaire de cette utilisateur
+[2022-12-27 13:00:18]: | Voici la fin de l'itération du thread |
+[2022-12-27 13:00:18]: Sort du thread
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-27 13:48:09 |||
+[2022-12-27 13:48:10]: Un token d'acces viens d'être générer pour l'app: n6p1vu3p9w04p1frw5gdpo21skwuy3
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-27 13:50:16 |||
+[2022-12-27 13:50:17]: Un token d'acces viens d'être générer pour l'app: y37wsu56ynuo49m4hct3zi3y1xw7pd
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-27 13:53:30 |||
+[2022-12-27 13:53:31]: Un token d'acces viens d'être générer pour l'app: 0lx69tda0fhokoz5ym2bj2xw8inm7p
+[2022-12-27 13:54:09]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-27 13:54:10]: Un token d'acces viens d'être générer pour l'user: vw2vixpwedrbd4s53dglb1ynkg735y
+[2022-12-27 13:54:11]: Notre token user a été validée
+[2022-12-27 13:54:11]: Notre token app a été validée
+[2022-12-27 13:54:12]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-27 13:54:12]: Update avec succes d'un utilisateur
+[2022-12-27 13:54:12]: Ajout de nouvelles données de filtre pour l'user 699600940
+[2022-12-27 13:54:12]: Echec de l'ajout de data surment deja existante
+[2022-12-27 13:54:12]: Ajout de nouvelle options pour l'user 699600940
+[2022-12-27 13:54:12]: Echec de la création de la table banlist pour l'utilisateur: 699600940. Peut-etre celle-ci existe dèja ?
+[2022-12-27 13:54:12]: Mise à neuf de la table 699600940_banlist
+[2022-12-27 13:54:12]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 13:54:12]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 13:54:12]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 13:54:12]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 13:54:12]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 13:54:12]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 13:54:12]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 13:54:12]: Un utilisateur bannis à été affublé de tags
+[2022-12-27 13:54:12]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 13:54:12]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 13:54:12]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 13:54:12]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 13:54:12]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 13:54:12]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 13:54:22]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-27 13:54:23]: Un token d'acces viens d'être générer pour l'user: gwrexbcbhgqt75f0hk0j31so6bjksv
+[2022-12-27 13:54:23]: Notre token user a été validée
+[2022-12-27 13:54:24]: Notre token app a été validée
+[2022-12-27 13:54:24]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-27 13:54:24]: Update avec succes d'un utilisateur
+[2022-12-27 13:54:24]: Ajout de nouvelles données de filtre pour l'user 161641887
+[2022-12-27 13:54:24]: Echec de l'ajout de data surment deja existante
+[2022-12-27 13:54:24]: Ajout de nouvelle options pour l'user 161641887
+[2022-12-27 13:54:24]: Echec de la création de la table banlist pour l'utilisateur: 161641887. Peut-etre celle-ci existe dèja ?
+[2022-12-27 13:54:25]: Mise à neuf de la table 161641887_banlist
+[2022-12-27 13:54:25]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-27 13:54:25]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-27 14:28:45 |||
+[2022-12-27 14:28:46]: Un token d'acces viens d'être générer pour l'app: j6adgg5vgaxcupmcjtb5be0y0qob9k
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-27 14:32:46 |||
+[2022-12-27 14:32:47]: Un token d'acces viens d'être générer pour l'app: wo4la82h200ixlpn6r1vdm45w94gcw
+[2022-12-27 14:34:55]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-27 14:34:56]: Un token d'acces viens d'être générer pour l'user: bg0jnbh2fann4q3whzk4htj2y6naa6
+[2022-12-27 14:34:57]: Notre token user a été validée
+[2022-12-27 14:34:57]: Notre token app a été validée
+[2022-12-27 14:34:58]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-27 14:34:58]: Update avec succes d'un utilisateur
+[2022-12-27 14:34:58]: Ajout de nouvelles données de filtre pour l'user 699600940
+[2022-12-27 14:34:58]: Echec de l'ajout de data surment deja existante
+[2022-12-27 14:34:58]: Echec de l'ajout de nouvelle options pour l'user 699600940
+[2022-12-27 14:34:58]: Echec de la création de la table banlist pour l'utilisateur: 699600940. Peut-etre celle-ci existe dèja ?
+[2022-12-27 14:34:58]: Mise à neuf de la table 699600940_banlist
+[2022-12-27 14:34:58]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:34:58]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:34:58]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:34:58]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:34:58]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:34:58]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:34:58]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:34:58]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:34:58]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:34:58]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:34:58]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:34:58]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:34:58]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:34:58]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:36:40]: Notre token user a été validée
+[2022-12-27 14:36:40]: Update d'options pour l'user 699600940
+[2022-12-27 14:36:47]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-27 14:36:48]: Un token d'acces viens d'être générer pour l'user: ve014wyryzrkyiyzkxh24gbbmf6ask
+[2022-12-27 14:36:48]: Notre token user a été validée
+[2022-12-27 14:36:49]: Notre token app a été validée
+[2022-12-27 14:36:49]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-27 14:36:49]: Update avec succes d'un utilisateur
+[2022-12-27 14:36:49]: Ajout de nouvelles données de filtre pour l'user 699600940
+[2022-12-27 14:36:49]: Echec de l'ajout de data surment deja existante
+[2022-12-27 14:36:49]: Echec de l'ajout de nouvelle options pour l'user 699600940
+[2022-12-27 14:36:49]: Echec de la création de la table banlist pour l'utilisateur: 699600940. Peut-etre celle-ci existe dèja ?
+[2022-12-27 14:36:50]: Mise à neuf de la table 699600940_banlist
+[2022-12-27 14:36:50]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:36:50]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:36:50]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:36:50]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:36:50]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:36:50]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:36:50]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:36:50]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:36:50]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:36:50]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:36:50]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:36:50]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:37:51]: We might be under a CSRF attack
+[2022-12-27 14:37:55]: Nous avons reçu l'autorisation de l'utilisateur.
+[2022-12-27 14:37:56]: Un token d'acces viens d'être générer pour l'user: 2j8wkxcalv4jxy8d593ojrfu4t5j5s
+[2022-12-27 14:37:57]: Notre token user a été validée
+[2022-12-27 14:37:57]: Notre token app a été validée
+[2022-12-27 14:37:57]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-27 14:37:57]: Update avec succes d'un utilisateur
+[2022-12-27 14:37:57]: Ajout de nouvelles données de filtre pour l'user 699600940
+[2022-12-27 14:37:57]: Echec de l'ajout de data surment deja existante
+[2022-12-27 14:37:57]: Echec de l'ajout de nouvelle options pour l'user 699600940
+[2022-12-27 14:37:57]: Echec de la création de la table banlist pour l'utilisateur: 699600940. Peut-etre celle-ci existe dèja ?
+[2022-12-27 14:37:58]: Mise à neuf de la table 699600940_banlist
+[2022-12-27 14:37:58]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:37:58]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:37:58]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:37:58]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:37:58]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:37:58]: Un utilisateur bannis à été ajouté à la table 699600940_banlist
+[2022-12-27 14:37:58]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:37:58]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:37:58]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:37:58]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:37:58]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-27 14:37:58]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-27 14:50:21 |||
+[2022-12-27 14:50:22]: Un token d'acces viens d'être générer pour l'app: 0oistl4lwvskwo34bjbu7o7o6yzymj
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-27 14:50:32 |||
+[2022-12-27 14:50:33]: Un token d'acces viens d'être générer pour l'app: 8f5eonilwdaxf5o3tr8tqqflu7gsn2
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-27 14:53:08 |||
+[2022-12-27 14:53:09]: Un token d'acces viens d'être générer pour l'app: gcjhae94vdjdndk2bzkcfwzv53ogjp
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-27 14:53:44 |||
+[2022-12-27 14:53:45]: Un token d'acces viens d'être générer pour l'app: 9crr8agar9lfgqf8t3ykg57cqxi0q0
+||| 2022-12-27 14:53:57 |||
+          ********** END OF LOG FILE **********          
+||| 2022-12-27 14:53:57 |||
+          ********** END OF LOG FILE **********          

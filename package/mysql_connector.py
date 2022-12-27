@@ -144,7 +144,8 @@ def create_table_option_user(connection):
         CREATE TABLE option_user(
             id INT AUTO_INCREMENT PRIMARY KEY,
             user_id INT(15),
-            giveonly TINYINT(1)
+            giveonly TINYINT(1),
+            receiveonly TINYINT(1)
             );
         ALTER TABLE option_user ADD UNIQUE INDEX(user_id);
         """
@@ -525,9 +526,9 @@ def get_bannable_id_by_filter(connection, user_filter_pref):
 def set_user_option(connection, user_id, option_list):
     command = """
     INSERT INTO option_user
-    (user_id, giveonly)
-    VALUE ({},{})
-    """.format(user_id,option_list[0])
+    (user_id, giveonly, receiveonly)
+    VALUE ({},{},{})
+    """.format(user_id,option_list[0],option_list[1])
     try:
         connection.reconnect()
         with connection.cursor() as cursor:
@@ -540,9 +541,9 @@ def set_user_option(connection, user_id, option_list):
 def update_user_option(connection, user_id, option_list):
     command = """
     UPDATE option_user 
-    SET giveonly='{1}'
+    SET giveonly='{1}', receiveonly='{2}'
     WHERE user_id = {0};
-    """.format(user_id, option_list[0])
+    """.format(user_id, option_list[0], option_list[1])
     try:
         connection.reconnect()
         with connection.cursor() as cursor:
@@ -554,17 +555,17 @@ def update_user_option(connection, user_id, option_list):
 
 def get_user_option(connection, user_id):
     command = """
-    SELECT giveonly FROM option_user
+    SELECT giveonly, receiveonly FROM option_user
     WHERE user_id = '{}';""".format(user_id)
     try:
         connection.reconnect()
         with connection.cursor() as cursor:
             cursor.execute(command)
             r = cursor.fetchall()[0]
-            dict = {"giveonly": r[0]}
+            dict = {"giveonly": r[0], "receiveonly": r[1]}
             return(dict) #Only sent out giveonly as tuple look like [(0,)]
     except:
-        pass
+        return("Error")
 
 def delete_user_option(connection, user_id):
     command = """

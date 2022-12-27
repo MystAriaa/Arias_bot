@@ -61,7 +61,7 @@
         </div>
         <div class="text1_div">
             <p style="overflow: hidden; text-overflow: ellipsis;">You've been succesfully connected to our network.<br>
-            From now on, you will share your banned accounts with other ! You can just wait for daily refresh or call Arias_bot immediately. Every updates happens daily at 5h UTC+0.</p>
+            From now on, you will share your banned users with others ! You can just wait for daily refresh or call Arias_bot immediately. Every updates happens daily at 5h UTC+0.</p>
         </div>
         <form method="POST" action="/force_update_ban">
             <input type='hidden' name="access_token" value="{{token}}">
@@ -173,6 +173,19 @@
             <input type='hidden' name="giveonly" value='0'>
             <div class="button4_div">
                 <input class="twitch_button" type="submit" value = "Toggle Give-Only"></input>
+            </div>
+        </form>
+        <div class="image_separator2">
+            <img class="icon" src="static/img/seperator.png" alt="icon" width="200" height="10">
+        </div>
+        <div class="text4_div">
+            <p style="overflow: hidden; text-overflow: ellipsis;">The Receive-Only option while ON will not share your banlist with our network. However Arias_bot will still apply our registered banned users to your channel.<br>{{receiveonlytext}}</p>
+        </div>
+        <form method="POST" action="/receive_only">
+            <input type='hidden' name="access_token" value="{{token}}">
+            <input type='hidden' name="receiveonly" value='0'>
+            <div class="button4_div">
+                <input class="twitch_button" type="submit" value = "Toggle Receive-Only"></input>
             </div>
         </form>
         <div class="image_separator3">

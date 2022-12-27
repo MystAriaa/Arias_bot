@@ -37,6 +37,7 @@ def home():
 	random_state_list.append(random_state)
 	while len(random_state_list) > 50:
 		random_state_list.pop(0)
+	print(random_state_list)
 	return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state)
 
 @app.route('/faq')
@@ -108,7 +109,7 @@ def query():
 			default_list_filter = ['1','0','1','1','1','1','1','0','0','0','1']
 			mysql.set_user_filter(connection_bd, user_id, default_list_filter)
 			#Creation de ces options
-			mysql.set_user_option(connection_bd, user_id, [0])
+			mysql.set_user_option(connection_bd, user_id, [0,0])
 			#Creation de sa table de bannis
 			mysql.create_table_banned_by_user(connection_bd, user_id)
 			#Fill la nouvelle table avec les bannis de l'utilisateur
@@ -117,11 +118,15 @@ def query():
 
 	#Petite mise en page en fonction de l'acces reçu
 	if (acces_granted):
-		user_option = mysql.get_user_option(connection_bd, user_id)["giveonly"]
-		if user_option == 1:
+		user_option = mysql.get_user_option(connection_bd, user_id)
+		if user_option["giveonly"] == 1:
 			giveonly_text = "The Give-Only option is currently ON for your channel."
-		elif user_option == 0:
+		elif user_option["giveonly"] == 0:
 			giveonly_text = "The Give-Only option is currently OFF for your channel."
+		if user_option["receiveonly"] == 1:
+			receiveonly_text = "The Receive-Only option is currently ON for your channel."
+		elif user_option["receiveonly"] == 0:
+			receiveonly_text = "The Receive-Only option is currently OFF for your channel."
 		#Boxes auto checked with registered user filter pref
 		user_filter_pref = mysql.get_user_filter(connection_bd, user_id)
 		
@@ -132,7 +137,7 @@ def query():
 			else:
 				checked_box_list.append("")
 
-		return render_template('pages/portal.html',acces_granted="Successful connection", channel_name=user_name, token=user_access_token, check=checked_box_list, giveonlytext = giveonly_text)
+		return render_template('pages/portal.html',acces_granted="Successful connection", channel_name=user_name, token=user_access_token, check=checked_box_list, giveonlytext = giveonly_text, receiveonlytext = receiveonly_text)
 	else:
 		random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 		random_state_list.append(random_state)
@@ -211,13 +216,27 @@ def update_filter():
 def give_only():
 	user_id = twitch.token_validation(request.form["access_token"])
 	
-	print(mysql.get_user_option(connection_bd, user_id)["giveonly"])
-	if mysql.get_user_option(connection_bd, user_id)["giveonly"] == 0:
-		mysql.update_user_option(connection_bd, user_id, [1])
+	dict_option = mysql.get_user_option(connection_bd, user_id)
+	if dict_option["giveonly"] == 0:
+		mysql.update_user_option(connection_bd, user_id, [1,dict_option["receiveonly"]])
 		text_return = "Give-Only is active for your channel."
 	else:
-		mysql.update_user_option(connection_bd, user_id, [0])
+		mysql.update_user_option(connection_bd, user_id, [0,dict_option["receiveonly"]])
 		text_return = "Give-Only is not active for your channel."
+		
+	return render_template('pages/validation.html', text=text_return)
+
+@app.route('/receive_only', methods=['POST'])
+def receive_only():
+	user_id = twitch.token_validation(request.form["access_token"])
+	
+	dict_option = mysql.get_user_option(connection_bd, user_id)
+	if dict_option["receiveonly"] == 0:
+		mysql.update_user_option(connection_bd, user_id, [dict_option["giveonly"], 1])
+		text_return = "Receive-Only is active for your channel."
+	else:
+		mysql.update_user_option(connection_bd, user_id, [dict_option["giveonly"], 0])
+		text_return = "Receive-Only is not active for your channel."
 		
 	return render_template('pages/validation.html', text=text_return)
 
@@ -247,11 +266,20 @@ def routine_update_user_banned_table():
 			id = twitch.token_validation(user_access_token)
 			if ( id == 0 or id == 1):
 				user_access_token, user_refresh_token = twitch.token_refresh(connection_bd, client_id, client_secret, user_id=user_id, refresh_token=user_refresh_token, mode = "user")
-			#appeler twitch allo les bannis stp
-			list_of_banned_users_by_user = twitch.get_banlist(user_id, user_access_token, client_id)
-			#imput les bannies dans la datatababbaaasee
-			mysql.fill_banned_user_table_by_user(connection_bd, list_of_banned_users_by_user, user_id)
-
+			
+			#Do not get banned_user from user with Receive-Only
+			user_option = mysql.get_user_option(connection_bd, user_id)
+			if user_option == "Error":
+				pass
+			else:
+				if (user_option["receiveonly"] == 0): # 0==OFF
+					#appeler twitch allo les bannis stp
+					list_of_banned_users_by_user = twitch.get_banlist(user_id, user_access_token, client_id)
+					#imput les bannies dans la datatababbaaasee
+					mysql.fill_banned_user_table_by_user(connection_bd, list_of_banned_users_by_user, user_id)
+				else:
+					pass
+			
 		#--------------------------------------------------------------------
 
 		#Ici on recupt la list a ban et on la compare a la table master pour voir qui de la table master on unban
@@ -299,11 +327,14 @@ def routine_update_user_banned_table():
 			user_id = user[1]
 			user_access_token = user[3]
 			#If Give-Only option is off or None we can ban on this channel
-			if (mysql.get_user_option(connection_bd, user_id)["giveonly"] == 1):
+			if (mysql.get_user_option(connection_bd, user_id)["giveonly"] == "Error"):
 				pass
 			else:
-				list_of_banned_user = mysql.get_all_master_banlist(connection_bd)
-				twitch.ban_from_master_banlist(connection_bd, user_id, user_access_token, list_of_banned_user, client_id)
+				if (mysql.get_user_option(connection_bd, user_id)["giveonly"] == 1):
+					pass
+				else:
+					list_of_banned_user = mysql.get_all_master_banlist(connection_bd)
+					twitch.ban_from_master_banlist(connection_bd, user_id, user_access_token, list_of_banned_user, client_id)
 
 		#---------------------------------------------------------------------
 
