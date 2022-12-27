@@ -369,7 +369,6 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
         except:
             log.log("Un utilisateur bannis n'à pas été affublé de tags car deja present surement")
 
-        print(user_type)
         command = """
         UPDATE banned_tag
         SET permanent={}, timeout={}, commented={}, notcommented={}, sexism={}, homophobia={}, rascism={}, backseat={}, spam={}, username={}, other={}, trusted={}

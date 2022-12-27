@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request
 from package import twitch_connector as twitch
 from package import mysql_connector as mysql
+from package import discord_connector as discord
 from package import log
 import threading
 import time
@@ -9,11 +10,13 @@ import datetime
 import string
 import random
 
+
 log.init_file_name()
 log.start_log()
 
 
 app = Flask(__name__)
+discord_bot = discord.get_discord_client()
 
 site_base_url = "http://localhost:5000/portal"
 client_id = twitch.get_client_id()
@@ -25,6 +28,7 @@ user_autorisation_url = "https://id.twitch.tv/oauth2/authorize?response_type={0}
 connection_bd = mysql.connect_to_database()
 
 app_access_token = ""
+discord_token = discord.get_discord_token()
 random_state_list = []
 
 flag_routine_update_user_banned_table = True
@@ -356,10 +360,54 @@ def routine_update_user_banned_table():
 #---------------------------------------------------------------------------------------------------------------------#
 
 
+def run_discord_bot():
+	global server
+	global channel
+	print("Enter discord bot thread")
+
+	server = 0
+	channel = 0
+
+	@discord_bot.event
+	async def on_ready():
+		global channel
+		global server
+		print(f'{discord_bot.user} is now running!')
+		server = discord.get_discord_guild(discord_bot)
+		channel = discord.get_discord_channel(discord_bot, "test-bot")
+		await channel.send("I am reborn.")
+
+	@discord_bot.event
+	async def on_message(message):
+		if message.author == discord_bot.user:
+			return
+		username = str(message.author)
+		user_message = str(message.content)
+		channel = str(message.channel)
+		print(f"{username} said: '{user_message}' ({channel})")
+		#await discord.send_message(message.channel, user_message)
+		if user_message[0] == '!':
+			if "stop" in str(user_message):
+				print("closing")
+				await message.channel.send("Bot is closing, Bye.")
+				await discord_bot.close()
+				return
+
+	discord_bot.run(discord_token)
+
+
+	print("Exit discord bot thread")
+
+
+#---------------------------------------------------------------------------------------------------------------------#
+
 if __name__ == '__main__':
 	app_access_token = twitch.token_generation(client_id,client_secret)
-	thread_update_user_banned_table = threading.Thread(target = routine_update_user_banned_table)
-	app.run(debug=True, port=5000)
+	#thread_update_user_banned_table = threading.Thread(target = routine_update_user_banned_table)
+	THREAD_discord_bot = threading.Thread(target = run_discord_bot)
+	THREAD_discord_bot.start()
+	app.run(debug=False, port=5000)
+	
 	log.end_log()
 
 
