@@ -63,8 +63,9 @@ def home():
 			random_state_list.append(random_state)
 			log.log("An user succesfully authenticated by discord")
 			return render_template('pages/home.html', acces_granted="", user_autorisation_url = user_autorisation_url + random_state)
-	except:
+	except Exception as e:
 		log.log("An user did not get authenticated by discord succesfully")
+		log.log(str(e))
 		return render_template('pages/entree.html')
 
 @app.route('/faq')
@@ -111,8 +112,9 @@ def query():
 			random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 			random_state_list.append(random_state)
 			return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state)
-	except:
+	except Exception as e:
 		log.log("We did not get the state value from Twitch. Return to home page")
+		log.log(str(e))
 		random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 		random_state_list.append(random_state)
 		return render_template('pages/home.html', acces_granted="Whoops, connection failed", user_autorisation_url = user_autorisation_url + random_state)
@@ -415,8 +417,8 @@ def routine_update_user_banned_table():
 	random_state_list.append(random_state)
 	try:
 		return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state)
-	except:
-		pass
+	except Exception as e:
+		log.log(str(e))
 
 
 #---------------------------------------------------------------------------------------------------------------------#
@@ -466,7 +468,8 @@ def run_discord_bot():
 							await message.channel.send("User {} banned from the network.".format(id))
 							log.log("Member {} have been banned from the network for discord bot".format(id))
 							mysql.add_ban_member(connection_bd, id)
-						except:
+						except Exception as e:
+							log.log(str(e))
 							await message.channel.send("Wrong format: !ban <id>")
 						return
 						
@@ -477,7 +480,8 @@ def run_discord_bot():
 							await message.channel.send("User {} unbanned from the network.".format(id))
 							log.log("Member {} have been unbanned from the network for discord bot".format(id))
 							mysql.remove_ban_member(connection_bd, id)
-						except:
+						except Exception as e:
+							log.log(str(e))
 							await message.channel.send("Wrong format: !unban <id>")
 						return
 						
@@ -488,7 +492,8 @@ def run_discord_bot():
 							id = mysql.get_user_id_by_name(connection_bd, name)
 							await message.channel.send("User {} got this id: {}".format(name,id))
 							log.log("Member with id {} have the name {} from discord bot".format(id,name))
-						except:
+						except Exception as e:
+							log.log(str(e))
 							await message.channel.send("Wrong format: !getid <name>")
 						return
 

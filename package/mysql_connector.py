@@ -291,6 +291,7 @@ def remove_list_user_in_master(connection, list):
 
 
 def get_all_users(connection):
+    log.log("Called get_all_users")
     command = """SELECT * FROM registered_user;"""
     connection.reconnect()
     with connection.cursor() as cursor:
@@ -298,6 +299,7 @@ def get_all_users(connection):
         result = cursor.fetchall()
         return (result)
 def get_user_id_by_name(connection, user_name):
+    log.log("Called get_user_id_by_name")
     command = """SELECT user_id FROM registered_user WHERE user_name = "{}";""".format(user_name)
     connection.reconnect()
     with connection.cursor() as cursor:
@@ -305,6 +307,7 @@ def get_user_id_by_name(connection, user_name):
         result = cursor.fetchall()
         return (result[0][0])
 def get_user_name_by_id(connection, user_id):
+    log.log("Called get_user_name_by_id")
     command = """SELECT user_name FROM registered_user WHERE user_id = "{}";""".format(user_id)
     connection.reconnect()
     with connection.cursor() as cursor:
@@ -312,6 +315,7 @@ def get_user_name_by_id(connection, user_id):
         result = cursor.fetchall()
         return (result[0][0])
 def get_user_info_by_id(connection, user_id):
+    log.log("Called get_user_info_by_id")
     command = """SELECT * FROM registered_user WHERE user_id = {};""".format(user_id)
     connection.reconnect()
     with connection.cursor() as cursor:
@@ -319,6 +323,7 @@ def get_user_info_by_id(connection, user_id):
         result = cursor.fetchall()
         return (result[0])
 def get_user_info_by_access_token(connection, access_token):
+    log.log("Called get_user_info_by_access_token")
     command = """SELECT * FROM registered_user WHERE access_token = "{}";""".format(access_token)
     connection.reconnect()
     with connection.cursor() as cursor:
@@ -326,6 +331,7 @@ def get_user_info_by_access_token(connection, access_token):
         result = cursor.fetchall()
         return (result[0])
 def set_new_user_info(connection, user_id, new_access_token, new_refresh_token):
+    log.log("Called set_new_user_info")
     command = """
         UPDATE registered_user 
         SET access_token = '{1}', refresh_token = '{2}'
@@ -336,6 +342,7 @@ def set_new_user_info(connection, user_id, new_access_token, new_refresh_token):
             connection.commit()
 
 def get_all_user_table(connection, user_id):
+    log.log("Called get_all_user_table")
     command = """SELECT * FROM {}_banlist""".format(user_id)
     connection.reconnect()
     with connection.cursor() as cursor:
@@ -344,6 +351,7 @@ def get_all_user_table(connection, user_id):
     return(list_of_banned_user)
 
 def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
+    log.log("Called fill_banned_user_table_by_user")
     user_type = get_user_info_by_id(connection, user_id)[3]
     if user_type == "":
         user_type = 0
@@ -356,9 +364,10 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        log.log("Mise à neuf de la table {}_banlist".format(user_id))
-    except:
-        log.log("Delete all from failled")
+        log.log("Successfully wipeout table {}_banlist".format(user_id))
+    except Exception as e:
+        log.log("Failed to wipeout table {}_banlist".format(user_id))
+        log.log(str(e))
 
     for banned_user in list_of_banned_users:
         try:
@@ -376,9 +385,10 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
             with connection.cursor() as cursor:
                 cursor.execute(command)
                 connection.commit()
-            log.log("Un utilisateur bannis à été ajouté à la table {}_banlist".format(user_id))
-        except:
-            log.log("Un utilisateur bannis à été filtré car déja présent dans la table {}_banlist".format(user_id))
+            log.log("A new user {} has been added in table {}_banlist".format(banned_user["user_id"],user_id))
+        except Exception as e:
+            log.log("Failed to add a new user {} in table {}_banlist".format(banned_user["user_id"],user_id))
+            log.log(str(e))
 
 
     for banned_user in list_of_banned_users:
@@ -398,9 +408,10 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
             with connection.cursor() as cursor:
                 cursor.execute(command)
                 connection.commit()
-            log.log("Un utilisateur bannis à été affublé de tags")
-        except:
-            log.log("Un utilisateur bannis n'à pas été affublé de tags car deja present surement")
+            log.log("Successfully added tags to user {} in banned_tag table".format(banned_user["user_id"]))
+        except Exception as e:
+            log.log("Failed to add tags to user {} in banned_tag table".format(banned_user["user_id"]))
+            log.log(str(e))
 
         command = """
         UPDATE banned_tag
@@ -412,42 +423,53 @@ def fill_banned_user_table_by_user(connection, list_of_banned_users, user_id):
             with connection.cursor() as cursor:
                 cursor.execute(command)
                 connection.commit()
-            log.log("Un utilisateur bannis à été affublé de tags")
-        except:
-            log.log("Un utilisateur bannis n'à pas été affublé de tags car deja present surement")
+            log.log("Successfully updated tags for user {} in banned_tag table".format(banned_user["user_id"]))
+        except Exception as e:
+            log.log("Failed to update tags for user {} in banned_tag table".format(banned_user["user_id"]))
+            log.log(str(e))
 
 
 
 
 def get_tag_by_id(connection, user_id):
+    log.log("Called get_tag_by_id")
     command = """
     SELECT permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other, trusted FROM banned_tag WHERE user_id = {}
     """.format(user_id)
-    connection.reconnect()
-    with connection.cursor() as cursor:
-        cursor.execute(command)
-        list_of_tag = cursor.fetchall()
-        tuple_of_tag = list_of_tag[0]
-    dict = {"permanent": tuple_of_tag[0], "timeout": tuple_of_tag[1], "commented": tuple_of_tag[2], "notcommented": tuple_of_tag[3], "sexism": tuple_of_tag[4], "homophobia": tuple_of_tag[5], "rascism": tuple_of_tag[6], "backseat": tuple_of_tag[7],"spam": tuple_of_tag[8],"username": tuple_of_tag[9],"other": tuple_of_tag[10],"trusted": tuple_of_tag[11]}
-    return(dict)
+    try:
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            list_of_tag = cursor.fetchall()
+            tuple_of_tag = list_of_tag[0]
+        dict = {"permanent": tuple_of_tag[0], "timeout": tuple_of_tag[1], "commented": tuple_of_tag[2], "notcommented": tuple_of_tag[3], "sexism": tuple_of_tag[4], "homophobia": tuple_of_tag[5], "rascism": tuple_of_tag[6], "backseat": tuple_of_tag[7],"spam": tuple_of_tag[8],"username": tuple_of_tag[9],"other": tuple_of_tag[10],"trusted": tuple_of_tag[11]}
+        log.log("Successfully returning filter tags for user {}: {}".format(user_id,dict))
+        return(dict)
+    except Exception as e:
+        log.log("Failed to return filter tags for user {}".format(user_id))
+        log.log(str(e))
+        return({"permanent": 0, "timeout": 0, "commented": 0, "notcommented": 0, "sexism": 0, "homophobia": 0, "rascism": 0, "backseat": 0,"spam": 0,"username": 0,"other": 0,"trusted": 0})
 
 
 #---------FILTER AREA--------------------------------------------------------------------------#
 
 
 def remove_list_user_from_tag_table(connection, list_user):
+    log.log("Called remove_list_user_from_tag_table")
     for user in list_user:
         command = """DELETE FROM banned_tag WHERE user_id = {};""".format(user[1])
-    try:
-        connection.reconnect()
-        with connection.cursor() as cursor:
-            cursor.execute(command)
-            connection.commit()
-        log.log("Les datas(tags) d'un utilisateur unban on été éffacé")
-    except:
-        log.log("Les datas(tags) d'un utilisateur unban n'on pas pu etre éffacé")
+        try:
+            connection.reconnect()
+            with connection.cursor() as cursor:
+                cursor.execute(command)
+                connection.commit()
+            log.log("Successfully removed user {} from banned_tag table".format(user[1]))
+        except Exception as e:
+            log.log("Failed to remove user {} from banned_tag table".format(user[1]))
+            log.log(str(e))
 
 def get_user_filter(connection, user_id):
+    log.log("Called get_user_filter")
     command = """SELECT * FROM filter_user WHERE user_id = {}""".format(user_id)
     try:
         connection.reconnect()
@@ -460,11 +482,15 @@ def get_user_filter(connection, user_id):
                 final.append(e)
             final.pop(0)
             final.pop(0)
+            log.log("Successfully returning filter options for user {}: {}".format(user_id,final))
             return (final)
-    except:
+    except Exception as e:
+        log.log("Failed to get filter options for user {}. Returning [1,0,1,1,1,1,1,0,0,0,1,0]".format(user_id))
+        log.log(str(e))
         return [1,0,1,1,1,1,1,0,0,0,1,0] #default filter
 
 def set_user_filter(connection, user_id, f):
+    log.log("Called set_user_filter")
     t = []
     for e in f:
         t.append(int(e))
@@ -472,17 +498,19 @@ def set_user_filter(connection, user_id, f):
     INSERT INTO filter_user
     (user_id, permanent, timeout, commented, notcommented, sexism, homophobia, rascism, backseat, spam, username, other, trusted)
     VALUE ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12});""".format(user_id,t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7],t[8],t[9],t[10],t[11])
-    log.log("Ajout de nouvelles données de filtre pour l'user {}".format(user_id))
+    log.log("Trying to add new filter options for user {}".format(user_id))
     try:
         connection.reconnect()
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        log.log("Nouvelles préference de filtre pour l'user {}".format(user_id))
-    except:
-        log.log("Echec de l'ajout de data surment deja existante")
+        log.log("Successfully added new filter options for user {}".format(user_id))
+    except Exception as e:
+        log.log("Failed to add new filter option for user {}".format(user_id))
+        log.log(str(e))
 
 def update_user_filter(connection, user_id, f):
+    log.log("Called update_user_filter")
     t = []
     for e in f:
         t.append(int(e))
@@ -496,9 +524,10 @@ def update_user_filter(connection, user_id, f):
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        log.log("Nouvelles préference de filtre pour l'user {}".format(user_id))
-    except:
-        log.log("Echec de l'ajout de data surment deja existante")
+        log.log("Successfully added new filter options for user {}".format(user_id))
+    except Exception as e:
+        log.log("Failed to add new filter option for user {}".format(user_id))
+        log.log(str(e))
 
     command = """ 
     UPDATE filter_user 
@@ -510,13 +539,15 @@ def update_user_filter(connection, user_id, f):
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        log.log("Mise à jour des filtres pour l'user {}".format(user_id))
-    except:
-        log.log("Echec de la mise à jour des filtres pour l'user {}".format(user_id))
+        log.log("Successfully updated filter options for user {}".format(user_id))
+    except Exception as e:
+        log.log("Failed to update filter options for user {}".format(user_id))
+        log.log(str(e))
 
 
 
 def get_bannable_id_by_filter(connection, user_filter_pref):
+    log.log("Called get_bannable_id_by_filter")
     #Fonction that get a list of banned_user_id select in fonction of the user preferene via filter
     #A litte bit complicated but we do Unions and Intersections like so
     # ((perma)U(timeout)) I ((commented)U(notcommented)) I ((sexism)U(homophobia)U(rascism)U(backseat)U(spam)U(username)U(other) I (trusted)U(nottrusted))
@@ -539,7 +570,8 @@ def get_bannable_id_by_filter(connection, user_filter_pref):
                     for e in r:
                         list_of_id_1.append(e[0])
             except:
-                    pass
+                pass
+
     list_of_id_1 = [list_of_id_1[i] for i in range(len(list_of_id_1)) if i == list_of_id_1.index(list_of_id_1[i])] #Remove duplicates
 
     #select comment or not and intersection 
@@ -602,6 +634,7 @@ def get_bannable_id_by_filter(connection, user_filter_pref):
 #----------------USER OPTION-----------------------------------------------------------------------------------------
 
 def set_user_option(connection, user_id, option_list):
+    log.log("Called set_user_option")
     command = """
     INSERT INTO option_user
     (user_id, giveonly, receiveonly)
@@ -612,11 +645,13 @@ def set_user_option(connection, user_id, option_list):
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        log.log("Ajout de nouvelle options pour l'user {}".format(user_id))
-    except:
-        log.log("Echec de l'ajout de nouvelle options pour l'user {}".format(user_id))
+        log.log("Successfully added filter options for user {}".format(user_id))
+    except Exception as e:
+        log.log("Failed to add filter options for user {}".format(user_id))
+        log.log(str(e))
 
 def update_user_option(connection, user_id, option_list):
+    log.log("Called update_user_option")
     command = """
     UPDATE option_user 
     SET giveonly='{1}', receiveonly='{2}'
@@ -627,11 +662,13 @@ def update_user_option(connection, user_id, option_list):
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        log.log("Update d'options pour l'user {}".format(user_id))
-    except:
-        log.log("Echec de l'update d'options pour l'user {}".format(user_id))
+        log.log("Successfully updated user {} filter options".format(user_id))
+    except Exception as e:
+        log.log("Failed to update filtet options for user {}".format(user_id))
+        log.log(str(e))
 
 def get_user_option(connection, user_id):
+    log.log("Called get_user_option")
     command = """
     SELECT giveonly, receiveonly FROM option_user
     WHERE user_id = '{}';""".format(user_id)
@@ -641,11 +678,15 @@ def get_user_option(connection, user_id):
             cursor.execute(command)
             r = cursor.fetchall()[0]
             dict = {"giveonly": r[0], "receiveonly": r[1]}
+            log.log("Successfully returned user {} filter options: {}".format(user_id,dict))
             return(dict) #Only sent out giveonly as tuple look like [(0,)]
-    except:
+    except Exception as e:
+        log.log("Failed to return user {} filter options. Returned Error".format(user_id))
+        log.log(str(e))
         return("Error")
 
 def delete_user_option(connection, user_id):
+    log.log("Called delete_user_option")
     command = """
     DELETE FROM option_user WHERE user_id = {}
     """.format(user_id)
@@ -654,15 +695,17 @@ def delete_user_option(connection, user_id):
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        log.log("Effacement d'options pour l'user {}".format(user_id))
-    except:
-        log.log("Echec de l'effacement d'options pour l'user {}".format(user_id))
+        log.log("Successfully removed filter options for user {}".format(user_id))
+    except Exception as e:
+        log.log("Failed to remove filter options for user {}".format(user_id))
+        log.log(str(e))
 
 
 
 #---------------BAN MEMBER---------------------------------------------------------------------------------------------------
 
 def add_ban_member(connection, id):
+    log("Called add_ban_member")
     command = """
     INSERT INTO banned_member
     (user_id, user_name)
@@ -673,11 +716,13 @@ def add_ban_member(connection, id):
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        log.log("Le membre {} à été ban du network".format(id))
-    except:
-        log.log("Le membre {} n'à pas été ban du network".format(id))
+        log.log("User {} successfully added to banned_member table".format(id))
+    except Exception as e:
+        log.log("Failed to add user {} to banned_member table".format(id))
+        log.log(str(e))
 
 def remove_ban_member(connection, id):
+    log.log("Called remove_ban_member")
     command = """
     DELETE FROM banned_member WHERE user_id = {}
     """.format(id)
@@ -686,11 +731,13 @@ def remove_ban_member(connection, id):
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        log.log("Le membre {} à été unban du network".format(id))
-    except:
-        log.log("Le membre {} n'à pas été unban du network".format(id))
+        log.log("User {} successfully removed from banned_member table".format(id))
+    except Exception as e:
+        log.log("Failed to remove user {} from banned_member table".format(id))
+        log.log(str(e))
 
 def get_all_ban_member(connection):
+    log.log("Called get_all_ban_member")
     command = """SELECT user_id FROM banned_member;"""
     try:
         connection.reconnect()
@@ -698,8 +745,11 @@ def get_all_ban_member(connection):
             cursor.execute(command)
             r = cursor.fetchall()
             l = [str(e) for e in r[0]]
+            log.log("Successfully return all banned members from the network: {}".format(l))
             return(l) #Only sent out giveonly as tuple look like [(0,)]
-    except:
+    except Exception as e:
+        log.log("Failed to return all banned members from the network. Returned Error")
+        log.log(str(e))
         return("Error")
 
 
