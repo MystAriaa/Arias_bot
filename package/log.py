@@ -1,8 +1,8 @@
 import datetime
-from package import discord_connector as discord
+#from package import discord_connector as discord
 import time
 
-discord_bot = discord.get_discord_client()
+#discord_bot = discord.get_discord_client()
 
 log_folder_path = "logs/"
 
@@ -25,7 +25,7 @@ def log(message):
     #    pass
     #time.sleep(5) #ttttttttttttttt
     f = open(log_folder_path + get_file_name(), 'a')
-    f.write("[" + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + "]: " + message)
+    f.write("[" + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + "]: {}".format(message))
     f.write("\n")
     f.close()
 def end_log():

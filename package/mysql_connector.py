@@ -64,11 +64,10 @@ def create_table_banned_by_user(connection, user_id):
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        log.log("Table banlist crée avec succès pour l'utilisateur: {}".format(user_id))
-        log.log("Altération de la table réussi")
-
-    except:
-        log.log("Echec de la création de la table banlist pour l'utilisateur: {}. Peut-etre celle-ci existe dèja ?".format(user_id))
+        log.log("Successfully created banned accounts table for user {}".format(user_id))
+    except Exception as e:
+        log.log("Failed to create banned accounts table for user {}".format(user_id))
+        log.log(str(e))
 
 
 def create_table_banlist_master(connection):
@@ -177,6 +176,7 @@ def create_table_banned_member(connection):
 
 
 def input_a_new_user(connection, user_id, user_name, user_type, access_token, refresh_token):
+    log.log("Adding a new user {}, {} to the database".format(user_id,user_name))
     try: #Ajout
         command = """
             INSERT INTO registered_user (user_id, user_name, user_type, access_token, refresh_token) VALUES ({}, "{}", "{}", "{}", "{}");
@@ -185,46 +185,59 @@ def input_a_new_user(connection, user_id, user_name, user_type, access_token, re
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        log.log("Ajout avec succes d'un nouvelle utilisateur")
-    except: #if already in, update token
-        log.log("Echec de l'ajout d'un utilisateur due à un doublon surement")
+        log.log("User {}, {} successfully registered in the database".format(user_id,user_name))
+    except Exception as e: #if already in, update token
+        log.log("User {}, {} failed to be registered in the database".format(user_id,user_name))
+        log.log(str(e))
+        log.log("Trying to update user {}, {} informations in the database".format(user_id,user_name))
         set_new_user_info(connection, user_id, access_token, refresh_token)
-        log.log("Update avec succes d'un utilisateur")
+        log.log("Update of user {}, {} successfull in the database".format(user_id,user_name))
 
 
 def remove_an_user(connection, user_id):
+    log.log("Deleting user {} from the database".format(user_id))
     command = """DELETE FROM registered_user WHERE user_id = "{}";""".format(user_id)
     try:
         connection.reconnect()
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        log.log("Nous avons supprimé un utilisateur")
-    except:
-        log.log("Nous n'avons pas réussi à supprimé un utilisateur")
+        log.log("User {} successfully deleted from the database".format(user_id))
+    except Exception as e:
+        log.log("Deletion of user {} failed from the database".format(user_id))
+        log.log(str(e))
 
 
 #---------MASTER BAN LIST AREA--------------------------------------------------------------------------#
 
 def get_all_master_banlist(connection):
-    #command = """SELECT user_id,reason,origin_channel_id FROM master_banlist;"""
+    log.log("Called get_all_master_banlist")
     command = """SELECT * FROM master_banlist;"""
-    connection.reconnect()
-    with connection.cursor() as cursor:
-        cursor.execute(command)
-        list_of_banned_user = cursor.fetchall()
-    return (list_of_banned_user)
-def delete_all_master_banlist(connection):
     try:
-        command = """DELETE FROM master_banlist;"""
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            list_of_banned_user = cursor.fetchall()
+        log.log("Returned: {}".format(list_of_banned_user))
+        return (list_of_banned_user)
+    except Exception as e:
+        log.log("Returned: []")
+        log.log(str(e))
+        return([])
+def delete_all_master_banlist(connection):
+    log.log("Called delete_all_master_banlist")
+    command = """DELETE FROM master_banlist;"""
+    try:
         connection.reconnect()
         with connection.cursor() as cursor:
             cursor.execute(command)
             connection.commit()
-        log.log("Succes du netoyage de la master banlist")
-    except:
-        log.log("Echec du netoyage de la master banlist")
+        log.log("Total whipeout of Master banlist successfull")
+    except Exception as e:
+        log.log("Failed to wipeout Master banlist")
+        log.log(str(e))
 def insert_list_banned_into_master(connection, list_of_banned_user, user_id):
+    log.log("Called insert_list_banned_into_master")
     for banned_user in list_of_banned_user:
         command = """INSERT INTO master_banlist 
         (user_id, user_name, reason, start_date, expire, moderator_id, moderator_name, origin_channel_id) 
@@ -235,10 +248,12 @@ def insert_list_banned_into_master(connection, list_of_banned_user, user_id):
             with connection.cursor() as cursor:
                 cursor.execute(command)
                 connection.commit()
-            log.log("Ajout d'un nouvel utilisateur bannis dans la master banlist.")
-        except:
-            log.log("Un utilisateur bannis n'a pas été rajouté à la master banlist car déja présent.")
+            log.log("Added successfully user {}, {} into Master banlist".format(banned_user[1],banned_user[2]))
+        except Exception as e:
+            log.log("Failed to add user {}, {} into Master banlist".format(banned_user[1],banned_user[2]))
+            log.log(str(e))
 def remove_ban_from_user_in_master(connection, user_id):
+    log.log("Called remove_ban_from_user_in_master")
     command = """SELECT * FROM {}_banlist;""".format(user_id)
     connection.reconnect()
     with connection.cursor() as cursor:
@@ -252,11 +267,13 @@ def remove_ban_from_user_in_master(connection, user_id):
             with connection.cursor() as cursor:
                 cursor.execute(command)
                 connection.commit()
-            log.log("Retrait de l'utilisateur {} de la banlist".format(banned_user[3]))
-        except:
-            log.log("Echec du retrait de l'utilisateur {} de la banlist".format(banned_user[3]))
+            log.log("User {}, {} remove from Master banlist".format(banned_user[1],banned_user[2]))
+        except Exception as e:
+            log.log("Failed to remove user {}, {} from Master banlist".format(banned_user[1],banned_user[2]))
+            log.log(str(e))
 
 def remove_list_user_in_master(connection, list):
+    log.log("Called remove_list_user_in_master")
     for banned_user in list:
         try:
             command = """DELETE FROM master_banlist WHERE user_id = {};""".format(banned_user[1])
@@ -264,9 +281,10 @@ def remove_list_user_in_master(connection, list):
             with connection.cursor() as cursor:
                 cursor.execute(command)
                 connection.commit()
-            log.log("Retrait de l'utilisateur {} de la banlist".format(banned_user[3]))
-        except:
-            log.log("Echec du retrait de l'utilisateur {} de la banlist".format(banned_user[3]))
+            log.log("User {}, {} remove from Master banlist".format(banned_user[1],banned_user[2]))
+        except Exception as e:
+            log.log("Failed to remove user {}, {} from Master banlist".format(banned_user[1],banned_user[2]))
+            log.log(str(e))
 
 
 #---------USER AREA--------------------------------------------------------------------------#

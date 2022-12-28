@@ -417,3 +417,125 @@
 [2022-12-28 14:20:19]: Un token d'acces viens d'être générer pour l'app: ealgpnle762bo0421dluvlyskdivb0
 ||| 2022-12-28 14:21:03 |||
           ********** END OF LOG FILE **********          
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-28 17:21:08 |||
+||| 2022-12-28 17:23:38 |||
+          ********** END OF LOG FILE **********          
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-28 17:23:42 |||
+||| 2022-12-28 17:23:56 |||
+          ********** END OF LOG FILE **********          
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-28 17:27:11 |||
+[2022-12-28 17:27:11]: Un token d'acces viens d'être générer pour l'app: p1hvqafr5ll06qjz62hvqzidc78n5s
+          ********** START OF LOG FILE **********          
+||| 2022-12-28 19:16:19 |||
+[2022-12-28 19:16:19]: Start of the main script
+[2022-12-28 19:16:20]: Un token d'acces viens d'être générer pour l'app: 2sx5vv36vij4awjqeszrzfmdedtvfr
+[2022-12-28 19:16:20]: Start of the discord bot
+[2022-12-28 19:16:20]: Start of flask web app
+[2022-12-28 19:16:23]: Discord bot succesfully online and ready
+[2022-12-28 19:16:32]: Return to entry page
+[2022-12-28 19:16:39]: A new code has been generated : j7rzd6tknwb075jna450 for user MystAria#3007
+[2022-12-28 19:16:49]: Attempting to submit a discord generated code
+[2022-12-28 19:16:49]: Codes matching, authentifaction succesfull, returning to home page
+[2022-12-28 19:16:57]: An user accepted the connection with Twitch
+[2022-12-28 19:16:59]: Un token d'acces viens d'être générer pour l'user: 0163j832kwoows4tvmpzcwqbjrtxwa
+[2022-12-28 19:17:00]: Notre token user a été validée
+[2022-12-28 19:17:00]: Notre token app a été validée
+[2022-12-28 19:17:01]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-28 19:17:01]: Update avec succes d'un utilisateur
+[2022-12-28 19:17:01]: Ajout de nouvelles données de filtre pour l'user 161641887
+[2022-12-28 19:17:01]: Echec de l'ajout de data surment deja existante
+[2022-12-28 19:17:01]: Echec de l'ajout de nouvelle options pour l'user 161641887
+[2022-12-28 19:17:01]: Failed to create banned accounts table for user 161641887
+[2022-12-28 19:22:07]: Discord bot is closing
+[2022-12-28 19:22:07]: Discord bot terminated
+||| 2022-12-28 19:22:11 |||
+          ********** END OF LOG FILE **********          
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-28 19:22:45 |||
+[2022-12-28 19:22:45]: Start of the main script
+[2022-12-28 19:22:46]: Un token d'acces viens d'être générer pour l'app: cypuuhxz1ppt2swi5l6qv6123sweo8
+[2022-12-28 19:22:46]: Start of the discord bot
+[2022-12-28 19:22:46]: Start of flask web app
+[2022-12-28 19:22:49]: Discord bot succesfully online and ready
+[2022-12-28 19:23:08]: Member with id 161641887 have the name MystAria_ from discord bot
+[2022-12-28 19:23:19]: Discord bot is closing
+[2022-12-28 19:23:19]: Discord bot terminated
+||| 2022-12-28 19:23:24 |||
+          ********** END OF LOG FILE **********          
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-28 19:23:28 |||
+[2022-12-28 19:23:28]: Start of the main script
+[2022-12-28 19:23:29]: Un token d'acces viens d'être générer pour l'app: bslfi1xxbht481lqqpxxa5vb659ef2
+[2022-12-28 19:23:29]: Start of the discord bot
+[2022-12-28 19:23:29]: Start of flask web app
+[2022-12-28 19:23:32]: Discord bot succesfully online and ready
+[2022-12-28 19:23:34]: A new code has been generated : gbx147la3o1ch9qgafst for user MystAria#3007
+[2022-12-28 19:23:45]: Return to entry page
+[2022-12-28 19:23:50]: Attempting to submit a discord generated code
+[2022-12-28 19:23:50]: Codes matching, authentifaction succesfull, returning to home page
+[2022-12-28 19:23:53]: An user accepted the connection with Twitch
+[2022-12-28 19:23:54]: Un token d'acces viens d'être générer pour l'user: bsqcw7s1g5nogbkfcnwrs0cwwczqlq
+[2022-12-28 19:23:55]: Notre token user a été validée
+[2022-12-28 19:23:55]: Notre token app a été validée
+[2022-12-28 19:23:56]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-28 19:23:56]: Update avec succes d'un utilisateur
+[2022-12-28 19:23:56]: Ajout de nouvelles données de filtre pour l'user 161641887
+[2022-12-28 19:23:56]: Echec de l'ajout de data surment deja existante
+[2022-12-28 19:23:56]: Echec de l'ajout de nouvelle options pour l'user 161641887
+[2022-12-28 19:23:56]: Failed to create banned accounts table for user 161641887
+[2022-12-28 19:23:56]: <class 'Exception'>
+[2022-12-28 19:23:56]: Mise à neuf de la table 161641887_banlist
+[2022-12-28 19:23:56]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-28 19:23:56]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-28 19:23:56]: Un utilisateur bannis à été affublé de tags
+[2022-12-28 19:26:57]: Discord bot is closing
+[2022-12-28 19:26:57]: Discord bot terminated
+||| 2022-12-28 19:27:03 |||
+          ********** END OF LOG FILE **********          
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-28 19:27:09 |||
+[2022-12-28 19:27:09]: Start of the main script
+[2022-12-28 19:27:10]: Un token d'acces viens d'être générer pour l'app: s7jmjd128e01o4h2o9qeyww69qtyp9
+[2022-12-28 19:27:10]: Start of the discord bot
+[2022-12-28 19:27:10]: Start of flask web app
+[2022-12-28 19:27:13]: Discord bot succesfully online and ready
+[2022-12-28 19:27:15]: A new code has been generated : 3jrdx2s939o7b3pjs0xb for user MystAria#3007
+[2022-12-28 19:27:21]: Return to entry page
+[2022-12-28 19:27:26]: Attempting to submit a discord generated code
+[2022-12-28 19:27:26]: Codes matching, authentifaction succesfull, returning to home page
+[2022-12-28 19:27:30]: An user accepted the connection with Twitch
+[2022-12-28 19:27:31]: Un token d'acces viens d'être générer pour l'user: z7uksogyuyzy065tzrz2jjub1o93nr
+[2022-12-28 19:27:31]: Notre token user a été validée
+[2022-12-28 19:27:32]: Notre token app a été validée
+[2022-12-28 19:27:32]: Echec de l'ajout d'un utilisateur due à un doublon surement
+[2022-12-28 19:27:32]: Update avec succes d'un utilisateur
+[2022-12-28 19:27:32]: Ajout de nouvelles données de filtre pour l'user 161641887
+[2022-12-28 19:27:32]: Echec de l'ajout de data surment deja existante
+[2022-12-28 19:27:32]: Echec de l'ajout de nouvelle options pour l'user 161641887
+[2022-12-28 19:27:32]: Failed to create banned accounts table for user 161641887
+[2022-12-28 19:27:32]: 1050 (42S01): Table '161641887_banlist' already exists
+[2022-12-28 19:27:33]: Mise à neuf de la table 161641887_banlist
+[2022-12-28 19:27:33]: Un utilisateur bannis à été ajouté à la table 161641887_banlist
+[2022-12-28 19:27:33]: Un utilisateur bannis n'à pas été affublé de tags car deja present surement
+[2022-12-28 19:27:33]: Un utilisateur bannis à été affublé de tags
+[2022-12-28 19:27:50]: An user wants an update on their channel
+[2022-12-28 19:27:50]: Bannisement pour l'utilisateur: 161641887
+[2022-12-28 19:27:50]: Skip du ban car originaire de cette utilisateur
+[2022-12-28 19:27:50]: Arias_bot has been succesfully called on 161641887's channel, returning to validation page
+[2022-12-28 19:27:52]: An user succesfully authenticated by discord
+[2022-12-28 19:27:59]: Return to entry page
+[2022-12-28 19:28:06]: Loading of the visualisation page
+[2022-12-28 19:28:15]: Return to entry page
+[2022-12-28 19:28:24]: Discord bot is closing
+[2022-12-28 19:28:24]: Discord bot terminated
+||| 2022-12-28 19:28:48 |||
+          ********** END OF LOG FILE **********          
