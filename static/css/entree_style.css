@@ -1,0 +1,471 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+body {
+    line-height:1;
+}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+nav ul {
+    list-style:none;
+}
+blockquote, q {
+    quotes:none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;  
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+/* We start here */
+
+html {
+    height: 100%;
+    width: 100%;
+}
+body {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+
+.header {
+    z-index: 1;
+    background-color: #18181A;
+    position: fixed;
+    top:0;
+    width: 100%;
+    height: 75px;
+    display: flex;
+
+    border: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: white;
+}
+.header_icon {
+    background-color: #18181A;
+
+    position: relative;
+    height: inherit;
+    width: 33%;
+    float: left;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon {
+    position: relative;
+}
+.center_header {
+    position: relative;
+    background-color:#18181A;
+
+    height: inherit;
+    width: 35%;
+    float: none;
+}
+.nav {
+    position: relative;
+    background-color: #18181A;
+
+    height: inherit;
+    width: 33%;
+    float: right;
+
+    display: flex;
+
+    margin-right: 10%;
+}
+.text_header {
+    height: inherit;
+    width: 25%;
+
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.first_page {
+    position: relative;
+    height: max(100vh,845px); 
+    width: 100%;
+    top: 0px;
+}
+.main {
+    width: 50%;
+    height: 550px;
+    /*background-color: rgb(50, 84, 20);*/
+
+    position: relative;
+    align-items:center;
+    justify-content:center;
+
+    margin-left: 25%;
+    margin-right: 25%;
+    top:125px;
+
+    display: grid;
+
+
+}
+.title_main {
+    height: 100px;
+    width: 100%;
+    /*background-color: rgb(111, 167, 63);*/
+
+    display: flex;
+    justify-content: center;
+    align-items:center;
+
+    color: white;
+    font-size: 90px;
+}
+.icon_main {
+    height: 350px;
+    width: 100%;
+    /*background-color: rgb(144, 202, 94);*/
+
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.intro_main {
+    height: 100px;
+    width: 100%;
+    /*background-color: rgb(39, 69, 14);*/
+
+    display: flex;
+    justify-content: center;
+    align-items:center;
+
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.twitch_div {
+    position: relative;
+    top: 50px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.discord_validation_div
+{
+    position: relative;
+    display: grid;
+    justify-content: center;
+    align-items:center;
+    color: white;
+}
+.discord_validation_button {
+    border: none;
+    background-color: #6441a5;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border: solid;
+    border-radius: 12px;
+    border-width: 1px;
+    border-color: white;
+    box-shadow: 10px 10px black;
+}
+.twitch_link {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 32px;
+    color: white;
+    text-align: justify;
+    vertical-align: middle;
+}
+.message_acces_refuse {
+    color: white;
+    font-size: 25px;
+    position: relative;
+    display:flex;
+    text-align: justify;
+    vertical-align: middle;
+    justify-content: center;
+    align-items:center;
+}
+.go_down {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    bottom: 5px;
+}
+.twitch_logo {
+    position: absolute;
+    display: flex;
+    bottom: 20px;
+    left: 5px;
+}
+
+.page_down {
+    position: relative;
+    height: max(100vh,842px);
+    width: 100%;
+    
+    /*background-color: rgb(26, 100, 100);*/
+
+    margin-bottom: 75px;
+}
+.whatisit {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    background-color: #18181A;
+    height: 90%;
+    width: 40%;
+    border-width: 10px;
+    border-style: dashed;
+    border-radius: 20px;
+    border-color: rgb(100, 65, 165);
+
+    box-shadow: 10px 10px black;
+
+    color: white;
+    
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.whatisit_title {
+    position: absolute;
+    top:10px;
+    width: 100%;
+    font-size: 60px;
+    color: white;
+    text-align: center;
+}
+.peepo_note {
+    position: absolute;
+    top:100px;
+    left: calc(50% - 37px);
+}
+.whatisit_content {
+    position: absolute;
+    top: 175px;
+    width: 90%;
+    font-size: min(1.5em, 3vw);
+    color: white;
+    padding: 5%;
+}
+.graph {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    height: 45%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.tag {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    background-color: #18181A;
+    height: 45%;
+    width: 40%;
+    border-width: 10px;
+    border-style: dashed;
+    border-radius: 20px;
+    border-color: rgb(100, 65, 165);
+
+    box-shadow: 10px 10px black;
+
+    color: white;
+
+    font: 300;
+    font-size: min(1.5em, 3vw);
+}
+.tag_content {
+    padding: 3%;
+}
+
+.page_end {
+    position: relative;
+    height: 30%;
+    width: 100%;
+    
+    /*background-color: rgb(119, 30, 129);*/
+}
+.more_info {
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    height: 200px;
+
+    background-color: #18181A;
+
+    border-width: 10px;
+    border-style: dashed;
+    border-radius: 20px;
+    border-color: rgb(100, 65, 165);
+
+    box-shadow: 10px 10px black;
+
+    color: white;
+}
+.disclaimer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+    border: solid;
+    border-width: 1px 0px 0px 0px;
+    border-color: white;
+    padding-top: 5px;
+
+    background-color: #18181A;
+
+    text-align: center;
+    word-wrap: break-word;
+    overflow: hidden;
+    font-size: 10px;
+
+    color: white;
+}
+
+
+
+
+.credit {
+    z-index: 1;
+    position: fixed;
+    text-align: right;
+    bottom: 0; 
+    right: 0;
+
+    padding-bottom: 2px;
+    padding-right: 2px;
+
+    border: solid;
+    border-width: 1px;
+    border-bottom: 1px;
+    border-right: 1px;
+    border-color: white;
+
+    background-color: #000;
+    color: white;
+}
+
+.discord_link {
+    z-index: 2;
+}
+.github_link {
+    z-index: 2;
+}
+.faq_link {
+    z-index: 2;
+}
+.contact_link {
+    z-index: 2;
+}

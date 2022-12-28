@@ -29,19 +29,37 @@ connection_bd = mysql.connect_to_database()
 
 app_access_token = ""
 discord_token = discord.get_discord_token()
+available_discord_code = []
 random_state_list = []
+available_home_code = []
 
 flag_routine_update_user_banned_table = True
 
 #---------------------------------------------------------------------------------------------------------------------#
 @app.route('/')
-def home():
+def entree():
 	global random_state_list
-	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-	random_state_list.append(random_state)
+	global available_discord_code
+	global available_home_code
 	while len(random_state_list) > 50:
 		random_state_list.pop(0)
-	return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state)
+	while len(available_discord_code) > 50:
+		available_discord_code.pop(0)
+	while len(available_home_code) > 50:
+		available_home_code.pop(0)
+	return render_template('pages/entree.html')
+
+@app.route('/home', methods=['POST'])
+def home():
+	try:
+		home_code = request.form['return_home']
+		if home_code in available_home_code:
+			available_home_code.remove(home_code)
+			random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+			random_state_list.append(random_state)
+			return render_template('pages/home.html', acces_granted="", user_autorisation_url = user_autorisation_url + random_state)
+	except:
+		return render_template('pages/entree.html')
 
 @app.route('/faq')
 def faq():
@@ -96,8 +114,6 @@ def query():
 		#Obtention de l'id de notre utilisateur
 		user_id = twitch.token_validation(user_access_token)
 		list_of_member_banned = mysql.get_all_ban_member(connection_bd)
-		print(list_of_member_banned)
-		print(user_id)
 		if str(user_id) in list_of_member_banned:
 			log.log("Member with id= {} tryied to connect by is ban".format(user_id))
 			random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
@@ -203,7 +219,9 @@ def disconnect():
 	twitch.revoke_token(user_refresh_token, client_id)
 	mysql.delete_user_option(connection_bd, user_id)
 	mysql.remove_an_user(connection_bd, user_id)
-	return render_template('pages/validation.html',text="Your have been successfully removed from the network.")
+	random_home_code = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+	available_home_code.append(random_home_code)
+	return render_template('pages/validation.html', text="Your have been successfully removed from the network.", return_home_code=random_home_code)
 
 @app.route('/force_update_ban', methods=['POST'])
 def force_update_ban():
@@ -214,14 +232,18 @@ def force_update_ban():
 	user_access_token = user_info[4]
 	list_of_banned_user = mysql.get_all_master_banlist(connection_bd)
 	twitch.ban_from_master_banlist(connection_bd, user_id, user_access_token, list_of_banned_user, client_id)
-	return render_template('pages/validation.html',text="Arias_bot paid a visit on your channel !")
+	random_home_code = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+	available_home_code.append(random_home_code)
+	return render_template('pages/validation.html', text="Arias_bot paid a visit on your channel !", return_home_code=random_home_code)
 
 @app.route('/update_filter', methods=['POST'])
 def update_filter():
 	list_filter = [request.form['permanent'],request.form['timeout'],request.form['commented'],request.form['notcommented'],request.form['sexism'],request.form['homophobia'],request.form['rascism'],request.form['backseat'],request.form['spam'],request.form['username'],request.form['other'],request.form['trusted']]
 	user_id = twitch.token_validation(request.form['access_token'])
 	mysql.update_user_filter(connection_bd, user_id, list_filter)
-	return render_template('pages/validation.html', text="Your filter have been successfully updated.")
+	random_home_code = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+	available_home_code.append(random_home_code)
+	return render_template('pages/validation.html', text="Your filter have been successfully updated.", return_home_code=random_home_code)
 
 @app.route('/give_only', methods=['POST'])
 def give_only():
@@ -235,7 +257,9 @@ def give_only():
 		mysql.update_user_option(connection_bd, user_id, [0,dict_option["receiveonly"]])
 		text_return = "Give-Only is not active for your channel."
 		
-	return render_template('pages/validation.html', text=text_return)
+	random_home_code = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+	available_home_code.append(random_home_code)
+	return render_template('pages/validation.html', text=text_return, return_home_code=random_home_code)
 
 @app.route('/receive_only', methods=['POST'])
 def receive_only():
@@ -248,8 +272,10 @@ def receive_only():
 	else:
 		mysql.update_user_option(connection_bd, user_id, [dict_option["giveonly"], 0])
 		text_return = "Receive-Only is not active for your channel."
-		
-	return render_template('pages/validation.html', text=text_return)
+
+	random_home_code = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+	available_home_code.append(random_home_code)
+	return render_template('pages/validation.html', text=text_return, return_home_code=random_home_code)
 
 #---------------------------------------------------------------------------------------------------------------------#
 
@@ -373,72 +399,93 @@ def routine_update_user_banned_table():
 
 
 def run_discord_bot():
-	print("Enter discord bot thread")
 
 	@discord_bot.event
 	async def on_ready():
 		global channel
-		global server
-		print(f'{discord_bot.user} is now running!')
-		channel = discord.get_discord_channel(discord_bot, "test-bot")
+		channel= discord.get_discord_channel(discord_bot, "bot-commands")
 		await channel.send("I am reborn.")
 
 	@discord_bot.event
 	async def on_message(message):
 		if message.author == discord_bot.user:
 			return
+
 		username = str(message.author)
 		user_message = str(message.content)
-		channel = str(message.channel)
+		channel = message.channel
 		user_roles = message.author.roles
 		user_roles_name = [role.name for role in user_roles]
 
-		print(f"{username} said: '{user_message}' ({channel})")
+		#print(f"{username} said: '{user_message}' ({str(channel)})")
 
-		if "Admin" in user_roles_name:
-			#await message.channel.send("Message from Admin")
+		if channel == discord.get_discord_channel(discord_bot, "bot-commands"):
+
+			if "Admin" in user_roles_name:
+				if user_message[0] == '!' or user_message[0] == '/':
+					if "stop" in user_message or "close" in user_message:
+						await message.channel.send("Bot is closing, Bye.")
+						await discord_bot.close()
+						return
+
+					if "update" in user_message:
+						await message.channel.send("Force update de Arias_bot.")
+						routine_update_user_banned_table()
+						return
+
+					if user_message[:4] == "!ban":
+						try:
+							id = user_message[5:]
+							await message.channel.send("User {} banned from the network.".format(id))
+							mysql.add_ban_member(connection_bd, id)
+						except:
+							await message.channel.send("Wrong format: !ban <id>")
+						return
+						
+
+					if user_message[:6] == "!unban":
+						try:
+							id = user_message[7:]
+							await message.channel.send("User {} unbanned from the network.".format(id))
+							mysql.remove_ban_member(connection_bd, id)
+						except:
+							await message.channel.send("Wrong format: !unban <id>")
+						return
+						
+
+					if user_message[:6] == "!getid":
+						try:
+							name = user_message[7:]
+							id = mysql.get_user_id_by_name(connection_bd, name)
+							await message.channel.send("User {} got this id: {}".format(name,id))
+						except:
+							await message.channel.send("Wrong format: !getid <name>")
+						return
+
 			if user_message[0] == '!' or user_message[0] == '/':
-				if "stop" in user_message or "close" in user_message:
-					print("closing")
-					await message.channel.send("Bot is closing, Bye.")
-					await discord_bot.close()
-					return
-
-				if "update" in user_message:
-					await message.channel.send("Force update de Arias_bot.")
-					routine_update_user_banned_table()
-
-				if user_message[:4] == "!ban":
-					try:
-						id = user_message[5:]
-						await message.channel.send("User {} banned from the network.".format(id))
-						mysql.add_ban_member(connection_bd, id)
-					except:
-						await message.channel.send("Wrong format: !ban <id>")
+					if "code" in user_message:
+						random_code = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+						available_discord_code.append(random_code)
+						await message.author.send("A new code has been generated: {}".format(random_code))
+						await message.channel.send("@{} A new code has been generated, check your private message".format(username))
+						return
+			
 					
-
-				if user_message[:6] == "!unban":
-					try:
-						id = user_message[7:]
-						await message.channel.send("User {} unbanned from the network.".format(id))
-						mysql.remove_ban_member(connection_bd, id)
-					except:
-						await message.channel.send("Wrong format: !unban <id>")
-					
-
-				if user_message[:6] == "!getid":
-					try:
-						name = user_message[7:]
-						id = mysql.get_user_id_by_name(connection_bd, name)
-						await message.channel.send("User {} got this id: {}".format(name,id))
-					except:
-						await message.channel.send("Wrong format: !getid <name>")
-					
-
 	discord_bot.run(discord_token)
 
 
-	print("Exit discord bot thread")
+
+@app.route('/discord_code_validation', methods=['POST'])
+def discord_code_validation():
+	received_code = request.form["discord_code"]
+	if received_code in available_discord_code:
+		available_discord_code.remove(received_code)
+		random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+		random_state_list.append(random_state)
+		return render_template('pages/home.html', acces_granted="", user_autorisation_url = user_autorisation_url + random_state)
+	else:
+		return render_template('pages/entree.html')
+
 
 
 #---------------------------------------------------------------------------------------------------------------------#

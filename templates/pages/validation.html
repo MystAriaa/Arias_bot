@@ -60,7 +60,13 @@
             <p><p></p>
         </div>
         <div class="text3_div">
-            <a href="/">Return to main page</a>
+            <form method="POST" action="/home">
+                <input type='hidden' name="return_home" value={{ return_home_code }}>
+                <div class="button4_div">
+                    <input class="twitch_button" type="submit" value = "Return to main page"></input>
+                </div>
+            </form>
+            <!--<a href="/home">Return to main page</a>-->
         </div>
     </div>
 

@@ -1,5 +1,3 @@
-First page autentification via discord bot token
-
 Logs via discord bot token
 
 -------------------------------------------------------

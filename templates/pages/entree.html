@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" style="background-image: url('static/img/background_test.jpg'); background-attachment: fixed; background-repeat: no-repeat;">
+
+<head>
+    <title>Arias_bot</title>
+    <meta charset="UTF-8">
+    <link href="/static/css/entree_style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="body">
+    <div class="header">
+        <div class="header_icon">
+            <a href="/">
+                <img class="icon" src="static/img/icon4.png" alt="icon" width="80" height="45">
+            </a>
+            
+        </div>
+        <div class="center_header">
+        </div>
+        <div class="nav">
+            <div class="text_header">
+                <a href="https://discord.gg/W369uUtAqk" class="discord_link">
+                    <img src="static/img/discord_icon.png" alt="discord_icon" style="width:50px;height:50px;">
+                </a>
+            </div>
+            <div class="text_header">
+                <a href="https://github.com/MystAriaa/Arias_bot" class="github_link">
+                    <img src="static/img/github_icon.png" alt="github_icon" style="width:50px;height:50px;">
+                </a>
+            </div>
+            <div class="text_header">
+                <a href="/faq" class="faq_link">
+                    <img src="static/img/faq_icon.png" alt="faq_icon" style="width:50px;height:40px;">
+                </a>
+            </div>
+            <div class="text_header">
+                <a href="/contact" class="contact_link">
+                    <img src="static/img/contact_icon.png" alt="contact_icon" style="width:50px;height:50px;">
+                </a>
+            </div>
+            <div class="text_header">
+                <a href="/visualisation" class="contact_link">
+                    <img src="static/img/database_icon.png" alt="contact_icon" style="width:50px;height:50px;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="first_page">
+        <div class="main">
+            <div class="title_main">
+                <img class="logo" src="static/img/logo.png" alt="logo" width="793" height="158">
+            </div>
+            <div class="icon_main">
+                <img class="icon" src="static/img/icon4.png" alt="iicon" width="501" height="306">
+            </div>
+            <div class="intro_main">
+                <p>Share your bans with others ! Together we are stronger !</p>
+            </div>
+            <div class="twitch_div">
+                <form method="POST" action="/discord_code_validation" class="discord_validation_div">
+                    <label for="discord_code" style="font-size: 20px;">Your discord generated code:</label><br>
+                    <input type="password" name="discord_code"><br>
+                    <input type="submit" value="Validate your discord code" class="discord_validation_button">
+                </form>
+            </div>
+            
+        </div>
+        <div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="twitch_logo">
+                <img class="twitch_logo" src="static/img/twitch_logo.png" alt="twitch_logo" width="150" height="84">
+            </a>
+        </div>
+        <div class="go_down">
+            <img class="icon_go_down" src="static/img/icon_go_down.png" alt="icon_go_down" width="50" height="27">
+        </div>
+    </div>
+
+    <div class="page_down">
+        <div class="whatisit">
+            <p class="whatisit_title">What is it ?</p>
+            <img class="peepo_note" src="static/img/peepo_note.png" alt="peepo_note" width="75" height="75">
+            <p class="whatisit_content">Arias_bot is twitch bot sharing your banlist to all the other member of the network.<br><br>
+                By giving Arias_bot your authorization to read your ban list and the ability to ban and unban, Arias_bot will share your banned accounts to all the channels connected to the bot. <br><br>
+                Arias_bot gather all the banned accounts across all connected members putting them in common creating a huge banlist. <br><br>
+                Arias_bot then proceide to ban on your channel all banned accounts from the other members. <br><br>
+                For now only permanent bans are shared. Bans made Arias_bot update every day at 5 hour UTC+0, meaning any miss-ban aren't immediatly shared.<br><br>
+                Please visit our F.A.Q as more details will be there for you.</p>
+        </div>
+        <div class="graph">
+            <img class="icon_go_down" src="static/img/vohiyo.png" alt="vohiyo" width="200" height="200">
+        </div>
+        <div class="tag">
+            <p class="tag_content">Arias_bot is fully open-source project. It's a python web application using Flask, requesting from Twitch API, and storing its data in MySQL database. <br>
+            Free, secure through Twitch itentification method, it's doesn't require any personal data nor store your data aside gathered banned accounts. <br>
+            Its actions are fully reversible as bans made by Arias_bot are marked by an unique comment.<br>
+            It is recommended to use the only verified account chat option on your channel.</p>
+        </div>
+    </div>
+
+    <div class="page_end">
+        <div class="more_info">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas quo similique officiis excepturi vitae possimus aperiam? Eum delectus nam earum corporis doloribus possimus itaque culpa fuga, illum quis veritatis exercitationem?</p>
+        </div>
+        <div class="disclaimer">
+            <p>Arias_bot isn't endorsed by Twitch and doesn't reflect the views or opinions of Twitch or anyone officially involved in producing or managing Twitch properties. Twitch, and all associated properties are trademarks or registered trademarks of Twitch, Inc.</p>
+        </div>
+    </div>
+
+    <div class="credit">
+        <a href="/version">V1.00 by MystAria</a>
+    </div>
+</body>
+
+</html>

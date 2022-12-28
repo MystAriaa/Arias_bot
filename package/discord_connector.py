@@ -4,33 +4,35 @@ import os
 
 
 def get_discord_token():
-    return os.environ["DISCORD_TOKEN"]
+	return os.environ["DISCORD_TOKEN"]
 
 def init_unique_client():
-    intents = discord.Intents.default()
-    intents.message_content = True
-    client = discord.Client(intents = intents)
-    return client
+	intents = discord.Intents.default()
+	intents.message_content = True
+	client = discord.Client(intents = intents)
+	return client
 
 unique_client = init_unique_client()
 
 def get_discord_client():
-    return unique_client
+	return unique_client
 
 def get_discord_guild(client):
-    return client.get_guild(1057337928868696195)
+	return client.get_guild(1057337928868696195)
 
 def get_discord_channel(client, name):
-    if name == "bot-logs":
-        return client.get_channel(1057339640257990656)
-    elif name == "test-bot":
-        return client.get_channel(1057356935541821460)
+	if name == "bot-logs":
+		return client.get_channel(1057339640257990656)
+	elif name == "test-bot":
+		return client.get_channel(1057356935541821460)
+	elif name == "bot-commands":
+		return client.get_channel(1057648114179260436)
 
 
 
 
 """def get_channel():
-    return channel
+	return channel
 
 def run_discord_bot():
 	global server
