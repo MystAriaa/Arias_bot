@@ -17,12 +17,13 @@ def start_log():
     f.write("\n||| " + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + " |||\n")
     f.close()
 def log(message):
-    channel = discord.get_discord_channel(discord_bot, "test-bot")
-    try:
-        discord_bot.loop.create_task(channel.send("[" + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + "]: " + message))
-    except:
-        pass
-    time.sleep(5) #ttttttttttttttt
+    #channel = discord.get_discord_channel(discord_bot, "test-bot")
+    #try:
+    #    pass
+    #    discord_bot.loop.create_task(channel.send("[" + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + "]: " + message))
+    #except:
+    #    pass
+    #time.sleep(5) #ttttttttttttttt
     f = open(log_folder_path + get_file_name(), 'a')
     f.write("[" + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + "]: " + message)
     f.write("\n")

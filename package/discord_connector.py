@@ -2,8 +2,6 @@ import discord
 import random
 import os
 
-channel = "0"
-
 
 def get_discord_token():
     return os.environ["DISCORD_TOKEN"]

@@ -158,6 +158,21 @@ def create_table_option_user(connection):
         connection.commit()
 
 
+def create_table_banned_member(connection):
+    command = """
+        CREATE TABLE banned_member(
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT(15),
+            user_name VARCHAR(30)
+            );
+        ALTER TABLE banned_member ADD UNIQUE INDEX(user_id);
+        """
+    connection.reconnect()
+    with connection.cursor() as cursor:
+        cursor.execute(command)
+        connection.commit()
+
+
 #-----------------------------------------------------------------------------------------------------------------
 
 
@@ -627,13 +642,47 @@ def delete_user_option(connection, user_id):
 
 
 
+#---------------BAN MEMBER---------------------------------------------------------------------------------------------------
 
+def add_ban_member(connection, id):
+    command = """
+    INSERT INTO banned_member
+    (user_id, user_name)
+    VALUE ({},{})
+    """.format(id,"0")
+    try:
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            connection.commit()
+        log.log("Le membre {} à été ban du network".format(id))
+    except:
+        log.log("Le membre {} n'à pas été ban du network".format(id))
 
+def remove_ban_member(connection, id):
+    command = """
+    DELETE FROM banned_member WHERE user_id = {}
+    """.format(id)
+    try:
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            connection.commit()
+        log.log("Le membre {} à été unban du network".format(id))
+    except:
+        log.log("Le membre {} n'à pas été unban du network".format(id))
 
-
-
-
-
+def get_all_ban_member(connection):
+    command = """SELECT user_id FROM banned_member;"""
+    try:
+        connection.reconnect()
+        with connection.cursor() as cursor:
+            cursor.execute(command)
+            r = cursor.fetchall()
+            l = [str(e) for e in r[0]]
+            return(l) #Only sent out giveonly as tuple look like [(0,)]
+    except:
+        return("Error")
 
 
 

@@ -1,14 +1,17 @@
-discord bot pour identification + stat + debug + log
+First page autentification via discord bot token
+
+Logs via discord bot token
+
+-------------------------------------------------------
+
+code cleaning
+corriger les coding mistake
 
 
+README.txt = presentation
 
 
-
-
-
-
-
-
+--------------------------------------------------------
 
 security:
     limit request per user

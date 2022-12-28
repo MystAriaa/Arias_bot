@@ -95,6 +95,15 @@ def query():
 		user_access_token, user_refresh_token = twitch.token_generation(client_id, client_secret, grant_type = "authorization_code", code = user_code, redirect_url = site_base_url)
 		#Obtention de l'id de notre utilisateur
 		user_id = twitch.token_validation(user_access_token)
+		list_of_member_banned = mysql.get_all_ban_member(connection_bd)
+		print(list_of_member_banned)
+		print(user_id)
+		if str(user_id) in list_of_member_banned:
+			log.log("Member with id= {} tryied to connect by is ban".format(user_id))
+			random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+			random_state_list.append(random_state)
+			return render_template('pages/home.html', acces_granted="You are a banned member.", user_autorisation_url = user_autorisation_url + random_state)
+
 		#Obtention des informations de notre utilisateur
 		#+check si notre app_access_token a besoin d'etre refresh      
 		if (twitch.token_validation(app_access_token) != 1):
@@ -354,26 +363,23 @@ def routine_update_user_banned_table():
 	log.log("Sort du thread")
 	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 	random_state_list.append(random_state)
-	return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state)
+	try:
+		return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state)
+	except:
+		pass
 
 
 #---------------------------------------------------------------------------------------------------------------------#
 
 
 def run_discord_bot():
-	global server
-	global channel
 	print("Enter discord bot thread")
-
-	server = 0
-	channel = 0
 
 	@discord_bot.event
 	async def on_ready():
 		global channel
 		global server
 		print(f'{discord_bot.user} is now running!')
-		server = discord.get_discord_guild(discord_bot)
 		channel = discord.get_discord_channel(discord_bot, "test-bot")
 		await channel.send("I am reborn.")
 
@@ -384,14 +390,50 @@ def run_discord_bot():
 		username = str(message.author)
 		user_message = str(message.content)
 		channel = str(message.channel)
+		user_roles = message.author.roles
+		user_roles_name = [role.name for role in user_roles]
+
 		print(f"{username} said: '{user_message}' ({channel})")
-		#await discord.send_message(message.channel, user_message)
-		if user_message[0] == '!':
-			if "stop" in str(user_message):
-				print("closing")
-				await message.channel.send("Bot is closing, Bye.")
-				await discord_bot.close()
-				return
+
+		if "Admin" in user_roles_name:
+			#await message.channel.send("Message from Admin")
+			if user_message[0] == '!' or user_message[0] == '/':
+				if "stop" in user_message or "close" in user_message:
+					print("closing")
+					await message.channel.send("Bot is closing, Bye.")
+					await discord_bot.close()
+					return
+
+				if "update" in user_message:
+					await message.channel.send("Force update de Arias_bot.")
+					routine_update_user_banned_table()
+
+				if user_message[:4] == "!ban":
+					try:
+						id = user_message[5:]
+						await message.channel.send("User {} banned from the network.".format(id))
+						mysql.add_ban_member(connection_bd, id)
+					except:
+						await message.channel.send("Wrong format: !ban <id>")
+					
+
+				if user_message[:6] == "!unban":
+					try:
+						id = user_message[7:]
+						await message.channel.send("User {} unbanned from the network.".format(id))
+						mysql.remove_ban_member(connection_bd, id)
+					except:
+						await message.channel.send("Wrong format: !unban <id>")
+					
+
+				if user_message[:6] == "!getid":
+					try:
+						name = user_message[7:]
+						id = mysql.get_user_id_by_name(connection_bd, name)
+						await message.channel.send("User {} got this id: {}".format(name,id))
+					except:
+						await message.channel.send("Wrong format: !getid <name>")
+					
 
 	discord_bot.run(discord_token)
 
