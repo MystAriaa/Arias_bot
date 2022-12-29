@@ -9,7 +9,7 @@ import datetime
 import string
 import random
 from discord import Message
-from multiprocessing import Process
+from multiprocessing import Process, Queue
 
 
 log.init_file_name()
@@ -33,6 +33,7 @@ discord_token = discord.get_discord_token()
 available_discord_code = []
 random_state_list = []
 available_home_code = []
+q = Queue()
 
 flag_routine_update_user_banned_table = False
 
@@ -415,7 +416,7 @@ def routine_update_user_banned_table():
 
 #---------------------------------------------------------------------------------------------------------------------#
 
-def run_discord_bot():
+def run_discord_bot(q):
 	global flag_routine_update_user_banned_table
 	global THREAD_update_user_banned_table
 
@@ -430,6 +431,7 @@ def run_discord_bot():
 	async def on_message(message):
 		global flag_routine_update_user_banned_table
 		global THREAD_update_user_banned_table
+
 		if message.author == discord_bot.user:
 			return
 
@@ -569,7 +571,10 @@ def run_discord_bot():
 
 			if message.content.startswith('!code') or message.content.startswith('/code'):
 				random_code = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+				available_discord_code = q.get()
 				available_discord_code.append(random_code)
+				q.put(available_discord_code)
+				
 				await message.author.send("A new code has been generated: {}".format(random_code))
 				log.log("A new code has been generated : {} for user {}".format("---------",username))
 				await message.channel.send("@{} A new code has been generated, check your private message".format(username))
@@ -590,8 +595,10 @@ def run_discord_bot():
 def discord_code_validation():
 	log.log("Attempting to submit a discord generated code")
 	received_code = request.form["discord_code"]
+	available_discord_code = q.get()
 	if received_code in available_discord_code:
 		available_discord_code.remove(received_code)
+		q.put(available_discord_code)
 		random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 		random_state_list.append(random_state)
 		log.log("Codes matching, authentifaction succesfull, returning to home page")
@@ -604,12 +611,13 @@ def discord_code_validation():
 
 #---------------------------------------------------------------------------------------------------------------------#
 THREAD_update_user_banned_table = Process(target = routine_update_user_banned_table)
-THREAD_discord_bot = Process(target = run_discord_bot)
+THREAD_discord_bot = Process(target = run_discord_bot, args=(q,))
 
 if __name__ == '__main__':
 	log.log("Start of the main script")
 	app_access_token = twitch.token_generation(client_id,client_secret)
 	THREAD_discord_bot.start()
+	q.put(available_discord_code)
 	log.log("Start of the discord bot")
 	log.log("Start of flask web app")
 	app.run(debug=False, port=5000)

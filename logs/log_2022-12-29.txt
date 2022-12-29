@@ -718,3 +718,191 @@ Test[2022-12-29 16:50:41]: Discord bot is closing
 [2022-12-29 19:40:03]: Discord bot terminated
 ||| 2022-12-29 19:40:07 |||
           ********** END OF LOG FILE **********          
+[2022-12-29 22:22:18]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 22:22:18 |||
+[2022-12-29 22:22:18]: Start of the main script
+[2022-12-29 22:22:18]: Called token_generation
+[2022-12-29 22:22:19]: A new app access token has been generated: xeow2o4qn25455ux77om340b67eilj
+[2022-12-29 22:22:19]: Start of the discord bot
+[2022-12-29 22:22:19]: Start of flask web app
+[2022-12-29 22:22:20]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 22:22:20 |||
+[2022-12-29 22:22:23]: Discord bot succesfully online and ready
+[2022-12-29 22:43:43]: A new code has been generated : --------- for user MystAria#3007
+[2022-12-29 22:44:28]: Return to entry page
+[2022-12-29 22:45:28]: Return to entry page
+[2022-12-29 22:47:07]: Attempting to submit a discord generated code
+[2022-12-29 22:47:07]: Codes mismatching, authentification failed, returning to entree page
+[2022-12-29 22:47:14]: A new code has been generated : --------- for user MystAria#3007
+[2022-12-29 22:47:21]: Attempting to submit a discord generated code
+[2022-12-29 22:47:21]: Codes mismatching, authentification failed, returning to entree page
+[2022-12-29 22:48:21]: Return to entry page
+[2022-12-29 22:48:23]: Loading of the visualisation page
+[2022-12-29 22:48:23]: Called get_user_name_by_id
+[2022-12-29 22:48:23]: Called get_tag_by_id
+[2022-12-29 22:48:23]: Successfully returning filter tags for user 457947821: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2022-12-29 22:48:23]: Called get_user_name_by_id
+[2022-12-29 22:48:23]: Called get_tag_by_id
+[2022-12-29 22:48:23]: Successfully returning filter tags for user 59655694: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 1}
+[2022-12-29 22:48:35]: Went to contact page
+[2022-12-29 22:49:27]: Return to entry page
+[2022-12-29 22:49:36]: A new code has been generated : --------- for user MystAria#3007
+[2022-12-29 22:49:46]: Attempting to submit a discord generated code
+[2022-12-29 22:49:46]: Codes mismatching, authentification failed, returning to entree page
+[2022-12-29 22:52:48]: Discord bot is closing
+[2022-12-29 22:52:48]: Discord bot terminated
+||| 2022-12-29 22:53:01 |||
+          ********** END OF LOG FILE **********          
+[2022-12-29 22:53:07]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 22:53:07 |||
+[2022-12-29 22:53:07]: Start of the main script
+[2022-12-29 22:53:07]: Called token_generation
+[2022-12-29 22:53:08]: A new app access token has been generated: shuy2bmqldr13lrfez6opcmjej043h
+[2022-12-29 22:53:08]: Start of the discord bot
+[2022-12-29 22:53:08]: Start of flask web app
+[2022-12-29 22:53:08]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 22:53:08 |||
+[2022-12-29 22:53:11]: Discord bot succesfully online and ready
+[2022-12-29 22:53:15]: A new code has been generated : --------- for user MystAria#3007
+[2022-12-29 22:53:22]: Return to entry page
+[2022-12-29 22:53:27]: Attempting to submit a discord generated code
+[2022-12-29 22:53:27]: Codes mismatching, authentification failed, returning to entree page
+[2022-12-29 22:54:19]: Discord bot terminated
+||| 2022-12-29 22:54:19 |||
+          ********** END OF LOG FILE **********          
+[2022-12-29 22:54:23]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 22:54:23 |||
+[2022-12-29 22:54:23]: Start of the main script
+[2022-12-29 22:54:23]: Called token_generation
+[2022-12-29 22:54:24]: A new app access token has been generated: la6ejx14hdqjlnv8bxl4ir4zygc0p8
+[2022-12-29 22:54:24]: Start of the discord bot
+[2022-12-29 22:54:24]: Start of flask web app
+[2022-12-29 22:54:25]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 22:54:25 |||
+[2022-12-29 22:54:27]: Discord bot succesfully online and ready
+[2022-12-29 22:54:35]: A new code has been generated : --------- for user MystAria#3007
+[2022-12-29 22:54:49]: Attempting to submit a discord generated code
+[2022-12-29 22:54:49]: Codes mismatching, authentification failed, returning to entree page
+[2022-12-29 22:55:44]: Discord bot terminated
+||| 2022-12-29 22:55:44 |||
+          ********** END OF LOG FILE **********          
+[2022-12-29 22:55:49]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 22:55:49 |||
+[2022-12-29 22:55:49]: Start of the main script
+[2022-12-29 22:55:49]: Called token_generation
+[2022-12-29 22:55:50]: A new app access token has been generated: 1wr9vyr2mx2m3bx91s57yhx5d6qem2
+[2022-12-29 22:55:50]: Start of the discord bot
+[2022-12-29 22:55:50]: Start of flask web app
+[2022-12-29 22:55:50]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 22:55:50 |||
+[2022-12-29 22:55:53]: Discord bot succesfully online and ready
+[2022-12-29 22:55:56]: A new code has been generated : --------- for user MystAria#3007
+[2022-12-29 22:56:02]: Attempting to submit a discord generated code
+[2022-12-29 22:56:02]: Codes mismatching, authentification failed, returning to entree page
+[2022-12-29 22:56:23]: Discord bot terminated
+||| 2022-12-29 22:56:23 |||
+          ********** END OF LOG FILE **********          
+[2022-12-29 22:56:57]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 22:56:57 |||
+[2022-12-29 22:56:57]: Start of the main script
+[2022-12-29 22:56:57]: Called token_generation
+[2022-12-29 22:56:58]: A new app access token has been generated: zu5krq624fkjcenxrmemkn5sif711b
+[2022-12-29 22:56:58]: Start of the discord bot
+[2022-12-29 22:56:58]: Start of flask web app
+[2022-12-29 22:56:59]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 22:56:59 |||
+[2022-12-29 22:57:01]: Discord bot succesfully online and ready
+[2022-12-29 22:57:03]: A new code has been generated : --------- for user MystAria#3007
+[2022-12-29 22:57:14]: Attempting to submit a discord generated code
+[2022-12-29 22:57:14]: Codes mismatching, authentification failed, returning to entree page
+[2022-12-29 23:19:04]: Discord bot terminated
+||| 2022-12-29 23:19:04 |||
+          ********** END OF LOG FILE **********          
+[2022-12-29 23:19:26]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 23:19:26 |||
+[2022-12-29 23:22:31]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 23:22:31 |||
+[2022-12-29 23:23:28]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 23:23:28 |||
+[2022-12-29 23:35:16]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 23:35:16 |||
+[2022-12-29 23:35:16]: Start of the main script
+[2022-12-29 23:35:16]: Called token_generation
+[2022-12-29 23:35:17]: A new app access token has been generated: 67un4ncc3gwlb25eh38ane9z96cybo
+[2022-12-29 23:35:17]: Start of the discord bot
+[2022-12-29 23:35:17]: Start of flask web app
+[2022-12-29 23:35:18]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 23:35:18 |||
+||| 2022-12-29 23:35:48 |||
+          ********** END OF LOG FILE **********          
+[2022-12-29 23:35:57]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 23:35:57 |||
+[2022-12-29 23:35:57]: Start of the main script
+[2022-12-29 23:35:57]: Called token_generation
+[2022-12-29 23:35:58]: A new app access token has been generated: p02wal648zibp5b89fohuojivi3u19
+[2022-12-29 23:35:58]: Start of the discord bot
+[2022-12-29 23:35:58]: Start of flask web app
+[2022-12-29 23:35:59]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 23:35:59 |||
+[2022-12-29 23:36:02]: Discord bot succesfully online and ready
+[2022-12-29 23:36:11]: Return to entry page
+[2022-12-29 23:36:31]: Discord bot is closing
+[2022-12-29 23:36:31]: Discord bot terminated
+||| 2022-12-29 23:36:39 |||
+          ********** END OF LOG FILE **********          
+[2022-12-29 23:38:07]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 23:38:07 |||
+[2022-12-29 23:38:07]: Start of the main script
+[2022-12-29 23:38:07]: Called token_generation
+[2022-12-29 23:38:08]: A new app access token has been generated: iqf7qfzm217yvjuzblvsiz2rwqw1q8
+[2022-12-29 23:38:08]: Start of the discord bot
+[2022-12-29 23:38:08]: Start of flask web app
+[2022-12-29 23:38:09]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 23:38:09 |||
+[2022-12-29 23:38:12]: Discord bot succesfully online and ready
+[2022-12-29 23:38:12]: Return to entry page
+[2022-12-29 23:38:19]: A new code has been generated : --------- for user MystAria#3007
+[2022-12-29 23:38:30]: Attempting to submit a discord generated code
+[2022-12-29 23:38:30]: Codes matching, authentifaction succesfull, returning to home page
+[2022-12-29 23:39:23]: Discord bot is closing
+[2022-12-29 23:39:23]: Discord bot terminated
+||| 2022-12-29 23:39:26 |||
+          ********** END OF LOG FILE **********          
