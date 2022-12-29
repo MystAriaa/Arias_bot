@@ -1,5 +1,5 @@
 import discord
-#from package import log
+from package import log
 import os
 
 
@@ -7,7 +7,7 @@ def get_discord_token():
 	return os.environ["DISCORD_TOKEN"]
 
 def init_unique_client():
-	#log.log("Creating discord bot client")
+	log.log("Creating discord bot client")
 	intents = discord.Intents.default()
 	intents.message_content = True
 	client = discord.Client(intents = intents)
@@ -22,7 +22,6 @@ def get_discord_guild(client):
 	return client.get_guild(1057337928868696195)
 
 def get_discord_channel(client, name):
-	#log.log("Returning discord channel with name {}".format(name))
 	if name == "bot-logs":
 		return client.get_channel(1057339640257990656)
 	elif name == "test-bot":

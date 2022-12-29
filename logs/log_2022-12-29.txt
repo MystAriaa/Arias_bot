@@ -1,0 +1,259 @@
+Test[2022-12-29 16:50:41]: Discord bot is closing
+[2022-12-29 16:50:47]: Discord bot terminated
+[2022-12-29 17:03:59]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 17:03:59 |||
+[2022-12-29 17:03:59]: Start of the main script
+[2022-12-29 17:03:59]: Called token_generation
+[2022-12-29 17:04:00]: A new app access token has been generated: 1j3a0fe0ejg6gvgjnwo4i4d4l56a1q
+[2022-12-29 17:04:00]: Start of the discord bot
+[2022-12-29 17:04:00]: Start of flask web app
+[2022-12-29 17:04:02]: Returning discord channel with name bot-commands
+[2022-12-29 17:04:02]: Discord bot succesfully online and ready
+[2022-12-29 17:04:41]: Returning discord channel with name bot-commands
+[2022-12-29 17:04:41]: Returning discord channel with name bot-logs
+[2022-12-29 17:04:43]: Returning discord channel with name bot-logs
+[2022-12-29 17:04:45]: Returning discord channel with name bot-logs
+[2022-12-29 17:04:48]: Returning discord channel with name bot-logs
+[2022-12-29 17:04:50]: Returning discord channel with name bot-logs
+[2022-12-29 17:04:52]: Returning discord channel with name bot-logs
+[2022-12-29 17:04:54]: Returning discord channel with name bot-logs
+[2022-12-29 17:04:56]: Returning discord channel with name bot-logs
+[2022-12-29 17:04:59]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:01]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:03]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:05]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:06]: Return to entry page
+[2022-12-29 17:05:08]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:08]: 404 | Page not found
+[2022-12-29 17:05:10]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:12]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:14]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:17]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:19]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:21]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:23]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:25]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:28]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:30]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:32]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:34]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:36]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:39]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:41]: Returning discord channel with name bot-logs
+[2022-12-29 17:05:41]: Returning discord channel with name bot-commands
+[2022-12-29 17:05:45]: Returning discord channel with name bot-commands
+[2022-12-29 17:05:51]: Returning discord channel with name bot-commands
+[2022-12-29 17:05:51]: Discord bot is closing
+[2022-12-29 17:05:51]: Discord bot terminated
+||| 2022-12-29 17:07:36 |||
+          ********** END OF LOG FILE **********          
+[2022-12-29 17:08:10]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 17:08:10 |||
+[2022-12-29 17:08:10]: Start of the main script
+[2022-12-29 17:08:10]: Called token_generation
+[2022-12-29 17:08:11]: A new app access token has been generated: 4uhmsikeurh64egqjif72dy7t859ru
+[2022-12-29 17:08:11]: Start of the discord bot
+[2022-12-29 17:08:11]: Start of flask web app
+[2022-12-29 17:08:13]: Discord bot succesfully online and ready
+[2022-12-29 17:08:51]: Return to entry page
+[2022-12-29 17:09:01]: A new code has been generated : 6zrhlu8aipl98v9uzxp3 for user MystAria#3007
+[2022-12-29 17:09:11]: Attempting to submit a discord generated code
+[2022-12-29 17:09:11]: Codes matching, authentifaction succesfull, returning to home page
+[2022-12-29 17:09:16]: An user accepted the connection with Twitch
+[2022-12-29 17:09:16]: Called token_generation
+[2022-12-29 17:09:17]: A new user access token and refresh has been generated: pwcgk3mnbcbmkrh7ed7tem6j0twk5t / gj5e6l3uy4c39kusx1h2g1ibayy55op6kc1k4h3cav780j0cbr
+[2022-12-29 17:09:17]: Called token_validation
+[2022-12-29 17:09:18]: Successfully validated user access token
+[2022-12-29 17:09:18]: Called get_all_ban_member
+[2022-12-29 17:09:18]: Failed to return all banned members from the network. Returned Error
+[2022-12-29 17:09:18]: list index out of range
+[2022-12-29 17:09:18]: Called token_validation
+[2022-12-29 17:09:19]: Successfully validated app access token
+[2022-12-29 17:09:19]: 'user_id'
+[2022-12-29 17:09:19]: Called get_user_info
+[2022-12-29 17:09:19]: Successfully fetch user 161641887 info from twitch
+[2022-12-29 17:09:19]: Adding a new user 161641887, MystAria_ to the database
+[2022-12-29 17:09:19]: User 161641887, MystAria_ failed to be registered in the database
+[2022-12-29 17:09:19]: 1062 (23000): Duplicate entry '161641887-MystAria_' for key 'registered_user.user_id'
+[2022-12-29 17:09:19]: Trying to update user 161641887, MystAria_ informations in the database
+[2022-12-29 17:09:19]: Called set_new_user_info
+[2022-12-29 17:09:19]: Update of user 161641887, MystAria_ successfull in the database
+[2022-12-29 17:09:19]: Called set_user_filter
+[2022-12-29 17:09:19]: Trying to add new filter options for user 161641887
+[2022-12-29 17:09:19]: Failed to add new filter option for user 161641887
+[2022-12-29 17:09:19]: 1062 (23000): Duplicate entry '161641887' for key 'filter_user.user_id'
+[2022-12-29 17:09:19]: Called set_user_option
+[2022-12-29 17:09:19]: Failed to add filter options for user 161641887
+[2022-12-29 17:09:19]: 1062 (23000): Duplicate entry '161641887' for key 'option_user.user_id'
+[2022-12-29 17:09:19]: Failed to create banned accounts table for user 161641887
+[2022-12-29 17:09:19]: 1050 (42S01): Table '161641887_banlist' already exists
+[2022-12-29 17:09:19]: Called get_banlist
+[2022-12-29 17:09:19]: Successfully fetched user 161641887 banlist from twitch
+[2022-12-29 17:09:19]: Called filter_banlist
+[2022-12-29 17:09:19]: Called fill_banned_user_table_by_user
+[2022-12-29 17:09:19]: Called get_user_info_by_id
+[2022-12-29 17:09:19]: Successfully wipeout table 161641887_banlist
+[2022-12-29 17:09:19]: A new user 59655694 has been added in table 161641887_banlist
+[2022-12-29 17:09:19]: Failed to add tags to user 59655694 in banned_tag table
+[2022-12-29 17:09:19]: 1062 (23000): Duplicate entry '59655694' for key 'banned_tag.user_id'
+[2022-12-29 17:09:19]: Successfully updated tags for user 59655694 in banned_tag table
+[2022-12-29 17:09:19]: Called get_user_option
+[2022-12-29 17:09:19]: Successfully returned user 161641887 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2022-12-29 17:09:19]: Called get_user_filter
+[2022-12-29 17:09:19]: Successfully returning filter options for user 161641887: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0]
+[2022-12-29 17:11:02]: Discord bot is closing
+||| 2022-12-29 17:11:10 |||
+          ********** END OF LOG FILE **********          
+[2022-12-29 17:13:48]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 17:13:48 |||
+[2022-12-29 17:13:48]: Start of the main script
+[2022-12-29 17:13:48]: Called token_generation
+[2022-12-29 17:13:49]: A new app access token has been generated: chj3mkjfdjhuupltzv7mh7lrz1b8xj
+[2022-12-29 17:13:49]: Start of the discord bot
+[2022-12-29 17:13:49]: Start of flask web app
+[2022-12-29 17:13:49]: Return to entry page
+[2022-12-29 17:13:52]: Discord bot succesfully online and ready
+[2022-12-29 17:20:14]: Discord bot is closing
+[2022-12-29 17:20:14]: Discord bot terminated
+||| 2022-12-29 17:20:19 |||
+          ********** END OF LOG FILE **********          
+[2022-12-29 17:20:59]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 17:20:59 |||
+[2022-12-29 17:20:59]: Start of the main script
+[2022-12-29 17:20:59]: Called token_generation
+[2022-12-29 17:21:00]: A new app access token has been generated: 7lvvhwcfpgne6wte8l2686c0f5b9zw
+[2022-12-29 17:21:00]: Start of the discord bot
+[2022-12-29 17:21:00]: Start of flask web app
+[2022-12-29 17:21:02]: Discord bot succesfully online and ready
+[2022-12-29 17:25:47]: Return to entry page
+[2022-12-29 17:26:30]: A new code has been generated : pyqcy4yitaqqcfrvlbi6 for user MystAria#3007
+[2022-12-29 17:26:38]: Attempting to submit a discord generated code
+[2022-12-29 17:26:38]: Codes matching, authentifaction succesfull, returning to home page
+[2022-12-29 17:26:44]: An user accepted the connection with Twitch
+[2022-12-29 17:26:44]: Called token_generation
+[2022-12-29 17:26:44]: A new user access token and refresh has been generated: w332e1d2dy6i43yz2ds5cmcl6i42e3 / q4472do7t5shgasnv0jkfpn366jq4ezkytjkckxnimpazqjdpt
+[2022-12-29 17:26:44]: Called token_validation
+[2022-12-29 17:26:45]: Successfully validated user access token
+[2022-12-29 17:26:45]: Called get_all_ban_member
+[2022-12-29 17:26:45]: Failed to return all banned members from the network. Returned Error
+[2022-12-29 17:26:45]: list index out of range
+[2022-12-29 17:26:45]: Called token_validation
+[2022-12-29 17:26:46]: Successfully validated app access token
+[2022-12-29 17:26:46]: 'user_id'
+[2022-12-29 17:26:46]: Called get_user_info
+[2022-12-29 17:26:46]: Successfully fetch user 161641887 info from twitch
+[2022-12-29 17:26:46]: Adding a new user 161641887, MystAria_ to the database
+[2022-12-29 17:26:46]: User 161641887, MystAria_ failed to be registered in the database
+[2022-12-29 17:26:46]: 1062 (23000): Duplicate entry '161641887-MystAria_' for key 'registered_user.user_id'
+[2022-12-29 17:26:46]: Trying to update user 161641887, MystAria_ informations in the database
+[2022-12-29 17:26:46]: Called set_new_user_info
+[2022-12-29 17:26:46]: Update of user 161641887, MystAria_ successfull in the database
+[2022-12-29 17:26:46]: Called set_user_filter
+[2022-12-29 17:26:46]: Trying to add new filter options for user 161641887
+[2022-12-29 17:26:46]: Failed to add new filter option for user 161641887
+[2022-12-29 17:26:46]: 1062 (23000): Duplicate entry '161641887' for key 'filter_user.user_id'
+[2022-12-29 17:26:46]: Called set_user_option
+[2022-12-29 17:26:46]: Failed to add filter options for user 161641887
+[2022-12-29 17:26:46]: 1062 (23000): Duplicate entry '161641887' for key 'option_user.user_id'
+[2022-12-29 17:26:46]: Failed to create banned accounts table for user 161641887
+[2022-12-29 17:26:46]: 1050 (42S01): Table '161641887_banlist' already exists
+[2022-12-29 17:26:46]: Called get_banlist
+[2022-12-29 17:26:46]: Successfully fetched user 161641887 banlist from twitch
+[2022-12-29 17:26:46]: Called filter_banlist
+[2022-12-29 17:26:46]: Called fill_banned_user_table_by_user
+[2022-12-29 17:26:46]: Called get_user_info_by_id
+[2022-12-29 17:26:46]: Successfully wipeout table 161641887_banlist
+[2022-12-29 17:26:46]: A new user 59655694 has been added in table 161641887_banlist
+[2022-12-29 17:26:46]: Failed to add tags to user 59655694 in banned_tag table
+[2022-12-29 17:26:46]: 1062 (23000): Duplicate entry '59655694' for key 'banned_tag.user_id'
+[2022-12-29 17:26:46]: Successfully updated tags for user 59655694 in banned_tag table
+[2022-12-29 17:26:46]: Called get_user_option
+[2022-12-29 17:26:46]: Successfully returned user 161641887 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2022-12-29 17:26:46]: Called get_user_filter
+[2022-12-29 17:26:46]: Successfully returning filter options for user 161641887: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0]
+[2022-12-29 17:26:57]: An user wants to update their filter
+[2022-12-29 17:26:57]: Called token_validation
+[2022-12-29 17:26:58]: Successfully validated user access token
+[2022-12-29 17:26:58]: Called update_user_filter
+[2022-12-29 17:26:58]: Ajout de nouvelles données de filtre pour l'user 161641887
+[2022-12-29 17:26:58]: Failed to add new filter option for user 161641887
+[2022-12-29 17:26:58]: 1062 (23000): Duplicate entry '161641887' for key 'filter_user.user_id'
+[2022-12-29 17:26:58]: Successfully updated filter options for user 161641887
+[2022-12-29 17:26:58]: Filter succesfully updated for user 161641887
+[2022-12-29 17:27:00]: An user succesfully authenticated by discord
+[2022-12-29 17:27:09]: An user accepted the connection with Twitch
+[2022-12-29 17:27:09]: Called token_generation
+[2022-12-29 17:27:10]: A new user access token and refresh has been generated: m3hb6bppmjedjck4yrptna3lnftr6f / hjpe24enh14x5gppo30ctonkfzqfkizivnkw7yvng55njzreia
+[2022-12-29 17:27:10]: Called token_validation
+[2022-12-29 17:27:11]: Successfully validated user access token
+[2022-12-29 17:27:11]: Called get_all_ban_member
+[2022-12-29 17:27:11]: Failed to return all banned members from the network. Returned Error
+[2022-12-29 17:27:11]: list index out of range
+[2022-12-29 17:27:11]: Called token_validation
+[2022-12-29 17:27:12]: Successfully validated app access token
+[2022-12-29 17:27:12]: 'user_id'
+[2022-12-29 17:27:12]: Called get_user_info
+[2022-12-29 17:27:12]: Successfully fetch user 161641887 info from twitch
+[2022-12-29 17:27:12]: Adding a new user 161641887, MystAria_ to the database
+[2022-12-29 17:27:12]: User 161641887, MystAria_ failed to be registered in the database
+[2022-12-29 17:27:12]: 1062 (23000): Duplicate entry '161641887-MystAria_' for key 'registered_user.user_id'
+[2022-12-29 17:27:12]: Trying to update user 161641887, MystAria_ informations in the database
+[2022-12-29 17:27:12]: Called set_new_user_info
+[2022-12-29 17:27:12]: Update of user 161641887, MystAria_ successfull in the database
+[2022-12-29 17:27:12]: Called set_user_filter
+[2022-12-29 17:27:12]: Trying to add new filter options for user 161641887
+[2022-12-29 17:27:12]: Failed to add new filter option for user 161641887
+[2022-12-29 17:27:12]: 1062 (23000): Duplicate entry '161641887' for key 'filter_user.user_id'
+[2022-12-29 17:27:12]: Called set_user_option
+[2022-12-29 17:27:12]: Failed to add filter options for user 161641887
+[2022-12-29 17:27:12]: 1062 (23000): Duplicate entry '161641887' for key 'option_user.user_id'
+[2022-12-29 17:27:12]: Failed to create banned accounts table for user 161641887
+[2022-12-29 17:27:12]: 1050 (42S01): Table '161641887_banlist' already exists
+[2022-12-29 17:27:12]: Called get_banlist
+[2022-12-29 17:27:12]: Successfully fetched user 161641887 banlist from twitch
+[2022-12-29 17:27:12]: Called filter_banlist
+[2022-12-29 17:27:12]: Called fill_banned_user_table_by_user
+[2022-12-29 17:27:12]: Called get_user_info_by_id
+[2022-12-29 17:27:12]: Successfully wipeout table 161641887_banlist
+[2022-12-29 17:27:12]: A new user 59655694 has been added in table 161641887_banlist
+[2022-12-29 17:27:12]: Failed to add tags to user 59655694 in banned_tag table
+[2022-12-29 17:27:12]: 1062 (23000): Duplicate entry '59655694' for key 'banned_tag.user_id'
+[2022-12-29 17:27:12]: Successfully updated tags for user 59655694 in banned_tag table
+[2022-12-29 17:27:12]: Called get_user_option
+[2022-12-29 17:27:12]: Successfully returned user 161641887 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2022-12-29 17:27:12]: Called get_user_filter
+[2022-12-29 17:27:12]: Successfully returning filter options for user 161641887: [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0]
+[2022-12-29 17:27:26]: An user wants an update on their channel
+[2022-12-29 17:27:26]: Called get_user_info_by_access_token
+[2022-12-29 17:27:26]: Called get_all_master_banlist
+[2022-12-29 17:27:26]: Returned: [(443, 457947821, 'KEKW', '', '2022-12-27T15:41:35Z', '', 699600940, 'Arias_bot', 699600940), (453, 59655694, 'Test_user2', '', '2022-12-27T15:48:45Z', '', 161641887, 'MystAria_', 161641887)]
+[2022-12-29 17:27:26]: Called ban_from_master_banlist
+[2022-12-29 17:27:26]: Starting to ban for user 161641887
+[2022-12-29 17:27:26]: Called get_user_filter
+[2022-12-29 17:27:26]: Successfully returning filter options for user 161641887: [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0]
+[2022-12-29 17:27:26]: Called get_bannable_id_by_filter
+[2022-12-29 17:27:26]: Called get_user_name_by_id
+[2022-12-29 17:27:26]: Failed to ban user 457947821 for the channel user 161641887
+[2022-12-29 17:27:26]: This user cannot be ban because it is originated from this channel
+[2022-12-29 17:27:26]: Arias_bot has been succesfully called on 161641887's channel, returning to validation page
+[2022-12-29 17:27:29]: An user succesfully authenticated by discord
+[2022-12-29 17:27:34]: Return to entry page
+[2022-12-29 17:27:36]: Loading of the visualisation page
+[2022-12-29 17:27:36]: Called get_user_name_by_id
+[2022-12-29 17:27:36]: Called get_tag_by_id
+[2022-12-29 17:27:36]: Successfully returning filter tags for user 457947821: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2022-12-29 17:27:36]: Called get_user_name_by_id
+[2022-12-29 17:27:36]: Called get_tag_by_id
+[2022-12-29 17:27:36]: Successfully returning filter tags for user 59655694: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 1}
+[2022-12-29 17:31:38]: Discord bot is closing
+[2022-12-29 17:31:38]: Discord bot terminated
+||| 2022-12-29 17:31:42 |||
+          ********** END OF LOG FILE **********          

@@ -9,6 +9,7 @@ import time
 import datetime
 import string
 import random
+from discord import Message
 
 
 log.init_file_name()
@@ -449,62 +450,97 @@ def run_discord_bot():
 		if channel == discord.get_discord_channel(discord_bot, "bot-commands"):
 
 			if "Admin" in user_roles_name:
-				if user_message[0] == '!' or user_message[0] == '/':
-					if "stop" in user_message or "close" in user_message:
-						await message.channel.send("Bot is closing, Bye.")
-						log.log("Discord bot is closing")
-						await discord_bot.close()
-						return
+				flag = False
+				
+				if message.content.startswith("!stop") or message.content.startswith("close"):
+					await message.channel.send("Bot is closing, Bye.")
+					flag = False
+					log.log("Discord bot is closing")
+					await discord_bot.close()
+					return
 
-					if "update" in user_message:
-						await message.channel.send("Force update de Arias_bot.")
-						log.log("Forced iteration of the update thread by discord bot")
-						routine_update_user_banned_table()
-						return
+				if message.content.startswith("!update"):
+					await message.channel.send("Force update de Arias_bot.")
+					log.log("Forced iteration of the update thread by discord bot")
+					routine_update_user_banned_table()
+					return
 
-					if user_message[:4] == "!ban":
+				if message.content.startswith("!ban"):
+					try:
+						id = user_message[5:]
+						await message.channel.send("User {} banned from the network.".format(id))
+						log.log("Member {} have been banned from the network for discord bot".format(id))
+						mysql.add_ban_member(connection_bd, id)
+					except Exception as e:
+						log.log(str(e))
+						await message.channel.send("Wrong format: !ban <id>")
+					return
+					
+
+				if message.content.startswith("!unban"):
+					try:
+						id = user_message[7:]
+						await message.channel.send("User {} unbanned from the network.".format(id))
+						log.log("Member {} have been unbanned from the network for discord bot".format(id))
+						mysql.remove_ban_member(connection_bd, id)
+					except Exception as e:
+						log.log(str(e))
+						await message.channel.send("Wrong format: !unban <id>")
+					return
+					
+
+				if message.content.startswith("!getid"):
+					try:
+						name = user_message[7:]
+						id = mysql.get_user_id_by_name(connection_bd, name)
+						await message.channel.send("User {} got this id: {}".format(name,id))
+						log.log("Member with id {} have the name {} from discord bot".format(id,name))
+					except Exception as e:
+						log.log(str(e))
+						await message.channel.send("Wrong format: !getid <name>")
+					return
+
+				
+				last_message = ""
+				log_folder_path = "logs/"
+				file_name = log.get_file_name()
+				if message.content.startswith('!log start'):
+					await channel.send("Logging ON")
+					flag = True
+					while flag:
+						f = open(log_folder_path + file_name, 'r')
+						lignes = f.readlines()
+						f.close()
+
 						try:
-							id = user_message[5:]
-							await message.channel.send("User {} banned from the network.".format(id))
-							log.log("Member {} have been banned from the network for discord bot".format(id))
-							mysql.add_ban_member(connection_bd, id)
+							if last_message != lignes[-1]:
+								channel_to_output = discord.get_discord_channel(discord_bot, "bot-logs")
+								await channel_to_output.send(lignes[-1])
+								last_message = lignes[-1]
 						except Exception as e:
-							log.log(str(e))
-							await message.channel.send("Wrong format: !ban <id>")
-						return
-						
+							print(str(e))
 
-					if user_message[:6] == "!unban":
+						def check(msg: Message):
+							return not msg.author.bot and msg.content.lower() == "!log stop"
+
 						try:
-							id = user_message[7:]
-							await message.channel.send("User {} unbanned from the network.".format(id))
-							log.log("Member {} have been unbanned from the network for discord bot".format(id))
-							mysql.remove_ban_member(connection_bd, id)
-						except Exception as e:
-							log.log(str(e))
-							await message.channel.send("Wrong format: !unban <id>")
-						return
-						
+							if await discord_bot.wait_for("message", check=check, timeout=2):
+								flag = False
+								await channel.send("Logging OFF")
+						except:
+							pass
 
-					if user_message[:6] == "!getid":
-						try:
-							name = user_message[7:]
-							id = mysql.get_user_id_by_name(connection_bd, name)
-							await message.channel.send("User {} got this id: {}".format(name,id))
-							log.log("Member with id {} have the name {} from discord bot".format(id,name))
-						except Exception as e:
-							log.log(str(e))
-							await message.channel.send("Wrong format: !getid <name>")
-						return
 
-			if user_message[0] == '!' or user_message[0] == '/':
-					if "code" in user_message:
-						random_code = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-						available_discord_code.append(random_code)
-						await message.author.send("A new code has been generated: {}".format(random_code))
-						log.log("A new code has been generated : {} for user {}".format(random_code,username))
-						await message.channel.send("@{} A new code has been generated, check your private message".format(username))
-						return
+
+
+			if message.content.startswith('!code') or message.content.startswith('/code'):
+				random_code = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+				available_discord_code.append(random_code)
+				await message.author.send("A new code has been generated: {}".format(random_code))
+				log.log("A new code has been generated : {} for user {}".format("---------",username))
+				await message.channel.send("@{} A new code has been generated, check your private message".format(username))
+				return
+
 			
 					
 	discord_bot.run(discord_token)
