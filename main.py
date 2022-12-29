@@ -4,12 +4,12 @@ from package import twitch_connector as twitch
 from package import mysql_connector as mysql
 from package import discord_connector as discord
 from package import log
-import threading
 import time
 import datetime
 import string
 import random
 from discord import Message
+from multiprocessing import Process
 
 
 log.init_file_name()
@@ -34,7 +34,7 @@ available_discord_code = []
 random_state_list = []
 available_home_code = []
 
-flag_routine_update_user_banned_table = True
+flag_routine_update_user_banned_table = False
 
 #---------------------------------------------------------------------------------------------------------------------#
 @app.route('/')
@@ -304,12 +304,11 @@ def receive_only():
 
 def routine_update_user_banned_table():
 	log.log("Start of the daily update thread")
-	global random_state
 	global flag_routine_update_user_banned_table
 	flag_routine_update_user_banned_table = True
 	
 	#S'execute tout les jours à 6 heures du matin
-	#time.sleep(60*60*6 + 60*60*24 - (datetime.datetime.now().second + datetime.datetime.now().minute*60 + datetime.datetime.now().hour*60*60))
+	time.sleep(60*60*6 + 60*60*24 - (datetime.datetime.now().second + datetime.datetime.now().minute*60 + datetime.datetime.now().hour*60*60))
 	while flag_routine_update_user_banned_table:
 		log.log("| It's time for an iteration of the update thread |")
 		log.log("Part 1/3")
@@ -409,17 +408,16 @@ def routine_update_user_banned_table():
 		#---------------------------------------------------------------------
 
 		log.log("| End of this iteration for the update thread |")
-		#time.sleep(60*60*24)
-		flag_routine_update_user_banned_table = False
+		time.sleep(60*60*24)
 
 	log.log("End of the daily update thread")
-	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-	random_state_list.append(random_state)
+
 
 #---------------------------------------------------------------------------------------------------------------------#
 
-
 def run_discord_bot():
+	global flag_routine_update_user_banned_table
+	global THREAD_update_user_banned_table
 
 	@discord_bot.event
 	async def on_ready():
@@ -430,6 +428,8 @@ def run_discord_bot():
 
 	@discord_bot.event
 	async def on_message(message):
+		global flag_routine_update_user_banned_table
+		global THREAD_update_user_banned_table
 		if message.author == discord_bot.user:
 			return
 
@@ -447,7 +447,7 @@ def run_discord_bot():
 				flag = False
 
 				if message.content.startswith("!help"):
-					m = "Available commands : !help | !stop | !update | !ban <id> | !unban <id> | !getid <name> | !log start | !log stop | !revert <name> | !code"
+					m = "Available commands : !help | !stop | !update | !ban <id> | !unban <id> | !getid <name> | !thread start | !thread stop | !log start | !log stop | !revert <name> | !code"
 					await message.channel.send(m)
 					return
 
@@ -455,7 +455,11 @@ def run_discord_bot():
 					await message.channel.send("Bot is closing, Bye.")
 					flag = False
 					log.log("Discord bot is closing")
-					await discord_bot.close()
+					try:
+						await discord_bot.close()
+						THREAD_discord_bot.terminate()
+					except:
+						THREAD_discord_bot.terminate()
 					return
 
 				if message.content.startswith("!update"):
@@ -550,6 +554,21 @@ def run_discord_bot():
 						await message.channel.send("Wrong format: !revert <name>")
 					return
 
+				if message.content.startswith('!thread start'):
+					flag_routine_update_user_banned_table = True
+					await message.channel.send("Thread update Arias_bot starting")
+					log.log("Thread update Arias_bot starting")
+					THREAD_update_user_banned_table.start()
+					return
+
+				if message.content.startswith('!thread stop'):
+					flag_routine_update_user_banned_table = False
+					await message.channel.send("Thread update Arias_bot stoping")
+					log.log("Thread update Arias_bot starting")
+					THREAD_update_user_banned_table.terminate()
+					THREAD_update_user_banned_table = Process(target = routine_update_user_banned_table)
+					return
+
 			if message.content.startswith('!code') or message.content.startswith('/code'):
 				random_code = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 				available_discord_code.append(random_code)
@@ -586,12 +605,12 @@ def discord_code_validation():
 
 
 #---------------------------------------------------------------------------------------------------------------------#
+THREAD_update_user_banned_table = Process(target = routine_update_user_banned_table)
+THREAD_discord_bot = Process(target = run_discord_bot)
 
 if __name__ == '__main__':
 	log.log("Start of the main script")
 	app_access_token = twitch.token_generation(client_id,client_secret)
-	#thread_update_user_banned_table = threading.Thread(target = routine_update_user_banned_table)
-	THREAD_discord_bot = threading.Thread(target = run_discord_bot)
 	THREAD_discord_bot.start()
 	log.log("Start of the discord bot")
 	log.log("Start of flask web app")
