@@ -1,7 +1,3 @@
-Logs via discord bot token
-
--------------------------------------------------------
-
 code cleaning
 corriger les coding mistake
 

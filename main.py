@@ -451,8 +451,13 @@ def run_discord_bot():
 
 			if "Admin" in user_roles_name:
 				flag = False
-				
-				if message.content.startswith("!stop") or message.content.startswith("close"):
+
+				if message.content.startswith("!help"):
+					m = "Available commands : !help | !stop | !update | !ban <id> | !unban <id> | !getid <name> | !log start | !log stop | !revert <name> | !code"
+					await message.channel.send(m)
+					return
+
+				if message.content.startswith("!stop") or message.content.startswith("!close"):
 					await message.channel.send("Bot is closing, Bye.")
 					flag = False
 					log.log("Discord bot is closing")
@@ -476,7 +481,6 @@ def run_discord_bot():
 						await message.channel.send("Wrong format: !ban <id>")
 					return
 					
-
 				if message.content.startswith("!unban"):
 					try:
 						id = user_message[7:]
@@ -488,7 +492,6 @@ def run_discord_bot():
 						await message.channel.send("Wrong format: !unban <id>")
 					return
 					
-
 				if message.content.startswith("!getid"):
 					try:
 						name = user_message[7:]
@@ -499,7 +502,6 @@ def run_discord_bot():
 						log.log(str(e))
 						await message.channel.send("Wrong format: !getid <name>")
 					return
-
 				
 				last_message = ""
 				log_folder_path = "logs/"
@@ -530,8 +532,29 @@ def run_discord_bot():
 						except:
 							pass
 
-
-
+				if message.content.startswith('!revert'):
+					try:
+						name = user_message[8:]
+						id = mysql.get_user_id_by_name(connection_bd, name)
+						user_info = mysql.get_user_info_by_id(connection_bd, id)
+						user_refresh_token = user_info[-1]
+						user_access_token = user_info[-2]
+						id = twitch.token_validation(user_access_token)
+						if ( id == 0 or id == 1):
+							user_access_token, user_refresh_token = twitch.token_refresh(connection_bd, client_id, client_secret, user_id=user_id, refresh_token=user_refresh_token, mode = "user")
+						user_id = user_info[1]
+						list_of_banned_user = twitch.get_banlist(user_id, user_access_token, client_id, filter = False)
+						#filter ban list to keep on user ban by arias
+						list_of_unbanned_user = []
+						for banned_user in list_of_banned_user:
+							if("User automaticaly ban by Arias_bot." in banned_user["reason"]):
+								list_of_unbanned_user.append(banned_user)
+						twitch.unban_all(user_id, user_access_token, list_of_unbanned_user, client_id)
+						log.log("Revert all actions made by Arias_bot".format(id,name))
+					except Exception as e:
+						log.log(str(e))
+						await message.channel.send("Wrong format: !revert <name>")
+					return
 
 			if message.content.startswith('!code') or message.content.startswith('/code'):
 				random_code = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
@@ -541,10 +564,14 @@ def run_discord_bot():
 				await message.channel.send("@{} A new code has been generated, check your private message".format(username))
 				return
 
-			
+			if message.content.startswith("!help"):
+					m = "Available commands : !help | !code"
+					await message.channel.send(m)
+					return
 					
 	discord_bot.run(discord_token)
 	log.log("Discord bot terminated")
+	return
 
 
 
