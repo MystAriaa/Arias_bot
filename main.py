@@ -302,7 +302,6 @@ def receive_only():
 
 #---------------------------------------------------------------------------------------------------------------------#
 
-@app.route('/start')
 def routine_update_user_banned_table():
 	log.log("Start of the daily update thread")
 	global random_state
@@ -416,11 +415,6 @@ def routine_update_user_banned_table():
 	log.log("End of the daily update thread")
 	random_state = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 	random_state_list.append(random_state)
-	try:
-		return render_template('pages/home.html', user_autorisation_url = user_autorisation_url + random_state)
-	except Exception as e:
-		log.log(str(e))
-
 
 #---------------------------------------------------------------------------------------------------------------------#
 
