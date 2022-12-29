@@ -439,8 +439,6 @@ def run_discord_bot():
 		user_roles = message.author.roles
 		user_roles_name = [role.name for role in user_roles]
 
-		#print(f"{username} said: '{user_message}' ({str(channel)})")
-
 		if channel == discord.get_discord_channel(discord_bot, "bot-commands"):
 
 			if "Admin" in user_roles_name:
