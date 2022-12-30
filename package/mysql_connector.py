@@ -9,10 +9,10 @@ import os
 
 
 delay_s = 1
-bdd_name = "Arias_bot_database"
-bdd_ip = "localhost"
-bdd_login = "Arias_bot"
-bdd_password = "1212"
+bdd_name = "arias_bot_database"
+bdd_ip = os.environ["AWS_IP"]
+bdd_login = os.environ["Arias_bot_login"]
+bdd_password = os.environ["Arias_bot_password"]
 
 def connect_to_database(host=bdd_ip, user=bdd_login, password=bdd_password, database=bdd_name):
     try:

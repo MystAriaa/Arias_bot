@@ -302,6 +302,106 @@ def receive_only():
 	return render_template('pages/validation.html', text=text_return, return_home_code=random_home_code)
 
 #---------------------------------------------------------------------------------------------------------------------#
+def iteration_update_user_banned_table():
+	log.log("| It's time for an iteration of the update thread |")
+	log.log("Part 1/3")
+
+	array_of_users_info = mysql.get_all_users(connection_bd)
+	for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_name / 3:user_type / 4:access_token / 5:refresh_token
+				
+		user_id = user[1]
+		user_name = user[2]
+		user_access_token = user[4]
+		user_refresh_token = user[5]
+		log.log("Update of user {} informations".format(user_name))
+		#check les access_token
+		id = twitch.token_validation(user_access_token)
+		if ( id == 0 or id == 1):
+			user_access_token, user_refresh_token = twitch.token_refresh(connection_bd, client_id, client_secret, user_id=user_id, refresh_token=user_refresh_token, mode = "user")
+		
+		#Do not get banned_user from user with Receive-Only
+		user_option = mysql.get_user_option(connection_bd, user_id)
+		if user_option == "Error":
+			pass
+		else:
+			if (user_option["receiveonly"] == 0): # 0==OFF
+				log.log("User {} have Receive_Only OFF. We fetch all banned accounts from his channel".format(user_id))
+				#appeler twitch allo les bannis stp
+				list_of_banned_users_by_user = twitch.get_banlist(user_id, user_access_token, client_id)
+				#imput les bannies dans la datatababbaaasee
+				mysql.fill_banned_user_table_by_user(connection_bd, list_of_banned_users_by_user, user_id)
+			else:
+				log.log("User {} have Receive_Only ON. All ban made by Arias_bot are unmade on his channel".format(user_id))
+				#If ON we must remove all banned user by Arias_bot from the channel
+				list_of_banned_user = twitch.get_banlist(user_id, user_access_token, client_id, filter = False)
+				list_of_unbanned_user = []
+				for banned_user in list_of_banned_user:
+					if("User automaticaly ban by Arias_bot." in banned_user["reason"]):
+						list_of_unbanned_user.append(banned_user)
+				twitch.unban_all(user_id, user_access_token, list_of_unbanned_user, client_id)
+
+		
+	#--------------------------------------------------------------------
+
+	#Ici on recupt la list a ban et on la compare a la table master pour voir qui de la table master on unban
+	log.log("Part 2/3")
+	array_of_users_info = mysql.get_all_users(connection_bd)
+	list_of_banned_user_from_master = mysql.get_all_master_banlist(connection_bd)
+
+	list_of_banned_user = []
+	for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_name / 3:user_type / 4:access_token / 5:refresh_token
+		list_of_banned_user.extend(mysql.get_all_user_table(connection_bd, user[1]))
+
+	#Il faut mettre à 0 les PRIMARY_KEY de tout les elements des deux listes pour pouvoir les comparer+ retirer les origin channels + time 
+	temp_1 = []
+	temp_2 = []
+	for e in list_of_banned_user_from_master:
+		temp_1.append(("0",e[1],e[2],e[3],e[4],"",e[6],e[7]))
+	for e in list_of_banned_user:
+		temp_2.append(("0",e[1],e[2],e[3],e[4],"",e[6],e[7]))
+	list_of_banned_user_from_master = temp_1
+	list_of_banned_user_m = temp_2
+
+	log.log("Unbanning banned accounts not fetch anymore and still registered")
+	user_to_unban = list(set(list_of_banned_user_from_master) - set(list_of_banned_user_m))
+
+	for user in array_of_users_info:
+		user_id = user[1]
+		user_access_token = user[3]
+		twitch.unban_all(user_id,user_access_token,user_to_unban,client_id)
+	
+	#need to remove unbanned_user from flag table
+	mysql.remove_list_user_from_tag_table(connection_bd, user_to_unban)
+	#need to remove unbanned_user from master_table
+	mysql.remove_list_user_in_master(connection_bd, user_to_unban)
+	#need to update master_table with new banned
+	for user in array_of_users_info:
+		user_id = user[1]
+		mysql.insert_list_banned_into_master(connection_bd, mysql.get_all_user_table(connection_bd, user_id), user_id)
+	log.log("Update of the Master banlist with new fetched banned accounts")
+		
+		
+	#---------------------------------------------------------------------
+
+	log.log("Part 3/3")
+	for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_name / 3:user_type / 4:access_token / 5:refresh_token		
+		user_id = user[1]
+		user_access_token = user[4]
+		#If Give-Only option is off or None we can ban on this channel
+		if (mysql.get_user_option(connection_bd, user_id)["giveonly"] == "Error"):
+			log.log("Give_Only option is unreadable, we skip the banning phase for user {}".format(user_id))
+		else:
+			if (mysql.get_user_option(connection_bd, user_id)["giveonly"] == 1):
+				log.log("Give_Only option is ON for user {}, we skip the banning phase for this user")
+			else:
+				log.log("Give_Only option is OFF for user {}, we can proceide with the banning phase for this user".format(user_id))
+				list_of_banned_user = mysql.get_all_master_banlist(connection_bd)
+				twitch.ban_from_master_banlist(connection_bd, user_id, user_access_token, list_of_banned_user, client_id)
+
+	#---------------------------------------------------------------------
+
+	log.log("| End of this iteration for the update thread |")
+
 
 def routine_update_user_banned_table():
 	log.log("Start of the daily update thread")
@@ -311,104 +411,7 @@ def routine_update_user_banned_table():
 	#S'execute tout les jours à 6 heures du matin
 	time.sleep(60*60*6 + 60*60*24 - (datetime.datetime.now().second + datetime.datetime.now().minute*60 + datetime.datetime.now().hour*60*60))
 	while flag_routine_update_user_banned_table:
-		log.log("| It's time for an iteration of the update thread |")
-		log.log("Part 1/3")
-
-		array_of_users_info = mysql.get_all_users(connection_bd)
-		for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_name / 3:user_type / 4:access_token / 5:refresh_token
-					
-			user_id = user[1]
-			user_name = user[2]
-			user_access_token = user[4]
-			user_refresh_token = user[5]
-			log.log("Update of user {} informations".format(user_name))
-			#check les access_token
-			id = twitch.token_validation(user_access_token)
-			if ( id == 0 or id == 1):
-				user_access_token, user_refresh_token = twitch.token_refresh(connection_bd, client_id, client_secret, user_id=user_id, refresh_token=user_refresh_token, mode = "user")
-			
-			#Do not get banned_user from user with Receive-Only
-			user_option = mysql.get_user_option(connection_bd, user_id)
-			if user_option == "Error":
-				pass
-			else:
-				if (user_option["receiveonly"] == 0): # 0==OFF
-					log.log("User {} have Receive_Only OFF. We fetch all banned accounts from his channel".format(user_id))
-					#appeler twitch allo les bannis stp
-					list_of_banned_users_by_user = twitch.get_banlist(user_id, user_access_token, client_id)
-					#imput les bannies dans la datatababbaaasee
-					mysql.fill_banned_user_table_by_user(connection_bd, list_of_banned_users_by_user, user_id)
-				else:
-					log.log("User {} have Receive_Only ON. All ban made by Arias_bot are unmade on his channel".format(user_id))
-					#If ON we must remove all banned user by Arias_bot from the channel
-					list_of_banned_user = twitch.get_banlist(user_id, user_access_token, client_id, filter = False)
-					list_of_unbanned_user = []
-					for banned_user in list_of_banned_user:
-						if("User automaticaly ban by Arias_bot." in banned_user["reason"]):
-							list_of_unbanned_user.append(banned_user)
-					twitch.unban_all(user_id, user_access_token, list_of_unbanned_user, client_id)
-
-			
-		#--------------------------------------------------------------------
-
-		#Ici on recupt la list a ban et on la compare a la table master pour voir qui de la table master on unban
-		log.log("Part 2/3")
-		array_of_users_info = mysql.get_all_users(connection_bd)
-		list_of_banned_user_from_master = mysql.get_all_master_banlist(connection_bd)
-
-		list_of_banned_user = []
-		for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_name / 3:user_type / 4:access_token / 5:refresh_token
-			list_of_banned_user.extend(mysql.get_all_user_table(connection_bd, user[1]))
-
-		#Il faut mettre à 0 les PRIMARY_KEY de tout les elements des deux listes pour pouvoir les comparer+ retirer les origin channels + time 
-		temp_1 = []
-		temp_2 = []
-		for e in list_of_banned_user_from_master:
-			temp_1.append(("0",e[1],e[2],e[3],e[4],"",e[6],e[7]))
-		for e in list_of_banned_user:
-			temp_2.append(("0",e[1],e[2],e[3],e[4],"",e[6],e[7]))
-		list_of_banned_user_from_master = temp_1
-		list_of_banned_user_m = temp_2
-
-		log.log("Unbanning banned accounts not fetch anymore and still registered")
-		user_to_unban = list(set(list_of_banned_user_from_master) - set(list_of_banned_user_m))
-
-		for user in array_of_users_info:
-			user_id = user[1]
-			user_access_token = user[3]
-			twitch.unban_all(user_id,user_access_token,user_to_unban,client_id)
-		
-		#need to remove unbanned_user from flag table
-		mysql.remove_list_user_from_tag_table(connection_bd, user_to_unban)
-		#need to remove unbanned_user from master_table
-		mysql.remove_list_user_in_master(connection_bd, user_to_unban)
-		#need to update master_table with new banned
-		for user in array_of_users_info:
-			user_id = user[1]
-			mysql.insert_list_banned_into_master(connection_bd, mysql.get_all_user_table(connection_bd, user_id), user_id)
-		log.log("Update of the Master banlist with new fetched banned accounts")
-			
-			
-		#---------------------------------------------------------------------
-
-		log.log("Part 3/3")
-		for user in array_of_users_info: #0: primary_key / 1:user_id / 2:user_name / 3:user_type / 4:access_token / 5:refresh_token		
-			user_id = user[1]
-			user_access_token = user[4]
-			#If Give-Only option is off or None we can ban on this channel
-			if (mysql.get_user_option(connection_bd, user_id)["giveonly"] == "Error"):
-				log.log("Give_Only option is unreadable, we skip the banning phase for user {}".format(user_id))
-			else:
-				if (mysql.get_user_option(connection_bd, user_id)["giveonly"] == 1):
-					log.log("Give_Only option is ON for user {}, we skip the banning phase for this user")
-				else:
-					log.log("Give_Only option is OFF for user {}, we can proceide with the banning phase for this user".format(user_id))
-					list_of_banned_user = mysql.get_all_master_banlist(connection_bd)
-					twitch.ban_from_master_banlist(connection_bd, user_id, user_access_token, list_of_banned_user, client_id)
-
-		#---------------------------------------------------------------------
-
-		log.log("| End of this iteration for the update thread |")
+		iteration_update_user_banned_table()
 		time.sleep(60*60*24)
 
 	log.log("End of the daily update thread")
@@ -465,7 +468,7 @@ def run_discord_bot(q):
 				if message.content.startswith("!update"):
 					await message.channel.send("Force update de Arias_bot.")
 					log.log("Forced iteration of the update thread by discord bot")
-					routine_update_user_banned_table()
+					iteration_update_user_banned_table()
 					return
 
 				if message.content.startswith("!ban"):
