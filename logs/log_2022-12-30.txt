@@ -1,0 +1,36 @@
+[2022-12-30 11:19:36]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-30 11:19:36 |||
+[2022-12-30 11:19:36]: Start of the main script
+[2022-12-30 11:19:36]: Called token_generation
+[2022-12-30 11:19:37]: A new app access token has been generated: c64sbykwjs4yjqre02tju8kaeflmls
+[2022-12-30 11:19:37]: Start of the discord bot
+[2022-12-30 11:19:37]: Start of flask web app
+[2022-12-30 11:19:37]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-30 11:19:37 |||
+[2022-12-30 11:19:40]: Discord bot succesfully online and ready
+[2022-12-30 11:27:23]: Return to entry page
+[2022-12-30 11:29:46]: Return to entry page
+[2022-12-30 12:22:02]: Return to entry page
+[2022-12-30 12:22:34]: Return to entry page
+[2022-12-30 12:23:38]: Return to entry page
+[2022-12-30 12:25:12]: Return to entry page
+[2022-12-30 12:26:02]: Loading of the visualisation page
+[2022-12-30 12:26:02]: Called get_user_name_by_id
+[2022-12-30 12:26:02]: Called get_tag_by_id
+[2022-12-30 12:26:02]: Successfully returning filter tags for user 457947821: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2022-12-30 12:26:02]: Called get_user_name_by_id
+[2022-12-30 12:26:02]: Called get_tag_by_id
+[2022-12-30 12:26:02]: Successfully returning filter tags for user 59655694: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 1}
+[2022-12-30 12:26:08]: Return to entry page
+[2022-12-30 12:38:03]: Return to entry page
+[2022-12-30 12:39:24]: Return to entry page
+[2022-12-30 12:42:12]: Return to entry page
+[2022-12-30 12:42:13]: 404 | Page not found
+[2022-12-30 12:42:25]: Discord bot is closing
+[2022-12-30 12:42:25]: Discord bot terminated
+||| 2022-12-30 12:42:30 |||
+          ********** END OF LOG FILE **********          

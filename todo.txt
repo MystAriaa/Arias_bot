@@ -4,6 +4,7 @@ corriger les coding mistake
 
 README.txt = presentation
 
+mysql database shema
 
 --------------------------------------------------------
 

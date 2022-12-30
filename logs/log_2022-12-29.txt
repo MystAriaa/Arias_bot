@@ -906,3 +906,21 @@ Test[2022-12-29 16:50:41]: Discord bot is closing
 [2022-12-29 23:39:23]: Discord bot terminated
 ||| 2022-12-29 23:39:26 |||
           ********** END OF LOG FILE **********          
+[2022-12-29 23:40:43]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 23:40:43 |||
+[2022-12-29 23:40:44]: Start of the main script
+[2022-12-29 23:40:44]: Called token_generation
+[2022-12-29 23:40:44]: A new app access token has been generated: ggm1ou906bgk9r3uejmu2bmvsixdas
+[2022-12-29 23:40:44]: Start of the discord bot
+[2022-12-29 23:40:44]: Start of flask web app
+[2022-12-29 23:40:45]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2022-12-29 23:40:45 |||
+[2022-12-29 23:40:48]: Discord bot succesfully online and ready
+[2022-12-29 23:40:53]: Return to entry page
+[2022-12-30 00:26:06]: Discord bot terminated
+||| 2022-12-30 00:26:06 |||
+          ********** END OF LOG FILE **********          
