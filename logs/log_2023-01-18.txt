@@ -1,0 +1,178 @@
+[2023-01-18 05:48:16]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 05:48:16 |||
+[2023-01-18 05:48:17]: Start of the main script
+[2023-01-18 05:48:17]: Called token_generation
+[2023-01-18 05:48:18]: A new app access token has been generated: ztgfx4gx088glp1vq0js76k5aysd42
+[2023-01-18 05:48:18]: Start of the discord bot
+[2023-01-18 05:48:18]: Start of flask web app
+[2023-01-18 05:48:18]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 05:48:18 |||
+[2023-01-18 05:48:21]: Discord bot succesfully online and ready
+[2023-01-18 05:49:43]: Return to entry page
+[2023-01-18 05:49:45]: 404 | Page not found
+[2023-01-18 05:49:51]: Loading of the visualisation page
+[2023-01-18 05:49:51]: Called get_user_name_by_id
+[2023-01-18 05:49:52]: Called get_tag_by_id
+[2023-01-18 05:49:52]: Successfully returning filter tags for user 59655694: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 05:49:52]: Called get_user_name_by_id
+[2023-01-18 05:49:52]: Called get_tag_by_id
+[2023-01-18 05:49:52]: Successfully returning filter tags for user 457947821: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 05:50:05]: Return to entry page
+[2023-01-18 05:50:18]: A new code has been generated : --------- for user MystAria#3007
+[2023-01-18 05:50:28]: Attempting to submit a discord generated code
+[2023-01-18 05:50:28]: Codes matching, authentifaction succesfull, returning to home page
+[2023-01-18 05:50:31]: An user accepted the connection with Twitch
+[2023-01-18 05:50:31]: Called token_generation
+[2023-01-18 05:50:32]: A new user access token and refresh has been generated: m1sljjl345zt1omh6v8n35a1u4ady3 / 6tsxx8o3jcmgqzlz9k83u4be3hbw2yzfxhs2yy01b2qthook5f
+[2023-01-18 05:50:32]: Called token_validation
+[2023-01-18 05:50:33]: Successfully validated user access token
+[2023-01-18 05:50:33]: Called get_all_ban_member
+[2023-01-18 05:50:33]: Failed to return all banned members from the network. Returned Error
+[2023-01-18 05:50:33]: list index out of range
+[2023-01-18 05:50:33]: Called token_validation
+[2023-01-18 05:50:34]: Successfully validated app access token
+[2023-01-18 05:50:34]: 'user_id'
+[2023-01-18 05:50:34]: Called get_user_info
+[2023-01-18 05:50:34]: Successfully fetch user 161641887 info from twitch
+[2023-01-18 05:50:34]: Adding a new user 161641887, MystAria_ to the database
+[2023-01-18 05:50:34]: User 161641887, MystAria_ failed to be registered in the database
+[2023-01-18 05:50:34]: 1062 (23000): Duplicate entry '161641887-MystAria_' for key 'registered_user.user_id'
+[2023-01-18 05:50:34]: Trying to update user 161641887, MystAria_ informations in the database
+[2023-01-18 05:50:34]: Called set_new_user_info
+[2023-01-18 05:50:34]: Update of user 161641887, MystAria_ successfull in the database
+[2023-01-18 05:50:34]: Called set_user_filter
+[2023-01-18 05:50:34]: Trying to add new filter options for user 161641887
+[2023-01-18 05:50:34]: Failed to add new filter option for user 161641887
+[2023-01-18 05:50:34]: 1062 (23000): Duplicate entry '161641887' for key 'filter_user.user_id'
+[2023-01-18 05:50:34]: Called set_user_option
+[2023-01-18 05:50:35]: Failed to add filter options for user 161641887
+[2023-01-18 05:50:35]: 1062 (23000): Duplicate entry '161641887' for key 'option_user.user_id'
+[2023-01-18 05:50:35]: Failed to create banned accounts table for user 161641887
+[2023-01-18 05:50:35]: 1050 (42S01): Table '161641887_banlist' already exists
+[2023-01-18 05:50:35]: Called get_banlist
+[2023-01-18 05:50:35]: Successfully fetched user 161641887 banlist from twitch
+[2023-01-18 05:50:35]: Called filter_banlist
+[2023-01-18 05:50:35]: Called fill_banned_user_table_by_user
+[2023-01-18 05:50:35]: Called get_user_info_by_id
+[2023-01-18 05:50:35]: Successfully wipeout table 161641887_banlist
+[2023-01-18 05:50:36]: A new user 59655694 has been added in table 161641887_banlist
+[2023-01-18 05:50:36]: Failed to add tags to user 59655694 in banned_tag table
+[2023-01-18 05:50:36]: 1062 (23000): Duplicate entry '59655694' for key 'banned_tag.user_id'
+[2023-01-18 05:50:36]: Successfully updated tags for user 59655694 in banned_tag table
+[2023-01-18 05:50:36]: Called get_user_option
+[2023-01-18 05:50:36]: Successfully returned user 161641887 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 05:50:36]: Called get_user_filter
+[2023-01-18 05:50:36]: Successfully returning filter options for user 161641887: [1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0]
+[2023-01-18 05:50:45]: An user wants an update on their channel
+[2023-01-18 05:50:45]: Called get_user_info_by_access_token
+[2023-01-18 05:50:45]: Called get_all_master_banlist
+[2023-01-18 05:50:45]: Returned: [(1, 59655694, 'Test_user2', '', '2022-12-27T15:48:45Z', '', 161641887, 'MystAria_', 161641887), (2, 457947821, 'KEKW', '', '2022-12-27T15:41:35Z', '', 699600940, 'Arias_bot', 699600940)]
+[2023-01-18 05:50:45]: Called ban_from_master_banlist
+[2023-01-18 05:50:45]: Starting to ban for user 161641887
+[2023-01-18 05:50:45]: Called get_user_filter
+[2023-01-18 05:50:45]: Successfully returning filter options for user 161641887: [1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0]
+[2023-01-18 05:50:45]: Called get_bannable_id_by_filter
+[2023-01-18 05:50:46]: This user cannot be ban because it is originated from this channel
+[2023-01-18 05:50:46]: Called get_user_name_by_id
+[2023-01-18 05:50:46]: Failed to ban user 457947821 for the channel user 161641887
+[2023-01-18 05:50:46]: Arias_bot has been succesfully called on 161641887's channel, returning to validation page
+[2023-01-18 05:50:49]: An user succesfully authenticated by discord
+[2023-01-18 05:52:28]: Forced iteration of the update thread by discord bot
+[2023-01-18 05:52:28]: | It's time for an iteration of the update thread |
+[2023-01-18 05:52:28]: Part 1/3
+[2023-01-18 05:52:28]: Called get_all_users
+[2023-01-18 05:52:29]: Update of user MystAria_ informations
+[2023-01-18 05:52:29]: Called token_validation
+[2023-01-18 05:52:29]: Successfully validated user access token
+[2023-01-18 05:52:29]: Called get_user_option
+[2023-01-18 05:52:29]: Successfully returned user 161641887 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 05:52:29]: User 161641887 have Receive_Only OFF. We fetch all banned accounts from his channel
+[2023-01-18 05:52:29]: Called get_banlist
+[2023-01-18 05:52:30]: Successfully fetched user 161641887 banlist from twitch
+[2023-01-18 05:52:30]: Called filter_banlist
+[2023-01-18 05:52:30]: Called fill_banned_user_table_by_user
+[2023-01-18 05:52:30]: Called get_user_info_by_id
+[2023-01-18 05:52:30]: Successfully wipeout table 161641887_banlist
+[2023-01-18 05:52:30]: A new user 59655694 has been added in table 161641887_banlist
+[2023-01-18 05:52:30]: Failed to add tags to user 59655694 in banned_tag table
+[2023-01-18 05:52:30]: 1062 (23000): Duplicate entry '59655694' for key 'banned_tag.user_id'
+[2023-01-18 05:52:31]: Successfully updated tags for user 59655694 in banned_tag table
+[2023-01-18 05:52:31]: Update of user Arias_bot informations
+[2023-01-18 05:52:31]: Called token_validation
+[2023-01-18 05:52:31]: Failed to validate our token. It needs to be refreshed
+[2023-01-18 05:52:31]: Called token_refresh
+[2023-01-18 05:52:32]: Called set_new_user_info
+[2023-01-18 05:52:32]: Successfully refresh user access token and refresh token
+[2023-01-18 05:52:32]: Called get_user_option
+[2023-01-18 05:52:33]: Successfully returned user 699600940 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 05:52:33]: User 699600940 have Receive_Only OFF. We fetch all banned accounts from his channel
+[2023-01-18 05:52:33]: Called get_banlist
+[2023-01-18 05:52:33]: Successfully fetched user 699600940 banlist from twitch
+[2023-01-18 05:52:33]: Called filter_banlist
+[2023-01-18 05:52:33]: Called fill_banned_user_table_by_user
+[2023-01-18 05:52:33]: Called get_user_info_by_id
+[2023-01-18 05:52:33]: Successfully wipeout table 699600940_banlist
+[2023-01-18 05:52:33]: A new user 457947821 has been added in table 699600940_banlist
+[2023-01-18 05:52:34]: Failed to add tags to user 457947821 in banned_tag table
+[2023-01-18 05:52:34]: 1062 (23000): Duplicate entry '457947821' for key 'banned_tag.user_id'
+[2023-01-18 05:52:34]: Successfully updated tags for user 457947821 in banned_tag table
+[2023-01-18 05:52:34]: Part 2/3
+[2023-01-18 05:52:34]: Called get_all_users
+[2023-01-18 05:52:34]: Called get_all_master_banlist
+[2023-01-18 05:52:34]: Returned: [(1, 59655694, 'Test_user2', '', '2022-12-27T15:48:45Z', '', 161641887, 'MystAria_', 161641887), (2, 457947821, 'KEKW', '', '2022-12-27T15:41:35Z', '', 699600940, 'Arias_bot', 699600940)]
+[2023-01-18 05:52:34]: Called get_all_user_table
+[2023-01-18 05:52:34]: Called get_all_user_table
+[2023-01-18 05:52:34]: Unbanning banned accounts not fetch anymore and still registered
+[2023-01-18 05:52:34]: Called unban_all
+[2023-01-18 05:52:34]: Called unban_all
+[2023-01-18 05:52:34]: Called remove_list_user_from_tag_table
+[2023-01-18 05:52:34]: Called remove_list_user_in_master
+[2023-01-18 05:52:34]: Called get_all_user_table
+[2023-01-18 05:52:35]: Called insert_list_banned_into_master
+[2023-01-18 05:52:35]: Failed to add user 59655694, Test_user2 into Master banlist
+[2023-01-18 05:52:35]: 1062 (23000): Duplicate entry '59655694-Test_user2' for key 'master_banlist.user_id'
+[2023-01-18 05:52:35]: Called get_all_user_table
+[2023-01-18 05:52:35]: Called insert_list_banned_into_master
+[2023-01-18 05:52:35]: Failed to add user 457947821, KEKW into Master banlist
+[2023-01-18 05:52:35]: 1062 (23000): Duplicate entry '457947821-KEKW' for key 'master_banlist.user_id'
+[2023-01-18 05:52:35]: Update of the Master banlist with new fetched banned accounts
+[2023-01-18 05:52:35]: Part 3/3
+[2023-01-18 05:52:35]: Called get_user_option
+[2023-01-18 05:52:35]: Successfully returned user 161641887 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 05:52:35]: Called get_user_option
+[2023-01-18 05:52:35]: Successfully returned user 161641887 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 05:52:35]: Give_Only option is OFF for user 161641887, we can proceide with the banning phase for this user
+[2023-01-18 05:52:35]: Called get_all_master_banlist
+[2023-01-18 05:52:36]: Returned: [(1, 59655694, 'Test_user2', '', '2022-12-27T15:48:45Z', '', 161641887, 'MystAria_', 161641887), (2, 457947821, 'KEKW', '', '2022-12-27T15:41:35Z', '', 699600940, 'Arias_bot', 699600940)]
+[2023-01-18 05:52:36]: Called ban_from_master_banlist
+[2023-01-18 05:52:36]: Starting to ban for user 161641887
+[2023-01-18 05:52:36]: Called get_user_filter
+[2023-01-18 05:52:36]: Successfully returning filter options for user 161641887: [1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0]
+[2023-01-18 05:52:36]: Called get_bannable_id_by_filter
+[2023-01-18 05:52:36]: This user cannot be ban because it is originated from this channel
+[2023-01-18 05:52:36]: Called get_user_name_by_id
+[2023-01-18 05:52:37]: Failed to ban user 457947821 for the channel user 161641887
+[2023-01-18 05:52:37]: Called get_user_option
+[2023-01-18 05:52:37]: Successfully returned user 699600940 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 05:52:37]: Called get_user_option
+[2023-01-18 05:52:37]: Successfully returned user 699600940 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 05:52:37]: Give_Only option is OFF for user 699600940, we can proceide with the banning phase for this user
+[2023-01-18 05:52:37]: Called get_all_master_banlist
+[2023-01-18 05:52:37]: Returned: [(1, 59655694, 'Test_user2', '', '2022-12-27T15:48:45Z', '', 161641887, 'MystAria_', 161641887), (2, 457947821, 'KEKW', '', '2022-12-27T15:41:35Z', '', 699600940, 'Arias_bot', 699600940)]
+[2023-01-18 05:52:37]: Called ban_from_master_banlist
+[2023-01-18 05:52:37]: Starting to ban for user 699600940
+[2023-01-18 05:52:37]: Called get_user_filter
+[2023-01-18 05:52:37]: Successfully returning filter options for user 699600940: [1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0]
+[2023-01-18 05:52:37]: Called get_bannable_id_by_filter
+[2023-01-18 05:52:38]: Called get_user_name_by_id
+[2023-01-18 05:52:38]: Failed to ban user 59655694 for the channel user 699600940
+[2023-01-18 05:52:38]: This user cannot be ban because it is originated from this channel
+[2023-01-18 05:52:38]: | End of this iteration for the update thread |
+[2023-01-18 06:05:27]: Discord bot is closing
+[2023-01-18 06:05:27]: Discord bot terminated
+||| 2023-01-18 06:06:31 |||
+          ********** END OF LOG FILE **********          

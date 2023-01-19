@@ -247,7 +247,7 @@ def routine_update_user_banned_table():
 	flag_routine_update_user_banned_table = True
 	log.log("Rentre dans le thread")
 	#S'execute tout les jours à 6 heures du matin
-	#time.sleep(60*60*6 + 60*60*24 - (datetime.datetime.now().second + datetime.datetime.now().minute*60 + datetime.datetime.now().hour*60*60))
+	time.sleep(60*60*6 + 60*60*24 - (datetime.datetime.now().second + datetime.datetime.now().minute*60 + datetime.datetime.now().hour*60*60))
 	while flag_routine_update_user_banned_table:
 		log.log("| Voici une itération du thread |")
 		log.log("1/3")
@@ -344,7 +344,7 @@ def routine_update_user_banned_table():
 		#---------------------------------------------------------------------
 
 		log.log("| Voici la fin de l'itération du thread |")
-		#time.sleep(60*60*24)
+		time.sleep(60*60*24)
 		flag_routine_update_user_banned_table = False
 
 	log.log("Sort du thread")
