@@ -1,0 +1,936 @@
+[2023-01-18 05:48:16]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 05:48:16 |||
+[2023-01-18 05:48:17]: Start of the main script
+[2023-01-18 05:48:17]: Called token_generation
+[2023-01-18 05:48:18]: A new app access token has been generated: ztgfx4gx088glp1vq0js76k5aysd42
+[2023-01-18 05:48:18]: Start of the discord bot
+[2023-01-18 05:48:18]: Start of flask web app
+[2023-01-18 05:48:18]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 05:48:18 |||
+[2023-01-18 05:48:21]: Discord bot succesfully online and ready
+[2023-01-18 05:49:43]: Return to entry page
+[2023-01-18 05:49:45]: 404 | Page not found
+[2023-01-18 05:49:51]: Loading of the visualisation page
+[2023-01-18 05:49:51]: Called get_user_name_by_id
+[2023-01-18 05:49:52]: Called get_tag_by_id
+[2023-01-18 05:49:52]: Successfully returning filter tags for user 59655694: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 05:49:52]: Called get_user_name_by_id
+[2023-01-18 05:49:52]: Called get_tag_by_id
+[2023-01-18 05:49:52]: Successfully returning filter tags for user 457947821: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 05:50:05]: Return to entry page
+[2023-01-18 05:50:18]: A new code has been generated : --------- for user MystAria#3007
+[2023-01-18 05:50:28]: Attempting to submit a discord generated code
+[2023-01-18 05:50:28]: Codes matching, authentifaction succesfull, returning to home page
+[2023-01-18 05:50:31]: An user accepted the connection with Twitch
+[2023-01-18 05:50:31]: Called token_generation
+[2023-01-18 05:50:32]: A new user access token and refresh has been generated: m1sljjl345zt1omh6v8n35a1u4ady3 / 6tsxx8o3jcmgqzlz9k83u4be3hbw2yzfxhs2yy01b2qthook5f
+[2023-01-18 05:50:32]: Called token_validation
+[2023-01-18 05:50:33]: Successfully validated user access token
+[2023-01-18 05:50:33]: Called get_all_ban_member
+[2023-01-18 05:50:33]: Failed to return all banned members from the network. Returned Error
+[2023-01-18 05:50:33]: list index out of range
+[2023-01-18 05:50:33]: Called token_validation
+[2023-01-18 05:50:34]: Successfully validated app access token
+[2023-01-18 05:50:34]: 'user_id'
+[2023-01-18 05:50:34]: Called get_user_info
+[2023-01-18 05:50:34]: Successfully fetch user 161641887 info from twitch
+[2023-01-18 05:50:34]: Adding a new user 161641887, MystAria_ to the database
+[2023-01-18 05:50:34]: User 161641887, MystAria_ failed to be registered in the database
+[2023-01-18 05:50:34]: 1062 (23000): Duplicate entry '161641887-MystAria_' for key 'registered_user.user_id'
+[2023-01-18 05:50:34]: Trying to update user 161641887, MystAria_ informations in the database
+[2023-01-18 05:50:34]: Called set_new_user_info
+[2023-01-18 05:50:34]: Update of user 161641887, MystAria_ successfull in the database
+[2023-01-18 05:50:34]: Called set_user_filter
+[2023-01-18 05:50:34]: Trying to add new filter options for user 161641887
+[2023-01-18 05:50:34]: Failed to add new filter option for user 161641887
+[2023-01-18 05:50:34]: 1062 (23000): Duplicate entry '161641887' for key 'filter_user.user_id'
+[2023-01-18 05:50:34]: Called set_user_option
+[2023-01-18 05:50:35]: Failed to add filter options for user 161641887
+[2023-01-18 05:50:35]: 1062 (23000): Duplicate entry '161641887' for key 'option_user.user_id'
+[2023-01-18 05:50:35]: Failed to create banned accounts table for user 161641887
+[2023-01-18 05:50:35]: 1050 (42S01): Table '161641887_banlist' already exists
+[2023-01-18 05:50:35]: Called get_banlist
+[2023-01-18 05:50:35]: Successfully fetched user 161641887 banlist from twitch
+[2023-01-18 05:50:35]: Called filter_banlist
+[2023-01-18 05:50:35]: Called fill_banned_user_table_by_user
+[2023-01-18 05:50:35]: Called get_user_info_by_id
+[2023-01-18 05:50:35]: Successfully wipeout table 161641887_banlist
+[2023-01-18 05:50:36]: A new user 59655694 has been added in table 161641887_banlist
+[2023-01-18 05:50:36]: Failed to add tags to user 59655694 in banned_tag table
+[2023-01-18 05:50:36]: 1062 (23000): Duplicate entry '59655694' for key 'banned_tag.user_id'
+[2023-01-18 05:50:36]: Successfully updated tags for user 59655694 in banned_tag table
+[2023-01-18 05:50:36]: Called get_user_option
+[2023-01-18 05:50:36]: Successfully returned user 161641887 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 05:50:36]: Called get_user_filter
+[2023-01-18 05:50:36]: Successfully returning filter options for user 161641887: [1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0]
+[2023-01-18 05:50:45]: An user wants an update on their channel
+[2023-01-18 05:50:45]: Called get_user_info_by_access_token
+[2023-01-18 05:50:45]: Called get_all_master_banlist
+[2023-01-18 05:50:45]: Returned: [(1, 59655694, 'Test_user2', '', '2022-12-27T15:48:45Z', '', 161641887, 'MystAria_', 161641887), (2, 457947821, 'KEKW', '', '2022-12-27T15:41:35Z', '', 699600940, 'Arias_bot', 699600940)]
+[2023-01-18 05:50:45]: Called ban_from_master_banlist
+[2023-01-18 05:50:45]: Starting to ban for user 161641887
+[2023-01-18 05:50:45]: Called get_user_filter
+[2023-01-18 05:50:45]: Successfully returning filter options for user 161641887: [1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0]
+[2023-01-18 05:50:45]: Called get_bannable_id_by_filter
+[2023-01-18 05:50:46]: This user cannot be ban because it is originated from this channel
+[2023-01-18 05:50:46]: Called get_user_name_by_id
+[2023-01-18 05:50:46]: Failed to ban user 457947821 for the channel user 161641887
+[2023-01-18 05:50:46]: Arias_bot has been succesfully called on 161641887's channel, returning to validation page
+[2023-01-18 05:50:49]: An user succesfully authenticated by discord
+[2023-01-18 05:52:28]: Forced iteration of the update thread by discord bot
+[2023-01-18 05:52:28]: | It's time for an iteration of the update thread |
+[2023-01-18 05:52:28]: Part 1/3
+[2023-01-18 05:52:28]: Called get_all_users
+[2023-01-18 05:52:29]: Update of user MystAria_ informations
+[2023-01-18 05:52:29]: Called token_validation
+[2023-01-18 05:52:29]: Successfully validated user access token
+[2023-01-18 05:52:29]: Called get_user_option
+[2023-01-18 05:52:29]: Successfully returned user 161641887 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 05:52:29]: User 161641887 have Receive_Only OFF. We fetch all banned accounts from his channel
+[2023-01-18 05:52:29]: Called get_banlist
+[2023-01-18 05:52:30]: Successfully fetched user 161641887 banlist from twitch
+[2023-01-18 05:52:30]: Called filter_banlist
+[2023-01-18 05:52:30]: Called fill_banned_user_table_by_user
+[2023-01-18 05:52:30]: Called get_user_info_by_id
+[2023-01-18 05:52:30]: Successfully wipeout table 161641887_banlist
+[2023-01-18 05:52:30]: A new user 59655694 has been added in table 161641887_banlist
+[2023-01-18 05:52:30]: Failed to add tags to user 59655694 in banned_tag table
+[2023-01-18 05:52:30]: 1062 (23000): Duplicate entry '59655694' for key 'banned_tag.user_id'
+[2023-01-18 05:52:31]: Successfully updated tags for user 59655694 in banned_tag table
+[2023-01-18 05:52:31]: Update of user Arias_bot informations
+[2023-01-18 05:52:31]: Called token_validation
+[2023-01-18 05:52:31]: Failed to validate our token. It needs to be refreshed
+[2023-01-18 05:52:31]: Called token_refresh
+[2023-01-18 05:52:32]: Called set_new_user_info
+[2023-01-18 05:52:32]: Successfully refresh user access token and refresh token
+[2023-01-18 05:52:32]: Called get_user_option
+[2023-01-18 05:52:33]: Successfully returned user 699600940 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 05:52:33]: User 699600940 have Receive_Only OFF. We fetch all banned accounts from his channel
+[2023-01-18 05:52:33]: Called get_banlist
+[2023-01-18 05:52:33]: Successfully fetched user 699600940 banlist from twitch
+[2023-01-18 05:52:33]: Called filter_banlist
+[2023-01-18 05:52:33]: Called fill_banned_user_table_by_user
+[2023-01-18 05:52:33]: Called get_user_info_by_id
+[2023-01-18 05:52:33]: Successfully wipeout table 699600940_banlist
+[2023-01-18 05:52:33]: A new user 457947821 has been added in table 699600940_banlist
+[2023-01-18 05:52:34]: Failed to add tags to user 457947821 in banned_tag table
+[2023-01-18 05:52:34]: 1062 (23000): Duplicate entry '457947821' for key 'banned_tag.user_id'
+[2023-01-18 05:52:34]: Successfully updated tags for user 457947821 in banned_tag table
+[2023-01-18 05:52:34]: Part 2/3
+[2023-01-18 05:52:34]: Called get_all_users
+[2023-01-18 05:52:34]: Called get_all_master_banlist
+[2023-01-18 05:52:34]: Returned: [(1, 59655694, 'Test_user2', '', '2022-12-27T15:48:45Z', '', 161641887, 'MystAria_', 161641887), (2, 457947821, 'KEKW', '', '2022-12-27T15:41:35Z', '', 699600940, 'Arias_bot', 699600940)]
+[2023-01-18 05:52:34]: Called get_all_user_table
+[2023-01-18 05:52:34]: Called get_all_user_table
+[2023-01-18 05:52:34]: Unbanning banned accounts not fetch anymore and still registered
+[2023-01-18 05:52:34]: Called unban_all
+[2023-01-18 05:52:34]: Called unban_all
+[2023-01-18 05:52:34]: Called remove_list_user_from_tag_table
+[2023-01-18 05:52:34]: Called remove_list_user_in_master
+[2023-01-18 05:52:34]: Called get_all_user_table
+[2023-01-18 05:52:35]: Called insert_list_banned_into_master
+[2023-01-18 05:52:35]: Failed to add user 59655694, Test_user2 into Master banlist
+[2023-01-18 05:52:35]: 1062 (23000): Duplicate entry '59655694-Test_user2' for key 'master_banlist.user_id'
+[2023-01-18 05:52:35]: Called get_all_user_table
+[2023-01-18 05:52:35]: Called insert_list_banned_into_master
+[2023-01-18 05:52:35]: Failed to add user 457947821, KEKW into Master banlist
+[2023-01-18 05:52:35]: 1062 (23000): Duplicate entry '457947821-KEKW' for key 'master_banlist.user_id'
+[2023-01-18 05:52:35]: Update of the Master banlist with new fetched banned accounts
+[2023-01-18 05:52:35]: Part 3/3
+[2023-01-18 05:52:35]: Called get_user_option
+[2023-01-18 05:52:35]: Successfully returned user 161641887 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 05:52:35]: Called get_user_option
+[2023-01-18 05:52:35]: Successfully returned user 161641887 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 05:52:35]: Give_Only option is OFF for user 161641887, we can proceide with the banning phase for this user
+[2023-01-18 05:52:35]: Called get_all_master_banlist
+[2023-01-18 05:52:36]: Returned: [(1, 59655694, 'Test_user2', '', '2022-12-27T15:48:45Z', '', 161641887, 'MystAria_', 161641887), (2, 457947821, 'KEKW', '', '2022-12-27T15:41:35Z', '', 699600940, 'Arias_bot', 699600940)]
+[2023-01-18 05:52:36]: Called ban_from_master_banlist
+[2023-01-18 05:52:36]: Starting to ban for user 161641887
+[2023-01-18 05:52:36]: Called get_user_filter
+[2023-01-18 05:52:36]: Successfully returning filter options for user 161641887: [1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0]
+[2023-01-18 05:52:36]: Called get_bannable_id_by_filter
+[2023-01-18 05:52:36]: This user cannot be ban because it is originated from this channel
+[2023-01-18 05:52:36]: Called get_user_name_by_id
+[2023-01-18 05:52:37]: Failed to ban user 457947821 for the channel user 161641887
+[2023-01-18 05:52:37]: Called get_user_option
+[2023-01-18 05:52:37]: Successfully returned user 699600940 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 05:52:37]: Called get_user_option
+[2023-01-18 05:52:37]: Successfully returned user 699600940 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 05:52:37]: Give_Only option is OFF for user 699600940, we can proceide with the banning phase for this user
+[2023-01-18 05:52:37]: Called get_all_master_banlist
+[2023-01-18 05:52:37]: Returned: [(1, 59655694, 'Test_user2', '', '2022-12-27T15:48:45Z', '', 161641887, 'MystAria_', 161641887), (2, 457947821, 'KEKW', '', '2022-12-27T15:41:35Z', '', 699600940, 'Arias_bot', 699600940)]
+[2023-01-18 05:52:37]: Called ban_from_master_banlist
+[2023-01-18 05:52:37]: Starting to ban for user 699600940
+[2023-01-18 05:52:37]: Called get_user_filter
+[2023-01-18 05:52:37]: Successfully returning filter options for user 699600940: [1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0]
+[2023-01-18 05:52:37]: Called get_bannable_id_by_filter
+[2023-01-18 05:52:38]: Called get_user_name_by_id
+[2023-01-18 05:52:38]: Failed to ban user 59655694 for the channel user 699600940
+[2023-01-18 05:52:38]: This user cannot be ban because it is originated from this channel
+[2023-01-18 05:52:38]: | End of this iteration for the update thread |
+[2023-01-18 06:05:27]: Discord bot is closing
+[2023-01-18 06:05:27]: Discord bot terminated
+||| 2023-01-18 06:06:31 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 16:43:06]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 16:43:06 |||
+[2023-01-18 16:52:45]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 16:52:45 |||
+[2023-01-18 16:56:15]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 16:56:15 |||
+[2023-01-18 16:56:57]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 16:56:57 |||
+[2023-01-18 16:59:38]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 16:59:38 |||
+[2023-01-18 17:01:35]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 17:01:35 |||
+[2023-01-18 17:09:04]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 17:09:04 |||
+[2023-01-18 17:09:51]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 17:09:51 |||
+[2023-01-18 17:09:51]: Start of the main script
+[2023-01-18 17:09:51]: Called token_generation
+[2023-01-18 17:09:53]: A new app access token has been generated: 5el8vmvpb0y2w27e4hf4wvqtf2r17a
+[2023-01-18 17:09:53]: Start of the discord bot
+[2023-01-18 17:09:53]: Start of flask web app
+[2023-01-18 17:09:56]: Discord bot succesfully online and ready
+||| 2023-01-18 17:15:14 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 17:15:14]: Discord bot terminated
+[2023-01-18 17:15:43]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 17:15:43 |||
+[2023-01-18 17:15:44]: Start of the main script
+[2023-01-18 17:15:44]: Called token_generation
+[2023-01-18 17:15:45]: A new app access token has been generated: e9cyhp2x91e64xo23se0xxd10o0grp
+[2023-01-18 17:15:45]: Start of the discord bot
+[2023-01-18 17:15:45]: Start of flask web app
+[2023-01-18 17:15:49]: Discord bot succesfully online and ready
+[2023-01-18 17:16:38]: Return to entry page
+[2023-01-18 17:16:39]: 404 | Page not found
+[2023-01-18 17:16:48]: Loading of the visualisation page
+||| 2023-01-18 17:17:03 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 17:17:04]: Discord bot terminated
+[2023-01-18 17:17:13]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 17:17:13 |||
+[2023-01-18 17:17:14]: Start of the main script
+[2023-01-18 17:17:14]: Called token_generation
+[2023-01-18 17:17:15]: A new app access token has been generated: ikj3zmb4etd7w14l1sga3c1pxn9m9i
+[2023-01-18 17:17:15]: Start of the discord bot
+[2023-01-18 17:17:15]: Start of flask web app
+[2023-01-18 17:17:19]: Discord bot succesfully online and ready
+[2023-01-18 17:17:33]: Return to entry page
+[2023-01-18 17:17:37]: Return to entry page
+[2023-01-18 17:17:45]: 404 | Page not found
+[2023-01-18 17:17:59]: A new code has been generated : --------- for user MystAria#3007
+[2023-01-18 17:18:08]: Discord bot is closing
+[2023-01-18 17:18:08]: Discord bot terminated
+||| 2023-01-18 17:18:43 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 17:18:46]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 17:18:46 |||
+[2023-01-18 17:18:47]: Start of the main script
+[2023-01-18 17:18:47]: Called token_generation
+[2023-01-18 17:18:48]: A new app access token has been generated: d6qvazat2ksfnpvj1vrutsune8hql8
+[2023-01-18 17:18:48]: Start of the discord bot
+[2023-01-18 17:18:48]: Start of flask web app
+[2023-01-18 17:18:52]: Discord bot succesfully online and ready
+[2023-01-18 17:19:10]: Return to entry page
+[2023-01-18 17:19:12]: Loading of the visualisation page
+||| 2023-01-18 17:23:47 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 17:23:47]: Discord bot terminated
+[2023-01-18 17:23:50]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 17:23:50 |||
+[2023-01-18 17:23:51]: Start of the main script
+[2023-01-18 17:23:51]: Called token_generation
+[2023-01-18 17:23:53]: A new app access token has been generated: qgik4rgwa4jtle4h17jlfii7x1644b
+[2023-01-18 17:23:53]: Start of the discord bot
+[2023-01-18 17:23:53]: Start of flask web app
+[2023-01-18 17:23:56]: Discord bot succesfully online and ready
+[2023-01-18 17:24:08]: Return to entry page
+[2023-01-18 17:24:09]: 404 | Page not found
+[2023-01-18 17:24:22]: Loading of the visualisation page
+||| 2023-01-18 17:29:12 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 17:29:12]: Discord bot terminated
+[2023-01-18 17:54:56]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 17:54:56 |||
+[2023-01-18 17:54:56]: Start of the main script
+[2023-01-18 17:54:56]: Called token_generation
+[2023-01-18 17:54:58]: A new app access token has been generated: md5eeer2zqsn74goxw2s8hx98xdnjg
+[2023-01-18 17:54:58]: Start of the discord bot
+[2023-01-18 17:54:58]: Start of flask web app
+[2023-01-18 17:55:02]: Discord bot succesfully online and ready
+[2023-01-18 17:55:02]: Return to entry page
+[2023-01-18 17:55:04]: Loading of the visualisation page
+||| 2023-01-18 17:57:45 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 17:57:45]: Discord bot terminated
+[2023-01-18 17:57:53]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 17:57:53 |||
+[2023-01-18 17:57:53]: Start of the main script
+[2023-01-18 17:57:53]: Called token_generation
+[2023-01-18 17:57:55]: A new app access token has been generated: 573p0ol9zfa9aiq1j4y23ki2raxvv0
+[2023-01-18 17:57:55]: Start of the discord bot
+[2023-01-18 17:57:55]: Start of flask web app
+[2023-01-18 17:57:58]: Discord bot succesfully online and ready
+[2023-01-18 17:58:00]: Loading of the visualisation page
+||| 2023-01-18 17:58:53 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 17:58:54]: Discord bot terminated
+[2023-01-18 17:58:57]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 17:58:57 |||
+[2023-01-18 17:58:57]: Start of the main script
+[2023-01-18 17:58:57]: Called token_generation
+[2023-01-18 17:58:59]: A new app access token has been generated: e9h9bhqay1u4tbqt0gzuqsqqutvdot
+[2023-01-18 17:58:59]: Start of the discord bot
+[2023-01-18 17:58:59]: Start of flask web app
+[2023-01-18 17:59:03]: Discord bot succesfully online and ready
+[2023-01-18 17:59:40]: Loading of the visualisation page
+||| 2023-01-18 18:04:44 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 18:04:44]: Discord bot terminated
+[2023-01-18 18:17:19]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 18:17:19 |||
+[2023-01-18 18:17:20]: Start of the main script
+[2023-01-18 18:17:20]: Called token_generation
+[2023-01-18 18:17:21]: A new app access token has been generated: 0233az7cxfz16lw9mtmr5oaoz4o0xo
+[2023-01-18 18:17:21]: Start of the discord bot
+[2023-01-18 18:17:21]: Start of flask web app
+[2023-01-18 18:17:25]: Discord bot succesfully online and ready
+[2023-01-18 18:17:35]: Went to contact page
+[2023-01-18 18:17:37]: Return to entry page
+[2023-01-18 18:17:38]: Loading of the visualisation page
+||| 2023-01-18 18:21:14 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 18:21:15]: Discord bot terminated
+[2023-01-18 18:21:19]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 18:21:19 |||
+[2023-01-18 18:22:58]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 18:22:58 |||
+[2023-01-18 18:22:58]: Start of the main script
+[2023-01-18 18:22:58]: Called token_generation
+[2023-01-18 18:23:00]: A new app access token has been generated: 95pwl14pjpbde7pixggdq4c6vy64s7
+[2023-01-18 18:23:00]: Start of the discord bot
+[2023-01-18 18:23:00]: Start of flask web app
+[2023-01-18 18:23:03]: Discord bot succesfully online and ready
+[2023-01-18 18:23:11]: Return to entry page
+[2023-01-18 18:23:12]: Loading of the visualisation page
+[2023-01-18 18:23:13]: Called get_user_name_by_id
+[2023-01-18 18:23:13]: Called get_tag_by_id
+[2023-01-18 18:23:13]: Successfully returning filter tags for user 59655694: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 18:23:13]: Called get_user_name_by_id
+[2023-01-18 18:23:13]: Called get_tag_by_id
+[2023-01-18 18:23:13]: Successfully returning filter tags for user 457947821: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 18:26:16]: A new code has been generated : --------- for user MystAria#3007
+[2023-01-18 18:26:23]: Return to entry page
+[2023-01-18 18:26:27]: Attempting to submit a discord generated code
+[2023-01-18 18:26:27]: Codes matching, authentifaction succesfull, returning to home page
+||| 2023-01-18 18:28:26 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 18:28:26]: Discord bot terminated
+[2023-01-18 18:28:34]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 18:28:34 |||
+[2023-01-18 18:28:34]: Start of the main script
+[2023-01-18 18:28:34]: Called token_generation
+[2023-01-18 18:28:36]: A new app access token has been generated: yfb5hnp9z5zs19vfq5dbyckj5ostx5
+[2023-01-18 18:28:36]: Start of the discord bot
+[2023-01-18 18:28:36]: Start of flask web app
+[2023-01-18 18:28:40]: Discord bot succesfully online and ready
+[2023-01-18 18:28:47]: Return to entry page
+[2023-01-18 18:29:02]: A new code has been generated : --------- for user MystAria#3007
+[2023-01-18 18:29:11]: Attempting to submit a discord generated code
+[2023-01-18 18:29:11]: Codes matching, authentifaction succesfull, returning to home page
+[2023-01-18 18:35:39]: A new code has been generated : --------- for user MystAria#3007
+[2023-01-18 18:35:45]: Attempting to submit a discord generated code
+[2023-01-18 18:35:45]: Codes matching, authentifaction succesfull, returning to home page
+||| 2023-01-18 18:39:18 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 18:39:18]: Discord bot terminated
+[2023-01-18 18:40:22]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 18:40:22 |||
+[2023-01-18 18:40:23]: Start of the main script
+[2023-01-18 18:40:23]: Called token_generation
+[2023-01-18 18:40:25]: A new app access token has been generated: 4gf5dongrxtro0idhy3tcfdtbvc516
+[2023-01-18 18:40:25]: Start of the discord bot
+[2023-01-18 18:40:25]: Start of flask web app
+[2023-01-18 18:40:28]: Discord bot succesfully online and ready
+[2023-01-18 18:43:34]: Return to entry page
+[2023-01-18 18:43:39]: Loading of the visualisation page
+[2023-01-18 18:43:39]: Called get_user_name_by_id
+[2023-01-18 18:43:39]: Called get_tag_by_id
+[2023-01-18 18:43:39]: Successfully returning filter tags for user 59655694: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 18:43:39]: Called get_user_name_by_id
+[2023-01-18 18:43:40]: Called get_tag_by_id
+[2023-01-18 18:43:40]: Successfully returning filter tags for user 457947821: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 18:43:43]: Return to entry page
+[2023-01-18 18:44:08]: A new code has been generated : --------- for user MystAria#3007
+[2023-01-18 18:44:56]: Attempting to submit a discord generated code
+[2023-01-18 18:44:56]: Codes matching, authentifaction succesfull, returning to home page
+[2023-01-18 18:46:40]: An user accepted the connection with Twitch
+[2023-01-18 18:46:40]: Called token_generation
+[2023-01-18 18:46:42]: A new user access token and refresh has been generated: hs4ouvcyh54hm7pwphug0py67hseh2 / 3ls0bnyh8lhovmpavjtw9kxhwgoggbwooq52e8sm47d1geq7c2
+[2023-01-18 18:46:42]: Called token_validation
+[2023-01-18 18:46:43]: Successfully validated user access token
+[2023-01-18 18:46:43]: Called get_all_ban_member
+[2023-01-18 18:46:43]: Failed to return all banned members from the network. Returned Error
+[2023-01-18 18:46:43]: list index out of range
+[2023-01-18 18:46:43]: Called token_validation
+[2023-01-18 18:46:45]: Successfully validated app access token
+[2023-01-18 18:46:45]: 'user_id'
+[2023-01-18 18:46:45]: Called get_user_info
+[2023-01-18 18:46:46]: Successfully fetch user 161641887 info from twitch
+[2023-01-18 18:46:46]: Adding a new user 161641887, MystAria_ to the database
+[2023-01-18 18:46:46]: User 161641887, MystAria_ failed to be registered in the database
+[2023-01-18 18:46:46]: 1062 (23000): Duplicate entry '161641887-MystAria_' for key 'registered_user.user_id'
+[2023-01-18 18:46:46]: Trying to update user 161641887, MystAria_ informations in the database
+[2023-01-18 18:46:46]: Called set_new_user_info
+[2023-01-18 18:46:46]: Update of user 161641887, MystAria_ successfull in the database
+[2023-01-18 18:46:46]: Called set_user_filter
+[2023-01-18 18:46:46]: Trying to add new filter options for user 161641887
+[2023-01-18 18:46:46]: Failed to add new filter option for user 161641887
+[2023-01-18 18:46:46]: 1062 (23000): Duplicate entry '161641887' for key 'filter_user.user_id'
+[2023-01-18 18:46:46]: Called set_user_option
+[2023-01-18 18:46:47]: Failed to add filter options for user 161641887
+[2023-01-18 18:46:47]: 1062 (23000): Duplicate entry '161641887' for key 'option_user.user_id'
+[2023-01-18 18:46:47]: Failed to create banned accounts table for user 161641887
+[2023-01-18 18:46:47]: 1050 (42S01): Table '161641887_banlist' already exists
+[2023-01-18 18:46:47]: Called get_banlist
+[2023-01-18 18:46:48]: Successfully fetched user 161641887 banlist from twitch
+[2023-01-18 18:46:48]: Called filter_banlist
+[2023-01-18 18:46:48]: Called fill_banned_user_table_by_user
+[2023-01-18 18:46:48]: Called get_user_info_by_id
+[2023-01-18 18:46:48]: Successfully wipeout table 161641887_banlist
+[2023-01-18 18:46:48]: A new user 59655694 has been added in table 161641887_banlist
+[2023-01-18 18:46:48]: Failed to add tags to user 59655694 in banned_tag table
+[2023-01-18 18:46:48]: 1062 (23000): Duplicate entry '59655694' for key 'banned_tag.user_id'
+[2023-01-18 18:46:49]: Successfully updated tags for user 59655694 in banned_tag table
+[2023-01-18 18:46:49]: Called get_user_option
+[2023-01-18 18:46:49]: Successfully returned user 161641887 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 18:46:49]: Called get_user_filter
+[2023-01-18 18:46:49]: Successfully returning filter options for user 161641887: [1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0]
+[2023-01-18 18:46:57]: An user wants an update on their channel
+[2023-01-18 18:46:57]: Called get_user_info_by_access_token
+[2023-01-18 18:46:58]: Called get_all_master_banlist
+[2023-01-18 18:46:58]: Returned: [(1, 59655694, 'Test_user2', '', '2022-12-27T15:48:45Z', '', 161641887, 'MystAria_', 161641887), (2, 457947821, 'KEKW', '', '2022-12-27T15:41:35Z', '', 699600940, 'Arias_bot', 699600940)]
+[2023-01-18 18:46:58]: Called ban_from_master_banlist
+[2023-01-18 18:46:58]: Starting to ban for user 161641887
+[2023-01-18 18:46:58]: Called get_user_filter
+[2023-01-18 18:46:58]: Successfully returning filter options for user 161641887: [1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0]
+[2023-01-18 18:46:58]: Called get_bannable_id_by_filter
+[2023-01-18 18:46:59]: This user cannot be ban because it is originated from this channel
+[2023-01-18 18:46:59]: Called get_user_name_by_id
+[2023-01-18 18:47:00]: Failed to ban user 457947821 for the channel user 161641887
+[2023-01-18 18:47:00]: Arias_bot has been succesfully called on 161641887's channel, returning to validation page
+[2023-01-18 18:47:07]: Return to entry page
+||| 2023-01-18 18:59:19 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 18:59:19]: Discord bot terminated
+[2023-01-18 19:17:19]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 19:17:19 |||
+[2023-01-18 19:19:33]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 19:19:33 |||
+[2023-01-18 19:21:35]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 19:21:35 |||
+[2023-01-18 19:25:37]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 19:25:37 |||
+[2023-01-18 19:38:15]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 19:38:15 |||
+[2023-01-18 19:38:15]: Start of the main script
+[2023-01-18 19:38:15]: Called token_generation
+[2023-01-18 19:38:17]: A new app access token has been generated: lsl7dpruj8m4zwvxvoqmd8cwqo76ut
+[2023-01-18 19:38:17]: Start of the discord bot
+[2023-01-18 19:38:17]: Start of flask web app
+[2023-01-18 19:38:20]: Discord bot succesfully online and ready
+||| 2023-01-18 19:40:43 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 19:40:44]: Discord bot terminated
+[2023-01-18 19:41:20]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 19:41:20 |||
+[2023-01-18 19:41:21]: Start of the main script
+[2023-01-18 19:41:21]: Called token_generation
+[2023-01-18 19:41:23]: A new app access token has been generated: cauprf0ycn9odltqcbocbpd51vdqva
+[2023-01-18 19:41:23]: Start of the discord bot
+[2023-01-18 19:41:23]: Start of flask web app
+[2023-01-18 19:41:26]: Discord bot succesfully online and ready
+||| 2023-01-18 19:43:32 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 19:43:32]: Discord bot terminated
+[2023-01-18 19:44:53]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 19:44:53 |||
+[2023-01-18 19:44:54]: Start of the main script
+[2023-01-18 19:44:54]: Called token_generation
+[2023-01-18 19:44:55]: A new app access token has been generated: 55y9udv0ewhzt887j2jr7i856lke95
+[2023-01-18 19:44:55]: Start of the discord bot
+[2023-01-18 19:44:55]: Start of flask web app
+[2023-01-18 19:44:59]: Discord bot succesfully online and ready
+||| 2023-01-18 19:45:09 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 19:45:09]: Discord bot terminated
+[2023-01-18 19:48:53]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 19:48:53 |||
+[2023-01-18 19:48:53]: Start of the main script
+[2023-01-18 19:48:53]: Called token_generation
+[2023-01-18 19:48:55]: A new app access token has been generated: l734j5q7optt87wh64d2lhnjl2gvvv
+[2023-01-18 19:48:55]: Start of the discord bot
+[2023-01-18 19:48:55]: Start of flask web app
+[2023-01-18 19:48:58]: Discord bot succesfully online and ready
+||| 2023-01-18 19:50:17 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 19:50:17]: Discord bot terminated
+[2023-01-18 19:52:15]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 19:52:15 |||
+[2023-01-18 19:52:15]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 19:52:15 |||
+[2023-01-18 19:52:15]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 19:52:15 |||
+[2023-01-18 19:52:44]: Return to entry page
+[2023-01-18 19:52:48]: Loading of the visualisation page
+[2023-01-18 19:52:49]: Called get_user_name_by_id
+[2023-01-18 19:52:49]: Called get_tag_by_id
+[2023-01-18 19:52:49]: Successfully returning filter tags for user 59655694: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 19:52:49]: Called get_user_name_by_id
+[2023-01-18 19:52:49]: Called get_tag_by_id
+[2023-01-18 19:52:50]: Successfully returning filter tags for user 457947821: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 19:52:53]: Return to entry page
+[2023-01-18 20:03:30]: Return to entry page
+[2023-01-18 20:03:30]: 404 | Page not found
+[2023-01-18 20:03:41]: Loading of the visualisation page
+[2023-01-18 20:03:41]: Called get_user_name_by_id
+[2023-01-18 20:03:42]: Called get_tag_by_id
+[2023-01-18 20:03:42]: Successfully returning filter tags for user 59655694: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 20:03:42]: Called get_user_name_by_id
+[2023-01-18 20:03:42]: Called get_tag_by_id
+[2023-01-18 20:03:42]: Successfully returning filter tags for user 457947821: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 20:04:27]: Return to entry page
+[2023-01-18 20:06:42]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:06:42 |||
+[2023-01-18 20:06:43]: Start of the main script
+[2023-01-18 20:06:43]: Called token_generation
+[2023-01-18 20:06:44]: A new app access token has been generated: lst9rmgkjeyxwzk8f5lw83ruwc2z0k
+[2023-01-18 20:06:44]: Start of the discord bot
+[2023-01-18 20:06:44]: Start of flask web app
+[2023-01-18 20:06:48]: Discord bot succesfully online and ready
+||| 2023-01-18 20:07:12 |||
+          ********** END OF LOG FILE **********          
+[2023-01-18 20:07:12]: Discord bot terminated
+[2023-01-18 20:07:32]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:07:32 |||
+[2023-01-18 20:07:51]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:07:51 |||
+[2023-01-18 20:07:58]: Return to entry page
+[2023-01-18 20:08:01]: Loading of the visualisation page
+[2023-01-18 20:08:01]: Called get_user_name_by_id
+[2023-01-18 20:08:02]: Called get_tag_by_id
+[2023-01-18 20:08:02]: Successfully returning filter tags for user 59655694: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 20:08:02]: Called get_user_name_by_id
+[2023-01-18 20:08:02]: Called get_tag_by_id
+[2023-01-18 20:08:02]: Successfully returning filter tags for user 457947821: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 20:08:04]: Return to entry page
+[2023-01-18 20:08:06]: Attempting to submit a discord generated code
+[2023-01-18 20:08:38]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:08:38 |||
+[2023-01-18 20:08:38]: Return to entry page
+[2023-01-18 20:08:38]: Loading of the visualisation page
+[2023-01-18 20:08:38]: Called get_user_name_by_id
+[2023-01-18 20:08:39]: Called get_tag_by_id
+[2023-01-18 20:08:39]: Successfully returning filter tags for user 59655694: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 20:08:39]: Called get_user_name_by_id
+[2023-01-18 20:08:39]: Called get_tag_by_id
+[2023-01-18 20:08:39]: Successfully returning filter tags for user 457947821: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 20:08:43]: Return to entry page
+[2023-01-18 20:11:22]: Return to entry page
+[2023-01-18 20:11:23]: 404 | Page not found
+[2023-01-18 20:13:12]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:13:12 |||
+[2023-01-18 20:13:12]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:13:12 |||
+[2023-01-18 20:13:12]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:13:12 |||
+[2023-01-18 20:13:12]: Start of the main script
+[2023-01-18 20:13:12]: Called token_generation
+[2023-01-18 20:13:12]: Start of the main script
+[2023-01-18 20:13:12]: Called token_generation
+[2023-01-18 20:13:12]: Start of the main script
+[2023-01-18 20:13:12]: Called token_generation
+[2023-01-18 20:13:14]: A new app access token has been generated: h8hwe0jf0bayu30bkk9lrqadxcmpfu
+[2023-01-18 20:13:14]: A new app access token has been generated: wz8rdw287z2jsl3cu32tg5o1hz6jgv
+[2023-01-18 20:13:14]: A new app access token has been generated: e5igxnuqglqut09g28frulm2tz57s7
+[2023-01-18 20:13:14]: Start of the discord bot
+[2023-01-18 20:13:14]: Start of flask web app
+[2023-01-18 20:13:14]: Start of the discord bot
+[2023-01-18 20:13:14]: Start of the discord bot
+[2023-01-18 20:13:14]: Start of flask web app
+[2023-01-18 20:13:14]: Start of flask web app
+[2023-01-18 20:13:17]: Discord bot succesfully online and ready
+[2023-01-18 20:13:17]: Discord bot succesfully online and ready
+[2023-01-18 20:13:28]: Discord bot succesfully online and ready
+[2023-01-18 20:13:43]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:13:43 |||
+[2023-01-18 20:13:43]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:13:43 |||
+[2023-01-18 20:13:43]: Start of the main script
+[2023-01-18 20:13:43]: Called token_generation
+[2023-01-18 20:13:43]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:13:43 |||
+[2023-01-18 20:13:43]: Start of the main script
+[2023-01-18 20:13:43]: Called token_generation
+[2023-01-18 20:13:43]: Start of the main script
+[2023-01-18 20:13:43]: Called token_generation
+[2023-01-18 20:13:44]: A new app access token has been generated: x64stffu1baqoj9hbl3ct6xp5imob6
+[2023-01-18 20:13:44]: Start of the discord bot
+[2023-01-18 20:13:44]: Start of flask web app
+[2023-01-18 20:13:45]: A new app access token has been generated: 8ywmum8frn6jmh6oiktr33wdcmd3uc
+[2023-01-18 20:13:45]: A new app access token has been generated: pvybcit4y1xktnfc7t3whlj16y60bf
+[2023-01-18 20:13:45]: Start of the discord bot
+[2023-01-18 20:13:45]: Start of flask web app
+[2023-01-18 20:13:45]: Start of the discord bot
+[2023-01-18 20:13:45]: Start of flask web app
+[2023-01-18 20:13:48]: Discord bot succesfully online and ready
+[2023-01-18 20:13:48]: Discord bot succesfully online and ready
+[2023-01-18 20:13:59]: Discord bot succesfully online and ready
+[2023-01-18 20:14:13]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:14:13 |||
+[2023-01-18 20:14:14]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:14:14 |||
+[2023-01-18 20:14:14]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:14:14 |||
+[2023-01-18 20:14:14]: Start of the main script
+[2023-01-18 20:14:14]: Called token_generation
+[2023-01-18 20:14:14]: Start of the main script
+[2023-01-18 20:14:14]: Called token_generation
+[2023-01-18 20:14:14]: Start of the main script
+[2023-01-18 20:14:14]: Called token_generation
+[2023-01-18 20:14:15]: A new app access token has been generated: jg7h2pacld7jfx6c2qdym1u107iv5h
+[2023-01-18 20:14:15]: Start of the discord bot
+[2023-01-18 20:14:15]: Start of flask web app
+[2023-01-18 20:14:15]: A new app access token has been generated: sba89bmtmb2cjel3cb3cj4xexxbl78
+[2023-01-18 20:14:15]: Start of the discord bot
+[2023-01-18 20:14:15]: Start of flask web app
+[2023-01-18 20:14:15]: A new app access token has been generated: krsaptnnsus1w0ic6q3bnu2jerzrpc
+[2023-01-18 20:14:15]: Start of the discord bot
+[2023-01-18 20:14:15]: Start of flask web app
+[2023-01-18 20:14:18]: Discord bot succesfully online and ready
+[2023-01-18 20:14:18]: Discord bot succesfully online and ready
+[2023-01-18 20:14:29]: Discord bot succesfully online and ready
+[2023-01-18 20:14:44]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:14:44 |||
+[2023-01-18 20:14:44]: Creating discord bot client
+[2023-01-18 20:14:44]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:14:44 |||
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:14:44 |||
+[2023-01-18 20:14:44]: Start of the main script
+[2023-01-18 20:14:44]: Called token_generation
+[2023-01-18 20:14:44]: Start of the main script
+[2023-01-18 20:14:44]: Called token_generation
+[2023-01-18 20:14:44]: Start of the main script
+[2023-01-18 20:14:44]: Called token_generation
+[2023-01-18 20:14:45]: A new app access token has been generated: cxlk1r9rrnhs951qasdoq2581kyau8
+[2023-01-18 20:14:45]: Start of the discord bot
+[2023-01-18 20:14:45]: Start of flask web app
+[2023-01-18 20:14:46]: A new app access token has been generated: ob3mcug3lqwz4407583ouocqnh084c
+[2023-01-18 20:14:46]: A new app access token has been generated: igi7713z29r1gahblts9fuuh8v53bn
+[2023-01-18 20:14:46]: Start of the discord bot
+[2023-01-18 20:14:46]: Start of flask web app
+[2023-01-18 20:14:46]: Start of the discord bot
+[2023-01-18 20:14:46]: Start of flask web app
+[2023-01-18 20:14:49]: Discord bot succesfully online and ready
+[2023-01-18 20:14:49]: Discord bot succesfully online and ready
+[2023-01-18 20:15:00]: Discord bot succesfully online and ready
+[2023-01-18 20:15:15]: Creating discord bot client
+[2023-01-18 20:15:15]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:15:15 |||
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:15:15 |||
+[2023-01-18 20:15:15]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:15:15 |||
+[2023-01-18 20:15:15]: Start of the main script
+[2023-01-18 20:15:15]: Called token_generation
+[2023-01-18 20:15:15]: Start of the main script
+[2023-01-18 20:15:15]: Called token_generation
+[2023-01-18 20:15:15]: Start of the main script
+[2023-01-18 20:15:15]: Called token_generation
+[2023-01-18 20:15:16]: A new app access token has been generated: 3hjb8hs4t01qzrtwuvlbovq2gruzay
+[2023-01-18 20:15:16]: Start of the discord bot
+[2023-01-18 20:15:16]: Start of flask web app
+[2023-01-18 20:15:16]: A new app access token has been generated: z3cxtze2fe3io823rj80fn7q76nla2
+[2023-01-18 20:15:16]: Start of the discord bot
+[2023-01-18 20:15:16]: Start of flask web app
+[2023-01-18 20:15:17]: A new app access token has been generated: wf1tbnko2cagwvj5dhqqeyueiy13sd
+[2023-01-18 20:15:17]: Start of the discord bot
+[2023-01-18 20:15:17]: Start of flask web app
+[2023-01-18 20:15:19]: Discord bot succesfully online and ready
+[2023-01-18 20:15:19]: Discord bot succesfully online and ready
+[2023-01-18 20:15:31]: Discord bot succesfully online and ready
+[2023-01-18 20:16:32]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:16:32 |||
+[2023-01-18 20:16:32]: Start of the main script
+[2023-01-18 20:16:32]: Called token_generation
+[2023-01-18 20:16:34]: A new app access token has been generated: k5knvuxjvau0bgzf58frs909e4dx3q
+[2023-01-18 20:16:34]: Start of the discord bot
+[2023-01-18 20:16:37]: Discord bot succesfully online and ready
+[2023-01-18 20:16:52]: A new code has been generated : --------- for user MystAria#3007
+[2023-01-18 20:17:04]: Return to entry page
+[2023-01-18 20:17:08]: Attempting to submit a discord generated code
+[2023-01-18 20:17:08]: Codes matching, authentifaction succesfull, returning to home page
+[2023-01-18 20:17:12]: Loading of the visualisation page
+[2023-01-18 20:17:12]: Called get_user_name_by_id
+[2023-01-18 20:17:12]: Called get_tag_by_id
+[2023-01-18 20:17:12]: Successfully returning filter tags for user 59655694: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 20:17:12]: Called get_user_name_by_id
+[2023-01-18 20:17:13]: Called get_tag_by_id
+[2023-01-18 20:17:13]: Successfully returning filter tags for user 457947821: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 20:17:14]: Return to entry page
+[2023-01-18 20:19:09]: A new code has been generated : --------- for user MystAria#3007
+[2023-01-18 20:19:17]: Attempting to submit a discord generated code
+[2023-01-18 20:19:17]: Codes matching, authentifaction succesfull, returning to home page
+[2023-01-18 20:22:56]: Attempting to submit a discord generated code
+[2023-01-18 20:22:56]: Codes mismatching, authentification failed, returning to entree page
+[2023-01-18 20:23:25]: Return to entry page
+[2023-01-18 20:23:28]: Loading of the visualisation page
+[2023-01-18 20:23:28]: Called get_user_name_by_id
+[2023-01-18 20:23:28]: Called get_tag_by_id
+[2023-01-18 20:23:29]: Successfully returning filter tags for user 59655694: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 20:23:29]: Called get_user_name_by_id
+[2023-01-18 20:23:29]: Called get_tag_by_id
+[2023-01-18 20:23:29]: Successfully returning filter tags for user 457947821: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 20:23:31]: Return to entry page
+[2023-01-18 20:23:59]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:23:59 |||
+[2023-01-18 20:23:59]: Start of the main script
+[2023-01-18 20:23:59]: Called token_generation
+[2023-01-18 20:24:01]: A new app access token has been generated: incc2z33qahrpc7z3oayvapludzgha
+[2023-01-18 20:24:01]: Start of the discord bot
+[2023-01-18 20:24:04]: Discord bot succesfully online and ready
+[2023-01-18 20:24:06]: A new code has been generated : --------- for user MystAria#3007
+[2023-01-18 20:24:20]: Attempting to submit a discord generated code
+[2023-01-18 20:24:20]: Codes matching, authentifaction succesfull, returning to home page
+[2023-01-18 20:25:30]: Return to entry page
+[2023-01-18 20:25:49]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:25:49 |||
+[2023-01-18 20:25:49]: Start of the main script
+[2023-01-18 20:25:49]: Called token_generation
+[2023-01-18 20:25:51]: A new app access token has been generated: pnj6kc8wyyd6qj492jms2leazhhmu0
+[2023-01-18 20:25:51]: Start of the discord bot
+[2023-01-18 20:25:54]: Discord bot succesfully online and ready
+[2023-01-18 20:26:05]: A new code has been generated : --------- for user MystAria#3007
+[2023-01-18 20:26:13]: Attempting to submit a discord generated code
+[2023-01-18 20:26:13]: Codes matching, authentifaction succesfull, returning to home page
+[2023-01-18 20:27:54]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:27:54 |||
+[2023-01-18 20:27:54]: Start of the main script
+[2023-01-18 20:27:54]: Called token_generation
+[2023-01-18 20:27:56]: A new app access token has been generated: zcgh5e4see7a5z8rbl7yymrzoafp4q
+[2023-01-18 20:27:56]: Start of the discord bot
+[2023-01-18 20:27:59]: Discord bot succesfully online and ready
+[2023-01-18 20:28:02]: Return to entry page
+[2023-01-18 20:28:06]: A new code has been generated : --------- for user MystAria#3007
+[2023-01-18 20:28:13]: Attempting to submit a discord generated code
+[2023-01-18 20:28:13]: Codes matching, authentifaction succesfull, returning to home page
+[2023-01-18 20:31:01]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 20:31:01 |||
+[2023-01-18 20:31:01]: Start of the main script
+[2023-01-18 20:31:01]: Called token_generation
+[2023-01-18 20:31:03]: A new app access token has been generated: vd76eochmnbs0jkuzi0ovfytch3pgv
+[2023-01-18 20:31:03]: Start of the discord bot
+[2023-01-18 20:31:06]: Discord bot succesfully online and ready
+[2023-01-18 21:06:03]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 21:06:03 |||
+[2023-01-18 21:06:03]: Start of the main script
+[2023-01-18 21:06:03]: Called token_generation
+[2023-01-18 21:06:05]: A new app access token has been generated: f8f0qrhz5gi0o5svt594q15zlz2amr
+[2023-01-18 21:06:05]: Start of the discord bot
+[2023-01-18 21:06:08]: Discord bot succesfully online and ready
+[2023-01-18 21:09:22]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 21:09:22 |||
+[2023-01-18 21:09:23]: Start of the main script
+[2023-01-18 21:09:23]: Called token_generation
+[2023-01-18 21:09:25]: A new app access token has been generated: nbv9va80sx9qjf7wqyodx2zzq5069s
+[2023-01-18 21:09:25]: Start of the discord bot
+[2023-01-18 21:09:28]: Discord bot succesfully online and ready
+[2023-01-18 21:10:27]: Return to entry page
+[2023-01-18 21:10:28]: 404 | Page not found
+[2023-01-18 21:10:38]: Return to entry page
+[2023-01-18 21:11:15]: A new code has been generated : --------- for user MystAria#3007
+[2023-01-18 21:11:24]: Attempting to submit a discord generated code
+[2023-01-18 21:11:24]: Codes matching, authentifaction succesfull, returning to home page
+[2023-01-18 21:13:10]: Creating discord bot client
+
+          ********** START OF LOG FILE **********          
+||| 2023-01-18 21:13:10 |||
+[2023-01-18 21:13:10]: Start of the main script
+[2023-01-18 21:13:10]: Called token_generation
+[2023-01-18 21:13:12]: A new app access token has been generated: 06orr4m30itlje6xotptt7lgalem4c
+[2023-01-18 21:13:12]: Start of the discord bot
+[2023-01-18 21:13:16]: Discord bot succesfully online and ready
+[2023-01-18 21:13:18]: A new code has been generated : --------- for user MystAria#3007
+[2023-01-18 21:13:31]: Return to entry page
+[2023-01-18 21:13:34]: Attempting to submit a discord generated code
+[2023-01-18 21:13:34]: Codes matching, authentifaction succesfull, returning to home page
+[2023-01-18 21:13:37]: An user accepted the connection with Twitch
+[2023-01-18 21:13:37]: Called token_generation
+[2023-01-18 21:13:39]: A new user access token and refresh has been generated: cx5e1ynx0otcssusv7nsgs93snrvs2 / w7inzxrgn6mxldu7zck9jlxh6qo20r29j08syk4u5ag6bemmbn
+[2023-01-18 21:13:39]: Called token_validation
+[2023-01-18 21:13:40]: Successfully validated user access token
+[2023-01-18 21:13:40]: Called get_all_ban_member
+[2023-01-18 21:13:41]: Failed to return all banned members from the network. Returned Error
+[2023-01-18 21:13:41]: list index out of range
+[2023-01-18 21:13:41]: Called token_validation
+[2023-01-18 21:13:42]: Successfully validated app access token
+[2023-01-18 21:13:42]: 'user_id'
+[2023-01-18 21:13:42]: Called get_user_info
+[2023-01-18 21:13:43]: Successfully fetch user 699600940 info from twitch
+[2023-01-18 21:13:43]: Adding a new user 699600940, Arias_bot to the database
+[2023-01-18 21:13:43]: User 699600940, Arias_bot failed to be registered in the database
+[2023-01-18 21:13:43]: 1062 (23000): Duplicate entry '699600940-Arias_bot' for key 'registered_user.user_id'
+[2023-01-18 21:13:43]: Trying to update user 699600940, Arias_bot informations in the database
+[2023-01-18 21:13:43]: Called set_new_user_info
+[2023-01-18 21:13:43]: Update of user 699600940, Arias_bot successfull in the database
+[2023-01-18 21:13:43]: Called set_user_filter
+[2023-01-18 21:13:43]: Trying to add new filter options for user 699600940
+[2023-01-18 21:13:43]: Failed to add new filter option for user 699600940
+[2023-01-18 21:13:43]: 1062 (23000): Duplicate entry '699600940' for key 'filter_user.user_id'
+[2023-01-18 21:13:43]: Called set_user_option
+[2023-01-18 21:13:44]: Failed to add filter options for user 699600940
+[2023-01-18 21:13:44]: 1062 (23000): Duplicate entry '699600940' for key 'option_user.user_id'
+[2023-01-18 21:13:44]: Failed to create banned accounts table for user 699600940
+[2023-01-18 21:13:44]: 1050 (42S01): Table '699600940_banlist' already exists
+[2023-01-18 21:13:44]: Called get_banlist
+[2023-01-18 21:13:44]: Successfully fetched user 699600940 banlist from twitch
+[2023-01-18 21:13:44]: Called filter_banlist
+[2023-01-18 21:13:44]: Called fill_banned_user_table_by_user
+[2023-01-18 21:13:44]: Called get_user_info_by_id
+[2023-01-18 21:13:45]: Successfully wipeout table 699600940_banlist
+[2023-01-18 21:13:45]: A new user 457947821 has been added in table 699600940_banlist
+[2023-01-18 21:13:45]: Failed to add tags to user 457947821 in banned_tag table
+[2023-01-18 21:13:45]: 1062 (23000): Duplicate entry '457947821' for key 'banned_tag.user_id'
+[2023-01-18 21:13:46]: Successfully updated tags for user 457947821 in banned_tag table
+[2023-01-18 21:13:46]: Called get_user_option
+[2023-01-18 21:13:46]: Successfully returned user 699600940 filter options: {'giveonly': 0, 'receiveonly': 0}
+[2023-01-18 21:13:46]: Called get_user_filter
+[2023-01-18 21:13:46]: Successfully returning filter options for user 699600940: [1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0]
+[2023-01-18 21:13:52]: Loading of the visualisation page
+[2023-01-18 21:13:52]: Called get_user_name_by_id
+[2023-01-18 21:13:53]: Called get_tag_by_id
+[2023-01-18 21:13:53]: Successfully returning filter tags for user 59655694: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}
+[2023-01-18 21:13:53]: Called get_user_name_by_id
+[2023-01-18 21:13:53]: Called get_tag_by_id
+[2023-01-18 21:13:53]: Successfully returning filter tags for user 457947821: {'permanent': 1, 'timeout': 0, 'commented': 0, 'notcommented': 1, 'sexism': 0, 'homophobia': 0, 'rascism': 0, 'backseat': 0, 'spam': 0, 'username': 0, 'other': 0, 'trusted': 0}

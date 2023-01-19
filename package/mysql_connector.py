@@ -3,23 +3,18 @@ from package import log
 from package import tag_filter
 import os
 
-
-#This is messy i know, i made them as i need them, so they are repetive an can completly be fused.
-#I'll do it, one day, for now, it's working, not optimal, but it's working.
-
-
-delay_s = 1
 bdd_name = "arias_bot_database"
 bdd_ip = os.environ["AWS_IP"]
 bdd_login = os.environ["Arias_bot_login"]
 bdd_password = os.environ["Arias_bot_password"]
 
-def connect_to_database(host=bdd_ip, user=bdd_login, password=bdd_password, database=bdd_name):
+def connect_to_database():
     try:
-        with connect(host=host, user=user, password=password, database=database) as connection:
+        with connect(host=bdd_ip, user=bdd_login, password=bdd_password, database=bdd_name) as connection:
             return(connection)
     except Error as e:
-        return(e)
+        print(e)
+        
 
 
 def create_the_database(connection):

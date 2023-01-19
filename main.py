@@ -19,7 +19,10 @@ log.start_log()
 app = Flask(__name__)
 discord_bot = discord.get_discord_client()
 
-site_base_url = "http://localhost:5000/portal"
+
+url_root = "https://90.0.72.4"
+website_name = "/ariasbot"
+site_base_url = url_root + website_name + "/portal"
 client_id = twitch.get_client_id()
 client_secret = twitch.get_client_secret()
 scopes = ["moderation:read","moderator:manage:banned_users"]
@@ -38,7 +41,7 @@ q = Queue()
 flag_routine_update_user_banned_table = False
 
 #---------------------------------------------------------------------------------------------------------------------#
-@app.route('/')
+@app.route(website_name + '/')
 def entree():
 	log.log("Return to entry page")
 	global random_state_list
@@ -55,7 +58,7 @@ def entree():
 		log.log("Element popped in available_home_code")
 	return render_template('pages/entree.html')
 
-@app.route('/home', methods=['POST'])
+@app.route(website_name + '/home', methods=['POST'])
 def home():
 	try:
 		home_code = request.form['return_home']
@@ -70,17 +73,17 @@ def home():
 		log.log(str(e))
 		return render_template('pages/entree.html')
 
-@app.route('/faq')
+@app.route(website_name + '/faq')
 def faq():
 	log.log("Went to F.A.Q. page")
 	return render_template('pages/faq.html')
 
-@app.route('/contact')
+@app.route(website_name + '/contact')
 def contact():
 	log.log("Went to contact page")
 	return render_template('pages/contact.html')
 
-@app.route('/version')
+@app.route(website_name + '/version')
 def version():
 	log.log("Went to version page")
 	return render_template('pages/version.html')
@@ -90,7 +93,7 @@ def page_not_found(error):
 	log.log("404 | Page not found")
 	return render_template('pages/page_not_found.html'), 404
 
-@app.route('/portal')
+@app.route(website_name + '/portal')
 def query():
 	global random_state_list
 	global app_access_token
@@ -190,7 +193,7 @@ def query():
 
 
 
-@app.route('/visualisation')
+@app.route(website_name + '/visualisation')
 def visualisation():
 	log.log("Loading of the visualisation page")
 	command = """
@@ -215,7 +218,7 @@ def visualisation():
 	return render_template('pages/visualisation.html', data = list_data)
 
 
-@app.route('/disconnect', methods=['POST']) #return_to_original_state
+@app.route(website_name + '/disconnect', methods=['POST']) #return_to_original_state
 def disconnect():
 	log.log("An user wants to be disconnect from the network")
 	user_access_token = request.form['access_token']
@@ -241,7 +244,7 @@ def disconnect():
 	log.log("User {} succesfully disconnected, returning validation page".format(user_id))
 	return render_template('pages/validation.html', text="Your have been successfully removed from the network.", return_home_code=random_home_code)
 
-@app.route('/force_update_ban', methods=['POST'])
+@app.route(website_name + '/force_update_ban', methods=['POST'])
 def force_update_ban():
 	log.log("An user wants an update on their channel")
 	user_access_token = request.form['access_token']
@@ -256,7 +259,7 @@ def force_update_ban():
 	log.log("Arias_bot has been succesfully called on {}'s channel, returning to validation page".format(user_id))
 	return render_template('pages/validation.html', text="Arias_bot paid a visit on your channel !", return_home_code=random_home_code)
 
-@app.route('/update_filter', methods=['POST'])
+@app.route(website_name + '/update_filter', methods=['POST'])
 def update_filter():
 	log.log("An user wants to update their filter")
 	list_filter = [request.form['permanent'],request.form['timeout'],request.form['commented'],request.form['notcommented'],request.form['sexism'],request.form['homophobia'],request.form['rascism'],request.form['backseat'],request.form['spam'],request.form['username'],request.form['other'],request.form['trusted']]
@@ -267,7 +270,7 @@ def update_filter():
 	log.log("Filter succesfully updated for user {}".format(user_id))
 	return render_template('pages/validation.html', text="Your filter have been successfully updated.", return_home_code=random_home_code)
 
-@app.route('/give_only', methods=['POST'])
+@app.route(website_name + '/give_only', methods=['POST'])
 def give_only():
 	user_id = twitch.token_validation(request.form["access_token"])
 	
@@ -284,7 +287,7 @@ def give_only():
 	log.log("User {} activated Give_Only option for their channel".format(user_id))
 	return render_template('pages/validation.html', text=text_return, return_home_code=random_home_code)
 
-@app.route('/receive_only', methods=['POST'])
+@app.route(website_name + '/receive_only', methods=['POST'])
 def receive_only():
 	user_id = twitch.token_validation(request.form["access_token"])
 	
@@ -594,7 +597,7 @@ def run_discord_bot(q):
 
 
 
-@app.route('/discord_code_validation', methods=['POST'])
+@app.route(website_name + '/discord_code_validation', methods=['POST'])
 def discord_code_validation():
 	log.log("Attempting to submit a discord generated code")
 	received_code = request.form["discord_code"]
@@ -616,15 +619,14 @@ def discord_code_validation():
 THREAD_update_user_banned_table = Process(target = routine_update_user_banned_table)
 THREAD_discord_bot = Process(target = run_discord_bot, args=(q,))
 
-if __name__ == '__main__':
-	log.log("Start of the main script")
-	app_access_token = twitch.token_generation(client_id,client_secret)
-	THREAD_discord_bot.start()
-	q.put(available_discord_code)
-	log.log("Start of the discord bot")
-	log.log("Start of flask web app")
-	app.run(debug=False, port=5000)
-	log.end_log()
+log.log("Start of the main script")
+app_access_token = twitch.token_generation(client_id,client_secret)
+THREAD_discord_bot.start()
+q.put(available_discord_code)
+log.log("Start of the discord bot")
+#log.log("Start of flask web app")
+#app.run(debug=False,host="0.0.0.0", port=5080)
+#log.end_log()
 
 
 
